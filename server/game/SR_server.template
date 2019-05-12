@@ -1,0 +1,109 @@
+
+// -- INSTRUCTIONS --
+//Remove double forward slash from the begining of a line to enable a setting.
+//NOTE: Leaving cvars commented will result in default behaviour
+
+// -- LOAD DEFAULTS --
+exec SR_defaults.cfg
+
+// -- START TEMPLATE --
+
+// PASSWORDS: (Edit SR_refs.cfg to allow per user ref access)
+//set svr_password "myserverpass" //Server password (If using VIP slots set svr_PasswordNoVIP = svr_password as well)
+//set svr_adminpassword "admin" //Admin password
+//set sv_refereePassword "refpass" //Normal ref password
+//set sv_refGodPassword "mygodrefpass" //God ref password
+
+// GENERAL SETTINS:
+set svr_name "Unnamed SR Server" //Server name
+//set svr_hostname "hostname or IP"
+set sv_serverNotes "Visit ^gsavagerebirth.com!" //Text that appears when using the Game Info button
+set svr_maxclients 32 //Slot count
+set svr_port 11235 //Server port number
+set svr_gamefps 40 //a smoother gaming experience
+//set svr_mapurl "http://www.mywebsite.com/my/savage/maps/" //Private map server for clients to download custom maps
+set svr_broadcast 1 //Broadcast server to serverlist
+//set sv_balancedTeams 1 //Enforce blanaced teams
+//set sv_readyPercent 0.50 //Minimum number of players needed to be ready before start a game in warmup mode
+//set sv_minPlayers 1 //Minimum number of players needed before a game can start
+//set sv_autoRespawn 0 //Force players to respawn automatically if set to 1
+//set sv_waitforcommander 1 //Wait for a commander before the game should start
+//set sv_clientConnectMoney 5000 //The money a client gets when connecting to the server mid game
+set sv_maxMoney 15000 //The max money a player can have
+//set sv_distributeGold 1 1 //If team gold at maximum the over flow is given out to players
+//set sv_autojoin 1 //Automatically add new players to a team
+//set sv_team1race human //Team 1 Race
+//set sv_team2race beast //Team 2 Race
+set sv_chatFloodCount 7 //Flood protection count before auto mute
+set sv_allowWarmupAllSpawnLocs 1 //Allow all spawn locations at warmup
+//set sv_allowWarmupInfiniteGold 0 //Infinite gold in warmup if set to 1
+//set sv_allowWarmupAllTechs 0 //All tech in warmup if set to 1
+set svr_allowRemoteSvcmds 1 //Allow server to be remotely controled via clients using /svcmd command
+set sv_allowSlapping 1 //Allow commanders to slap units with the /slap command
+set sv_respawntime 10000 //Respawn time in ms
+//set sv_goodieMeOnlyTime 2000 //The time a player get to collect his moeny from a unit or npc
+set g_maxofficers 16 //Max officers allowed per team (Causes crash on SFE when total officers > 16)
+//set g_clientsperofficer 4 //How many officers there can be to X clients on a team
+//set sv_allowPromoteRequests 0 //Can someone promote themselfs as a unit?
+set sv_enableTithe 1 //Enable the commander to change the tax level
+//set sv_overtime_decay 0 //Decay building HP when game time is up if set to 1
+//set sv_overtime_decayScale 0.3 //Rate of decay
+//set sv_overtime_minBldHP 500 //Minimum building HP
+//set sv_overtime_upkeep 500 //Cost in gold to maintain a buildings HP
+//set sv_allowAllSpawnPositions 1 //Set to 0 to turn on anti-exploit gar code (Is bugged, on some maps can't spawn from flags)
+
+
+// VOTES:
+//set sv_allowConcedeVotes 0 //Concede
+//set sv_allowPauseVotes 0 //Pause
+//set sv_allowMapVotes 1 //World
+//set sv_allowNextMapVotes 3 //Nextmap
+//set sv_allowRestartVotes 1 //Restart
+//set sv_allowDrawVotes 1 //Draw
+//set sv_allowRaceVotes 0 //Race
+//set sv_allowElectVotes 1 //Elect
+//set sv_allowBuildRequests 0 //Build
+//set sv_allowKickVotes 1 //Kick
+//set sv_allowMuteVotes 1 //Mute
+//set sv_allowShuffleVotes 1 //Shuffle
+//set sv_allowTimeVotes 1 //Time
+//set sv_allowMsgVotes 1 //Message
+//set sv_allowMoneyRequests 2 //Money
+
+// MESSAGE OF THE DAY
+set sv_motd1 "****************************************"
+set sv_motd2 "      ^wWelcome to the ^rSavage"
+set sv_motd3 "****************************************"
+
+// VIP SLOTS:
+//set svr_nonVIPSlots 30 //VIP slots = svr_maxclients - svr_nonVIPSlots 
+//set svr_PasswordVIP "mypass" //Password to use a VIP slot
+//set svr_PasswordNoVIP "mypass" //Password to use a none VIP slot
+
+// SERVER SIDE DEMOS:
+//set serverdemos_recordserver 0 //Record SSD's on this server? (serverdemos_replayserver must = 0)
+//set sv_allowrecordvotes 0 //Allow save SSD votes?  
+//set serverdemos_savedir "/my/serverdemos/folder/" //Save folder for SSD's
+//set serverdemos_replayserver 0 //Replay SSD's on this server? (serverdemos_recordserver must = 0)
+//set serverdemos_dir "/my/serverdemos/folder" //Replay folder for SSD's
+//set sv_allowreplayvotes 0 //Allow SSD replay votes
+//set sv_allowlistdemos 0 //Allow demo listing
+
+// XP:  
+//set sv_xp_repair 0.03 //XP for repairing
+//set sv_xp_build 0.05 //XP for building
+//set sv_xp_mine 0.15 //XP for mining
+//set sv_xp_kill_worker 20 //XP for killing work
+//set sv_xp_structure_damage 0.02 //XP for hitting enemy building
+//set sv_xp_kill_player 15 //XP for killing a player
+//set sv_xp_max_gain 0.3 //Maximum xp that can be gained from an action
+
+// DUELS:
+//set sv_dueluseglobal 1 //Can spectators use the global chat?
+//set sv_duelrefuseglobal 1 //Same as above but for referees
+//set sv_duelwaypoints 1 //Gives a waypoint to a person being challenged 
+
+// AUTH:
+//set sv_authkey 0000000000000000000000000000000
+//set sv_authid 1
+//set sv_authaccount myaccount

@@ -1,0 +1,7 @@
+beginObjdef blocker pinetree_snowy
+  obj_editorCategory General_Trees
+  obj_model pinetree_snowy.model
+  obj_editorScaleRangeLo 0.800000
+  obj_editorScaleRangeHi 1.300000
+  obj_doubleSided 1
+endObjdef pinetree_snowy

@@ -1,0 +1,9 @@
+// -- INSTRUCTIONS --
+//Format:
+//<type> <UID> <Rank> <Comment>
+//Type: godref or uberref (uberref has more commands)
+//UID: User the ingame info button to discover a users UID and add it here to give them access
+//Rank: Higher ranks mean you cannot be affected by ref commands of lower ranks. Less than 100 informs every1 on the server of that refs actions
+
+//example
+//uberref 33735 666 we made UnnamedRef a ref!

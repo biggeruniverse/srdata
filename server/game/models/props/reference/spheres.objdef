@@ -1,0 +1,11 @@
+//nav flood fill point
+
+beginObjdef blocker spheres
+  obj_editorCategory Reference
+  obj_model models/editor/unit_sphere.model
+  obj_skin default
+  obj_editorScaleRangeLo 1.0
+  obj_editorScaleRangeHi 1.0
+  obj_navFloodFillPoint 0
+  obj_reference 1
+endObjdef spheres

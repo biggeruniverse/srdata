@@ -1,0 +1,5 @@
+skinName default 
+
+skinref fire /models/beast/weapons/ranged/t_1_nl_fire.tga
+skinref fireglow /models/beast/weapons/ranged/1_nl_fireglow0000.tga
+

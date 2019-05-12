@@ -1,0 +1,7 @@
+beginObjdef blocker pinetree
+  obj_editorCategory General_Trees
+  obj_model pinetree.model
+  obj_editorScaleRangeLo 0.800000
+  obj_editorScaleRangeHi 1.300000
+  obj_doubleSided 1
+endObjdef pinetree

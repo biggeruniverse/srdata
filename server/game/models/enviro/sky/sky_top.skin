@@ -1,0 +1,15 @@
+skinName blue2
+skinRef skytop blue2/blue2_top.tga
+skinRef water white.tga
+
+skinName blue_sky
+skinRef skytop blue_sky/blue_sky_top.tga
+skinRef water white.tga
+
+skinName peach
+skinRef skytop peach/sky_peach_top.tga
+skinRef water white.tga
+
+skinName storm
+skinRef skytop storm/storm_top.tga
+skinRef water white.tga

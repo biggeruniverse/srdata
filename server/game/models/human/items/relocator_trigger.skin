@@ -1,0 +1,5 @@
+skinName default 
+
+skinref object02 /models/human/weapons/ranged/fps_archer_hnds_512.tga
+skinref effectsforbox /models/human/weapons/ranged/1_nl_elec0000.tga
+skinref effect /models/human/weapons/ranged/1_nl_elec0000.tga

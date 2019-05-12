@@ -1,0 +1,6 @@
+beginObjdef blocker outcrop
+  obj_editorCategory Nature
+  obj_model outcrop.model
+  obj_editorScaleRangeLo 3.000000
+  obj_editorScaleRangeHi 3.000000
+endObjdef outcrop

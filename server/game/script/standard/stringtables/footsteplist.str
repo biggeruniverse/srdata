@@ -1,0 +1,111 @@
+// =====================================================================================
+// NOTE: ANY COMMENTED OUT LINES ARE NOT IMPLEMENTED CURRENTLY UNLESS NOTED OTHERWISE!!!
+// =====================================================================================
+
+// ==============================
+// FOOTSTEPS
+// ==============================
+
+// ==============================
+// Human Footsteps
+// ==============================
+
+footstep_grass_heavy_h_1 			sound/general/footsteps/human/grass_heavy_1.ogg
+footstep_grass_heavy_h_2			sound/general/footsteps/human/grass_heavy_2.ogg
+footstep_grass_heavy_h_3 			sound/general/footsteps/human/grass_heavy_3.ogg
+footstep_grass_heavy_h_4 			sound/general/footsteps/human/grass_heavy_4.ogg
+footstep_grass_heavy_h_5 			sound/general/footsteps/human/grass_heavy_5.ogg
+footstep_grass_heavy_h_6 			sound/general/footsteps/human/grass_heavy_6.ogg
+footstep_grass_heavy_h_7 			sound/general/footsteps/human/grass_heavy_7.ogg
+footstep_grass_heavy_h_8 			sound/general/footsteps/human/grass_heavy_8.ogg
+footstep_grass_light_h_1 			sound/general/footsteps/human/grass_light_1.ogg
+footstep_grass_light_h_2			sound/general/footsteps/human/grass_light_2.ogg
+footstep_grass_light_h_3 			sound/general/footsteps/human/grass_light_3.ogg
+footstep_grass_light_h_4 			sound/general/footsteps/human/grass_light_4.ogg
+footstep_grass_light_h_5 			sound/general/footsteps/human/grass_light_5.ogg
+footstep_grass_light_h_6 			sound/general/footsteps/human/grass_light_6.ogg
+footstep_grass_light_h_7 			sound/general/footsteps/human/grass_light_7.ogg
+footstep_grass_light_h_8 			sound/general/footsteps/human/grass_light_8.ogg
+
+//SNOW
+footstep_snow_heavy_h_1 			sound/general/footsteps/human/snow_heavy_1.ogg
+footstep_snow_heavy_h_2 			sound/general/footsteps/human/snow_heavy_2.ogg
+footstep_snow_heavy_h_3 			sound/general/footsteps/human/snow_heavy_3.ogg
+footstep_snow_heavy_h_4 			sound/general/footsteps/human/snow_heavy_4.ogg
+footstep_snow_light_h_1 			sound/general/footsteps/human/snow_light_1.ogg
+footstep_snow_light_h_2 			sound/general/footsteps/human/snow_light_2.ogg
+footstep_snow_light_h_3 			sound/general/footsteps/human/snow_light_3.ogg
+footstep_snow_light_h_4 			sound/general/footsteps/human/snow_light_4.ogg
+
+//DIRT
+footstep_dirt_heavy_h_1 			sound/general/footsteps/human/dirt_heavy_1.ogg
+footstep_dirt_heavy_h_2 			sound/general/footsteps/human/dirt_heavy_2.ogg
+footstep_dirt_heavy_h_3 			sound/general/footsteps/human/dirt_heavy_3.ogg
+footstep_dirt_heavy_h_4 			sound/general/footsteps/human/dirt_heavy_4.ogg
+footstep_dirt_light_h_1 			sound/general/footsteps/human/dirt_light_1.ogg
+footstep_dirt_light_h_2 			sound/general/footsteps/human/dirt_light_2.ogg
+footstep_dirt_light_h_3 			sound/general/footsteps/human/dirt_light_3.ogg
+footstep_dirt_light_h_4 			sound/general/footsteps/human/dirt_light_4.ogg
+
+//STONE
+
+footstep_stone_heavy_h_1 			sound/general/footsteps/human/stone_heavy_1.ogg
+footstep_stone_heavy_h_2 			sound/general/footsteps/human/stone_heavy_2.ogg
+footstep_stone_heavy_h_3 			sound/general/footsteps/human/stone_heavy_3.ogg
+footstep_stone_heavy_h_4 			sound/general/footsteps/human/stone_heavy_4.ogg
+footstep_stone_light_h_1 			sound/general/footsteps/human/stone_light_1.ogg
+footstep_stone_light_h_2 			sound/general/footsteps/human/stone_light_2.ogg
+footstep_stone_light_h_3 			sound/general/footsteps/human/stone_light_3.ogg
+footstep_stone_light_h_4 			sound/general/footsteps/human/stone_light_4.ogg
+
+// ==============================
+// Beast Footsteps
+// ==============================
+
+footstep_grass_heavy_b_1 			sound/general/footsteps/beast/grass_heavy_1.ogg
+footstep_grass_heavy_b_2			sound/general/footsteps/beast/grass_heavy_2.ogg
+footstep_grass_heavy_b_3 			sound/general/footsteps/beast/grass_heavy_3.ogg
+footstep_grass_heavy_b_4 			sound/general/footsteps/beast/grass_heavy_4.ogg
+footstep_grass_heavy_b_5 			sound/general/footsteps/beast/grass_heavy_5.ogg
+footstep_grass_heavy_b_6 			sound/general/footsteps/beast/grass_heavy_6.ogg
+footstep_grass_heavy_b_7 			sound/general/footsteps/beast/grass_heavy_7.ogg
+footstep_grass_heavy_b_8 			sound/general/footsteps/beast/grass_heavy_8.ogg
+footstep_grass_light_b_1 			sound/general/footsteps/beast/grass_light_1.ogg
+footstep_grass_light_b_2			sound/general/footsteps/beast/grass_light_2.ogg
+footstep_grass_light_b_3 			sound/general/footsteps/beast/grass_light_3.ogg
+footstep_grass_light_b_4 			sound/general/footsteps/beast/grass_light_4.ogg
+footstep_grass_light_b_5 			sound/general/footsteps/beast/grass_light_5.ogg
+footstep_grass_light_b_6 			sound/general/footsteps/beast/grass_light_6.ogg
+footstep_grass_light_b_7 			sound/general/footsteps/beast/grass_light_7.ogg
+footstep_grass_light_b_8 			sound/general/footsteps/beast/grass_light_8.ogg
+
+//SNOW
+footstep_snow_heavy_b_1 			sound/general/footsteps/beast/snow_heavy_1.ogg
+footstep_snow_heavy_b_2 			sound/general/footsteps/beast/snow_heavy_2.ogg
+footstep_snow_heavy_b_3 			sound/general/footsteps/beast/snow_heavy_3.ogg
+footstep_snow_heavy_b_4 			sound/general/footsteps/beast/snow_heavy_4.ogg
+footstep_snow_light_b_1 			sound/general/footsteps/beast/snow_light_1.ogg
+footstep_snow_light_b_2 			sound/general/footsteps/beast/snow_light_2.ogg
+footstep_snow_light_b_3 			sound/general/footsteps/beast/snow_light_3.ogg
+footstep_snow_light_b_4 			sound/general/footsteps/beast/snow_light_4.ogg
+
+//DIRT
+footstep_dirt_heavy_b_1 			sound/general/footsteps/beast/dirt_heavy_1.ogg
+footstep_dirt_heavy_b_2 			sound/general/footsteps/beast/dirt_heavy_2.ogg
+footstep_dirt_heavy_b_3 			sound/general/footsteps/beast/dirt_heavy_3.ogg
+footstep_dirt_heavy_b_4 			sound/general/footsteps/beast/dirt_heavy_4.ogg
+footstep_dirt_light_b_1 			sound/general/footsteps/beast/dirt_light_1.ogg
+footstep_dirt_light_b_2 			sound/general/footsteps/beast/dirt_light_2.ogg
+footstep_dirt_light_b_3 			sound/general/footsteps/beast/dirt_light_3.ogg
+footstep_dirt_light_b_4 			sound/general/footsteps/beast/dirt_light_4.ogg
+
+//STONE
+footstep_stone_heavy_b_1 			sound/general/footsteps/beast/stone_heavy_1.ogg
+footstep_stone_heavy_b_2 			sound/general/footsteps/beast/stone_heavy_2.ogg
+footstep_stone_heavy_b_3 			sound/general/footsteps/beast/stone_heavy_3.ogg
+footstep_stone_heavy_b_4 			sound/general/footsteps/beast/stone_heavy_4.ogg
+footstep_stone_light_b_1 			sound/general/footsteps/beast/stone_light_1.ogg
+footstep_stone_light_b_2 			sound/general/footsteps/beast/stone_light_2.ogg
+footstep_stone_light_b_3 			sound/general/footsteps/beast/stone_light_3.ogg
+footstep_stone_light_b_4 			sound/general/footsteps/beast/stone_light_4.ogg
+

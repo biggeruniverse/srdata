@@ -1,0 +1,7 @@
+skinName default 
+
+skinref bodyfront /models/human/units/nomad/diffusearcher.tga
+
+skinName team2
+
+skinRef bodyfront /models/human/units/nomad/diffusearcher_team2.tga

@@ -1,0 +1,6 @@
+beginObjdef blocker mountain_wall_connector
+  obj_editorCategory XR_Misc
+  obj_model mountain_wall_connector.model
+  obj_editorScaleRangeLo 1.0
+  obj_editorScaleRangeHi 1.0
+endObjdef mountain_wall_connector

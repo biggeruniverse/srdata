@@ -1,0 +1,8 @@
+//Build
+makeanim construct arcana.clip 90 89 24 0
+
+Idle
+makeanim idle arcana.clip 1 88 18 1
+
+//Death
+makeanim death_generic arcana.clip 180 50 24 0

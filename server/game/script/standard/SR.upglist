@@ -1,0 +1,10 @@
+//human
+upgLoad human_catapult_splash
+upgLoad human_ammo_carry
+upgLoad human_building_hp
+
+//beast
+upgLoad beast_sac_splash
+upgLoad beast_tempest_range
+upgLoad beast_building_hp
+upgLoad beast_gate
