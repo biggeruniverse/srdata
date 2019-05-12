@@ -1,1 +1,1 @@
-# srdata
+# The Savage: Rebirth files repository
