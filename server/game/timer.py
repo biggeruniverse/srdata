@@ -5,7 +5,7 @@ class Timer(tasklet):
 		def handler(*args, **kwargs):
 			try:
 				args[0].check();
-			except Exception,e:
+			except Exception as e:
 				try:
 					import traceback;
 					con_dprintln( "^r" + traceback.format_exc());

@@ -9,10 +9,10 @@ class beast_worker(savage.Mind):
 
 	def handleGoal(self):
 		if self.goal == self.lastGoal:
-			return;
+			return
 
-                if self.goal is None:
-                        return
+		if self.goal is None:
+			return
 		if self.goal.state == savage.Goal.AIGOAL_CONSTRUCT:
 			self.fsm.insertState(savage.ConstructState(self.goal.targetObject));
 			self.fsm.insertState(savage.ChaseState(self.goal.targetObject, 100));

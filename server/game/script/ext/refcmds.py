@@ -7,20 +7,20 @@ playerArgNote = "\nNote: <player> may be a player name or a client ID preceded b
 typeArgNote = "\nNote: <type> may be the name of any NPC, e.g. \"monkit\""
 
 def getClientIDFromString(string):
-        if len(string) == 0:
-                return None
-        ret = savage.getPlayerByName(string)
-        if ret is None and string[0] == '#':
-                try:
-                        ret = int(string[1:])
-                        ret = savage.getGameObject(ret)
-                except:
-                        return None
+	if len(string) == 0:
+		return None
+	ret = savage.getPlayerByName(string)
+	if ret is None and string[0] == '#':
+		try:
+			ret = int(string[1:])
+			ret = savage.getGameObject(ret)
+		except:
+			return None
 
 	elif ret is None:
 		ret = savage.getPlayerByName(string.lower());
 
-        return ret
+	return ret
 
 class RefereeCommandHandler(savage.CommandHandler):
 	def __init__(self):
@@ -39,15 +39,15 @@ class RefKick(savage.RefereeCommandHandler):
 		pass;
 
 	def handle(self, clientId, args):
-                if len(args) == 0:
-                        silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION + savage.playerArgNote)
-                        return
+		if len(args) == 0:
+			silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION + savage.playerArgNote)
+			return
 		slayed = savage.getClientIDFromString(args[0]);
 		ref = savage.getGameObject(clientId);
 
 		if slayed is None or not slayed.isActive():
-                        silverback.SV_ClientEcho(clientId, "Player not found")
-                else:
+			silverback.SV_ClientEcho(clientId, "Player not found")
+		else:
 			silverback.Server_KickClient(slayed.objectId, "refkick");
 
 			silverback.SV_BroadcastNotice("^900Referee "+ref.getName()+" kicked "+slayed.getName());
@@ -60,15 +60,15 @@ class RefSlay(savage.RefereeCommandHandler):
 		pass;
 
 	def handle(self, clientId, args):
-                if len(args) == 0:
-                        silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION + savage.playerArgNote)
-                        return
+		if len(args) == 0:
+			silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION + savage.playerArgNote)
+			return
 		slayed = savage.getClientIDFromString(args[0]);
 		ref = savage.getGameObject(clientId);
 
 		if slayed is None or not slayed.isActive():
-                        silverback.SV_ClientEcho(clientId, "Player not found")
-                else:
+			silverback.SV_ClientEcho(clientId, "Player not found")
+		else:
 			slayed.die();
 
 			silverback.SV_BroadcastNotice("^900Referee "+ref.getName()+" slayed "+slayed.getName());
@@ -81,9 +81,9 @@ class RefMorph(savage.RefereeCommandHandler):
 		pass;
 	
 	def handle(self, clientId, args):
-                if len(args) < 2:
-                        silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION + savage.playerArgNote + savage.typeArgNote)
-                        return
+		if len(args) < 2:
+			silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION + savage.playerArgNote + savage.typeArgNote)
+			return
 		typename = "npc_"+args[1];
 		target = savage.getClientIDFromString(args[0]);
 		typeobj = savage.getObjectType(typename);
@@ -102,9 +102,9 @@ class RefWorld(savage.RefereeCommandHandler):
 		pass;
 	
 	def handle(self, clientId, args):
-                if len(args) == 0:
-                        silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION)
-                        return
+		if len(args) == 0:
+			silverback.SV_ClientEcho(clientId, 'Usage: ' + self.DESCRIPTION)
+			return
 		world = args[0];
 		ref = savage.getGameObject(clientId);
 		silverback.SV_BroadcastNotice("^900Referee "+ref.getName()+" changed map to "+world);
@@ -236,7 +236,7 @@ class RefPromote(savage.RefereeCommandHandler):
 	def __init__(self):
 		pass
 
-        def handle(self, clientId, args):
+	def handle(self, clientId, args):
 		if len(args) == 0:
 			silverback.SV_ClientEcho(clientId, "Usage: " + self.DESCRIPTION + savage.playerArgNote)
 			return

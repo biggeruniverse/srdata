@@ -34,10 +34,10 @@ class ObjectType:
 		return savage.resourceNames[ self.getValue("techType") ] if self.getValue("techType") < len(savage.resourceNames) else None;
 		
 	def getObjectClass(self):
-                try:
-                        objc = int(self.getValue("objclass"));
-                except:
-                        objc = 0;
+		try:
+			objc = int(self.getValue("objclass"));
+		except:
+			objc = 0;
 		return savage.objclassNames[objc];
 
 	def getCost(self, resource):

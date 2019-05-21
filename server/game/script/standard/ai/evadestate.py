@@ -18,20 +18,20 @@ class EvadeState(savage.FSMState):
 		go = self.machine.mind;
 
 		if self.nav.run(go):
-                        o = savage.Vec3(self.targetObject.getPosition())
-                        p = savage.Vec3(go.getPosition())
-                        t = p - o
-                        t.data[2] = 0.0
-                        t = t.normalise() * self.evadeDist
-                        t = o + t
-                        if t.distanceSqTo(o) < p.distanceSqTo(o):
-                                t = p
+			o = savage.Vec3(self.targetObject.getPosition())
+			p = savage.Vec3(go.getPosition())
+			t = p - o
+			t.data[2] = 0.0
+			t = t.normalise() * self.evadeDist
+			t = o + t
+			if t.distanceSqTo(o) < p.distanceSqTo(o):
+				t = p
 			go.gotoPosition(t);
 
 	def isComplete(self):
-                go = self.machine.mind
-                if self.nav.blocked:
-                        return False;
+		go = self.machine.mind
+		if self.nav.blocked:
+			return False;
 		if self.targetObject == None or self.targetObject.getHealth() <= 0 or not self.targetObject.isActive():
 			return True;
 		if not self.nav.firstRun and go.isArrived():

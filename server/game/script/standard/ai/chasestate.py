@@ -15,7 +15,7 @@ class ChaseState(savage.FSMState):
 		self.nav = savage.StateNavigation()
 		self.arrived = False
 
-	def run(self):                
+	def run(self):		
 		go = self.machine.mind;
 		
 		if self.nav.run(go):
@@ -25,15 +25,15 @@ class ChaseState(savage.FSMState):
 		go = self.machine.mind;
 
 		if self.nav.blocked:
-                        return False;
+			return False;
 		
 		if self.targetObject == None or self.targetObject.getHealth() <= 0 or not self.targetObject.isActive():
 			go.stopMoving();
 			return True;
 
-                if not self.nav.firstRun and go.isArrived():
+		if not self.nav.firstRun and go.isArrived():
 			go.stopMoving();
-                        return True
+			return True
 		
 		p = Vec3(self.targetObject.getPosition());
 		o = Vec3(go.getPosition());
@@ -60,7 +60,7 @@ class ChaseState(savage.FSMState):
 		if isinstance(s, savage.ReturnState):
 			return True;
 		if isinstance(s, savage.DropoffState):
-                        return True;
+			return True;
 		#if isinstance(s, RoamState):
 		#	return True;
 		return False;

@@ -11,7 +11,7 @@ class AttackState(savage.FSMState):
 		self.targetObject = o;
 
 	def isAttackAnim(self, attack):
-                return (attack > 0 and attack < 11)
+		return (attack > 0 and attack < 11)
 
 	def run(self):
 		go = self.machine.mind;
@@ -20,46 +20,46 @@ class AttackState(savage.FSMState):
 
 		go.setPrimaryAnimState(AnimStates.AS_IDLE)
 
-                weapon = gotype.getValue("forceInventory0")
+		weapon = gotype.getValue("forceInventory0")
 		isRanged = False
-                if not weapon is None:
-                        weaponType = savage.getObjectType(weapon)
-                        if weaponType.getObjectClass() == "weapon":
-                                isRanged = True
+		if not weapon is None:
+			weaponType = savage.getObjectType(weapon)
+			if weaponType.getObjectClass() == "weapon":
+				isRanged = True
 
 		isSuicide = M_Randnum(0, 100) < 100*gotype.getValue("attackSuicideChance");
 		if isSuicide:
 			attackName = "melee_1";
 
-                if isRanged:
-                        r = 400.0
-                else:
-                        r = gotype.getAttackTypeValue(attackName, "range");
-                r2 = r ** 2
-                p = Vec3(go.getPosition());
-                o = Vec3(self.targetObject.getPosition());
+		if isRanged:
+			r = 400.0
+		else:
+			r = gotype.getAttackTypeValue(attackName, "range");
+		r2 = r ** 2
+		p = Vec3(go.getPosition());
+		o = Vec3(self.targetObject.getPosition());
 		
-                go.setForwardVector( o - p ); # always face target
+		go.setForwardVector( o - p ); # always face target
 
-                if not self.attackStarted:
-                        if o.distanceSqTo(p) > r2:
-                                go.fsm.insertState(savage.ChaseState(self.targetObject, r));
-                                return
-                        self.attackTime = savage.getGameTime() + gotype.getAttackTypeValue(attackName, "time")
-                        self.impactTime = savage.getGameTime() + gotype.getAttackTypeValue(attackName, "impact")
+		if not self.attackStarted:
+			if o.distanceSqTo(p) > r2:
+				go.fsm.insertState(savage.ChaseState(self.targetObject, r));
+				return
+			self.attackTime = savage.getGameTime() + gotype.getAttackTypeValue(attackName, "time")
+			self.impactTime = savage.getGameTime() + gotype.getAttackTypeValue(attackName, "impact")
 			if isSuicide:
 				go.setSecondaryAnimState(AnimStates.AS_SUICIDE);
 			else:
-                        	go.setSecondaryAnimState(AnimStates.AS_MELEE_1);
-                        self.impacted = False
-                        self.attackStarted = True
+				go.setSecondaryAnimState(AnimStates.AS_MELEE_1);
+			self.impacted = False
+			self.attackStarted = True
 
-                if self.impactTime <= savage.getGameTime() and not self.impacted:
-                        #make the attack
-                        if isRanged:
+		if self.impactTime <= savage.getGameTime() and not self.impacted:
+			#make the attack
+			if isRanged:
 				go.fireWeapon(o);
-                                go.setSecondaryAnimState(AnimStates.AS_IDLE)
-                        else:
+				go.setSecondaryAnimState(AnimStates.AS_IDLE)
+			else:
 				if isSuicide:
 					go.addEvent(33);    #there's a whole lot of events, I'm not putting them all in defines.py
 					objs = savage.getRadiusObjects(go.objectId, 150);
@@ -67,12 +67,12 @@ class AttackState(savage.FSMState):
 						go.damageFalloff(obj, gotype.getValue("attackSuicideDamage"), gotype.getValue("attackSuicideRadius"));
 					go.damage(go, go.getMaxHealth()+10);
 				else:
-                                	go.damage(self.targetObject, gotype.getAttackTypeValue(attackName, "damage"));
-                        self.impacted = True
+					go.damage(self.targetObject, gotype.getAttackTypeValue(attackName, "damage"));
+			self.impacted = True
 
 		if self.attackTime <= savage.getGameTime():
-                        go.setSecondaryAnimState(AnimStates.AS_IDLE)
-                        self.attackStarted = False
+			go.setSecondaryAnimState(AnimStates.AS_IDLE)
+			self.attackStarted = False
 
 	def isComplete(self):
 		go = self.machine.mind;

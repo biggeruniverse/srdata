@@ -16,9 +16,9 @@ class ReturnState(savage.FSMState):
 			self.machine.mind.gotoPosition(self.destination);
 
 	def isComplete(self):
-                go = self.machine.mind
-                if self.nav.blocked:
-                        return False;
+		go = self.machine.mind
+		if self.nav.blocked:
+			return False;
 		if not self.nav.firstRun and go.isArrived():
 			return True
 		return False

@@ -11,8 +11,8 @@ class human_worker(savage.Mind):
 		if self.goal == self.lastGoal:
 			return;
 
-                if self.goal is None:
-                        return
+		if self.goal is None:
+			return
 		elif self.goal.state == savage.Goal.AIGOAL_CONSTRUCT:
 			self.fsm.insertState(savage.ConstructState(self.goal.targetObject));
 			self.fsm.insertState(savage.ChaseState(self.goal.targetObject, 100));

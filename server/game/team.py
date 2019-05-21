@@ -209,8 +209,8 @@ class Team:
 	# MANIPULATORS #
 
 	def setRace(self, race):
-                return savage.team_setrace(self.teamId, race);
+		return savage.team_setrace(self.teamId, race);
 
-        def impeachCommander(self):
+	def impeachCommander(self):
 		return savage.team_impeachcommander(self.teamId);
 

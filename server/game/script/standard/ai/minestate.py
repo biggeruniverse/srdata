@@ -2,8 +2,8 @@
 from vectors import Vec3;
 
 class MineState(savage.FSMState):
-        def __init__(self, o):
-		savage.FSMState.__init__(self);
+	def __init__(self, o):
+		savage.FSMState.__init__(self)
 		self.attackTime = 0;
 		self.targetObject = o;
 		self.maxCapacity = False
@@ -22,10 +22,10 @@ class MineState(savage.FSMState):
 		mineType = self.targetObject.getType().getValue("mineType");
 		if go.getCarryResource(mineType) >= go.getMaxCarryResource(mineType):
 			#go.setCurrentGoalPriority(9001); #reset mining priority so we never randomly forget we were mining...
-                        go.fsm.insertState(savage.MineState(self.targetObject))
-                        go.fsm.insertState(savage.ChaseState(self.targetObject, self.targetObject.getType().getValue("proximity")))
-                        dropoff = go.findClosestDropPoint()
-                        go.fsm.insertState(savage.DropoffState(dropoff))
+			go.fsm.insertState(savage.MineState(self.targetObject))
+			go.fsm.insertState(savage.ChaseState(self.targetObject, self.targetObject.getType().getValue("proximity")))
+			dropoff = go.findClosestDropPoint()
+			go.fsm.insertState(savage.DropoffState(dropoff))
 			go.fsm.insertState(savage.ChaseState(dropoff, dropoff.getType().getValue("proximity")));
 			self.maxCapacity = True
 			return;

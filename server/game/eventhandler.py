@@ -105,7 +105,7 @@ class EventHandler:
 		for l in listenerList:
 			try:
 				l.onEvent(e)
-			except BaseException, ex:
+			except BaseException as ex:
 				try:
 					import traceback;
 					self.logger.error( traceback.format_exc());
