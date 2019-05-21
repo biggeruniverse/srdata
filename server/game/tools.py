@@ -16,7 +16,7 @@ def printList( list ):
 def writeList( list, filename = "writeListOutput.txt"):
 	#NB this dumpstring is local to writeList()
 	dumpstring = "writeList output:\n"
-	list = map( lambda(x): str(x) , list);
+	list = map( lambda x: str(x) , list);
 	dumpstring += "\n".join(list);
 	try:
 		f = open(filename, "w");

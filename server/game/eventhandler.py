@@ -86,7 +86,7 @@ class EventHandler:
 		self.voteListeners = []
 
 		self.stop = threading.Event()
-		self.queue_thread = threading.Thread("Event queue runner", self._run_queue)
+		self.queue_thread = threading.Thread(None, self._run_queue, "Event queue runner")
 		self.stop.clear()
 		self.queue_thread.start()
 
