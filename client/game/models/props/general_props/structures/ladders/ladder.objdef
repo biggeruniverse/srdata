@@ -1,0 +1,7 @@
+beginObjdef blocker ladder
+  obj_editorCategory Ladders
+  obj_model ladder.model
+  obj_editorScaleRangeLo 1.000000
+  obj_editorScaleRangeHi 1.000000
+  obj_doubleSided 1
+endObjdef ladder

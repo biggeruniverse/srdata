@@ -1,0 +1,15 @@
+skinName team2
+
+skinRef head01 predatorskin_t2.tga
+
+skinName england
+
+skinRef head01 predator_e.tga
+
+skinName germany
+
+skinRef head01 predator_g.tga
+
+skinName tag
+
+skinRef head01 tag.tga

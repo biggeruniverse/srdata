@@ -1,0 +1,152 @@
+efSet sound1 "/sound/effects/grenade_explosion_1.wav"
+efSet sound2 "/sound/effects/grenade_explosion_2.wav"
+efSet sound3 "/sound/effects/grenade_explosion_3.wav"
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 3.000000
+efSet shakeRadius 700.000000
+efSet shakeDuration 0.500000
+
+// Launcher and mortar impact
+// "/textures/effects/explosions/green/1_nl_exp_green.tga"
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/fire/1_nl_pyro0000.tga"
+vfSet size 10.000000 30.000000
+vfSet growth 30.000000 60.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -0.900000 -0.900000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 0
+vfSet lifetime 200 300
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 12 14
+vfSet velocity 50.000000 100.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -5.000000 5.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin -40.000000 40.000000
+vfSet bone ""
+
+
+
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 0.500000 0.500000
+vfSet growth 40.000000 50.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -0.800000 -0.800000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 120
+vfSet lifetime 50 100
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 20 32
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset -4.000000 4.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+
+//Particles:
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/fire/1_nl_pyro0000.tga"
+vfSet size 10.000000 30.000000
+vfSet growth 30.000000 60.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -0.900000 -0.900000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 150 200
+vfSet lifetime 200 300
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 12 14
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -5.000000 5.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+
+vfEdit 3
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear -param_sinewave
+vfSet shader "textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 5.000000 10.000000
+vfSet growth 25.000000 75.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -0.200000 -0.200000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 150
+vfSet lifetime 100 200
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 10 10
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -2.000000 2.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+

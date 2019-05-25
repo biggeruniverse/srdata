@@ -1,0 +1,6 @@
+beginObjdef blocker teleport_node
+  obj_editorCategory Interactive
+  obj_model teleport_node.model
+  obj_editorScaleRangeLo 0.800000
+  obj_editorScaleRangeHi 1.000000
+endObjdef teleport_node

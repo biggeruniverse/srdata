@@ -1,0 +1,3 @@
+mat_depthWrite 0
+mat_doubleSided 1
+mat_fog 0

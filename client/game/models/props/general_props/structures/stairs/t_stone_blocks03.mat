@@ -1,0 +1,8 @@
+{
+        "name": "t_stone_blocks03",
+        "pass": {
+                "diffuse": "/models/props/general_props/structures/stairs/t_stone_blocks03.s2g",
+                "normal": "/models/props/general_props/structures/stairs/t_stone_blocks03_normalmap.tga",
+                "shader": "pr_normal"
+        }
+}

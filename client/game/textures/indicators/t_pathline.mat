@@ -1,0 +1,5 @@
+set mat_depthWrite 0
+set mat_depthTest 0
+set mat_ufunc linear_pan
+set mat_uspeed 1
+set mat_flags +no_lighting

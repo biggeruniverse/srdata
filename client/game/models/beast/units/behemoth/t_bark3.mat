@@ -1,0 +1,5 @@
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/beast/units/behemoth/t_bark3_normalmap.tga
+set mat_glossmap /models/beast/units/behemoth/t_bark3_gm.tga
+set mat_shader nm_gm_skn

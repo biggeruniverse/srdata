@@ -1,0 +1,117 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 0.000000
+efSet shakeRadius 700.000000
+efSet shakeDuration 4.000000
+efSet shakeFrequency 250.000000
+
+// NGP
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/stars/1_nl_flarespikebg.tga"
+vfSet size 10.000000 15.000000
+vfSet growth 0.000000 0.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.800000 0.800000
+vfSet green 0.800000 0.800000
+vfSet blue 0.500000 0.500000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -0.500000 -0.500000
+vfSet bluefade -0.500000 -0.500000
+vfSet delay 0 2000
+vfSet lifetime 50 120
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 100 120
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -1.000000 1.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+//Particles:
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/stars/1_nl_flarespikebg.tga"
+vfSet size 12.000000 12.000000
+vfSet growth 25.000000 25.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.800000 0.800000
+vfSet green 0.800000 0.800000
+vfSet blue 0.500000 0.500000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -0.500000 -0.500000
+vfSet bluefade -0.500000 -0.500000
+vfSet delay 2000 3000
+vfSet lifetime 50 120
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 90 90
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -1.000000 1.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 2.000000 2.000000
+vfSet sizeHeight 0.000000 0.500000
+vfSet growth -5.000000 20.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.800000 0.800000
+vfSet green 0.800000 0.800000
+vfSet blue 0.500000 0.500000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -0.500000 -0.500000
+vfSet bluefade -0.500000 -0.500000
+vfSet delay 1000 2000
+vfSet lifetime 400 400
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 130 130
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset -0.500000 0.500000
+vfSet gravity -0.010000 -0.010000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfset forcedOffsetZ 10

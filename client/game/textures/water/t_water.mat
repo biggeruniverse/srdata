@@ -1,0 +1,6 @@
+set mat_textureScale 64 64 1
+set mat_doubleSided 1
+set mat_uFunc LINEAR_PAN
+set mat_vFunc LINEAR_PAN
+set mat_uSpeed 0.01
+set mat_vSpeed 0.01

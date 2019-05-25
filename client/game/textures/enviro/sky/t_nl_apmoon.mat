@@ -1,0 +1,4 @@
+set mat_depthWrite 0
+set mat_depthTest 1
+set mat_fog 0
+set mat_shader none

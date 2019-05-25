@@ -1,0 +1,8 @@
+set mat_shininess 64.000000
+set mat_specular 2.500000 1.500000 1.500000
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/human/weapons/ranged/t_mag_gun_normalmap.tga
+set mat_glossmap /models/human/weapons/ranged/t_mag_gun_gm.tga
+set mat_parallaxBias 0.010000
+set mat_parallaxScale 0.010000

@@ -1,0 +1,10 @@
+//first person view weapon animations
+makeanim idle c_health_projectile.clip 0 1 
+makeanim wpstate_switch c_health_projectile.clip
+makeanim wpstate_charge c_health_projectile.clip 
+makeanim wpstate_spinup c_health_projectile.clip 
+makeanim wpstate_spindown c_health_projectile.clip
+makeanim wpstate_overheat c_health_projectile.clip
+makeanim wpstate_fire c_health_projectile.clip 1 1
+
+animevent wpstate_fire 0 "sound /sound/beast/items/frenzy_projectile_crystal_shatter.wav"

@@ -1,0 +1,82 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound "/sound/human/items/smoke_loop.wav"
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 0
+efSet soundVolume 1.000000 1.000000
+efSet soundRadius 100.000000 100.000000
+efSet cameraShake 0.000000 0.000000
+
+// "/textures/effects/explosions/green/1_nl_exp_green.tga"
+// "textures/effects/stars/nl_natsu_smokeswirl.tga"
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/fog/1_nl_fogsm0000.tga"
+vfSet size 2.000000 5.000000
+vfSet growth 30.000000 40.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 1.000000 1.000000
+vfSet red 0.000000 0.500000
+vfSet green 1.000000 1.000000
+vfSet blue 0.000000 0.500000
+vfSet redfade -0.2500000 -0.2500000
+vfSet greenfade -0.500000 -0.500000
+vfSet bluefade -0.500000 -0.500000
+vfSet delay 0 150
+vfSet lifetime 2000 3000
+vfSet tilelength 0.000000
+vfSet style "trail"
+vfSet model ""
+vfSet skin ""
+vfSet count 4 5
+vfSet velocity 1.000000 5.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -1.000000 1.000000
+vfSet gravity -0.240000 -0.130000
+vfSet angle 0.000000 360.000000
+vfSet spin -180.000000 180.000000
+vfSet bone ""
+
+//Particles:
+vfEdit 1
+vfSet visclass "null"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/stars/natsu_smokeswirl.tga"
+vfSet size 2.000000 5.000000
+vfSet growth 30.000000 40.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 1.000000 1.000000
+vfSet red 0.000000 0.500000
+vfSet green 1.000000 1.000000
+vfSet blue 0.000000 0.500000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 150
+vfSet lifetime 2000 3000
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 4 5
+vfSet velocity 1.000000 5.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -1.000000 1.000000
+vfSet gravity -0.240000 -0.130000
+vfSet angle 0.000000 360.000000
+vfSet spin -180.000000 180.000000
+vfSet bone ""
+
+
+

@@ -1,0 +1,7 @@
+set mat_doubleSided 1
+set mat_alphaCutoff 0
+set mat_depthWrite 0
+set mat_depthTest 1
+set mat_fog 0
+set mat_shader simple
+set mat_textureScale 2 1 1

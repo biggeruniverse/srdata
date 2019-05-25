@@ -1,0 +1,7 @@
+skinName default
+
+skinRef jump_pad jump_pad.s2g
+skinRef _2sided_bolts_main jump_pad_bolt.s2g
+skinRef _2sided_gauge_1 jump_pad_gauge.s2g
+skinRef _2sided_gauge_2 jump_pad_gauge.s2g
+skinRef _2sided_holes_main jump_pad_holes.s2g

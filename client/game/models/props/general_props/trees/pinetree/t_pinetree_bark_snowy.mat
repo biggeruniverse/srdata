@@ -1,0 +1,6 @@
+set mat_shininess 5.000000
+set mat_specular 0.600000 0.600000 0.600000
+set mat_doublesided 0
+set mat_terrain_overblend 1
+set mat_normalmap /models/props/general_props/trees/pinetree/t_Pinetree_bark_normal.tga
+set mat_glossmap /models/props/general_props/trees/pinetree/t_Pinetree_bark_snowy_gloss.tga

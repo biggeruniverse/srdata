@@ -1,0 +1,135 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 0.800000 50.000000
+efSet soundRadius 50.000000 0.000000
+efSet cameraShake 0.000000 0.000000
+
+// particle count:  60 - 140 at once
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d -param_terrainz -grow_shrink_linear -grow_shrink_poly -alloc_trail -alloc_trail_per_child -trail_rendering -terrain_decal -children_use_own_trail -terrain_col_decal -static_obj_col_decal -parent_pos_static -param_xaligned -param_yaligned 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet mod_shader ""
+vfSet size 1.000000 1.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth -10.000000 -2.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.750000 0.750000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 100
+vfSet lifetime 50 120
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 30 35
+vfSet velocity 3.000000 3.000000
+vfSet MulVelX 1.000000
+vfSet MulVelY 1.000000
+vfSet MulVelZ 1.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 1.000000 2.500000
+vfSet forcedOffsetX 0.000000
+vfSet forcedOffsetY 0.000000
+vfSet forcedOffsetZ 0.000000
+vfSet gravity -0.100000 -0.100000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone "Bip01_R_Foot"
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+vfSet dieshader ""
+vfSet dieFPS 25 25
+vfSet playUnderConstruction 0
+vfSet spawnmode "none"
+vfSet spawncollisionflags -terrain -static -dynamic -complex -gameobject -not_solid -foliage -ex0 -ex1 -ex2 -ex3 -solid_item -transparent_item -corpse -push_zone -revivable -ex4 -ex5 -ex6 -ex7 
+vfSet spawndelay 100
+vfSet spawnradius 1.000000 1.000000
+vfSet spawnviseffect 0
+vfSet spawncount 1 1
+vfSet spawninterval 100 100
+vfSet spawninheritlife 0.000000 0.000000
+vfSet windcoeff 0.000000 0.000000
+vfSet trailshaderpriority 0
+vfSet fadetime 0.000000
+vfSet max_ZDist 0
+
+
+//Particles:
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d -param_terrainz -grow_shrink_linear -grow_shrink_poly -alloc_trail -alloc_trail_per_child -trail_rendering -terrain_decal -children_use_own_trail -terrain_col_decal -static_obj_col_decal -parent_pos_static -param_xaligned -param_yaligned 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet mod_shader ""
+vfSet size 1.000000 1.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth -10.000000 -2.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.750000 0.750000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 100
+vfSet lifetime 50 120
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 30 35
+vfSet velocity 3.000000 3.000000
+vfSet MulVelX 1.000000
+vfSet MulVelY 1.000000
+vfSet MulVelZ 1.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 1.000000 2.500000
+vfSet forcedOffsetX 0.000000
+vfSet forcedOffsetY 0.000000
+vfSet forcedOffsetZ 0.000000
+vfSet gravity -0.100000 -0.100000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone "Bip01_L_Foot"
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+vfSet dieshader ""
+vfSet dieFPS 25 25
+vfSet playUnderConstruction 0
+vfSet spawnmode "none"
+vfSet spawncollisionflags -terrain -static -dynamic -complex -gameobject -not_solid -foliage -ex0 -ex1 -ex2 -ex3 -solid_item -transparent_item -corpse -push_zone -revivable -ex4 -ex5 -ex6 -ex7 
+vfSet spawndelay 100
+vfSet spawnradius 1.000000 1.000000
+vfSet spawnviseffect 0
+vfSet spawncount 1 1
+vfSet spawninterval 100 100
+vfSet spawninheritlife 0.000000 0.000000
+vfSet windcoeff 0.000000 0.000000
+vfSet trailshaderpriority 0
+vfSet fadetime 0.000000
+vfSet max_ZDist 0
+

@@ -1,0 +1,8 @@
+set mat_shininess 15.000000
+set mat_specular 1.000000 1.000000 1.000000
+set mat_doubleSided 1
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/human/armor/officer_helmet_normalmap.tga
+set mat_glossmap /models/human/armor/officer_helmet_gm.tga
+set mat_parallaxBias -0.010000
+set mat_parallaxScale 0.010000

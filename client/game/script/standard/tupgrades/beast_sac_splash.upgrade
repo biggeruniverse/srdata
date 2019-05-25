@@ -1,0 +1,23 @@
+upgSet description "Immolate"
+upgSet icon ""
+upgSet race "beast"
+upgSet objtype "beast_immolate"
+upgSet property "radius"
+upgSet multiplier 2.00000
+upgSet modifier 0.00000
+upgSet builder1 "beast_alchema"
+upgSet builder2 ""
+upgSet requirement1 "beast_fire_shrine"
+upgSet requirement2 "beast_immolate"
+upgSet requirement3 ""
+upgSet cost NULL 0
+upgSet cost stone 500
+upgSet cost gold 0
+upgSet cost electric 0
+upgSet cost magnetic 0
+upgSet cost chemical 0
+upgSet cost fire 0
+upgSet cost strata 0
+upgSet cost entropy 0
+upgSet researchTime 25000
+upgSet alwaysAvailable 0

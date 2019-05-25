@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<material depth="true" alpha-cutoff="0.5">
+        <pass>
+                <texture slot="diffuse" uri="/models/props/general_props/trees/oaktree/t_palmtreebark.s2g"/>
+                <texture slot="normal" uri="/models/props/general_props/trees/oaktree/t_palmtreebark_normalmap.tga"/>
+                <shader resource="pr_normal"/>
+        </pass>
+</material>

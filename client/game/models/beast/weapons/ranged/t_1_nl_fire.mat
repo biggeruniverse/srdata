@@ -1,0 +1,6 @@
+set mat_vfunc linear_pan
+set mat_vspeed 1
+set mat_shader none
+set mat_fog 0
+set mat_doubleSided 1
+set mat_depthWrite 0

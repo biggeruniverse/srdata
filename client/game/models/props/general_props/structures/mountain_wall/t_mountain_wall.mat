@@ -1,0 +1,7 @@
+set mat_shininess 25.000000
+set mat_specular 0.200000 0.200000 0.200000
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/props/xr_props/misc/mountain_wall/t_mountain_wall_normalmap.tga
+set mat_parallaxBias -0.010000
+set mat_parallaxScale 0.001000

@@ -1,0 +1,7 @@
+beginObjdef blocker mosstree2_dead
+  obj_editorCategory "Dead Trees"
+  obj_model mosstree2_dead.model
+  obj_editorScaleRangeLo 1.000000
+  obj_editorScaleRangeHi 1.500000
+  obj_isNature 1
+endObjdef mosstree2_dead

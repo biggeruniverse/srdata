@@ -1,0 +1,12 @@
+{
+	"name": "wisp_yellow",
+	"double-sided": "true",
+	"alpha-cutoff": "0.05",
+	"blending": "add",
+	"depth": "false",
+	"pass": {
+		"diffuse": "/models/beast/buildings/Wisp_Yellow_diffuse.tga",
+		"shader": "effect"
+	}
+}
+

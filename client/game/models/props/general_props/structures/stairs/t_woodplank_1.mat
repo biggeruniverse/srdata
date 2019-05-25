@@ -1,0 +1,8 @@
+{
+        "name": "t_woodplank_1",
+        "pass": {
+                "diffuse": "/models/props/general_props/structures/stairs/t_woodplank_1.s2g",
+                "normal": "/models/props/general_props/structures/stairs/t_woodplank_1_normalmap.tga",
+                "shader": "pr_normal"
+        }
+}

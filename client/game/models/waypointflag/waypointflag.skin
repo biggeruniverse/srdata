@@ -1,0 +1,36 @@
+skinName enemy
+
+skinRef plane01 waypointflag.tga
+//skinRef cylinder06 /models/human/buildings/WOOD3.tga
+skinRef grass grasssprout.tga
+skinRef ropes t_rope.tga
+skinRef cylinder07 1_nl_magic_red.tga
+skinRef plane02 1_nl_crystal01_glow.tga
+skinRef plane03 1_nl_crystal01_glow.tga
+
+
+skinName friend
+
+skinRef plane01 waypointflag_green.tga
+//skinRef cylinder06 /models/human/buildings/WOOD3.tga
+skinRef grass grasssprout.tga
+skinRef ropes t_rope.tga
+skinRef cylinder07 1_nl_magic.tga
+skinRef plane02 1_nl_crystal01_glow_green.tga
+skinRef plane03 1_nl_crystal01_glow_green.tga
+
+
+skinName neutral
+
+skinRef plane01 waypointflag_green.tga
+//skinRef cylinder06 /models/human/buildings/WOOD3.tga
+skinRef grass grasssprout.tga
+skinRef ropes t_rope.tga
+skinRef cylinder07 1_nl_magic.tga
+skinRef plane02 1_nl_crystal01_glow_green.tga
+skinRef plane03 1_nl_crystal01_glow_green.tga
+
+
+
+
+

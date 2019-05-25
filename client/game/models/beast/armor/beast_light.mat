@@ -1,0 +1,6 @@
+set mat_shininess 20.000000
+set mat_specular 5.000000 5.000000 5.000000
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/beast/units/scavenger/beast_light_normalmap.tga
+set mat_glossmap /models/beast/units/scavenger/beast_light_gm.tga

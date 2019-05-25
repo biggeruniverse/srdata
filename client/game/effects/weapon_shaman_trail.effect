@@ -1,0 +1,80 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet soundRadius 50.000000 50.000000
+efSet cameraShake 0.000000 0.000000
+
+
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/stars/1_nl_flarezzbg.tga"
+vfSet size 5.000000 10.000000
+vfSet growth -10.000000 -10.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.500000 0.500000
+vfSet green 0.000000 0.200000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 10
+vfSet lifetime 250 500
+vfSet tilelength 0.000000
+vfSet style "trail"
+vfSet model ""
+vfSet skin ""
+vfSet count 3 3
+vfSet velocity 10.000000 30.000000
+vfSet acceleration 50.000000 50.000000
+vfSet fps 0 0
+vfSet offset 1.000000 1.000000
+vfSet gravity -0.020000 -0.020000
+vfSet angle 0.000000 360.000000
+vfSet spin -180.000000 180.000000
+vfSet bone ""
+
+
+// summoner shot, size was 5 10, growth was -10 -10
+vfEdit 1
+vfSet visclass "null"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/stars/1_nl_flarezzbg.tga"
+vfSet size 1.000000 1.000000
+vfSet growth -10.000000 -4.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.200000 -0.200000
+vfSet greenfade -0.800000 -0.800000
+vfSet bluefade -0.200000 -0.200000
+vfSet delay 0 10
+vfSet lifetime 250 500
+vfSet tilelength 0.000000
+vfSet style "trail"
+vfSet model ""
+vfSet skin ""
+vfSet count 3 3
+vfSet velocity 1.000000 3.000000
+vfSet acceleration 10.000000 10.000000
+vfSet fps 0 0
+vfSet offset 1.000000 1.000000
+vfSet gravity -0.020000 -0.020000
+vfSet angle 0.000000 360.000000
+vfSet spin -180.000000 180.000000
+vfSet bone ""

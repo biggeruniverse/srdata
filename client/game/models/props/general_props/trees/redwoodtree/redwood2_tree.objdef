@@ -1,0 +1,7 @@
+beginObjdef blocker redwood2_tree
+  obj_editorCategory Trees
+  obj_model redwood2_tree.model
+  obj_editorScaleRangeLo 1.500000
+  obj_editorScaleRangeHi 2.000000
+  obj_isNature 1
+endObjdef redwood2_tree

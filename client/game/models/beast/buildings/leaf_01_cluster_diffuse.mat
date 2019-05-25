@@ -1,0 +1,12 @@
+{
+	"name": "leaf_01",
+	"double-sided": "true",
+	"alpha-cutoff": "0.5",
+	"pass": {
+		"diffuse": "/models/beast/buildings/leaf_01_cluster_diffuse.tga",
+		"normal": "/models/beast/buildings/leaf_01_cluster_normal.tga",
+		"specular": "/models/beast/buildings/leaf_01_cluster_specular.tga",
+		"shader": "pr_normal"
+	}
+}
+

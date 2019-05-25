@@ -1,0 +1,82 @@
+
+from silverback import *;
+import glass;
+import savage;
+import commhud;
+
+class CommMiniMap(CommAbstractWidget):
+    
+    def create(self):
+        self.setPosition(1, screenHeight - 134);
+        self.setBackgroundColor( glass.Color(0,0,0,128));
+        self.setSize(132, 142);
+        
+        self.minimap = glass.GlassMiniMap();
+        self.minimap.setSize(128, 128);
+        self.minimap.addMouseListener(self);
+        self.add(self.minimap, 2, 12);
+
+        self.color = DefaultLabel();
+        self.color.setImage("/gui/game/images/colorbar.tga");
+        self.color.setSize(128, 10);
+	self.add(self.color, 2, 2);
+
+    def rebuild(self):
+        self.minimap.setMap(cvar_get("world_overhead"));
+        
+    def onMouseClick(self, e):
+                
+        w = e.widget.getWidth();
+        h = e.widget.getHeight();
+
+        wsize = World_GetGridSize()*100;
+
+        mapx, mapy, z = savage.getLocalPlayer().getPosition();
+
+        mapx = (e.x / float(w)) * wsize;
+        mapy = wsize - (e.y / float(h)) * wsize;
+
+        savage.getLocalPlayer().setPosition(Vec3(mapx, mapy, z));
+
+    def onMouseMotion(self, e):
+        pass;
+    
+    def onMousePress(self, e):
+        w = e.widget.getWidth();
+        h = e.widget.getHeight();
+        x = e.x;
+        y = e.y;
+
+        wsize = World_GetGridSize()*100;
+
+        x = int((x/float(w))*wsize);
+        y = int((y/float(h))*wsize);
+	
+        CL_MinimapStartDraw(x,y,0.5,1.0);
+    
+    def onMouseReleased(self, e):
+        self.onMouseDrag(e);
+        CL_MinimapEndDraw();
+    
+    def onMouseDrag(self, e):
+        w = e.widget.getWidth();
+        h = e.widget.getHeight();
+        x = e.x;
+        y = e.y;
+
+        wsize = World_GetGridSize()*100;
+
+        x = int((x/float(w))*wsize);
+        y = int((y/float(h))*wsize);
+	
+        CL_MinimapAddPoint(x,y,0.5,1.0);
+
+    def onMouseEnter(self, e):
+        pass;
+    
+    def onMouseExit(self, e):
+        pass;
+    
+    
+minimap = CommMiniMap();
+commhud.addWidget('minimap', minimap);

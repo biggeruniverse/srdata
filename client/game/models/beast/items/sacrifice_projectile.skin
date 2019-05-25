@@ -1,0 +1,9 @@
+skinName default 
+
+skinref fireeyes /models/beast/weapons/ranged/1_nl_fireglow0000.tga
+skinref firespark /models/beast/weapons/ranged/1_nl_fireglow0000.tga
+skinref firespark1 /models/beast/weapons/ranged/1_nl_fireglow0000.tga
+skinref firespark2 /models/beast/weapons/ranged/1_nl_fireglow0000.tga
+skinref skull /models/beast/weapons/ranged/medicstaffdiffuse.tga
+skinref feathers01 /models/beast/weapons/ranged/medicstaffdiffuse.tga
+skinref feathers02 /models/beast/weapons/ranged/medicstaffdiffuse.tga

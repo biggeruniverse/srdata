@@ -1,0 +1,79 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 0.800000 50.000000
+efSet soundRadius 50.000000 0.000000
+efSet cameraShake 0.000000 0.000000
+
+
+//Particles:
+vfEdit 0
+vfSet visclass "beam"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "/textures/effects/beams/1_nl_arrow_trail.tga"
+vfSet size 0.500000 0.500000
+vfSet growth 1.000000 1.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.300000 0.300000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.200000 0.200000
+vfSet green 0.600000 0.600000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.200000 -0.200000
+vfSet greenfade -0.600000 -0.600000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 0
+vfSet lifetime 4 4
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 0 0
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+//Particles: period is 4 4
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -alloc_trail_per_child -alloc_trail -children_use_own_trail
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 10.000000 12.000000
+vfSet growth -10.000000 -10.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.100000 0.100000
+vfSet green 0.200000 0.200000
+vfSet blue 0.800000 0.800000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 1.000000 1.000000
+vfSet delay 0 0
+vfSet lifetime 150 150
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 60 60
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 49.000000
+vfSet bone ""
+

@@ -1,0 +1,3 @@
+set mat_shininess 5.000000
+set mat_terrain_overblend 1
+set mat_normalmap /models/props/general_props/trees/pinetree/t_pinetree_bark_normal.tga

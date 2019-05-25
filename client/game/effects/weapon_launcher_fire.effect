@@ -1,0 +1,11 @@
+efSet sound1 "/sound/human/weapons/launcher_fire.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet soundRadius 240
+efSet cameraShake 0.000000 0.000000

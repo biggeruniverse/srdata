@@ -1,0 +1,31 @@
+objSet objclass "weapon"
+objSet description "Guard Tower"
+objSet race "human"
+objSet handEffect ""
+objSet projectileModel "/models/human/weapons/ranged/arrow.model"
+objSet projectileSkin "/weapons/resources/arrow.skin"
+objSet projectileEffect ""
+objSet trailEffect "arrow_trail"
+objSet trailPeriod 50 50
+objSet tooltip "Guard Tower Weapon"
+objSet needBasePoints 1
+objSet alwaysAvailable 1
+objSet techType "NULL"
+objSet ammoName "ammo"
+objSet velocity 1500.000000 1500.000000
+objSet chargeFlags +velocity -damage -range -accuracy -fusetime -blastradius -blastdamage -count -inverse 
+objSet chargeTime 800
+objSet spinupTime 200
+objSet refreshTime 800
+objSet twangTime 0.200000
+objSet maxVelocity 0.000000
+objSet fuseTime 3000 3000
+objSet hitUnit "die_noeffect"
+objSet damage 68
+objSet bldpierce 0.100000
+objSet repeat 0
+objSet playerCost -1
+objSet attachBone "_boneRangedR"
+objSet attachBone2 "_boneRangedR"
+objSet backbone "bip01 spine2"
+objSet deathEffect "dust_cloud"

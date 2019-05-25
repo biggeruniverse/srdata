@@ -1,0 +1,15 @@
+skinName blue2
+skinRef sphere01 blue2/t_blue2.tga
+skinRef water white.tga
+
+skinName blue_sky
+skinRef sphere01 blue_sky/t_blue_sky_outer.tga
+skinRef water white.tga
+
+skinName peach
+skinRef sphere01 peach/t_sky_peach.tga
+skinRef water white.tga
+
+skinName storm
+skinRef sphere01 storm/t_storm_outer.tga
+skinRef water white.tga

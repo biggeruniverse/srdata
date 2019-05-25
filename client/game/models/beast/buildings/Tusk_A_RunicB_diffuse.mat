@@ -1,0 +1,11 @@
+{
+	"name": "runictusk_A",
+	"pass": {
+		"diffuse": "/models/beast/buildings/Tusk_A_RunicB_diffuse.tga",
+		"normal": "/models/beast/buildings/Tusk_A_RunicA_normal.tga",
+		"specular": "/models/beast/buildings/Tusk_A_RunicA_specular.tga",
+		"emission": "/models/beast/buildings/Tusk_A_RunicB_selfillum.tga",
+		"shader": "pr_illum"
+	}
+}
+

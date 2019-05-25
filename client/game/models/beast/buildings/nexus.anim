@@ -1,0 +1,8 @@
+//Build
+makeanim construct nexus.clip 0 100 3 0
+
+//Idle
+makeanim idle nexus.clip 100 50 14 1
+
+//Death
+makeanim death_generic nexus.clip 150 50 18 0

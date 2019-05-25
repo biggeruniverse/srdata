@@ -1,0 +1,10 @@
+{
+	"name": "beastbark_A",
+	"pass": {
+		"diffuse": "/models/beast/buildings/Beast_Structure_BarkA_diffuse.tga",
+		"normal": "/models/beast/buildings/Beast_Structure_BarkA_normal.tga",
+		"specular": "/models/beast/buildings/Beast_Structure_BarkA_specular.tga",
+		"shader": "pr_normal"
+	}
+}
+

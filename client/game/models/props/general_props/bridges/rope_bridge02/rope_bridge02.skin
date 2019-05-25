@@ -1,0 +1,10 @@
+skinName default
+
+skinRef plane55 t_bridge_ropes02.tga
+skinRef ropes t_bridge_ropes02.tga
+skinRef box12 t_bridge_ropes03.tga
+skinRef box02 t_bridge_ropes03.tga
+skinRef plane94 rope_bridge_hangingstuff.tga
+skinRef mesh03 t_bridge_planks02_256x256.tga
+skinRef cylinder09 rope_bridge_beam.tga
+skinRef box23 t_oldwood05.tga

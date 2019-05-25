@@ -1,0 +1,6 @@
+set mat_shininess 20.000000
+set mat_specular 1.000000 1.000000 1.0000000
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/human/weapons/ranged/bow_normalmap.tga
+set mat_glossmap /models/human/weapons/ranged/bow_gm.tga

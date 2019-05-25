@@ -1,0 +1,7 @@
+beginObjdef blocker pinetree2_darkgreen
+  obj_editorCategory Trees
+  obj_model pinetree2_darkgreen.model
+  obj_editorScaleRangeLo 0.800000
+  obj_editorScaleRangeHi 1.300000
+  obj_doubleSided 1
+endObjdef pinetree2_darkgreen

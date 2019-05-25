@@ -1,0 +1,8 @@
+set mat_shininess 10.000000
+set mat_specular 0.500000 0.500000 0.500000
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/props/general_props/bridges/stone_bridge/t_stone_wall_tile02_normalmap.tga
+set mat_parallaxBias -0.010000
+set mat_parallaxScale 0.001000
+set mat_heightmapScale 2.000000

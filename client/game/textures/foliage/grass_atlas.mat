@@ -1,0 +1,4 @@
+set mat_doubleSided 1
+set mat_alphaCutoff 0.05
+set mat_shader grass
+matAddSampler "coverageTex" 3

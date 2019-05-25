@@ -1,0 +1,4 @@
+set mat_normalmap /models/npc/monkit/monkit_normalmap.tga
+
+set mat_shader nm_skn
+

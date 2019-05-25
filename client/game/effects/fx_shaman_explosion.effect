@@ -1,0 +1,151 @@
+efSet sound1 "/sound/beast/weapons/rupture_explosion.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1
+efSet soundRadius 400
+efSet cameraShake 200.000000 200.000000
+
+// Summoner shot explosion file
+
+// Boom ring, delay was 150 150
+// growth has low range so particles are additive
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear 
+vfSet shader "/textures/effects/stars/1_nl_ringbg.tga"
+vfSet size 0.010000 0.010000
+vfSet growth 118.000000 120.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 170 200
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 8 12
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+// Boom flare, count was 8 10
+// shader was sunflare and seemed like a CvS akuma flare, alpha was 1 1
+// "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear 
+vfSet shader "/textures/effects/stars/1_nl_flarespikebg.tga"
+vfSet size 0.500000 0.500000
+vfSet growth 40.000000 50.000000
+vfSet alpha 0.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.500000 0.500000
+vfSet green 0.100000 0.200000
+vfSet blue 1.000000 1.000000
+vfSet redfade 0.500000 0.500000
+vfSet greenfade 0.100000 0.100000
+vfSet bluefade 1.000000 1.000000
+vfSet delay 0 50
+vfSet lifetime 250 350
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 4 5
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 4.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+// boom sphere
+// "/textures/effects/stars/1_nl_raybg.tga"
+
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 5.000000 5.000000
+vfSet growth 25.000000 50.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 50
+vfSet lifetime 120 200
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 20 28
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset -1.000000 1.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+// particle cluster boom, to supplement ring
+vfEdit 3
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear -param_sinewave
+vfSet shader "textures/effects/stars/1_nl_flarespreadbg.tga"
+vfSet size 51.000000 51.000000
+vfSet growth -10.000000 10.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 50
+vfSet lifetime 200 250
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 8 16
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin -180.000000 180.000000
+vfSet bone ""

@@ -1,0 +1,147 @@
+from silverback import *;
+import glass;
+
+class CommRosterWindow(DefaultWindow):
+	def __init__(self):
+		DefaultWindow.__init__(self);
+		
+		self.setVisible(0);
+		
+		self.players = [];
+
+		self.setBackgroundColor(glass.Color(70, 40, 40, 100));
+		
+		self.list = DefaultTable();
+		self.list.padding = 5;
+		self.add(self.list,0,0)
+		
+		self.build()
+		self.setSize(self.list.getWidth()+ 40, 250);
+		
+		self.scroll = glass.ScrollArea(self.list);
+		self.scroll.setSize(self.getWidth(), self.getHeight());
+		self.scroll.setBackgroundColor(transparency);
+		self.add(self.scroll, 0, 0);
+
+		self.list.adjustWidthTo(self.scroll.getWidth()-10);
+		gblEventHandler.addGameListener(self);
+		
+	def clearList(self):
+		self.list.erase()
+		self.headingRow = self.list.nextRow("Unit", "Name", "Level", "Kills", "Deaths", "Requests", "Officer", "Gold", "Give");
+		self.headingRow.setBackgroundColor(glass.Color(70, 40, 40, 220));
+		self.headingRow.setFocusable(0);
+		
+	def build(self):
+		self.clearList()
+		
+		self.team = savage.getLocalTeam();
+		self.players = []
+		
+		self.playerDict = dict();
+		i = 0;
+		for player in self.team.getPlayers():
+
+			if player.isCommander():
+				continue;
+
+			self.players.append(player);
+			i += 1; # Have to make it like this instead of using enumerate()
+
+			unit = glass.GlassLabel();
+			unit.setImage(player.getIcon());
+			unit.setSize(32,32);
+			
+			name = glass.GlassLabel(player.getFormattedName());
+			name.setForegroundColor( white );
+			name.setAlignment(1);						
+			
+			level = glass.GlassLabel(str(player.getLevel()));
+			level.setForegroundColor( tangoBlue );
+			level.setAlignment(1);
+			
+			kills = glass.GlassLabel(str(player.getKills()));
+			kills.setForegroundColor( tangoGreen );
+			kills.setAlignment(1);
+				
+			deaths = glass.GlassLabel(str(player.getDeaths()));
+			deaths.setForegroundColor( tangoRed);
+			deaths.setAlignment(1);
+			
+			request = glass.ImageButton();
+			request.setSize(32,32);
+			request.setImage("/gui/standard/yes.s2g");			
+			request.setSize(32,32);
+			
+			officer = glass.ImageButton();
+			officer.setSize(32,32);
+			if player.isOfficer():
+				officer.setImage("gui/game/images/demote_"+self.team.getRace()+".s2g");
+				officer.setClickAction("CL_RequestDemote(" + str(player.objectId) + ")");
+			else:				
+				officer.setImage("gui/game/images/promote_"+self.team.getRace()+".s2g");
+				officer.setClickAction("CL_RequestPromote(" + str(player.objectId) + ")");
+				
+			officer.setSize(32,32);
+			
+			goldLabel = glass.GlassLabel(str(player.getGold()));
+			goldLabel.setForegroundColor( themeGold);
+			goldLabel.setAlignment(1);
+			
+			gold = glass.ImageButton();
+			gold.setSize(32,32);
+			gold.setImage("/gui/standard/icons/gold/gold_icon.s2g");
+			gold.setClickAction("CL_RequestGiveGold("+str(player.objectId) + ", 100)");
+			gold.setSize(32,32);
+			
+			row = self.list.nextRow(unit, name, level, kills, deaths, request, officer, goldLabel, gold);
+			if (i % 2):
+				row.setBackgroundColor(glass.Color(40, 40, 40, 70));
+			else:
+				row.setBackgroundColor(glass.Color(200, 200, 200, 50));
+			
+			self.playerDict[player.objectId] = row #Store the rows and players in a dict to trace back the widgets
+			
+		self.list.adjustSize();	
+
+	def updateCount(self, sourceId, targetId):
+		for player in self.players:
+			if player.objectId == sourceId:
+				self.playerDict[sourceId].getColumn(3).getContent(glass.GlassLabel).setCaption(str(player.getKills()));
+			if player.objectId == targetId:
+				self.playerDict[targetId].getColumn(4).getContent(glass.GlassLabel).setCaption(str(player.getDeaths()));
+				
+	def updatePictures(self):
+		for player in self.players:
+			officer = self.playerDict[player.objectId].getColumn(6).getContent(glass.ImageButton);
+			if player.isOfficer():				
+				officer.setImage("/gui/game/images/demote_"+self.team.getRace()+".s2g");
+				officer.setSize(32,32);
+				officer.setClickAction("CL_RequestDemote(" + str(player.objectId) + ")");
+			else:
+				officer.setImage("/gui/game/images/promote_"+self.team.getRace()+".s2g");
+				officer.setSize(32,32);
+				officer.setClickAction("CL_RequestPromote(" + str(player.objectId) + ")");
+			unit = self.playerDict[player.objectId].getColumn(0).getContent(glass.GlassLabel);
+			unit.setImage(player.getIcon());
+			unit.setSize(32,32);
+				
+	def updateRequests(self):
+		for player in self.players:
+			pass;
+			
+	def toggle(self):
+		if self.isVisible():
+			self.setVisible(0);
+		else:
+			self.build();
+			self.setVisible(1);		
+			
+	def onEvent(self, e):
+		if e.eventType == "player_join" or e.eventType == "player_leave":
+			self.build(); # Builds the complete window new, could be made more efficient 
+		elif e.eventType == "obituary":
+			con_println(str(e));
+			self.updateCount(e.sourceId, e.targetId);
+		elif e.eventType == "promoted" or e.eventType == "demoted":
+			self.updatePictures();

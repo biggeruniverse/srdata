@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<material depth="true" double-sided="true" alpha-cutoff="0.5">
+        <pass>
+                <texture type="diffuse" uri="/models/props/general_props/structures/small_stonearch/t_vines01.s2g"/>
+                <shader resource="foliage"/>
+        </pass>
+</material>

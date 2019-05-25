@@ -1,0 +1,1 @@
+clan icons will be downloaded into this directory by the game clients as they play

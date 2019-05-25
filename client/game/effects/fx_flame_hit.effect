@@ -1,0 +1,11 @@
+efSet sound1 "/sound/effects/flame_hit_1.wav"
+efSet sound2 "/sound/effects/flame_hit_2.wav"
+efSet sound3 "/sound/effects/flame_hit_3.wav"
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 0.2
+efSet soundRadius 25
+efSet cameraShake 0.000000 0.000000

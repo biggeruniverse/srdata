@@ -1,0 +1,161 @@
+efSet sound1 "/sound/beast/weapons/rupture_explosion.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1
+efSet soundRadius 400
+efSet cameraShake 200.000000 200.000000
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/dust_flash/dust_debris.tga"
+vfSet size 120.000000 120.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 200.000000 200.000000
+vfSet alpha 0.650000 0.650000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.000000 0.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.650000 0.650000
+vfSet green 0.800000 0.800000
+vfSet blue 0.650000 0.650000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 1000 1800
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -5.000000 -5.000000
+vfSet gravity 0.005000 0.005000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/dust_flash/dust_spec.tga"
+vfSet size 135.000000 135.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 45.000000 45.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.000000 0.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.650000 0.650000
+vfSet green 1.000000 1.000000
+vfSet blue 0.650000 0.650000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 1000 1500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/dust_flash/dust_spec.tga"
+vfSet size 180.000000 180.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 15.000000 15.000000
+vfSet alpha 0.300000 0.300000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.000000 0.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.600000 0.600000
+vfSet green 0.800000 0.800000
+vfSet blue 0.600000 0.600000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 100
+vfSet lifetime 1000 1500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.003000 0.003000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+vfEdit 3
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/dust_flash/dust_flash.tga"
+vfSet size 300.000000 300.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 20.000000 20.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.000000 0.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.600000 0.600000
+vfSet green 0.800000 0.800000
+vfSet blue 0.600000 0.600000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 1500 1500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.030000 0.030000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+

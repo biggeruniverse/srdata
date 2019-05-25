@@ -1,0 +1,10 @@
+{
+	"name": "beast_vine",
+	"pass": {
+		"diffuse": "/models/beast/buildings/Beast_Vine_diffuse.tga",
+		"normal": "/models/beast/buildings/Beast_Vine_normal.tga",
+		"specular": "/models/beast/buildings/Beast_Vine_specular.tga",
+		"shader": "pr_normal"
+	}
+}
+

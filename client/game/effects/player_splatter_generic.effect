@@ -1,0 +1,74 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 0.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 0.000000
+efSet shakeRadius 700.000000
+efSet shakeDuration 4.000000
+efSet shakeFrequency 250.000000
+efSet emitter ""
+efSet path_emitter ""
+efSet max_ZDist 50
+
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags +parent_pos -parent_vel -param_location -param_scale -param_count -param_worldz -param_sinewave -param_nearparent -param_billboard2d -param_terrainz -grow_shrink_linear -grow_shrink_poly -alloc_trail -alloc_trail_per_child -trail_rendering +terrain_decal -children_use_own_trail -terrain_col_decal -static_obj_col_decal +parent_pos_static 
+vfSet shader "/textures/xr/effects/blood/blood1.s2g"
+vfSet mod_shader ""
+vfSet size 10.000000 15.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 1.000000 5.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 50 50
+vfSet lifetime 50000 60000
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model "(null)"
+vfSet skin "(null)"
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet MulVelX 1.000000
+vfSet MulVelY 1.000000
+vfSet MulVelZ 1.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet forcedOffsetX 0.000000
+vfSet forcedOffsetY 0.000000
+vfSet forcedOffsetZ 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+vfSet dieshader ""
+vfSet dieFPS 25 25
+vfSet playUnderConstruction 0
+vfSet spawnmode "none"
+vfSet spawncollisionflags -terrain -static -dynamic -complex -gameobject -not_solid -foliage -ex0 -ex1 -ex2 -ex3 -solid_item -transparent_item -corpse -push_zone -revivable -ex4 -ex5 -ex6 -ex7 
+vfSet spawndelay 100
+vfSet spawnradius 5.000000 5.000000
+vfSet spawnviseffect 0
+vfSet spawncount 1 1
+vfSet spawninterval 100 100
+vfSet spawninheritlife 0.000000 0.000000
+vfSet windcoeff 0.000000 0.000000
+vfSet trailshaderpriority 0
+vfSet fadetime 0.750000

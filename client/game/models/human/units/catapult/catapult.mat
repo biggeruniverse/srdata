@@ -1,0 +1,4 @@
+set mat_shininess 10.000000
+set mat_doublesided 0
+set mat_terrain_overblend 0
+set mat_shader nm_gm

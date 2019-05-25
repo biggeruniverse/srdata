@@ -1,0 +1,11 @@
+skinName team2
+
+skinRef siege_beast strata_beast_t2.tga
+
+skinName england
+
+skinRef siege_beast behe_e.tga
+
+skinName germany
+
+skinRef siege_beast behe_g.tga

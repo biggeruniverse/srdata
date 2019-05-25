@@ -1,0 +1,6 @@
+beginObjdef blocker speedpad
+  obj_editorCategory ex2
+  obj_model speedpad.model
+  obj_editorScaleRangeLo .5
+  obj_editorScaleRangeHi 1.5
+endObjdef speedpad

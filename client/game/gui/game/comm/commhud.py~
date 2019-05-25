@@ -1,0 +1,156 @@
+
+from silverback import *;
+import glass;
+import savage;
+import commcontexts;
+
+glass.GUI_CreateScreen('commhud');
+
+# windows and widgets are essentially the same but will seperate just incase we need them seperate in the future
+windowStack = {};
+widgetStack = {};
+selection = CommSelection();
+
+team = savage.Team(1);
+
+initialized = False;
+def onShow():
+    GUI_ShowCursor("crosshair");
+    commcontexts.buildContextsIfNeeded();
+    commhud.contextmenu.setVisible(0);
+    commhud.contextmenu.close();
+	
+    commhud.resourcesPanel.resetDiffCounters();
+    commhud.resourcesPanel.update();
+	
+    if commhud.initialized == False:
+        con_println("\nCreating widgets...\n");
+        for name, widget in commhud.widgetStack.iteritems():
+            con_println("\t" + str(name) + "... ")
+            widget.create();
+            widget.initialized = True;
+            con_println("done\n");
+            
+        con_println("\nCreating windows...\n");
+        for name, window in commhud.windowStack.iteritems():
+            con_println("\t" + str(name) + "... ")
+            window.create();
+            window.initialized = True;
+            con_println("done\n");
+        
+        commhud.initialized = True;
+        
+    curTeam = savage.Team(savage.getLocalPlayer().getTeam());
+    
+    #if curTeam.teamId != commhud.team.teamId:
+    commhud.team = curTeam;
+    con_println("\nRebuilding...\n");
+    for name, widget in commhud.widgetStack.iteritems():
+        widget.rebuild();
+    for name, window in commhud.windowStack.iteritems():
+        window.rebuild();
+
+def frame():
+    commhud.resourcesPanel.update();
+    commhud.hudinfo.update();
+    commhud.researchManager.update();
+    commhud.voteWindow.frame();    
+
+    for name, window in commhud.windowStack.iteritems():
+        if window.isVisible() or window.alwaysUpdate:
+            window.frame();
+        
+    for name, widget in commhud.widgetStack.iteritems():
+        if widget.isVisible() or widget.alwaysUpdate:
+            widget.frame();
+            
+def add(obj, x=None, y=None):    
+    if x is not None:
+        obj.setPosition(x, y);
+    glass.GUI_ScreenAddWidget("commhud", obj);
+
+def addWidget(name, obj):
+    commhud.widgetStack[name] = obj;
+    commhud.add(obj);
+    
+def addWindow(name, obj):
+    commhud.windowStack[name] = obj;
+    commhud.add(obj);
+    
+def showWindow(name):
+    if commhud.windowStack.has_key(name):
+        commhud.windowStack[name].setVisible(1);
+    
+def defaultAction(x, y):
+	obj = savage.getObjectUnder(x,y);
+	if obj == None:
+		CL_CommanderLeftClick(); #send it thru to the hardcode to see if something is doing
+	elif commhud.selection.empty():
+		commhud.selection.selectObject(obj, False)
+	commhud.selection.send(savage.getLocalTeam().teamId)
+	if obj == None:
+		CL_OrderWaypoint(x,y);
+	else:
+		CL_OrderWaypoint(x,y,obj.objectId);
+
+## HUD INFO OVERLAY ##
+		
+hudinfo = CommHudInfo();
+add(hudinfo);
+
+## RESOURCES/INFO PANEL ##
+
+resourcesPanel = ResourcePanel();
+add(resourcesPanel);
+
+## CANVAS ##
+#everything before this point will not be interactable
+
+canvas = glass.GlassCanvas();
+canvas.setSizePct(1,1);
+canvas.setBackgroundColor(transparency);
+canvas.setPosition(0,0);
+add(canvas);
+
+## CHAT ##
+
+chatBox = CommChatBox(resourcesPanel.getHeight());
+glass.GUI_ScreenAddWidget("commhud", chatBox);
+
+chatBox.setSizePct(0.4,0.32);
+chatBox.resize();
+chatBox.showHistory(0);
+chatBox.setX(screenWidth//2 - chatBox.getWidth()//2);
+
+selectionRect = DefaultContainer();
+selectionRect.setBaseColor(glass.Color(138, 226, 52));
+selectionRect.setBackgroundColor(glass.Color(138, 226, 52, 64));
+selectionRect.setFrameSize(1);
+selectionRect.setVisible(0);
+canvas.add(selectionRect);
+
+commInput = CommInputHandler();
+canvas.addMouseListener(commInput);
+
+## VOTES ##
+
+voteWindow = VoteInfoBox();
+glass.GUI_ScreenAddWidget("commhud", voteWindow);
+voteWindow.setPosition( chatBox.getX(), -voteWindow.getHeight());
+
+voteSelection = VoteSelectionWindow();
+glass.GUI_ScreenAddWidget("commhud",voteSelection);
+voteSelection.setPosition(screenWidth // 2 - voteSelection.getWidth() // 2, screenHeight//2);
+
+rosterWindow = CommRosterWindow();
+add(rosterWindow, 200, 200);
+
+## Graphics Panel ##
+
+graphicspanel = GraphicsPanel();
+graphicspanel.setPositionPct(0.4,0.1);
+glass.GUI_ScreenAddWidget("commhud",graphicspanel);
+
+#last, the context menu
+contextmenu = ContextMenu();
+add(contextmenu);

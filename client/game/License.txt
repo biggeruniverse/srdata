@@ -1,0 +1,35 @@
+## COPYRIGHTS
+
+Stackless Python (Python Software Foundation License v.2)
+Python is Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013 Python Software Foundation; All Rights Reserved
+
+Physfs is Copyright (c) 2003 Ryan C. Gordon and others (Zlib license)
+
+GLEW is Copyright (c) 2012 by Milan Ikits and Marcelo Magallon
+GLEW is originally derived from the EXTGL project by Lev Povalahev. The source code is licensed under the Modified BSD License, the Mesa 3-D License (MIT License), and the Khronos License (MIT License). The automatic code generation scripts are released under the GNU GPL.  
+
+libpng versions 1.2.6, August 15, 2004, through 1.5.14, January 24, 2013, are
+Copyright (c) 2004, 2006-2012 Glenn Randers-Pehrson (libpng License)
+
+Bullet Physics Library Copyright (c) 2012 Erwin Coumans
+The Bullet Physics Library is free for commercial use and open source under the ZLib License. 
+
+Some parts of this code contain a modified version of GuiChan:
+GuiChan Copyright (c) 2004 - 2008 Olof Naessén and Per Larsson (BSD License)
+
+OpenSSL 0.9.8r is Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+
+PCRE is Copyright (c) 1997-2009 University of Cambridge
+
+curl is Copyright (c) 1996 - 2008, Daniel Stenberg, <daniel@haxx.se>.
+
+expat is Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006 Expat maintainers.
+
+libcfu is Copyright (C) 2005 Don Owens All rights reserved. (BSD License)
+
+libtxc_dxtn Copyright (C) 2004  Roland Scheidegger   All Rights Reserved.
+
+jpeglib is Copyright (C) 1991-1998, Thomas G. Lane.
+
+## LICENSES
+

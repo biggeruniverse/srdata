@@ -1,0 +1,50 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet soundRadius 50.000000 50.000000
+efSet cameraShake 0.000000 0.000000
+
+
+// "/textures/effects/fire/1_nl_flame_b_0000.tga"
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale
+vfSet shader "/textures/effects/stars/1_nl_dragonfirebg.tga"
+vfSet size 6.000000 12.000000
+vfset sizeHeight 0.000000 1.000000
+vfSet growth -10.000000 7.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.700000 0.700000
+vfSet green 0.500000 0.500000
+vfSet blue 0.000000 0.000000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 150 300
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 20 30
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 2.000000 5.000000
+vfSet forcedOffsetZ 2.000000
+vfSet gravity 0.01 0.3
+vfSet angle 0.000000 0.000000
+vfSet spin -90.000000 -45.000000
+vfSet bone ""
+vfSet spawncount 1 1
+vfSet spawndelay 0
+vfSet spawninterval 0 1

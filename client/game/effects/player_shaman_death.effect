@@ -1,0 +1,140 @@
+efSet sound1 "/sound/beast/units/shaman/death.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1
+efSet soundRadius 160
+efSet cameraShake 0.000000 0.000000
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location +param_scale -param_count 
+vfSet shader "/textures/effects/impacts/blood_1.s2g"
+vfSet size 10.000000 30.000000
+vfSet growth 30.000000 30.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 200
+vfSet lifetime 800 800
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 3 3
+vfSet velocity 0.200000 0.200000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin -30.000000 30.000000
+vfSet bone ""
+
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location +param_scale -param_count 
+vfSet shader "/textures/effects/impacts/blood_2.s2g"
+vfSet size 20.000000 20.000000
+vfSet growth 150.000000 150.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 400 400
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.200000 0.200000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin -20.000000 20.000000
+vfSet bone ""
+
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location +param_scale -param_count 
+vfSet shader "(null)"
+vfSet size 0.000000 0.000000
+vfSet growth 0.000000 0.000000
+vfSet alpha 0.000000 0.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 0 0
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model "(null)"
+vfSet skin "(null)"
+vfSet count 0 0
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+vfEdit 3
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location +param_scale -param_count 
+vfSet shader "(null)"
+vfSet size 0.000000 0.000000
+vfSet growth 0.000000 0.000000
+vfSet alpha 0.000000 0.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 0 0
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model "(null)"
+vfSet skin "(null)"
+vfSet count 0 0
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""

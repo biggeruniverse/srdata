@@ -1,0 +1,7 @@
+set mat_shininess 40.000000
+set mat_specular 1.000000 1.000000 1.000000
+set mat_doublesided 0
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/human/buildings/t_mud_wall_256x256_normalmap.tga
+
+

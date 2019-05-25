@@ -1,0 +1,5 @@
+skinName default 
+
+skinref crystalglow /models/beast/weapons/ranged/1_nl_ecoglow0000.tga
+skinref crystalglow1 /models/beast/weapons/ranged/1_nl_ecoglow0000.tga
+skinref fireglow /models/beast/weapons/ranged/1_nl_ecoglow0000.tga

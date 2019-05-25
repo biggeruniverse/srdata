@@ -1,0 +1,14 @@
+efSet sound1 "sound/effects/projectiles/chaos_bolt_1.wav"
+efSet sound2 "sound/effects/projectiles/chaos_bolt_2.wav"
+efSet sound3 "sound/effects/projectiles/chaos_bolt_3.wav"
+efSet sound4 "sound/effects/projectiles/chaos_bolt_4.wav"
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 1.000000
+efSet shakeRadius 50.000000
+efSet shakeDuration 0.100000
+efSet shakeFrequency 250.000000
+

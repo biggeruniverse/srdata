@@ -1,0 +1,6 @@
+set mat_doubleSided 1
+set mat_depthWrite 0
+set mat_depthTest 1
+set mat_color 0.65 0.65 0.65 1.0
+set mat_fog 0
+set mat_shader none

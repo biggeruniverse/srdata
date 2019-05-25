@@ -1,0 +1,82 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 0.800000 50.000000
+efSet soundRadius 50.000000 0.000000
+efSet cameraShake 0.000000 0.000000
+
+// Chaos bolt trail
+// was and still is period 8
+
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -alloc_trail_per_child
+vfSet shader "textures/effects/fog/1_nl_fogsm0000.tga"
+vfSet size 1.00000 1.00000
+vfSet growth 5.000000 10.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.500000 0.500000
+vfSet green 0.600000 0.600000
+vfSet blue 0.500000 0.500000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -1.000000 -1.000000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 10
+vfSet lifetime 100 200
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 6 8
+vfSet velocity 5.000000 15.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 1.000000 1.000000
+vfSet gravity -0.200000 0.200000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+// pre-NFX version
+//Particles: (swirly)
+vfEdit 1
+vfSet visclass "null"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -alloc_trail_per_child
+vfSet shader "textures/effects/fog/1_nl_fogsm0000.tga"
+vfSet size 1.00000 1.00000
+vfSet growth 5.000000 10.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -1.000000 -1.000000
+vfSet greenfade -0.850000 -0.850000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 10
+vfSet lifetime 100 200
+vfSet tilelength 0.000000
+vfSet style "trail"
+vfSet model ""
+vfSet skin ""
+vfSet count 8 12
+vfSet velocity 5.000000 15.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 1.000000 1.000000
+vfSet gravity -0.200000 0.200000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+

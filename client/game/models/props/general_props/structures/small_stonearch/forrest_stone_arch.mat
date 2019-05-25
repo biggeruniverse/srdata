@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<material depth="true">
+        <pass>
+                <texture slot="diffuse" uri="/models/props/general_props/structures/small_stonearch/forrest_stone_arch.s2g"/>
+                <texture slot="normal" uri="/models/props/general_props/structures/small_stonearch/forrest_stone_arch_normalmap.tga"/>
+                <shader resource="pr_normal"/>
+        </pass>
+</material>

@@ -1,0 +1,7 @@
+beginObjdef blocker mini_palm
+  obj_editorCategory Trees
+  obj_model mini_palm.model
+  obj_editorScaleRangeLo 1.0
+  obj_editorScaleRangeHi 1.0
+  obj_isNature 1
+endObjdef mini_palm

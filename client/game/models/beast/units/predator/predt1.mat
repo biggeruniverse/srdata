@@ -1,0 +1,6 @@
+set mat_doublesided 0
+set mat_shininess 10.000
+set mat_terrain_overblend 1.000000
+set mat_normalmap /models/beast/units/predator/predt1_normalmap.tga
+set mat_glossmap /models/beast/units/predator/predt1_gm.tga
+set mat_shader nm_gm_skn

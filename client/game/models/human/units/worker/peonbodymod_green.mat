@@ -1,0 +1,5 @@
+set mat_shininess 25.000000
+set mat_specular 0.40000 0.40000 0.40000
+set mat_doublesided 0
+set mat_normalmap /models/human/units/worker/peonbodymod_normalmap.tga
+set mat_heightmapScale 1.000000

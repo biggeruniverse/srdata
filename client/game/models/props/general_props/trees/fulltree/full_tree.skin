@@ -1,0 +1,4 @@
+skinName default
+
+skinRef treetrunk t_fulltree_trunk.tga
+skinRef cylinder12 tree_leaves.tga

@@ -1,0 +1,32 @@
+
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear 
+vfSet shader "textures/effects/stars/1_nl_flarezzbg.tga"
+vfSet size 0.500000 0.500000
+vfSet growth 40.000000 50.000000
+vfSet alpha 0.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 1.000000 1.000000
+vfSet green 0.300000 0.300000
+vfSet blue 1.000000 1.000000
+vfSet redfade 0.500000 0.500000
+vfSet greenfade 0.100000 0.200000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 50
+vfSet lifetime 150 200
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 4 6
+vfSet velocity 300.000000 300.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""

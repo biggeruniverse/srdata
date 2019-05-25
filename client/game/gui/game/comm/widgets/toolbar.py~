@@ -1,0 +1,274 @@
+
+from silverback import *;
+import glass;
+import savage;
+import commhud;
+
+class CommToolBar(CommAbstractWidget):
+    
+    def create(self):
+        
+        self.items = [];
+        
+        #self.addListener(self);
+        
+        self.setSize(screenWidth - 150, 70);
+        self.setPosition(135, screenHeight - 72);
+        
+        self.primary = DefaultContainer();
+        self.primary.setBackgroundColor(glass.Color(0, 0, 0, 128));
+        self.primary.setSize(25, 68);
+        self.add(self.primary, 1, 1);
+        
+        build = DefaultButton("B");
+        build.setSize(20, 20);
+        build.addActionListener(self);
+        self.primary.add(build, 3, 3);
+        
+        research = DefaultButton("R");
+        research.addActionListener(self);
+        research.setSize(20, 20);
+        self.primary.add(research, 3, 25);
+        
+        info = DefaultButton("Q");
+        info.addActionListener(self);
+        info.setSize(20, 20);
+        self.primary.add(info, 3, 47);
+        
+        #self.workerIcon = DefaultImageButton();
+        #self.workerIcon.setImage("models/" + str(commhud.team.getRace()) + "/units/worker/icon.s2g");
+        #self.workerIcon.setSize(build.getHeight(), build.getHeight());
+        #self.primary.add(self.workerIcon, self.primary.getWidth() - build.getHeight() - 5, 5);        
+        
+        self.secondary = DefaultContainer();
+        self.secondary.setBackgroundColor(glass.Color(0, 0, 0, 128));
+        self.secondary.setSize(self.getWidth() - 35, self.getHeight() - 2);
+        self.secondary.setVisible(0);
+        self.add(self.secondary, 27, 1);
+        
+        self.closeHandle = DefaultLabel("<");
+        self.closeHandle.setSize(1, self.getHeight() - 2);
+        self.closeHandle.addActionListener(self);
+        self.closeHandle.setVisible(0);
+        self.add(self.closeHandle, self.getWidth() - 15, 1);
+        
+        # build items
+        self.buildList = DefaultContainer();
+        self.buildList.setSize(self.secondary.getWidth() - 2, self.secondary.getWidth() - 2);
+        self.secondary.add(self.buildList, 1, 1);
+        
+        
+        # research items
+        self.researchList = DefaultContainer();
+        self.researchList.setSize(self.secondary.getWidth() - 2, self.secondary.getWidth() - 2);
+        self.secondary.add(self.researchList, 1, 1);
+        
+        # info items
+        self.infoList = DefaultContainer();
+        self.infoList.setSize(self.secondary.getWidth() - 2, self.secondary.getWidth() - 2);
+        self.secondary.add(self.infoList, 1, 1);
+        
+        self.buildBuild();
+        self.buildResearch();
+        self.buildQuick();
+       
+    def onAction(self, e):
+        
+        # this could be better but meh
+        if e.widget.getCaption() == "<":
+            self.secondary.setVisible(0);
+            self.closeHandle.setVisible(0);
+        elif e.widget.getCaption() in ("B", "R", "Q"):
+            self.buildList.setVisible(0);
+            self.researchList.setVisible(0);
+            self.infoList.setVisible(0);
+            self.closeHandle.setVisible(1);
+            self.secondary.setVisible(1);
+            
+            if e.widget.getCaption() == "B":
+                selected = self.buildList;
+            elif e.widget.getCaption() == "R":
+                selected = self.researchList;
+            elif e.widget.getCaption() == "Q":
+                selected = self.infoList;
+                
+            selected.setVisible(1);
+            self.secondary.setWidth(selected.getWidth() + 5);
+            self.closeHandle.setX(self.secondary.getWidth() - 5);                
+        
+    # TODO: I don't think I erase/clear here properly
+    def rebuild(self):
+        self.clearBuild();
+        self.buildBuild();
+        
+        self.clearResearch();
+        self.buildResearch();
+        
+        self.clearQuick();
+        self.buildQuick();
+        
+    def clearResearch(self):
+        pass;
+        #self.researchListItems = [];
+
+    def clearBuild(self):
+	pass;
+
+    def clearQuick(self):
+        pass;
+       
+    def buildBuild(self):
+        gblEventHandler.addGameListener(commhud.researchManager);
+        gblQueue.addListener(commhud.researchManager);
+        self.buildList.add(commhud.researchManager);
+        commhud.researchManager.setSizePct(1,1);
+ 
+    def buildResearch(self):
+        
+        team = commhud.team;
+        
+        tierData = [
+            {'units': [], 'weapons': [], 'items': []}, 
+            {'units': [], 'weapons': [], 'items': []},
+            {'units': [], 'weapons': [], 'items': []}
+        ];
+        
+        units = team.getUnits();
+        if len(units)>0:
+            units.pop(0);
+        weapons = team.getWeapons();
+        items = team.getItems();
+        
+        for unit in units:
+            tierData[unit.getValue("needBasePoints") - 1]["units"].append(unit);
+
+        for w in weapons:
+            if w.getName() == "human_potion" or w.getName() == "beast_heal" or w.getName().endswith("_revive"):
+                items.append(w);
+                continue;
+            
+            if w.getName().endswith("_weapon") == False and w.getName().endswith("_melee") is False:
+                tierData[w.getValue("needBasePoints") - 1]["weapons"].append(w);
+        
+        for item in items:
+            if item.getName() != "human_relocater_trigger":
+                tierData[item.getValue("needBasePoints") - 1]["items"].append(item);
+        
+        r = 0;
+        i = 1;
+        x = 3;
+        for data in tierData:        
+            r += x;
+            container = DefaultContainer();
+            container.setBackgroundColor(glass.Color(0, 0, 0, 90));
+            self.researchList.add(container, r, 2);
+            
+            x = 3;
+            tier = DefaultLabel("Tier " + str(i));
+            container.add(tier, x + 20, 3);
+            
+            for unit in data["units"]:
+                item = ResearchItem(unit);
+                item.setSize(40, 43);
+                container.add(item, x, 22);
+                x += 42;
+                
+            startX = x;
+            for weapon in data["weapons"]:
+                weapon.img = img = DefaultImageButton();
+                img.setImage(weapon.getValue("icon") + ".s2g", False);
+                img.setSize(30, 30);
+                img.setTooltip(weapon.getValue("description"));
+                container.add(img, x, 3);
+                x += 32;
+                
+            endX = x;
+            x = startX;
+            for item in data["items"]:
+                item.img = img = DefaultImageButton();
+                img.setImage(item.getValue("icon") + ".s2g", False);
+                img.setSize(30, 30);
+                img.setTooltip(item.getValue("description"));
+                container.add(img, x, 35);
+                
+                x += 32;
+                
+            i += 1;
+            x = max(endX, x);
+            container.setWidth(x);
+            x += 7;
+            
+        self.researchList.setWidth(r + container.getWidth());
+        
+    def buildQuick(self):
+	resign = DefaultButton("RESIGN");
+	resign.setClickAction("CL_RequestResign()");
+	self.infoList.add(resign);
+	resign.setPosition(1, 1);
+        
+    def onEvent(self, e):
+        con_println("triggered\n");
+        return;
+    
+        if e.eventType == "research_begin":
+            #dayum. work!
+            r = savage.ResearchItem(e.objtype, e.sourceId, savage.getGameTime(), 0);
+            #do we have this exact thing already? remove it first (just purchased)
+            for item in self.items:
+                if item.item.objtype == e.objtype:
+                    if item.action == None:
+                        item.item.builder = e.sourceId;
+                    elif item.action.item == r: #who is naming this stuff? :P
+                        item.action = None;
+                    return;
+
+            item = ResearchManagerItem(r);
+            self.itemsContainer.add(item);
+            self.items.append(item);
+
+        elif e.eventType == "research_complete" or e.eventType == "research_cancel":
+            for item in self.items:
+                if item.item.objtype == e.objtype and item.item.builder == e.sourceId:
+                    self.items.remove(item);
+                    self.itemsContainer.remove(item);
+                    item.erase();
+
+        elif e.eventType == "research_queued":
+            for item in self.items:
+                if item.item.objtype == e.objtype and item.item.builder == e.sourceId:
+                    item.action = None;
+
+        elif e.eventType == "team_reset":
+            for item in self.items:
+                self.itemsContainer.remove(item);
+                item.erase();
+            del self.items[:];
+        
+class ResearchItem(DefaultContainer):
+    
+    def __init__(self, obj):
+        DefaultContainer.__init__(self);
+        
+        self.obj = obj;
+        
+        self.icon = DefaultImageButton();
+        self.icon.setImage(obj.getValue("icon") + ".s2g", False);
+        self.icon.setTooltip(obj.getValue("description"));
+        self.add(self.icon);
+        
+        # listener
+        
+    def setSize(self, w, h):
+        self.icon.setSize(w, h);
+        DefaultContainer.setSize(self, w, h);
+        
+    def setWidth(self, w):
+        self.icon.setWidth(w);
+        DefaultContainer.setWidth(w);
+        
+    def setHeight(self, h):
+        self.icon.setHeight(h);
+        DefaultContainer.setHeight(h);
+       
+commhud.researchManager = ResearchManager();
+commhud.addWidget('toolbar', CommToolBar());

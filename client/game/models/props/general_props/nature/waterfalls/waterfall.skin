@@ -1,0 +1,5 @@
+skinName default
+
+skinRef box01 t_1_waterfall1.tga
+skinRef box02 t_1_waterfall2.tga
+skinRef box03 t_1_waterfall3.tga

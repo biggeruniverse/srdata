@@ -1,0 +1,5 @@
+skinName default
+
+skinRef jump_pad_compact jump_pad.s2g
+skinRef _2sided_bolts_compact jump_pad_bolt.s2g
+skinRef _2sided_holes_compact jump_pad_holes.s2g

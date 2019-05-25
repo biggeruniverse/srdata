@@ -1,0 +1,116 @@
+efSet sound1 "/sound/effects/building_collapse.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet cmdrSound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1
+efSet soundRadius 500
+efSet cameraShake 0.000000 0.000000
+
+// Ballista, cata explosion
+
+
+// "/textures/effects/explosions/orange/1_nl_exp_orange.tga"
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/fire/1_nl_pyro0000.tga"
+vfSet size 80.000000 80.000000
+vfSet growth 400.000000 400.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 500
+vfSet lifetime 1500 1500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 10 10
+vfSet velocity 1.300000 1.300000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 120.000000 120.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 0.000000
+vfSet spin -50.000000 90.000000
+vfSet bone ""
+
+// "/textures/effects/explosions/1_nl_exp_orange_blast.tga"
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 200.000000 200.000000
+vfSet growth 80.000000 150.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 700 700
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 2 2
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "/textures/effects/explosions/fire/1_nl_fire.tga"
+vfSet size 200.000000 200.000000
+vfSet growth 500.000000 500.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 1200 1200
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 3 3
+vfSet velocity 2.000000 5.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 50.000000 50.000000
+vfSet gravity 0.009000 0.009000
+vfSet angle 0.000000 0.000000
+vfSet spin -60.000000 50.000000
+vfSet bone ""
+
+

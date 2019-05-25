@@ -1,0 +1,24 @@
+upgSet description "Bulwarks"
+upgSet icon ""
+upgSet race "human"
+upgSet objtype ""
+upgSet objclass "building"
+upgSet property "fullHealth"
+upgSet multiplier 1.25000
+upgSet modifier 0.00000
+upgSet builder1 "human_laboratory"
+upgSet builder2 ""
+upgSet requirement1 "human_research_center"
+upgSet requirement2 ""
+upgSet requirement3 ""
+upgSet cost NULL 0
+upgSet cost stone 1000
+upgSet cost gold 0
+upgSet cost electric 0
+upgSet cost magnetic 0
+upgSet cost chemical 0
+upgSet cost fire 0
+upgSet cost strata 0
+upgSet cost entropy 0
+upgSet researchTime 40000
+upgSet alwaysAvailable 0

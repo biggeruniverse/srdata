@@ -1,0 +1,91 @@
+efSet sound1 ""
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 0.000000
+efSet shakeRadius 700.000000
+efSet shakeDuration 4.000000
+efSet shakeFrequency 250.000000
+
+
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/1_nl_shamansmoke.tga"
+vfSet size 0.000000 0.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 10.000000 30.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.600000 0.600000
+vfSet whitefade -0.600000 -0.600000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 4500
+vfSet lifetime 2600 2600
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 20 20
+vfSet velocity 0.000000 0.200000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 8.000000
+vfSet gravity -0.020000 -0.020000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+
+//"/textures/effects/stars/1_nl_star.tga"
+
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 2.000000 4.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 0.000000 0.000000
+vfSet alpha 0.350000 0.350000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.500000 0.500000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 5000
+vfSet lifetime 3500 3500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 120 120
+vfSet velocity 6.000000 10.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 4.000000 10.000000
+vfSet gravity -0.040000 -0.040000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000

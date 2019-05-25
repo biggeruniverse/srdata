@@ -1,0 +1,5 @@
+set mat_doublesided 0
+set mat_terrain_overblend 0
+set mat_normalmap /models/props/xr_props/nature/t_mini_palmtreebark_normalmap.tga
+set mat_parallaxBias -0.0001000
+set mat_parallaxScale 0.0001000

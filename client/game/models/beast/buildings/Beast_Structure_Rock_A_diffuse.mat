@@ -1,0 +1,7 @@
+set mat_shininess 5.000000
+//set mat_specular 0.600000 0.600000 0.600000
+set mat_doublesided 0
+set mat_terrain_overblend 1
+set mat_normalmap /models/beast/buildings/Beast_Structure_Rock_A_normal.tga
+set mat_glossmap /models/beast/buildings/Beast_Structure_Rock_Aspecular.tga
+set mat_shader nm_gm_skn

@@ -1,0 +1,52 @@
+efSet sound1 "/sound/effects/electricity_hit_1.wav"
+efSet sound2 "/sound/effects/electricity_hit_2.wav"
+efSet sound3 "/sound/effects/electricity_hit_3.wav"
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 0.000000
+efSet shakeRadius 700.000000
+efSet shakeDuration 4.000000
+efSet shakeFrequency 250.000000
+
+//Particles:
+// "/textures/effects/shamanskull.tga"
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_groundz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 8.000000 8.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 20.000000 30.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 0.400000 0.400000
+vfSet green 0.000000 0.000000
+vfSet blue 0.800000 0.800000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 300
+vfSet lifetime 50 120
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 5 5
+vfSet velocity 1.000000 4.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset -1.000000 1.000000
+vfSet gravity -0.050000 -0.010000
+vfSet angle 0.000000 200.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000

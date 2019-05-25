@@ -1,0 +1,166 @@
+efSet sound1 "/sound/physics/boulder_roll_1.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 0.250000
+efSet shakeRadius 500.000000
+efSet shakeDuration 3.750000
+efSet shakeFrequency 100.000000
+efSet emitter ""
+efSet path_emitter ""
+efSet max_ZDist 0
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_worldz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/impacts/dust_1.s2g"
+vfSet size 300.000000 300.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 500.000000 500.000000
+vfSet alpha 0.100000 0.100000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 100 100
+vfSet lifetime 4000 4000
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 0 0
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 0.000000
+vfSet gravity -0.050000 -0.050000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_worldz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/impacts/dust_2.s2g"
+vfSet size 50.000000 50.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 100.000000 100.000000
+vfSet alpha 0.800000 0.800000
+vfSet fade -0.800000 -0.800000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 1000 1000
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 4.000000
+vfSet gravity -0.100000 -0.100000
+vfSet angle 0.000000 0.000000
+vfSet spin -15.000000 -15.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_worldz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/impacts/dust_3.s2g"
+vfSet size 25.000000 25.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 40.000000 40.000000
+vfSet alpha 0.350000 0.350000
+vfSet fade -1.000000 -1.000000
+vfSet white 0.500000 0.500000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 3500 3500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 0 0
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset 0.000000 0.000000
+vfSet gravity -0.100000 -0.100000
+vfSet angle 0.000000 0.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+
+vfEdit 3
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -param_worldz -param_sinewave -param_nearparent -param_billboard2d 
+vfSet shader "/textures/effects/impacts/dust_3.s2g"
+vfSet size 35.000000 35.000000
+vfSet sizeHeight 0.000000 0.000000
+vfSet growth 50.000000 50.000000
+vfSet alpha 0.400000 0.400000
+vfSet fade -1.000000 -1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 0.000000 0.000000
+vfSet green 0.000000 0.000000
+vfSet blue 0.000000 0.000000
+vfSet redfade 0.000000 0.000000
+vfSet greenfade 0.000000 0.000000
+vfSet bluefade 0.000000 0.000000
+vfSet delay 0 0
+vfSet lifetime 2500 2500
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 1 1
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset 0.000000 0.000000
+vfSet gravity -0.050000 -0.050000
+vfSet angle 0.000000 0.000000
+vfSet spin -5.000000 -5.000000
+vfSet bone ""
+vfSet alt_offset 0.000000 0.000000
+vfSet max_range 0.000000
+vfSet minZ -999999.000000
+vfSet maxZ 999999.000000
+

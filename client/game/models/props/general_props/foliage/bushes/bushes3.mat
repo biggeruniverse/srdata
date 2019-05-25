@@ -1,0 +1,32 @@
+matPass
+set mat_shininess 5.000000
+set mat_doubleSided 1
+set mat_terrain_overblend 1
+set mat_ufunc SIN_PAN
+set mat_uAmplitude 0.010
+set mat_uPhase 0.0
+set mat_uspeed 1.0
+set mat_vfunc SIN_PAN
+set mat_vAmplitude 0.004
+set mat_vPhase 90
+set mat_vspeed 1.0
+set mat_vOffset -0.007
+set mat_alphaCutoff 0.8
+endMatPass
+matPass
+set mat_shininess 5.000000
+set mat_doubleSided 1
+set mat_terrain_overblend 1
+set mat_ufunc SIN_PAN
+set mat_uAmplitude 0.010
+set mat_uPhase 0.0
+set mat_uspeed 1.0
+set mat_vfunc SIN_PAN
+set mat_vAmplitude 0.004
+set mat_vPhase 90
+set mat_vspeed 1.0
+set mat_vOffset -0.007
+set mat_depthWrite 0
+set mat_alphaCutoff 0.5
+endMatPass
+

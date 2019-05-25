@@ -1,0 +1,7 @@
+beginObjdef blocker pinetree_dying
+  obj_editorCategory Trees
+  obj_model pinetree_dying.model
+  obj_editorScaleRangeLo 0.800000
+  obj_editorScaleRangeHi 1.300000
+  obj_doubleSided 1
+endObjdef pinetree_dying

@@ -1,0 +1,5 @@
+set mat_depthWrite 0
+set mat_fog 0
+set mat_shader fixedab 
+set mat_vfunc linear_pan
+set mat_vspeed .5

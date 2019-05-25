@@ -1,0 +1,16 @@
+matPass
+set mat_ufunc LINEAR_ROTATE
+set mat_uSpeed -0.01
+set mat_vfunc LINEAR_ROTATE
+set mat_vSpeed -0.01
+endMatPass
+matPass
+set mat_texmap "/gui/standard/1_progress1.png"
+set mat_ufunc LINEAR_ROTATE
+set mat_uSpeed 0.1
+set mat_vfunc LINEAR_ROTATE
+set mat_vSpeed 0.1
+endMatPass
+matPass
+set mat_texmap "/gui/standard/1_progress2.png"
+endMatPass

@@ -1,0 +1,9 @@
+set mat_color  0.25 1.0 0.25 1.0
+set mat_shader layerterrain3
+set mat_textureScale 1 1 1
+set mat_alphaCutoff 0
+//these two have no texture name because they are handled internally
+//we only need the texture unit to bind to
+matAddSampler "fow" 2
+matAddSampler "slope" 3
+matAddUniform "showSlope" 1.0

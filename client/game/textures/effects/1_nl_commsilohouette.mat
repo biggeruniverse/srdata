@@ -1,0 +1,4 @@
+set mat_shader fixed
+set mat_depthTest GREATER
+set mat_fog 0
+set mat_depthWrite 0

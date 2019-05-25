@@ -1,0 +1,262 @@
+# Copyright (c) 2011 savagerebirth.com 
+# this file creates the lobby
+
+from silverback import *;
+import glass;
+import savage;
+
+glass.GUI_CreateScreen('lobby');
+
+def frame():
+	lobby.update();
+
+def onShow():
+	lobby.create();
+
+def add(obj, x=None, y=None):    
+	if x is not None:
+		obj.setPosition(x, y);
+	glass.GUI_ScreenAddWidget("lobby", obj);
+
+# build the viewer background
+v = glass.GlassViewer();
+#v = glass.GlassLabel();
+#v.setImage("/gui/main/images/loadbg.tga");
+v.showWorld(1);
+v.setSizePct(1, 1);
+v.setPositionPct(0,0);
+v.setCameraPosition(3200, 3200, 297);
+v.setCameraTarget(100, 500, 550);
+add(v);
+
+columnWidth = 300;
+
+# logo
+logo = DefaultImage();
+logo.setImage("logo.png");
+logo.setSize(logo.getWidth() // 3, logo.getHeight() // 3);
+add(logo, screenWidth // 2 - logo.getWidth() // 2, 30);
+
+# menu
+menu = DefaultContainer();
+menu.setSize(columnWidth, 100);
+add(menu, screenWidth // 2 - columnWidth // 2, 35 + logo.getHeight());
+
+mainmenu = DefaultButton("Main Menu");
+mainmenu.setSize(160, 30);
+mainmenu.setClickAction("GUI_ShowScreen('mainmenu')");
+menu.add(mainmenu, "center");
+
+disconnect = DefaultButton("Disconnect");
+disconnect.setSize(160, 30);
+disconnect.setClickAction("disconnect()");
+menu.add(disconnect, "center", 35);
+
+stats = DefaultButton("Stats");
+stats.setSize(72, 30);
+menu.add(stats, 72, 70, "left");
+
+votes = DefaultButton("Votes");
+votes.setSize(72, 30);
+votes.setClickAction("lobby.voteSelection.show()"); #TODO pass selected player as arg
+menu.add(votes, 72, 70, "right");
+
+#module-global widgets
+mapImage = DefaultImage();
+mapName = DefaultLabel("Map: nonenonenonenone");
+serverName = DefaultLabel("Savage:Rebirth Server");
+playersCount = DefaultLabel("Players: 000/000");
+
+voteWindow = VoteInfoBox();
+voteWindow.setPosition( screenWidth // 3, -voteWindow.getHeight() )
+# gets added later in create(), because it needs to be on top of everything!
+
+chatBox = HUDChatBox();
+chatBox.alwaysShowInput(1);
+chatBox.inputType.setVisible(0);
+chatBox.buffer.setFadeTop(0);
+chatBox.setSize(columnWidth * 2 + 10, 150)
+chatBox.resize()
+
+voteSelection = VoteSelectionWindow();
+voteSelection.setPosition(screenWidth // 2 - voteSelection.getWidth() // 2, screenHeight//2);
+
+class TeamList(DefaultContainer):
+	def __init__(self, team, width):
+		self.team = team;
+
+		DefaultContainer.__init__(self);
+
+		self.setBackgroundColor(glass.Color(80, 50, 50, 180));
+		self.setSize(width, screenHeight - 235);
+	
+		top = DefaultContainer();
+		top.setBackgroundColor(glass.Color(0, 0, 0, 50));
+		top.setSize(width, 25);
+		self.add(top);
+	
+		join = DefaultButton("Join Team");
+		join.setSize(80, 20);
+		join.setClickAction("CL_RequestTeam("+str(team)+");CL_RequestLoadout();");
+		top.add(join, 10, 3);
+	
+		self.total = DefaultLabel("Total Players: 0");
+		self.total.setFont(fontSizeSmall);
+		top.add(self.total, 10, 3, "right");
+	
+		commander = DefaultLabel("Commander:")
+		#commander.setFont(fontSizeSmall);
+		self.add(commander, 10, 30);
+	
+		self.comm = DefaultLabel("                           -");
+		#self.comm.setFont(fontSizeSmall);
+		self.add(self.comm, 10, 30, "right");
+	
+		self.players = DefaultList();
+		self.players.setWidth(width);
+		self.add(self.players, 10, 50);
+
+	def update(self):
+		teamsList = [[],[],[],[],[],[],[],[],[]];
+		self.players.clear();
+
+
+		#1. get a list of players on each team
+		players = savage.getPlayers();
+
+		for p in players:
+			teamsList[p.getTeam()].append(p);
+
+		self.total.setCaption("Total Players: "+str(len(players)));
+
+		#2. for team, add an entry for each person to the list box
+
+		team = teamsList[self.team];
+		for player in team:
+			if player.isCommander():
+				name = "^w^icon ../../gui/standard/icons/comm_crown^";
+				self.comm.setCaption(player.getFormattedName());
+			elif player.isOfficer():
+				name = "^w^icon ../../models/human/items/icons/officer1^";
+			else:
+				name = "^w^icon transparent^";
+				name += "^888" + player.getFormattedName();
+			self.players.nextRow( name );
+		
+
+team1 = TeamList(1, columnWidth);
+team2 = TeamList(2, columnWidth);
+
+def create():
+	
+	# server info
+	info = DefaultContainer();
+	info.setBackgroundColor(glass.Color(80, 50, 50, 180))
+	info.setSize(lobby.columnWidth, 130);
+	lobby.add(info, screenWidth // 2 - lobby.columnWidth // 2, 40 + lobby.logo.getHeight() + lobby.menu.getHeight());
+	
+	infoTop = DefaultContainer();
+	infoTop.setBackgroundColor(glass.Color(0, 0, 0, 50));
+	infoTop.setWidth(lobby.columnWidth);
+	info.add(infoTop);
+	
+	lobby.serverName.setFont(fontSizeSmall);
+	lobby.serverName.adjustSize();
+	infoTop.add(lobby.serverName, 10, 2);
+	infoTop.setHeight(lobby.serverName.getHeight() + 4);
+	
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	# location = DefaultLabel("Location: Brisbane, AU");
+	# location.setFont(fontSizeSmall);
+	# location.adjustSize();
+	# infoTop.add(location, 10, 2, "right");
+	# infoTop.setHeight(location.getHeight() + 4);
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	lobby.mapImage.setSize(100, 100);
+	info.add(lobby.mapImage, 5, 25, "right", "top");
+	
+	lobby.mapName.setFont(fontSizeSmall);
+	info.add(lobby.mapName, 10, 25);
+	
+	lobby.playersCount.setFont(fontSizeSmall);
+	info.add(lobby.playersCount, 10, 45);
+	
+	official = DefaultLabel("Official: No");
+	official.setFont(fontSizeSmall);
+	info.add(official, 10, 65);
+	
+	ping = DefaultLabel("Ping: ---");
+	ping.setFont(fontSizeSmall);
+	info.add(ping, 10, 85);
+
+
+	lobby.add(lobby.team1, screenWidth // 2 - int(lobby.columnWidth * 1.5) - 10, 35);
+	
+	lobby.add(lobby.team2, screenWidth // 2 + lobby.columnWidth // 2 + 10, 35);
+
+	specs = DefaultContainer();
+	specs.setBackgroundColor(glass.Color(80, 50, 50, 180));
+	lobby.add(specs, screenWidth // 2 - lobby.columnWidth // 2, 50 + lobby.logo.getHeight() + lobby.menu.getHeight() + info.getHeight());
+	specs.setSize(lobby.columnWidth, lobby.team1.getHeight() - (specs.getY() -lobby.team1.getY()));
+
+	specsTop = DefaultContainer();
+	specsTop.setBackgroundColor(glass.Color(0, 0, 0, 50));
+	specsTop.setSize(lobby.columnWidth, 25);
+	specs.add(specsTop);
+	
+	specsLabel = DefaultLabel("Spectators");
+	specsTop.add(specsLabel, 10, 3);
+	
+	specsJoin = DefaultButton("Join");
+	specsJoin.setSize(80, 20);
+	specsJoin.setClickAction("CL_RequestTeam(0);CL_RequestLoadout();");
+	specsTop.add(specsJoin, 10, 3, "right");
+
+	chat = DefaultContainer();
+	chat.setBackgroundColor(glass.Color(80, 50, 50, 180));
+	chat.setSize(lobby.columnWidth * 2 + 10, 170);
+	lobby.add(chat, screenWidth // 2 - int(lobby.columnWidth * 1.5) - 10, screenHeight - 190);
+	
+	chatTop = DefaultContainer();
+	chatTop.setBackgroundColor(glass.Color(0, 0, 0, 50));
+	chatTop.setSize(lobby.columnWidth * 2 + 10, 25);
+	chat.add(chatTop);
+	
+	chatLabel = DefaultLabel("Chat");
+	chatTop.add(chatLabel, 10, 3);
+	
+	chat.add(lobby.chatBox);
+	lobby.chatBox.setPosition(0,20);
+	
+	friends = DefaultContainer();
+	friends.setBackgroundColor(glass.Color(80, 50, 50, 180));
+	friends.setSize(lobby.columnWidth, 170);
+	lobby.add(friends, screenWidth // 2 + lobby.columnWidth // 2 + 10, screenHeight - 190);
+	
+	friendsTop = DefaultContainer();
+	friendsTop.setBackgroundColor(glass.Color(0, 0, 0, 50));
+	friendsTop.setSize(lobby.columnWidth, 25);
+	friends.add(friendsTop);
+	
+	friendsLabel = DefaultLabel("Friends");
+	friendsTop.add(friendsLabel, 10, 3);
+	
+	lobby.add(lobby.voteWindow);
+	lobby.add(lobby.voteSelection);
+
+
+def update():
+	players = savage.getPlayers();
+
+	lobby.mapName.setCaption("Map: "+cvar_get("world_name"));
+	lobby.mapImage.setImage(cvar_get("world_overhead"), 0);
+	lobby.mapImage.setSize(100, 100);
+	lobby.serverName.setCaption(Client_GetStateString("svr_name"));
+	lobby.playersCount.setCaption("Players: "+str(len(players))+"/"+Client_GetStateString("svr_maxclients"));
+
+	lobby.team1.update();
+	lobby.team2.update();
+	
+	lobby.voteWindow.frame();
+

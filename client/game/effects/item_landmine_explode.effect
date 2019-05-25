@@ -1,0 +1,118 @@
+efSet sound1 "/sound/human/items/landmine_explosion.wav"
+efSet sound2 ""
+efSet sound3 ""
+efSet sound4 ""
+efSet loopsound ""
+efSet broadcastSound ""
+efSet stopLoopSound 1
+efSet soundVolume 1.000000 1.000000
+efSet loopsoundVolume 1.000000 1.000000
+efSet shakeScale 6.000000
+efSet shakeRadius 200.000000
+efSet shakeDuration 1.000000
+efSet shakeFrequency 100.000000
+
+
+
+//Particles:
+vfEdit 0
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/fire/1_nl_pyro0000.tga"
+vfSet size 10.000000 30.000000
+vfSet growth 50.000000 100.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -0.800000 -0.800000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 0
+vfSet lifetime 200 300
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 12 14
+vfSet velocity 50.000000 100.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -5.000000 5.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin -40.000000 40.000000
+vfSet bone ""
+
+
+
+vfEdit 1
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count -grow_shrink_linear 
+vfSet shader "/textures/effects/stars/1_nl_sunflarebg.tga"
+vfSet size 0.500000 0.500000
+vfSet growth 80.000000 100.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 1.000000 1.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade -1.000000 -1.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -0.800000 -0.800000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 0 120
+vfSet lifetime 50 100
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 20 32
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 0 0
+vfSet offset -4.000000 4.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+
+
+
+//Particles:
+vfEdit 2
+vfSet visclass "particles"
+vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
+vfSet shader "textures/effects/fire/1_nl_pyro0000.tga"
+vfSet size 10.000000 30.000000
+vfSet growth 60.000000 120.000000
+vfSet alpha 1.000000 1.000000
+vfSet fade 0.000000 0.000000
+vfSet white 1.000000 1.000000
+vfSet whitefade 0.000000 0.000000
+vfSet red 1.000000 1.000000
+vfSet green 1.000000 1.000000
+vfSet blue 1.000000 1.000000
+vfSet redfade -0.500000 -0.500000
+vfSet greenfade -0.800000 -0.800000
+vfSet bluefade -1.000000 -1.000000
+vfSet delay 150 200
+vfSet lifetime 200 300
+vfSet tilelength 0.000000
+vfSet style "point"
+vfSet model ""
+vfSet skin ""
+vfSet count 12 14
+vfSet velocity 0.000000 0.000000
+vfSet acceleration 0.000000 0.000000
+vfSet fps 30 30
+vfSet offset -5.000000 5.000000
+vfSet gravity 0.000000 0.000000
+vfSet angle 0.000000 360.000000
+vfSet spin 0.000000 0.000000
+vfSet bone ""
+

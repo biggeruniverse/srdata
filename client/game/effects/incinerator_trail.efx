@@ -1,0 +1,134 @@
+efxSet bounce 0.000000 0.000000
+efxSet gravity 0.000000 0.000000
+efxSet vForward 0.000000 0.000000
+efxSet vVertical 0.000000 0.000000
+efxSet vHorizontal 0.000000 0.000000
+efxSet vRandom 0.000000 0.000000
+efxSet bone ""
+
+//Sub Effects:
+sfxEdit 0
+sfxSet type "emitter"
+sfxSet delay 20 20
+sfxSet frequency 50 200
+sfxSet replays 0 0
+sfxSet duration 5000 5000
+sfxSet style "point"
+sfxSet velocityStart 0.000000 0.000000
+sfxSet velocityKey1 0.000000 0.000000
+sfxSet velocityKey2 0.000000 0.000000
+sfxSet velocityKey3 0.000000 0.000000
+sfxSet velocityBias1 0.500000 0.500000
+sfxSet velocityBias2 0.500000 0.500000
+sfxSet velocityBias3 0.500000 0.500000
+sfxSet velocityNumKeys 1
+sfxSet angleStart 0.000000 360.000000
+sfxSet angleKey1 0.000000 0.000000
+sfxSet angleKey2 0.000000 0.000000
+sfxSet angleKey3 0.000000 0.000000
+sfxSet angleBias1 0.500000 0.500000
+sfxSet angleBias2 0.500000 0.500000
+sfxSet angleBias3 0.500000 0.500000
+sfxSet angleNumKeys 1
+sfxSet offset 0.000000 0.000000
+sfxSet gravity 0.000000 0.000000
+sfxSet inertia 0.000000 0.200000
+sfxSet count 0 10
+sfxSet collide 0
+sfxSet bounce 0.000000 0.000000
+sfxSet sticky 0.000000 0.000000
+sfxSet lifetime 300 400
+sfxSet spacing 50.000000 50.000000
+sfxSet shader "/textures/effects/fire/1_nl_burst_a_0010.s2g"
+sfxSet model ""
+sfxSet skin ""
+sfxSet redStart 1.000000 1.000000
+sfxSet redKey1 0.000000 0.000000
+sfxSet redKey2 0.000000 0.000000
+sfxSet redKey3 0.000000 0.000000
+sfxSet redBias1 0.500000 0.500000
+sfxSet redBias2 0.500000 0.500000
+sfxSet redBias3 0.500000 0.500000
+sfxSet redNumKeys 1
+sfxSet greenStart 0.500000 0.500000
+sfxSet greenKey1 0.000000 0.000000
+sfxSet greenKey2 0.000000 0.000000
+sfxSet greenKey3 0.000000 0.000000
+sfxSet greenBias1 0.500000 0.500000
+sfxSet greenBias2 0.500000 0.500000
+sfxSet greenBias3 0.500000 0.500000
+sfxSet greenNumKeys 1
+sfxSet blueStart 0.500000 0.500000
+sfxSet blueKey1 0.000000 0.000000
+sfxSet blueKey2 0.000000 0.000000
+sfxSet blueKey3 0.000000 0.000000
+sfxSet blueBias1 0.500000 0.500000
+sfxSet blueBias2 0.500000 0.500000
+sfxSet blueBias3 0.500000 0.500000
+sfxSet blueNumKeys 1
+sfxSet alphaStart 1.000000 1.000000
+sfxSet alphaKey1 1.000000 1.000000
+sfxSet alphaKey2 0.000000 0.000000
+sfxSet alphaKey3 0.000000 0.000000
+sfxSet alphaBias1 0.500000 0.500000
+sfxSet alphaBias2 0.500000 0.500000
+sfxSet alphaBias3 0.500000 0.500000
+sfxSet alphaNumKeys 1
+sfxSet sizeStart 1.000000 1.000000
+sfxSet sizeKey1 12.000000 16.000000
+sfxSet sizeKey2 16.000000 20.000000
+sfxSet sizeKey3 20.000000 24.000000
+sfxSet sizeBias1 0.500000 0.500000
+sfxSet sizeBias2 0.500000 0.500000
+sfxSet sizeBias3 0.500000 0.500000
+sfxSet sizeNumKeys 3
+
+sfxEdit 1
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 2
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 3
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 4
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 5
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 6
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 7
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+

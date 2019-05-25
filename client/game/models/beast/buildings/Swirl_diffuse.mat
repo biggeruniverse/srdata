@@ -1,0 +1,7 @@
+set mat_flags +no_lighting +additive
+set mat_wfunc linear_rotate
+set mat_wspeed -1
+set mat_doubleSided 1
+set mat_depthWrite 0
+set mat_shader fixedab_skn
+set mat_fog 0

@@ -1,0 +1,110 @@
+
+from silverback import *;
+import glass;
+import savage;
+
+class CommInputHandler:
+    def __init__(self):
+        self.pressX = 0;
+        self.pressY = 0;
+
+    def onMouseClick(self, e):
+        cm = commhud.contextmenu;
+        x,y = Input_GetMouseXY();
+        if 0:# e.button == MOUSE_RIGHTBUTTON:
+            cm.coords = x,y; #remember where we clicked!
+            if Input_IsKeyDown(KEY_CTRL):
+                commhud.defaultAction(x,y);
+            else:
+                obj = savage.getObjectUnder(x,y);
+                ctx = self.determineContext(obj);
+                ctx.object = obj;
+                cm.buildContext( ctx );
+                if x < cm.RADIUS:
+                    x = cm.RADIUS;
+                elif x > screenWidth - cm.RADIUS:
+                    x = screenWidth - cm.RADIUS;
+                if y < cm.RADIUS:
+                    y = cm.RADIUS;
+                elif y > screenHeight - cm.RADIUS:
+                    y = screenHeight - cm.RADIUS;
+            
+                cm.setPosition( x-cm.RADIUS , y-cm.RADIUS );
+                actions = cm.context.getContextActions();
+                if len(actions) > 0:
+                    cm.setAlpha(0);
+                    cm.open();
+
+        elif e.button == MOUSE_LEFTBUTTON:
+            #cm.close();
+            if commhud.selectionRect.getWidth() > 0:
+                sel = savage.getObjectsWithin(commhud.selectionRect.getX(), commhud.selectionRect.getY(), commhud.selectionRect.getWidth(), commhud.selectionRect.getHeight());
+                for o in sel:
+                    commhud.selectObject(o, True);
+                commhud.selectionRect.setSize(0, 0);
+            else:
+                obj = savage.getObjectUnder(x,y);
+                if obj == None:
+                    CL_CommanderLeftClick();
+                commhud.selectObject(obj, False);
+
+        else:
+            cm.close();
+
+    def onMouseMotion(self, e):
+        pass;
+
+    def onMouseEnter(self, e):
+        pass;
+
+    def onMouseExit(self, e):
+        pass;
+
+    def onMouseScroll(self, e):
+        pass;
+    
+    def onMousePress(self, e):
+        if e.button == MOUSE_LEFTBUTTON:
+            self.pressX = e.x;
+            self.pressY = e.y;
+            if Input_IsKeyDown(KEY_SHIFT) == False:
+                commhud.clearSelection(False);
+    
+    def onMouseReleased(self, e):
+        pass;
+    
+    def onMouseDrag(self, e):
+
+        if e.button == MOUSE_LEFTBUTTON:
+            sX = self.pressX;
+            sY = self.pressY;
+            eX = 0;
+            eY = 0;
+            if e.x < sX:
+                sX = e.x+1;
+                eX = self.pressX;
+            else:
+                eX = e.x;
+
+            if e.y < sY:
+                sY = e.y+1;
+                eY = self.pressY;
+            else:
+                eY = e.y;
+
+            commhud.selectionRect.setPosition(sX, sY);
+            commhud.selectionRect.setSize(eX-sX, eY-sY);
+
+            sel = savage.getObjectsWithin(commhud.selectionRect.getX(), commhud.selectionRect.getY(), commhud.selectionRect.getWidth(), commhud.selectionRect.getHeight());
+            for o in sel:
+                commhud.selectObject(o, True);
+    
+    def determineContext(self, obj):
+        cm = commhud.contextmenu;
+        try:
+            name = obj.getType().getName() if obj != None else None;
+            ctx = commcontexts.contextDict[name];
+        except KeyError:
+            #if the key doesn't exist, because we haven't defined a context
+            ctx = commcontexts.emptycontext;
+        return ctx

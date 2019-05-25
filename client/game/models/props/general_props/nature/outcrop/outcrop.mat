@@ -1,0 +1,4 @@
+set mat_shininess 20.000000
+set mat_specular 0.500000 0.500000 0.500000
+set mat_doublesided 1
+set mat_normalmap /models/props/xr_props/outcrop/outcrop_n.s2g

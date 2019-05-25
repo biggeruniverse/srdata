@@ -1,0 +1,75 @@
+efxSet bounce 0.000000 0.000000
+efxSet gravity 0.000000 0.000000
+efxSet vForward 0.000000 0.000000
+efxSet vVertical 0.000000 0.000000
+efxSet vHorizontal 0.000000 0.000000
+efxSet vRandom 0.000000 0.000000
+efxSet bone ""
+
+//Sub Effects:
+sfxEdit 0
+sfxSet type "sound"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 10000 10000
+sfxSet sound1 "/sound/beast/items/immolate.wav"
+sfxSet sound2 ""
+sfxSet sound3 ""
+sfxSet sound4 ""
+sfxSet sound5 ""
+sfxSet sound6 ""
+sfxSet loop 0
+sfxSet play2d 0
+sfxSet volume 1.000000
+sfxSet radius 70.000000
+
+sfxEdit 1
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 2
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 3
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 4
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 5
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 6
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+
+sfxEdit 7
+sfxSet type "null"
+sfxSet delay 0 0
+sfxSet frequency 0 0
+sfxSet replays 1 1
+sfxSet duration 1 1
+

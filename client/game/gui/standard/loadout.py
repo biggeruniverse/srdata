@@ -1,0 +1,479 @@
+# (c) 2010 savagerebirth.com
+# it's called loadout in the code :P
+
+from silverback import *;
+import glass;
+import savage;
+
+SLOT_NAMES = ["Melee","Weapon", "Item 1" ,"Item 2", "Item 3"];
+ICON_SIZE = 48;
+INVENTORY_ICON_SIZE = 64;
+
+class SpawnSelectHandler:
+	def onEvent(self, e):
+		if(e.eventType == 'spawnselect'):
+			loadout.showMap();
+
+def frame():
+	player = savage.getLocalPlayer();
+	team = savage.getTeamObject(player.getTeam());
+	teamNum = player.getTeam();
+
+	if loadout.lastTeamNum != teamNum and teamNum != 0:
+		if team.getRace() == "human":
+			loadout.buildLoadout(['NULL', 'magnetic', 'electric', 'chemical']);
+		elif team.getRace() == "beast":
+			loadout.buildLoadout(['NULL', 'entropy', 'strata', 'fire']);
+	loadout.lastTeamNum = teamNum; 
+
+	loadout.updateInventory();
+	loadout.updateMainViewer();
+	
+	loadout.goldLabel.setCaption("^icon ../../gui/standard/icons/gold/gold_icon^" + str(player.getGold()) );
+
+def onShow():
+	loadout.frame();
+
+	gblPresetManager.setY( loadout.unitContainer.getY() - 10 - gblPresetManager.getHeight());
+	gblPresetManager.setX( int( 0.69*loadout.main.getWidth() - gblPresetManager.getWidth()//2 ));
+	gblPresetManager.reloadPresets();
+	gblPresetManager.execute();
+
+	loadout.inventoryContainer.setX( int( 0.69*loadout.main.getWidth() - loadout.inventoryContainer.getWidth()//2 ));
+	loadout.inventoryContainer.setY( gblPresetManager.getY() - 10 - loadout.inventoryContainer.getHeight());
+	loadout.mainViewer.setX( int( loadout.main.getX() + 0.69*loadout.main.getWidth() - loadout.mainViewer.getWidth()/2) );
+	loadout.mainViewer.setY( loadout.main.getY() + loadout.inventoryContainer.getY() - 10 - loadout.mainViewer.getHeight() );
+	
+	loadout.map_window.setAlpha(0);
+	loadout.map_window.setVisible(0);
+
+techColumns = [];
+lastTeamNum = -1;
+
+glass.GUI_CreateScreen("loadout");
+
+goldLabel = glass.GlassLabel("^icon ../../gui/standard/icons/gold/gold_icon^" + "_____");
+goldLabel.setFont(fontSizeLarge);
+goldLabel.setForegroundColor(gold);
+goldLabel.setPositionPct(0.4,0.05);
+goldLabel.setSizePct(0.2,0.1);
+goldLabel.setAlignment(glass.Graphics.CENTER);
+glass.GUI_ScreenAddWidget("loadout",goldLabel);
+
+main = glass.GlassWindow("selectwindow")
+main.setSizePct(.8, .6)
+main.setPositionPct(0.1,0.28)
+main.setBackgroundColor(glass.Color(0,0,0,128))
+main.setTitleVisible(0)
+main.setTitleBarHeight(0);
+main.setMovable(0);
+main.setEnabled(0);
+glass.GUI_ScreenAddWidget("loadout", main)
+
+weaponContainer = glass.GlassContainer();
+weaponContainer.setId("weaponContainer");
+main.add(weaponContainer);
+weaponContainer.setPositionPct(.025, .025);
+weaponContainer.setSizePct(0.35, 0.52);
+weaponContainer.setBackgroundColor(tangoGrey2);
+
+itemContainer = glass.GlassContainer();
+itemContainer.setId("itemContainer");
+main.add(itemContainer);
+itemContainer.setPositionPct(.025, .55);
+itemContainer.setSizePct(.35, .35);
+itemContainer.setBackgroundColor(tangoGrey2);
+
+unitContainer = GlassTablePlus();
+main.add( unitContainer );
+unitContainer.makeBlank();
+unitContainer.autoAdjust = False;
+#beard: because loadout was cobbled together (to put it nicely) everything on the RHS positions itself according to the unitContainer
+unitContainer.setPositionPct(0.4, 0.55);
+unitContainer.setSizePct(0.45, 0.2);
+unitContainer.setCellPadding(1);
+
+inventoryContainer = glass.GlassContainer();
+inventoryContainer.setId("inventoryContainer");
+main.add(inventoryContainer);
+inventoryContainer.setSize( INVENTORY_ICON_SIZE*5, INVENTORY_ICON_SIZE + 20);#TODO non-fixed font size
+inventoryContainer.setBackgroundColor(tangoGrey2);
+
+mainViewer = glass.GlassViewer();
+glass.GUI_ScreenAddWidget("loadout",mainViewer);
+mainViewer.setOpaque(0);
+mainViewer.setSizePct(0.2,0.4);
+mainViewer.setCameraFOV(45);
+mainViewer.setCameraPosition(0,0,16);
+mainViewer.setCameraDistance(40);
+mainViewer.rotateModel(160);
+mainViewer.setAnimation("idle");
+
+inventorySlots = [];
+inventoryNames = [];
+inventoryAmmos = [];
+
+for i in range(5):
+	slot = glass.GlassLabel();
+	slot.setImage("/gui/standard/black.s2g");
+	inventoryContainer.add(slot);
+	slot.setPosition( INVENTORY_ICON_SIZE*i, 0);
+	slot.setSize( INVENTORY_ICON_SIZE, INVENTORY_ICON_SIZE);
+	inventorySlots.append(slot);
+	
+	ammo = glass.GlassLabel("999");
+	inventoryContainer.add(ammo);
+	ammo.setPosition( slot.getX() , slot.getY() + slot.getHeight() - ammo.getHeight() );
+	ammo.setWidth( slot.getWidth() - 2 );
+	ammo.setAlignment( glass.Graphics.RIGHT );
+	inventoryAmmos.append(ammo);
+	
+	name = glass.GlassLabel("Placeholder Name");
+	inventoryContainer.add(name);
+	name.setWidth( slot.getWidth() );
+	name.setPosition( slot.getX(), slot.getY() + slot.getHeight() );
+	name.setAlignment( glass.Graphics.CENTER );
+	inventoryNames.append(name);
+	
+	button = glass.ImageButton("textures/econs/transparent.s2g");
+	inventoryContainer.add(button);
+	button.setSize( slot.getWidth(), slot.getHeight());
+	button.setPosition( slot.getX(), slot.getY());
+	button.setClickAction("CL_RequestGiveback("+str(i)+")");
+	
+
+back = glass.GlassButton("Back to Lobby")
+back.setClickAction("CL_RequestLobby()")
+main.add(back)
+back.setPositionPct(.1,.92)
+
+spawn = glass.GlassButton("Spawn")
+spawn.setId("spawnbutton");
+spawn.setClickAction("CL_RequestSpawn(-1)")
+main.add(spawn)
+spawn.setPositionPct(.8,.92)
+
+comm = glass.GlassButton("Command")
+comm.setId("commbutton");
+comm.setClickAction("""
+import savage;
+CL_RequestSpawn(savage.Team(savage.getLocalPlayer().getTeam()).getCommandCenter().objectId);
+CL_CallVote('elect '+savage.getLocalPlayer().getName());""");
+main.add(comm)
+comm.setPositionPct(.6,.92)
+
+## NOTIFICATIONS ##
+scroll = glass.GlassScrollArea();
+scroll.setAutoscroll(1);
+scroll.setSizePct(0.32,0.16);
+scroll.setPosition(screenWidth-scroll.getWidth() - 10,10);
+scroll.setPosition(screenWidth-360, 10);
+scroll.setScrollPolicy(1,1); #SHOW_NEVER
+glass.GUI_ScreenAddWidget("loadout", scroll);
+
+notifyBuffer = MessageBuffer(["notify"]); #TODO notify_generalhide too?
+scroll.setContent(notifyBuffer);
+notifyBuffer.setSize(scroll.getWidth(), scroll.getHeight());
+notifyBuffer.setFadeTop(1);
+notifyBuffer.setFadeBottom(0);
+notifyBuffer.showTime(0);
+for i in range(10):
+	notifyBuffer.addRow(" ");
+
+
+main.add(gblPresetManager);
+glass.GUI_ScreenAddWidget("loadout", gblPresetManager.window);
+
+def rebuildItems():
+	techColumns = loadout.techColumns
+	loadout.itemContainer.erase();
+	player = savage.getLocalPlayer();
+	team = savage.getTeamObject(player.getTeam());
+	currentInventory = [];
+	for j in range(5):
+		currentInventory.append(player.getInventorySlot(j));
+	
+	ycol = [10,10,10,10]; #FIXME: more or less columns based on techColumns?
+	col=0;
+	
+	for item in team.getItems():
+		if item.getValue("playerCost") < 0:
+			continue;
+		for i in range(len(techColumns)):
+			if item.getTechType() == techColumns[i]:
+				col = i;
+				break;
+
+		name = item.getValue("name");
+		button = glass.ImageButton();
+		button.setImage(item.getValue("icon")+".s2g");
+		button.setSize(loadout.ICON_SIZE,loadout.ICON_SIZE)
+		button.setPosition(10+(loadout.ICON_SIZE+8)*col, ycol[col]);
+		button.setClickAction("""
+CL_RequestGive('"""+name+"""')
+""");
+		price = str(item.getValue("playerCost"));
+		if price == "0":
+			price = "FREE";
+		price = glass.GlassLabel("^icon ../../gui/standard/icons/gold/gold_icon^" + price);
+		price.setAlignment(glass.Graphics.CENTER);
+		price.setFont(fontSizeSmall);
+		price.setForegroundColor( gold );
+		price.adjustSize();
+		price.setWidth( button.getWidth() );
+		price.setPosition( button.getX(), button.getY() + button.getHeight() + 2 )
+
+		if item not in currentInventory or player.getInventorySlotAmmo(currentInventory.index(item)) < item.getValue("ammoMax"):
+			loadout.itemContainer.add(button);
+			loadout.itemContainer.add(price)
+		
+		ycol[col] = price.getY() + price.getHeight() + 2;
+
+def rebuildWeapons():
+	techColumns = loadout.techColumns;
+	loadout.weaponContainer.erase();
+	player = savage.getLocalPlayer();
+	team = savage.getTeamObject(player.getTeam());
+	currentInventory = [];
+	for j in range(5):
+		currentInventory.append(player.getInventorySlot(j));
+	
+	##WEAPONS
+	ycol = [10,10,10,10];
+	col=0;
+	for weapon in team.getWeapons():
+		if weapon.getValue("playerCost") < 0:
+			continue;
+		for i in range(len(techColumns)):
+			if weapon.getTechType() == techColumns[i]:
+				col = i;
+				break;
+
+		if weapon not in currentInventory:
+			name = weapon.getValue("name")
+			button = glass.ImageButton();
+			button.setImage(weapon.getValue("icon")+".s2g");
+			button.setSize(loadout.ICON_SIZE, loadout.ICON_SIZE);
+			button.setClickAction("""
+CL_RequestGiveback(0);
+CL_RequestGiveback(1);
+CL_RequestGive('"""+name+"""')
+""");
+			loadout.weaponContainer.add(button, 10+(loadout.ICON_SIZE+8)*col, ycol[col]);
+			
+			price = str(weapon.getValue("playerCost"));
+			if price == "0":
+				price = "FREE";
+			price = glass.GlassLabel("^icon ../../gui/standard/icons/gold/gold_icon^" + price);
+			price.setAlignment(glass.Graphics.CENTER);
+			price.setFont(fontSizeSmall);
+			price.setForegroundColor( gold );
+			price.adjustSize();
+			price.setWidth( button.getWidth() );
+			price.setPosition( button.getX(), button.getY() + button.getHeight() + 2 )
+			loadout.weaponContainer.add(price)
+		
+		ycol[col] = price.getY() + price.getHeight() + 2;
+
+def rebuildUnits():
+	player = savage.getLocalPlayer();
+	team = savage.getTeamObject(player.getTeam());
+
+	loadout.unitContainer.erase();
+
+	viewers = [];
+	unitNames = [];
+	unitPrices = [];
+	unitList = team.getUnits();
+
+	for unit in unitList:
+		
+		price = str( unit.getValue("playerCost") );
+		if price == "0":
+			price = "FREE";
+
+		if price == "-1":
+			continue;
+
+		modelContainer = glass.GlassContainer(); #Store the button and the viewer in a container
+		modelContainer.setSizePct( 0.075, 0.15 ); 
+		
+		viewer = glass.GlassViewer();
+		viewer.setModel(unit.getValue("model"));
+		viewer.setOpaque(0);
+		modelContainer.add( viewer, 0, 0 );
+		viewer.rotateModel(160);
+		viewer.setCameraFOV(45);
+		viewer.setSizePct(1,1);
+		viewer.setAnimation("idle");
+		viewer.fitCameraToModel(2);
+		#viewer.setCameraPosition(0,0,16);
+		#viewer.setCameraDistance(40);
+		
+		button = glass.ImageButton("textures/econs/transparent.s2g");
+		#Create clickable, invisible button over the viewer.
+		button.setClickAction( "CL_RequestUnit('" + str(unit.getValue('name')) + "');" );
+		modelContainer.add( button );
+		button.setSizePct(1,1);
+		button.setPosition(0,0);
+		
+		viewers.append( modelContainer );
+		
+		price = glass.GlassLabel("^icon ../../gui/standard/icons/gold/gold_icon^" + price);
+		price.setForegroundColor( gold );
+		price.setFont(fontSizeSmall);
+		unitPrices.append(price);
+		
+		name = glass.GlassLabel(unit.getValue("description"));
+		unitNames.append(name);
+		
+	loadout.unitContainer.addRow(*viewers);
+	loadout.unitContainer.addRow(*unitNames);
+	loadout.unitContainer.addRow(*unitPrices);
+	
+	loadout.unitContainer.adjustHeightTo(int(0.2*loadout.main.getHeight()));
+	loadout.unitContainer.setX( int( 0.69*loadout.main.getWidth() - loadout.unitContainer.getWidth()/2) );
+	loadout.unitContainer.adjustJustification();
+
+def buildLoadout(techColumns):
+	loadout.techColumns = techColumns;
+	loadout.rebuildWeapons();
+	loadout.rebuildItems();
+	loadout.rebuildUnits();
+
+def onWeaponChange():
+	pass;
+
+def onUnitChange():
+	pass;
+
+def onItemChange():
+	pass;
+
+def updateInventory():
+	player = savage.getLocalPlayer();
+	
+	for i in range(5):
+		slot_objType = player.getInventorySlot(i);
+		slot = loadout.inventorySlots[i];
+		name = loadout.inventoryNames[i];
+		ammo = loadout.inventoryAmmos[i];
+		w , h = slot.getWidth() , slot.getHeight();
+
+		if slot_objType != None:
+			slot.setImage( slot_objType.getValue("icon")+".s2g" );
+			name.setCaption( slot_objType.getValue("description") );
+			
+			if slot_objType.isManaWeapon():
+				ammoCount = str(player.getManaUsesSlot(i, True));
+			else: ammoCount = str(player.getAmmoSlot(i));
+			if ammoCount == "None":
+				ammoCount = "";
+
+			ammo.setCaption( str( ammoCount ) );
+		
+		else:
+			slot.setImage("/gui/standard/black.s2g");
+			name.setCaption( loadout.SLOT_NAMES[i] );
+			ammo.setCaption("");
+		slot.setSize(w, h);
+
+def updateMainViewer():
+	player = savage.getLocalPlayer();
+	loadout.mainViewer.setModel( player.getType().getValue("model") );
+	loadout.mainViewer.fitCameraToModel(2);
+
+class LoadoutEventHandler(EventListener):
+	def __init__(self):
+		pass;
+
+	def onEvent(self, e):
+		if e.eventType == "research_complete" or e.eventType == "inventory_changed": #\
+		  #and GUI_IsScreenVisible('loadout'): TODO
+			player = savage.getLocalPlayer();
+			team = savage.getTeamObject(player.getTeam());
+
+			if team.getRace() == "human":
+				loadout.buildLoadout(['NULL', 'magnetic', 'electric', 'chemical']);
+			elif team.getRace() == "beast":
+				loadout.buildLoadout(['NULL', 'entropy', 'strata', 'fire']);
+
+handler = LoadoutEventHandler();
+gblEventHandler.addGameListener(handler);
+
+
+#MAP
+
+map_window = glass.GlassWindow();
+map_window.setTitleBarHeight(0);
+map_window.setTitleVisible(0);
+map_window.setSizePct(1,1);
+map_window.setBackgroundColor(glass.Color(0,0,0,128));
+map_window.setVisible(0);
+glass.GUI_ScreenAddWidget("loadout",map_window);
+
+ca = map_window.getChildrenArea();
+
+map = glass.GlassMiniMap();
+map.setSize(512,512);
+map.setPosition( (ca.width - 512)//2 , (ca.height - 512)//2 );
+map_window.add(map);
+
+map_title = glass.GlassLabel("Join the battle:");
+map_title.setFont(fontSizeLarge);
+map_title.adjustSize();
+map_title.setPosition((screenWidth - map_title.getWidth())//2, map.getY() - map_title.getHeight() - 10);
+map_window.add(map_title);
+
+map_spawnbuttons = glass.GlassContainer();
+map_spawnbuttons.setSize(map.getWidth(), map.getHeight());
+map_spawnbuttons.setPosition(map.getX(), map.getY());
+map_window.add(map_spawnbuttons);
+
+map_back = glass.GlassButton("Back");
+map_back.setClickAction("loadout.hideMap();CL_RequestLoadout()");
+map_back.setX( map.getX() + map.getWidth() - map_back.getWidth() );
+map_back.setY( map.getY() + map.getHeight() + 5);
+map_window.add(map_back);
+
+def updateSpawnLocs():
+	gobjs = savage.getActiveObjects();
+	myteam = savage.getLocalPlayer().getTeam();
+	loadout.map_spawnbuttons.erase();
+	
+	for go in gobjs:
+		if go.isSpawnPoint() and ((cvar_getvalue("sv_allowWarmupAllSpawnLocs") == 1 and savage.getGameStatus()<=GAME_STATUS_WARMUP) or go.getTeam() == myteam):
+			pos = go.getPosition();
+			#create a button with the appropriate color and image
+			button = glass.ImageButton();
+			#and place it in the correct position
+			button.setImage(go.getMapIcon());
+			button.setSize(24,24);
+			if go.getTeam() == myteam:
+				button.setForegroundColor(white);
+				if go.isComplete() == False and not (cvar_getvalue("sv_allowWarmupAllSpawnLocs") == 1 and savage.getGameStatus()<=GAME_STATUS_WARMUP):
+					button.setForegroundColor(glass.Color(0,255,0));
+				else:
+					button.setClickAction("CL_RequestSpawn("+str(go.objectId)+")");
+			else:
+				if cvar_getvalue("sv_allowWarmupAllSpawnLocs") == 1 and savage.getGameStatus()<=GAME_STATUS_WARMUP:
+					button.setClickAction("CL_RequestSpawn("+str(go.objectId)+")");
+				button.setForegroundColor(glass.Color(255,0,0));
+			scale = float(World_GetGridSize()*100.0);
+			button.setX(int( loadout.map.getWidth()* pos[0]/scale - button.getWidth()/2  ));
+			button.setY(int( loadout.map.getHeight()*(1-pos[1]/scale) - button.getHeight()/2 ));
+			loadout.map_spawnbuttons.add(button);
+
+def showMap():
+	loadout.map.setMap(cvar_get("world_overhead"));
+	a = FadeInAction(loadout.map_window, step=50);
+	ActionSequence(a);
+	loadout.updateSpawnLocs();
+
+def hideMap():
+	a = FadeOutAction(loadout.map_window, step=50);
+	ActionSequence(a);
+
+spawnSelectHandler = SpawnSelectHandler();
+gblEventHandler.addGameListener(spawnSelectHandler);
+

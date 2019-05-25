@@ -1,0 +1,6 @@
+tod_set obj_light0_r 0.000000
+tod_set obj_light0_g 0.066667
+tod_set obj_light0_b 0.366667
+tod_set obj_light1_r 0.366667
+tod_set obj_light1_g 0.733333
+tod_set obj_light1_b 2.000000
