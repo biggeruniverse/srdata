@@ -14,6 +14,7 @@ class SequenceHandler:
 
 	def pump(self):
 		while self.channel.balance < 0:
+			con_dprintln("sending on channel")
 			self.channel.send(None);
 
 		for seq in self.sequences:
@@ -26,7 +27,8 @@ class SequenceHandler:
 		seq.threadId = self.threadCount;
 		self.threadCount += 1;
 		self.sequences.append(seq);
-		seq.setup(seq);
+		seq.channel = self.channel
+		seq.setup((seq,));
 
 gblSequenceHandler = SequenceHandler();
 
@@ -35,28 +37,45 @@ def stackless_frame():
 	gblSequenceHandler.pump();
 	stacklesslib.main.mainloop.pump()
 
-class ActionSequence(tasklet):
-	def __new__(self, *args):
-		def handler(*args, **kwargs):
-			try:
-				args[0].pump();
-			except Exception as e:
-				try:
-					import traceback;
-					con_dprintln( "^r" + traceback.format_exc());
-				except ImportError:
-					con_dprintln("^rError "+str(e)+"\n");
-		return tasklet.__new__(self, handler);
+class ActionSequence(stackless.tasklet):
+	#def __new__(self, *args):
+	#	def handler(*args, **kwargs):
+	#		try:
+	#			args[0].pump();
+	#		except Exception as e:
+	#			try:
+	#				import traceback;
+	#				con_dprintln("AS handler: ^r" + traceback.format_exc()+"\n");
+	#			except ImportError:
+	#				con_dprintln("AS handler: ^rError "+str(e)+"\n");
+	#	t = tasklet.__new__(self)
+	#	t.bind(handler)
+	#	return t
 
 	def __init__(self, *args):
+		super(ActionSequence, self).__init__(ActionSequence.handler)
 		self.actions = deque();
 		self.pauseIt = False;
 		self.stopFlag = False;
 		self.threadId = -1;
+		self.channel = None
+
 		for action in args:
 			action.setParent(self);
 			self.actions.append(action);
-		self.attach();
+		self.attach()
+
+	@classmethod
+	def handler(args):
+		try:
+			con_dprintln("handler PUMPING\n")
+			args[0].pump()
+		except Exception as e:
+			try:
+				import traceback;
+				con_dprintln("AS handler: ^r" + traceback.format_exc()+"\n")
+			except ImportError:
+				con_dprintln("AS handler: ^rError "+str(e)+"\n")
 
 	def pump(self):
 		if self.pauseIt is True:
@@ -67,8 +86,12 @@ class ActionSequence(tasklet):
 				action.run();
 				if action.isDone() == False:
 					self.actions.appendleft(action);
-			nun = gblSequenceHandler.channel.receive();
+			nun = self.channel.receive();
 		con_println("thread "+str(self.threadId)+" stopped\n");
+
+	def run(self):
+		con_dprintln("RUNNING")
+		self.pump()
 		
 
 	def pause(self):

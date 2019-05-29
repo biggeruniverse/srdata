@@ -6,7 +6,7 @@ import glass;
 def show_demoselect():
 	w = glass.GUI_GetWidget('mainmenu:Demos');
 	if w != None:
-		w.setVisible(1)
+		w.setVisible(True)
 		return
 	window = glass.GlassWindow('Demos');
 	window.setTitleVisible(0);
@@ -31,7 +31,7 @@ def show_demoselect():
 	demoPlay.setPositionPct(.6, .85);
 
 	demoClose = glass.GlassButton("Close");
-	demoClose.setClickAction("glass.GUI_GetWidget('mainmenu:Demos').setVisible(0);");
+	demoClose.setClickAction("glass.GUI_GetWidget('mainmenu:Demos').setVisible(False);");
 	window.add(demoClose);
 	demoClose.setPositionPct(.8, .85);
 

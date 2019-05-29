@@ -11,10 +11,10 @@ class TeamScore(DefaultWindow):
 		self.setSizePct(.9, .9);
 		self.setPositionPct(.05, 0.05);
 		self.build();
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		self.setTitleBarHeight(0);
 		self.setBackgroundColor(transparency);
-		self.setVisible(0);
+		self.setVisible(False);
 		
 
 	#called when we want to update the window
@@ -58,15 +58,15 @@ class TeamScore(DefaultWindow):
 				p = currentTeam[i];
 				
 				row = table.getRow(rowCount);
-				row.setVisible(1);
+				row.setVisible(True);
 
 				tmk += p.getKills();
 				tmd += p.getDeaths();
 				
 				rank, name, level, kills, deaths, assists, ping = [
-				  table.getWidget(rowCount, k, type=glass.GlassLabel) for k in xrange(7)
+				  table.getWidget(rowCount, k, type=glass.GlassLabel) for k in range(7)
 				];
-				rank.setVisible(1);
+				rank.setVisible(True);
 				if p.isCommander():
 					rank.setImage("gui/standard/icons/comm_crown.s2g");
 					comm.setCaption("^555Commander: " + p.getFormattedName());
@@ -90,11 +90,11 @@ class TeamScore(DefaultWindow):
 			while i < self.MAX_PLAYERS_PER_TEAM:
 
 				row = table.getRow(rowCount);
-				row.setVisible(0);
+				row.setVisible(False);
 
-				cellList = [table.getWidget(rowCount, k, type=glass.GlassLabel) for k in xrange(7)];
+				cellList = [table.getWidget(rowCount, k, type=glass.GlassLabel) for k in range(7)];
 				rank = cellList[0];
-				rank.setVisible(0);
+				rank.setVisible(False);
 				
 				for w in cellList[1:]:
 					w.setCaption("");
@@ -133,11 +133,11 @@ class TeamScore(DefaultWindow):
 
 			self.tables.append(tableWindow);
 
-			tableWindow.table.setFrame(0);
-			tableWindow.table.setOpaque(1);
+			tableWindow.table.setFrame(False);
+			tableWindow.table.setOpaque(True);
 			tableWindow.table.padding = 1;
 			tableWindow.table.autoAdjust = False;
-			tableWindow.table.setAlternate(0);
+			tableWindow.table.setAlternate(False);
 
 			#tableWindow.scroll = glass.GlassScrollArea(tableWindow.table);
 			#tableWindow.listContainer.add(tableWindow.scroll, 0, 0);
@@ -146,7 +146,7 @@ class TeamScore(DefaultWindow):
 
 
 			headingRow = tableWindow.table.addRow("", "Player", "^bLV", "^gK", "^rD", "^lA", "Ping");
-			headingRow.setOpaque(0);
+			headingRow.setOpaque(False);
 			headingRow.setBackgroundColor(glass.Color(70,20,20, 0));
 			#divRow = tableWindow.table.addRow(DefaultDivider());
 			#divRow.getColumn(0).setColumnSpan(7);
@@ -158,49 +158,49 @@ class TeamScore(DefaultWindow):
 				name = glass.GlassLabel(" 12345678901234 ");
 				name.setBackgroundColor( glass.Color(40,20,20) );
 				name.setHeight(25);
-				name.setOpaque(1);				
+				name.setOpaque(True);				
 				
 				level = glass.GlassLabel("12");
 				level.setForegroundColor( tangoBlue );
 				level.setBackgroundColor( glass.Color(30,15,15) );
 				level.setAlignment(1);
 				level.setHeight(25);
-				level.setOpaque(1);
+				level.setOpaque(True);
 				
 				kills = glass.GlassLabel(" 123 ");
 				kills.setForegroundColor( tangoGreen );
 				kills.setBackgroundColor( glass.Color(40,20,20) );
 				kills.setAlignment(1);
 				kills.setHeight(25);
-				kills.setOpaque(1);
+				kills.setOpaque(True);
 				
 				deaths = glass.GlassLabel(" 123 ");
 				deaths.setForegroundColor( tangoRed);
 				deaths.setBackgroundColor( glass.Color(30,15,15) );
 				deaths.setAlignment(1);
 				deaths.setHeight(25);
-				deaths.setOpaque(1);
+				deaths.setOpaque(True);
 				
 				assists = glass.GlassLabel(" 123 ");
 				assists.setForegroundColor( tangoYellowLight);
 				assists.setBackgroundColor( glass.Color(40,20,20) );
 				assists.setAlignment(1);
 				assists.setHeight(25);
-				assists.setOpaque(1);
+				assists.setOpaque(True);
 				
 				ping = glass.GlassLabel("1234");
 				ping.setBackgroundColor( glass.Color(30,15,15) );
 				ping.setAlignment(1);
 				ping.setHeight(25);
-				ping.setOpaque(1);
+				ping.setOpaque(True);
 				
 				row = tableWindow.table.addRow( rank, name, level, kills, deaths, assists, ping);
-				#row.setOpaque(1);
+				#row.setOpaque(True);
 				row.setBackgroundColor(glass.Color(70,20,20, 0));
-				row.setOpaque(0);
+				row.setOpaque(False);
 				#for j in range(row.getColumnCount()):
 				#	cell = row.getColumn(j);
-				#	cell.setOpaque(1);
+				#	cell.setOpaque(True);
 				#	cell.setBaseColor(glass.Color(70,70,70))
 	
 	def layoutRowIndex( self, tableCount):
@@ -226,7 +226,7 @@ class TeamScore(DefaultWindow):
 			tableWin.setPosition( int(self.getWidth() * tableX),int(self.getHeight() * tableY));
 			#table.adjustSizeToPct ( tableW, 0.9);
 			tableWin.setSize(int(tableW*self.getWidth()), int(tableH*self.getHeight()));
-			tableWin.setVisible(1);
+			tableWin.setVisible(True);
 
 			tableWin.div.setWidth(tableWin.getWidth() - 5);
 			tableWin.listContainer.setSize(tableWin.getWidth(), tableWin.getHeight() - (tableWin.div.getHeight() + tableWin.div.getY() + 5));
@@ -236,6 +236,6 @@ class TeamScore(DefaultWindow):
 			
 		for i in range(numTeams, 9): #hide the rest of the tables
 			tableWin = self.tables[i];
-			tableWin.setVisible(0);
+			tableWin.setVisible(False);
 	
 	MAX_PLAYERS_PER_TEAM = 32;

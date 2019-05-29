@@ -11,9 +11,9 @@ class FpsWindow(glass.GlassLabel):
 	#cl_showping: 0 don't show it, 1 do
 	def update(self):
 		if cvar_getvalue("cl_showfps") == 0 and cvar_getvalue("cl_showping") == 0:
-			self.setVisible(0);
+			self.setVisible(False);
 			return;
-		self.setVisible(1);
+		self.setVisible(True);
 		name = "";
 		cl_showfps = cvar_getvalue("cl_showfps");
 		if cl_showfps in (1,3):

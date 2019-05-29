@@ -46,28 +46,28 @@ class StatsWindow(glass.GlassWindow):
 		if player is not None:
 			self.player = player;
 		self.httpHandle = HTTP_Get(cvar_get("auth_requesturl")+"/user/"+self.player);
-		self.spinner.setVisible(1);
-		self.tabs.setVisible(0);
+		self.spinner.setVisible(True);
+		self.tabs.setVisible(False);
 		self.spinner.setPosition(self.getWidth()/2-16, self.getHeight()/2-16);
 		self.title.setCaption("^y"+self.player+" ^wStats & Rankings");
 		self.title.setPosition(self.getWidth()/2-self.title.getWidth()/2, 1);
-		self.setVisible(1);
+		self.setVisible(True);
 
 	def buildStats(self, xml):
 		con_println(xml+"\n");
 
 	def onAction(self, e):
 		self.releaseModalFocus();
-		self.setVisible(0);
+		self.setVisible(False);
 
 	def onEvent(self, e):
 		if e.handle == self.httpHandle:
 			if e.responseCode != 200:
 				return;
-			self.spinner.setVisible(0);
+			self.spinner.setVisible(False);
 			self.httpHandle = -1;
 
 			self.buildStats(e.responseMessage);
-			self.spinner.setVisible(0);
-			self.tabs.setVisible(1);
+			self.spinner.setVisible(False);
+			self.tabs.setVisible(True);
 

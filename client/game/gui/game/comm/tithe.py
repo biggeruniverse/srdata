@@ -11,7 +11,7 @@ class TitheSettings(DefaultContainer):
 		#self.setVisible(0);
 
 		self.table = DefaultTable();
-		self.table.setFrame(0);
+		self.table.setFrame(False);
 		self.add(self.table,10,10);
 		taxRateLabel = DefaultLabel("Tax Rate%:");
 		taxRateLabel.setFont(fontSizeSmall);
@@ -37,9 +37,9 @@ class TitheSettings(DefaultContainer):
 
 	def toggle(self):
 		if self.isVisible():
-			self.setVisible(0);
+			self.setVisible(False);
 		else:
-			self.setVisible(1);
+			self.setVisible(True);
 
 	def onValueChanged(self, e):
 		CL_UpdateTithe(int(cvar_getvalue("sv_tithe_display")));	

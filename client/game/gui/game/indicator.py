@@ -12,7 +12,7 @@ class DirectionalIndicator(DefaultContainer):
 		self.setSize(screenHeightPct(.4),screenHeightPct(.4)) 
 		self.RADIUS = screenHeightPct(.1290625)
 
-		self.setVisible(0)
+		self.setVisible(False)
 		self.fader = None
 		self.indicatorImage = DefaultImage()
 		self.indicatorImage.setImage("game/images/hit_indicator.png", "gui")
@@ -24,7 +24,7 @@ class DirectionalIndicator(DefaultContainer):
 		#hack
 		#self.setBackgroundColor(tangoGreen)
 		#self.setAlpha(255)
-		#self.setVisible(1)
+		#self.setVisible(True)
 		#self.target = savage.getGameObject(166)
 
 	def makeVisible(self):
@@ -32,7 +32,7 @@ class DirectionalIndicator(DefaultContainer):
 			self.fader.stop()
 			self.fader = None
 		self.setAlpha(255)
-		self.setVisible(1)
+		self.setVisible(True)
 		self.fader = ActionSequence(WaitAction(2000), FadeOutAction(self))
 	
 	def makeInvisible(self):
@@ -45,7 +45,7 @@ class DirectionalIndicator(DefaultContainer):
 	def update(self):
 		x,y = 0,0
 
-		self.indicatorImage.setPosition(self.getWidth()/2-self.indicatorImage.getWidth()-2, 0)
+		self.indicatorImage.setPosition(self.getWidth()//2-self.indicatorImage.getWidth()-2, 0)
 
 		if self.target is not None:
 			player = savage.getLocalPlayer()

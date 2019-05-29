@@ -19,7 +19,7 @@ def onShow():
 	GUI_ShowCursor("crosshair");
 	commcontexts.buildContextsIfNeeded();
 	commhud.toolBox.onShow();
-	commhud.contextmenu.setVisible(0);
+	commhud.contextmenu.setVisible(False);
 	commhud.contextmenu.close();
 	
 	commhud.resourcesPanel.onShow();
@@ -33,7 +33,7 @@ def onShow():
 	commhud.alerts.onShow();
 
 	if commhud.topBar.isVisible():
-		commhud.topBar.setVisible(0);
+		commhud.topBar.setVisible(False);
 	
 	"""
 	# What is that? Looks like old me wrote this, but I'm not sure what for...	
@@ -123,7 +123,7 @@ def updateMouseInfo():
 	x, y = Input_GetMouseXY();
 	obj = savage.getObjectUnder(x, y);
 	if obj == None or commhud.contextmenu.getAlpha() == 255:
-		commhud.mouseInfoLabel.setVisible(0);
+		commhud.mouseInfoLabel.setVisible(False);
 		return;
 
 	ot = obj.getType();
@@ -134,7 +134,7 @@ def updateMouseInfo():
 
 	commhud.mouseInfoLabel.setCaption(name);
 	commhud.mouseInfoLabel.setPosition(x - commhud.mouseInfoLabel.getWidth() // 2, y + 10);
-	commhud.mouseInfoLabel.setVisible(1);
+	commhud.mouseInfoLabel.setVisible(True);
 
 ## HUD INFO OVERLAY ##
 """	
@@ -166,7 +166,7 @@ selectionRect = DefaultContainer();
 selectionRect.setBaseColor(glass.Color(138, 226, 52));
 selectionRect.setBackgroundColor(glass.Color(138, 226, 52, 64));
 selectionRect.setFrameSize(1);
-selectionRect.setVisible(0);
+selectionRect.setVisible(False);
 canvas.add(selectionRect);
 
 ## RESOURCES/INFO PANEL ##		
@@ -207,7 +207,7 @@ voiceChat.setSizePct(0.3,0.35);
 voiceChat.table.adjustSizeToPct(1,1);
 add(voiceChat, "center", "center");
 voiceChat.centerWindow();
-voiceChat.setY(screenHeight/2+40);
+voiceChat.setY(screenHeight//2+40);
 
 ## MINIMAP ##
 
@@ -265,5 +265,5 @@ add(alerts, "right", 200);
 
 topBar = GameTopBar();
 add(topBar);
-topBar.setVisible(0);
+topBar.setVisible(False);
 

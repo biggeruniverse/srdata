@@ -142,13 +142,13 @@ backdrop = glass.GlassLabel();
 backdrop.setImage("/gui/standard/black.s2g");
 backdrop.setSizePct(1,1);
 backdrop.setOpaque(1);
-backdrop.setVisible(0);
+backdrop.setVisible(False);
 backdrop.setAlpha(0);
 glass.GUI_ScreenAddWidget("demos", backdrop);
 
 confirmWin = glass.GlassWindow("Delete Demo");
 glass.GUI_ScreenAddWidget("demos", confirmWin);
-confirmWin.setVisible(0);
+confirmWin.setVisible(False);
 confirm = glass.GlassLabel("Are you sure you want to delete\n demo_name_here.demo?");
 confirmWin.add(confirm, 4, 0);
 
@@ -171,7 +171,7 @@ contents = [];
 
 uploadWin = glass.GlassWindow("Upload");
 glass.GUI_ScreenAddWidget("demos", uploadWin);
-uploadWin.setVisible(0);
+uploadWin.setVisible(False);
 uploadWin.setPositionPct(0.4,0.3);
 uploadWin.setSizePct(0.3,0.3);
 
@@ -195,7 +195,7 @@ videoListScroll.setPosition(pxpadding, title.getY() + title.getHeight() + pxpadd
 contents.append([videoList, videoListScroll]);
 
 loginContainer = glass.GlassContainer();
-loginContainer.setVisible(0);
+loginContainer.setVisible(False);
 uploadWin.add(loginContainer, pxpadding, title.getY() + title.getHeight() + pxpadding*2);
 loginContainer.setWidth(uploadWin.getWidth() - pxpadding*2);
 
@@ -217,7 +217,7 @@ loginContainer.add(passwordInput, usernameInput.getX(), passwordLabel.getY());
 contents.append([loginContainer]);
 
 videoinfo = glass.GlassContainer();
-videoinfo.setVisible(0);
+videoinfo.setVisible(False);
 uploadWin.add( videoinfo, pxpadding, loginContainer.getY() );
 videoinfo.setSize(loginContainer.getWidth(), back.getY() - (uploadWin.getTitleBarHeight() + title.getY() + title.getHeight() + pxpadding ));
 
@@ -264,22 +264,22 @@ class DemoHandler:
 		
 		overhead = "/world/"+data["world"]+"_overhead.jpg";
 		if File_Exists(overhead):
-			demos.noOverhead.setVisible(0);
+			demos.noOverhead.setVisible(False);
 			w, h = demos.map.getWidth(), demos.map.getHeight();
 			demos.map.setImage(overhead);
-			demos.map.setVisible(1);
+			demos.map.setVisible(True);
 			demos.map.setSize(w,h);
 		else:
-			demos.noOverhead.setVisible(1);
-			demos.map.setVisible(0);
+			demos.noOverhead.setVisible(True);
+			demos.map.setVisible(False);
 		
 		world = "/world/"+data["world"]+".s2z";
 		if File_Exists(world):
-			demos.noMap.setVisible(0);
-			demos.play.setVisible(1);
+			demos.noMap.setVisible(False);
+			demos.play.setVisible(True);
 		else:
-			demos.noMap.setVisible(1);
-			demos.play.setVisible(0);
+			demos.noMap.setVisible(True);
+			demos.play.setVisible(False);
 		
 		size = data['filesize'] * 2**-20;
 		demos.size.setCaption("Length: "+ str(round(size, 2)) +" MB");
@@ -290,7 +290,7 @@ class DemoHandler:
 		Demo_Play(path);
 	
 	def getModalFocus(self):
-		demos.confirmWin.setVisible(1);
+		demos.confirmWin.setVisible(True);
 		demos.confirmWin.requestModalFocus();
 		ActionSequence(FadeInAction(demos.backdrop, target=180));
 		#seems to be executing too fast. TODO make the fade actions work like guiaction??
@@ -298,13 +298,13 @@ class DemoHandler:
 	def confirmDelete(self):
 		self.getModalFocus();
 		demos.confirmWin.setCaption("Delete Demo");
-		demos.confirmWin.setVisible(1);
+		demos.confirmWin.setVisible(True);
 		
 		s = "Are you sure you want to delete\n" + self.getSelectedDemo(name=True) + ".demo?";
-		demos.confirm.setVisible(1);
+		demos.confirm.setVisible(True);
 		demos.confirm.setCaption(s);
 		demos.confirm.adjustSize();
-		demos.input.setVisible(0);
+		demos.input.setVisible(False);
 		
 		winWidth = 8+demos.confirm.getWidth();
 		demos.confirmWin.setWidth(winWidth);
@@ -319,11 +319,11 @@ class DemoHandler:
 	def confirmRename(self):
 		self.getModalFocus();
 		demos.confirmWin.setCaption("Rename Demo");
-		demos.confirmWin.setVisible(1);
+		demos.confirmWin.setVisible(True);
 		
-		demos.confirm.setVisible(0);
+		demos.confirm.setVisible(False);
 		demos.confirm.adjustSize();
-		demos.input.setVisible(1);
+		demos.input.setVisible(True);
 		demos.input.setText(self.getSelectedDemo(name=True)+".demo");
 		
 		winWidth = 8+demos.input.getWidth();
@@ -351,7 +351,7 @@ class DemoHandler:
 	def hideConfirm(self):
 		ActionSequence(FadeOutAction(demos.backdrop, target=0));
 		demos.confirmWin.releaseModalFocus();
-		demos.confirmWin.setVisible(0);
+		demos.confirmWin.setVisible(False);
 		
 class UploadHandler:
 	def __init__(self):
@@ -371,7 +371,7 @@ class UploadHandler:
 	
 	def showUploadWin(self):
 		self.currentContent = demos.contents[0];
-		demos.uploadWin.setVisible(1);
+		demos.uploadWin.setVisible(True);
 		supportedEndings = ["*.mov", "*.mp4"]; # I have no idea which video formats youtube supports; maybe this could be done in an easier way
 		paths = [];
 		for ending in supportedEndings:
@@ -390,13 +390,13 @@ class UploadHandler:
 		self.count += dir;
 		if self.count < 0 or self.count > 2:
 			self.count = 0;
-			demos.uploadWin.setVisible(0);
+			demos.uploadWin.setVisible(False);
 			self.currentContent = [];
 		self.currentContent = demos.contents[self.count];		
 		for element in self.previousContent:
-			element.setVisible(0);
+			element.setVisible(False);
 		for element in self.currentContent:	
-			element.setVisible(1);	
+			element.setVisible(True);	
 		demos.next.setCaption(self.titles[self.count][0]);
 		demos.title.setCaption(self.titles[self.count][1]);
 		

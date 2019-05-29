@@ -51,7 +51,7 @@ glass.GUI_CreateScreen('hud');
 ## ORDER/WAYPOINT ##
 waypoint = glass.GlassLabel();
 waypoint.setImage("null.s2g");
-waypoint.setVisible(0);
+waypoint.setVisible(False);
 waypoint.setSize(48,48);
 glass.GUI_ScreenAddWidget("hud", waypoint);
 waypointObject = None;
@@ -60,11 +60,11 @@ class WaypointHandler:
 	def onEvent(self, e):
 		if isinstance(e, WaypointEvent):
 			if e.eventType == 'waypoint_complete' or e.eventType == 'waypoint_cancel' or e.eventType == 'waypoint_destroy':
-				hud.waypoint.setVisible(0);
+				hud.waypoint.setVisible(False);
 			else:
 				hud.waypoint.setImage(CL_GetWaypointImage());
 				hud.waypoint.setSize(48,48);
-				hud.waypoint.setVisible(1);
+				hud.waypoint.setVisible(True);
 				if e.targetId != -1:
 					hud.waypointObject = savage.getGameObject(e.targetId);
 				else:
@@ -98,7 +98,7 @@ glass.GUI_ScreenAddWidget("hud", timer);
 ## TEAM STATUS ##
 
 teamStatus = ResourcePanel();
-teamStatus.setVisible(0);
+teamStatus.setVisible(False);
 glass.GUI_ScreenAddWidget("hud", teamStatus);
 
 ## CHAT ##
@@ -349,11 +349,11 @@ def updateInventory():
 			pass;
 			#hud.ammoGraphic.setImage( glorious ammunition icon );
 		hud.ammoGraphic.setSize( w, h);
-		hud.ammoValue.setVisible(1);
-		hud.ammoGraphic.setVisible(1);
+		hud.ammoValue.setVisible(True);
+		hud.ammoGraphic.setVisible(True);
 	else:
-		hud.ammoValue.setVisible(0);
-		hud.ammoGraphic.setVisible(0);
+		hud.ammoValue.setVisible(False);
+		hud.ammoGraphic.setVisible(False);
 
 def updateWaypoint():
 	x,y = 0,0;
@@ -368,10 +368,10 @@ def updateGameStatus():
 	status = cvar_get("game_serverStatus")
 	if len(status)>0:
 		hud.gamestatus.setCaption(" "+status+" ")
-		hud.gamestatus.setVisible(1);
+		hud.gamestatus.setVisible(True);
 	else:
 		hud.gamestatus.setCaption("");
-		hud.gamestatus.setVisible(0);
+		hud.gamestatus.setVisible(False);
 	hud.gamestatus.adjustSize()
 	hud.gamestatus.setPosition(screenWidth/2-hud.gamestatus.getWidth()/2, hud.gamestatus.getY())
 

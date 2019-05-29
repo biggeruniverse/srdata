@@ -26,20 +26,20 @@ class ServerlistSection(AbstractSection):
 		self.list.setSelectionIndicator();
 		self.stop = threading.Event();
 		self.stop.clear();
-		self.refreshThread = threading.Thread("server refresh", self._refreshWhenVisible);
+		self.refreshThread = threading.Thread(name="server refresh", target=self._refreshWhenVisible);
 		self.refreshThread.start();
-		self.pingThread = threading.Thread("ping refresh", self._refreshPingWhenVisible);
+		self.pingThread = threading.Thread(name="ping refresh", target=self._refreshPingWhenVisible);
 		self.pingThread.start();
 
 	def _refreshWhenVisible(self):
 		while not self.stop.is_set():
-			if self.isVisible() == 1:
+			if self.isVisible() == True:
 				self.refresh();
 			time.sleep(60)
 
 	def _refreshPingWhenVisible(self):
 		while not self.stop.is_set():
-			if self.isVisible() == 1:
+			if self.isVisible() == True:
 				self.refreshPings();
 			time.sleep(15);
 		
@@ -48,10 +48,10 @@ class ServerlistSection(AbstractSection):
 		self.refresh();
 
 		if isConnected():
-			self.reconnectBar.setVisible(1);
+			self.reconnectBar.setVisible(True);
 			self.scroll.setY(85);
 		else:
-			self.reconnectBar.setVisible(0);
+			self.reconnectBar.setVisible(False);
 			self.scroll.setY(42);
 		
 	def create(self):
@@ -62,7 +62,7 @@ class ServerlistSection(AbstractSection):
 		top = DefaultContainer();
 		top.setSize(self.getWidth(), 35);
 		top.setBackgroundColor(windowTop);
-		top.setOpaque(1);
+		top.setOpaque(True);
 		self.add(top);
 		
 		refresh = MainIcon("refresh", 17, 17);
@@ -87,9 +87,9 @@ class ServerlistSection(AbstractSection):
 
 		self.reconnectBar = DefaultContainer();
 		self.reconnectBar.setSize(self.getWidth(), 50);
-		self.reconnectBar.setVisible(0);
+		self.reconnectBar.setVisible(False);
 		self.reconnectBar.setBackgroundColor(glass.Color(85, 21, 11));
-		self.reconnectBar.setOpaque(1);
+		self.reconnectBar.setOpaque(True);
 		self.add(self.reconnectBar, 0, 35);
 		
 		gameProgress = DefaultLabel("GAME IN PROGRESS");
@@ -138,7 +138,7 @@ class ServerlistSection(AbstractSection):
 		self.headingRow.setId("header");
 		#self.headingRow.setBackgroundColor(glass.Color(70, 40, 40, 220));
 		self.headingRow.setBaseColor(glass.Color(28,27,23));
-		self.headingRow.setFocusable(0);
+		self.headingRow.setFocusable(False);
 		
 	def refresh(self):
 		self.httpHandle = HTTP_Get(ApiUrl + "/serverlist/");
@@ -161,7 +161,7 @@ class ServerlistSection(AbstractSection):
 				else:
 					break
 				address = "%d.%d.%d.%d:%d" % (ip[0], ip[1], ip[2], ip[3], port)
-				if not self.listCache.has_key(address):
+				if address not in self.listCache:
 					row = self.list.nextRow( "", 
 					  official,
 					  address,
@@ -222,12 +222,14 @@ class ServerlistSection(AbstractSection):
 		if isinstance(e, SystemEvent):
 			strings = {"world":"N/A", "gametype":"RTSS", "cnum":"0", "cmax":"0", "world":"eden2"}
 			server = self.listCache[e.param1]
-			varlist = e.param2.split("ÿ")
+			#varlist = e.param2.split('ÿ')
+			varlist = e.param2.split(chr(255))
 			#con_println(str(e))
 			for var in varlist[1:]:
 				try:
 					#con_println("var is "+str(var)+"\n")
-					name, value = var.split('þ')
+					#name, value = var.split('þ')
+					name, value = var.split(chr(254))
 					strings[name] = value.strip()
 				except Exception as ex:
 					con_println(str(ex)+"\n")
@@ -254,7 +256,7 @@ class ServerlistSection(AbstractSection):
 					official = "";
 					if server.getAttribute("official") == "1":
 						official = "^icon shield^";
-					if not self.listCache.has_key(str(server.getAttribute("address"))):						
+					if str(server.getAttribute("address")) not in self.listCache:						
 						row = self.list.nextRow( "", 
 						  official,
 						  server.getAttribute("name"),
@@ -279,7 +281,7 @@ class ServerlistSection(AbstractSection):
 
 			self.list.useColumnDividers();
 			self.list.setAlternateColor();
-			self.headingRow.setAlternate(0);
+			self.headingRow.setAlternate(False);
 
 			self.serverCount.setCaption("Total Servers: " + str(self.list.getRowCount()-1));
 

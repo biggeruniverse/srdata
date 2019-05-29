@@ -9,7 +9,6 @@
 #
 
 from silverback import *
-import savage
 import logging
 from stackless import channel
 import threading
@@ -39,9 +38,11 @@ class GameEvent(Event):
 		self.targetId = tid
 
 	def getSource(self):
+		import savage
 		return savage.getGameObject(self.sourceId)
 
 	def getTarget(self):
+		import savage
 		return savage.getGameObject(self.targetId)
 
 	def __str__(self):
@@ -62,15 +63,38 @@ class HttpEvent(Event):
 	def __init__(self, handle, data, code):
 		self.responseMessage = data
 		self.handle = handle
-		self.responseCode = code;
+		self.responseCode = code
 
 	def __str__(self):
-		return "Http event "+str(self.handle)+":\n"+self.responseMessage;
+		return "Http event "+str(self.handle)+":\n"+self.responseMessage
+
+class SystemEvent(Event):
+	def __init__(self, param1, param2):
+		self.param1 = param1
+		self.param2 = param2
+
+	def __str__(self):
+		return "System event "+ str(self.param1)+ " "+str(self.param2)
 
 class WaypointEvent(GameEvent):
 	def __init__(self, etype, sid, tid, msg):
 		GameEvent.__init__(self, etype, sid, tid)
 		self.message = msg
+
+class DemoEvent(Event):
+	def __init__(self, time, frames, fps):
+		self.time = time
+		self.frames = frames
+		self.fps = fps
+
+class HistoryEvent(Event):
+	def __init__(self, type):
+		self.type = type
+
+class CommanderEvent(GameEvent):
+	def __init__(self, etype, sid, tid, x, y):
+		GameEvent.__init__(self, etype, sid, tid)
+		self.pos = (x, y)
 
 class EventHandler:
 	logger = logging.getLogger("silverback.eventhandler")
@@ -83,10 +107,13 @@ class EventHandler:
 		self.notifyListeners = []
 		self.gameListeners = []
 		self.httpListeners = []
+		self.systemListeners = []
 		self.voteListeners = []
+		self.demoListeners = []
+		self.historyListeners = []
 
 		self.stop = threading.Event()
-		self.queue_thread = threading.Thread(None, self._run_queue, "Event queue runner")
+		self.queue_thread = threading.Thread(name="Event queue runner", target=self._run_queue)
 		self.stop.clear()
 		self.queue_thread.start()
 
@@ -100,6 +127,12 @@ class EventHandler:
 			listenerList = self.gameListeners
 		elif isinstance(e, HttpEvent):
 			listenerList = self.httpListeners
+		elif isinstance(e, SystemEvent):
+			listenerList = self.systemListeners
+		elif isinstance(e, DemoEvent):
+			listenerList = self.demoListeners
+		elif isinstance(e, HistoryEvent):
+			listenerList = self.historyListeners
 
 		#callback to all the listeners in the list
 		for l in listenerList:
@@ -144,8 +177,17 @@ class EventHandler:
 	def addHttpListener(self, l):
 		self.httpListeners.append(l)
 
+	def addSystemListener(self, l):
+		self.systemListeners.append(l)
+
 	def addVoteListener(self, l):
 		self.voteListeners.append(l)
+
+	def addDemoListener(self, l):
+		self.demoListeners.append(l)
+
+	def addHistoryListener(self, l):
+		self.historyListeners.append(l);
 
 	def removeHttpListener(self, l):
 		self.httpListeners.remove(l)
@@ -166,6 +208,10 @@ class EventHandler:
 		e = HttpEvent(handle, msgRe, code)
 		self.send_event(e)
 
+	def systemEvent(self, p1, p2):
+		e = SystemEvent(p1, p2)
+		self.send_event(e)
+
 	def voteEvent(self):
 		e = VoteEvent()
 		self.send_event(e)
@@ -176,6 +222,18 @@ class EventHandler:
 
 	def requestEvent(self, req, src, param):
 		e = RequestEvent(req, src, param)
+		self.send_event(e)
+
+	def demoEvent(self, time, frames, fps):
+		e = DemoEvent(time, frames, fps);
+		self.send_event(e)
+
+	def historyEvent(self, type):
+		e = HistoryEvent(type);
+		self.send_event(e)
+
+	def commEvent(self, type, sid, tid, x, y):
+		e = CommanderEvent(type, sid, tid, x, y);
 		self.send_event(e)
 
 #this class isn't required in python, but it makes debugging easy

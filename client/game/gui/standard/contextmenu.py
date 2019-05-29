@@ -47,14 +47,14 @@ class ContextMenu(glass.GlassContainer):
 		for action, status in self.context.getContextActions().iteritems():
 			button = self.context.getButtonAction(action);
 			if status == Hidden:
-				button.setVisible(0);
+				button.setVisible(False);
 				button.setEnabled(0);
 			elif status == Disabled:
-				button.setVisible(1);
+				button.setVisible(True);
 				button.setEnabled(0);
 				button.setForegroundColor(tangoGrey5);
 			elif status == Enabled:
-				button.setVisible(1);
+				button.setVisible(True);
 				button.setEnabled(1);
 				button.setForegroundColor(white);
 			self.add(button);
@@ -68,10 +68,10 @@ class ContextMenu(glass.GlassContainer):
 	
 	def resizeToAlpha(self):
 		if self.getAlpha() == 0:
-			self.setVisible(0);
+			self.setVisible(False);
 			return;
 		else:
-			self.setVisible(1);
+			self.setVisible(True);
  		a = self.getAlpha() / 255.0;
 		self.bg.setSize( int(a*self.getWidth()), int(a*self.getHeight()) );
 		self.bg.setPosition(int((1-a)*self.getWidth()/2),int((1-a)*self.getHeight()/2));

@@ -11,10 +11,10 @@ class CommResearchWindow(glass.GlassWindow):
 	
 	def __init__(self):
 		glass.GlassWindow.__init__(self, "Research");
-		self.setVisible(0);
+		self.setVisible(False);
 		self.setAlpha(0);
 		self.setMovable(0);
-		self.setFocusable(0);
+		self.setFocusable(False);
 		self.setTitleVisible(0);
 		self.setTitleBarHeight(0);
 		self.setBackgroundColor(glass.Color(255,255,255,127));

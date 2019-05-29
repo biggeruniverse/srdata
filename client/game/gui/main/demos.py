@@ -112,7 +112,7 @@ class DemoHandler:
 		Demo_Play(path);
 
 	def getModalFocus(self):
-		demos.confirmWin.setVisible(1);
+		demos.confirmWin.setVisible(True);
 		demos.confirmWin.requestModalFocus();
 		ActionSequence(FadeInAction(demos.backdrop, target=180));
 		#seems to be executing too fast. TODO make the fade actions work like guiaction??
@@ -120,13 +120,13 @@ class DemoHandler:
 	def confirmDelete(self):
 		self.getModalFocus();
 		demos.confirmWin.setCaption("Delete Demo");
-		demos.confirmWin.setVisible(1);
+		demos.confirmWin.setVisible(True);
 		
 		s = "Are you sure you want to delete\n" + self.getSelectedDemo(name=True) + ".demo?";
-		demos.confirm.setVisible(1);
+		demos.confirm.setVisible(True);
 		demos.confirm.setCaption(s);
 		demos.confirm.adjustSize();
-		demos.input.setVisible(0);
+		demos.input.setVisible(False);
 		
 		winWidth = 8+demos.confirm.getWidth();
 		demos.confirmWin.setWidth(winWidth);
@@ -141,15 +141,15 @@ class DemoHandler:
 	def confirmRename(self):
 		self.getModalFocus();
 		demos.confirmWin.setCaption("Rename Demo");
-		demos.confirmWin.setVisible(1);
+		demos.confirmWin.setVisible(True);
 		
-		demos.confirm.setVisible(0);
+		demos.confirm.setVisible(False);
 		demos.confirm.adjustSize();
-		demos.input.setVisible(1);
+		demos.input.setVisible(True);
 		demos.input.setText(self.getSelectedDemo(name=True)+".demo");
 		
 		winWidth = 8+demos.input.getWidth();
-		demos.confirmWin.setWidth(winWidth);
+		demos.confirmWin.setWidth(int(winWidth));
 		demos.confirmWin.centerWindow();
 		
 		demos.yes.setCaption("Rename");
@@ -172,7 +172,7 @@ class DemoHandler:
 	def hideConfirm(self):
 		ActionSequence(FadeOutAction(demos.backdrop, target=0));
 		demos.confirmWin.releaseModalFocus();
-		demos.confirmWin.setVisible(0);
+		demos.confirmWin.setVisible(False);
 		
 class UploadHandler:
 	def __init__(self):
@@ -192,7 +192,7 @@ class UploadHandler:
 	
 	def showUploadWin(self):
 		self.currentContent = demos.contents[0];
-		demos.uploadWin.setVisible(1);
+		demos.uploadWin.setVisible(True);
 		supportedEndings = ["*.mov", "*.mp4", "*.avi", "*.wmv"]; # I have no idea which video formats youtube supports; maybe this could be done in an easier way
 		paths = [];
 		for ending in supportedEndings:
@@ -211,13 +211,13 @@ class UploadHandler:
 		self.count += dir;
 		if self.count < 0 or self.count > 2:
 			self.count = 0;
-			demos.uploadWin.setVisible(0);
+			demos.uploadWin.setVisible(False);
 			self.currentContent = [];
 		self.currentContent = demos.contents[self.count];		
 		for element in self.previousContent:
-			element.setVisible(0);
+			element.setVisible(False);
 		for element in self.currentContent:	
-			element.setVisible(1);	
+			element.setVisible(True);	
 		demos.next.setCaption(self.titles[self.count][0]);
 		demos.title.setCaption(self.titles[self.count][1]);
 		
@@ -273,7 +273,7 @@ class DemoWindow(DefaultWindow):
 		header = DefaultContainer();
 		header.setSize(self.getWidth(), 40);
 		header.setBackgroundColor(glass.Color(85, 21, 11));
-		header.setOpaque(1);
+		header.setOpaque(True);
 		self.add(header);
 
 		title = DefaultImage();
@@ -314,7 +314,7 @@ class DemoWindow(DefaultWindow):
 		
 		self.chat = DefaultTextBox();
 		self.chat.setSize(2*self.getWidth()//3, 200);
-		self.chat.setOpaque(0);
+		self.chat.setOpaque(False);
 		scroll = glass.GlassScrollArea();
 		scroll.setContent(self.chat);
 		scroll.setSize(self.getWidth()//3, 200);

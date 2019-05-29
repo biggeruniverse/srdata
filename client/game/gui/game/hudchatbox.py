@@ -11,23 +11,23 @@ class HUDChatBox( ChatBox, EventListener ):
 	HISTORY_OFF = 0
 	def __init__( self ):
 		ChatBox.__init__(self, ["msg_public", "msg_team", "msg_private", "msg_squad", "msg_clan", "msg_server", "_HCBinternal"]);
-		self.buffer.setFadeTop(1);
+		self.buffer.setFadeTop(True);
 
 		#history messages
 		self.historyBuffer = MessageBuffer(["msg_public", "msg_team", "msg_private", "msg_squad", "msg_clan", "msg_server", "_HCBinternal"]);
-		self.historyBuffer.setEditable(0);
+		self.historyBuffer.setEditable(False);
 		scroll = glass.GlassScrollArea(self.historyBuffer);
 		scroll.setScrollPolicy( glass.GlassScrollArea.SHOW_NEVER , glass.GlassScrollArea.SHOW_ALWAYS  );
-		scroll.setAutoscroll(1);
+		scroll.setAutoscroll(True);
 		self.add(scroll);
 		self.historyBuffer.parentScroll = scroll;
-		scroll.setVisible(0);
+		scroll.setVisible(False);
 		for i in range(40):
 			self.historyBuffer.addRow(" ");
 		
 		self.scroll.setVerticalScrollPolicy( glass.GlassScrollArea.SHOW_NEVER );
 		
-		self.input.setVisible(0);
+		self.input.setVisible(False);
 		
 		self.inputType = glass.GlassLabel("(squad)");
 		self.inputType.setAlignment( glass.Graphics.RIGHT );
@@ -41,7 +41,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.typing = False;
 		
 		self.fade = ActionSequence(WaitAction(5000), CheckAction(self.typing, False), FadeOutAction(self))
-		self.showHistory(0);
+		self.showHistory(False);
 
 
 	def resize( self ):
@@ -56,7 +56,7 @@ class HUDChatBox( ChatBox, EventListener ):
 	def makeVisible(self, forever=False):
 		self.fade.stop()
 		self.setAlpha(255)
-		self.setVisible(1)
+		self.setVisible(True)
 		if not forever and not self.typing:
 			self.fade = ActionSequence(WaitAction(5000), FadeOutAction(self))
 		
@@ -119,7 +119,7 @@ class HUDChatBox( ChatBox, EventListener ):
 					args = data[1:];
 					try:
 						cmdreturn = getattr( hudchatcommands, cmdname )( self, args);
-					except Exception, ex:
+					except Exception as ex:
 						con_println("^rError: User tried to exec ^w/"+cmdname+" "+" ".join(args)+"\n");
 						con_println("^rException: "+str(ex)+"\n");
 						self.deactivate();
@@ -134,8 +134,8 @@ class HUDChatBox( ChatBox, EventListener ):
 				#/ will execute python as long as no matching command is found.
 				content = content.lstrip("/")
 				try:
-					exec content;
-				except Exception, ex:
+					exec(content)
+				except Exception as ex:
 					con_println("^rError: User tried to exec ^w"+content+"\n");
 					con_println("^rException: "+str(ex)+"\n");
 				finally:
@@ -166,7 +166,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.chatType = chatType; #"all" "team" "comm" "squad" "private" "clan"
 		#don't use "private" here, use /w, /msg, /r and /re for that
 		self.input.setText("");
-		self.input.setVisible(1);
+		self.input.setVisible(True);
 		self.input.requestFocus();
 		
 		self.inputType.setCaption( "^777(" + chatType +")" );
@@ -181,7 +181,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.input.setText("");
 		self.typing = False;
 		if self.bShowInput == 0:
-			self.input.setVisible(0); #this also REMOVES the focus
+			self.input.setVisible(False); #this also REMOVES the focus
 
 	def showHistory( self, status):
 		vis = 0;
@@ -190,13 +190,13 @@ class HUDChatBox( ChatBox, EventListener ):
 		if vis != status:
 			if status == self.HISTORY_ON:
 				self.makeVisible(True)
-				self.buffer.setVisible(0);
-				self.historyBuffer.parentScroll.setVisible(1);
+				self.buffer.setVisible(False);
+				self.historyBuffer.parentScroll.setVisible(True);
 				self.historyBuffer.parentScroll.requestFocus();
 			else:
 				self.makeVisible()
-				self.buffer.setVisible(1);
-				self.historyBuffer.parentScroll.setVisible(0);
+				self.buffer.setVisible(True);
+				self.historyBuffer.parentScroll.setVisible(False);
 
 class CommChatBox( HUDChatBox ):
 	def __init__(self):

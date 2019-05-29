@@ -266,9 +266,9 @@ def patch_ssl():
         import _ssl
         import socket
         import errno
-        from cStringIO import StringIO
+        from io import StringIO
     except ImportError:
-        return
+        raise
     from . import util
 
     class SocketBio(object):
@@ -315,11 +315,11 @@ def patch_ssl():
         def __getattr__(self, attr):
             return getattr(self.sock, attr)
 
-    realwrap = _ssl.sslwrap
-    def wrapbio(sock, *args, **kwds):
-        bio = SocketBio(sock)
-        return call_on_thread(realwrap, (bio,)+args, kwds)
-    _ssl.sslwrap = wrapbio
+    #realwrap = _ssl.sslwrap
+    #def wrapbio(sock, *args, **kwds):
+    #    bio = SocketBio(sock)
+    #    return call_on_thread(realwrap, (bio,)+args, kwds)
+    #_ssl.sslwrap = wrapbio
 
 @contextlib.contextmanager
 def Unpatched():

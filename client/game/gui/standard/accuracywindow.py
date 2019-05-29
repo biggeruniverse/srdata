@@ -8,12 +8,12 @@ class AccuracyWindow( glass.GlassWindow ):
 	def __init__ ( self ):
 		glass.GlassWindow.__init__(self);
 		self.setCaption( "Weapon Accuracy" );
-		self.setFocusable(0);
+		self.setFocusable(False);
 		
 		self.table = GlassTablePlus();
 		self.add( self.table , 0 , 0);
 		self.table.setBackgroundColor(transparency);
-		self.table.setAlternate(0);
+		self.table.setAlternate(False);
 		self.table.autoAdjust = False;
 		self.table.setCellPadding(0);
 	

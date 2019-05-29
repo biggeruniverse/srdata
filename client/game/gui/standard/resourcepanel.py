@@ -86,9 +86,9 @@ class ResourcePanel(glass.GlassContainer):
 		# Update the resources
 		player = savage.getLocalPlayer();
 		if player.isCommander() or cvar_getvalue("gui_showTeamStatus") == 1:
-			self.setVisible(1);
+			self.setVisible(True);
 		else:
-			self.setVisible(0);
+			self.setVisible(False);
 			return;
 
 		myteam = savage.getLocalPlayer().getTeam();

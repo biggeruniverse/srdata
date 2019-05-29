@@ -12,7 +12,7 @@ class OptionsSection(AbstractSection):
 		
 		self.setBackgroundColor(glass.Color(24, 14, 14));
 		
-		self.restartRequired = 0;
+		self.restartRequired = False;
 		
 		bgImage = DefaultImage();
 		bgImage.setImage("bar_red_shadow.png");
@@ -22,7 +22,7 @@ class OptionsSection(AbstractSection):
 		header = DefaultContainer();
 		header.setSize(self.getWidth(), 70);
 		header.setBackgroundColor(glass.Color(85, 21, 11));
-		header.setOpaque(1);
+		header.setOpaque(True);
 		self.add(header);
 		
 		title = DefaultImage();
@@ -50,9 +50,9 @@ class OptionsSection(AbstractSection):
 		
 		self.restartWarning = DefaultContainer();
 		self.restartWarning.setSize(self.getWidth(), 50);
-		self.restartWarning.setVisible(0);
+		self.restartWarning.setVisible(False);
 		self.restartWarning.setBackgroundColor(glass.Color(85, 21, 11));
-		self.restartWarning.setOpaque(1);		
+		self.restartWarning.setOpaque(True);		
 		
 		restartWarningLabel = DefaultLabel("RESTART REQUIRED");
 		self.restartWarning.add(restartWarningLabel, "center");
@@ -154,7 +154,7 @@ class OptionsSection(AbstractSection):
 		
 		secondaryLabel = DefaultLabel("SECONDARY");
 		secondaryLabel.setFont(fontSizeSmall);
-		secondaryLabel.setEnabled(0);
+		secondaryLabel.setEnabled(False);
 		container.add(secondaryLabel, x[6] - secondaryLabel.getWidth() // 2, y);
 		
 		y += int(yInc / 1.5);
@@ -189,7 +189,7 @@ class OptionsSection(AbstractSection):
 			secondary.hotkey = False;
 			secondary.setFont(fontSizeSmall);
 			secondary.setHeight(15);
-			secondary.setEnabled(0);
+			secondary.setEnabled(False);
 			if keys != None and len(keys) > 1:
 				secondary.setCaption(keys[1]);
 			#self.bondage.append(secondary);
@@ -586,13 +586,13 @@ class OptionsSection(AbstractSection):
 		
 	def onValueChanged(self, e):
 		if hasattr(e.widget, "requiresRestart") and e.widget.requiresRestart:
-			self.restartRequired = 1;
+			self.restartRequired = True;
 			self.showRestartWarning();
 		else:
 			self.togglePostOptions();
 			
 	def showRestartWarning(self):
-		if self.restartWarning.isVisible() == 0:
+		if self.restartWarning.isVisible() == False:
 			self.restartWarning.setVisible(1);
 
 			self.gfxContainer.setY(self.restartWarning.getHeight() + 15);		
@@ -810,7 +810,7 @@ class OptionsSection(AbstractSection):
 		
 		self.postContainer = DefaultContainer();
 		self.postContainer.setWidth(container.getWidth());
-		self.postContainer.setVisible(0);
+		self.postContainer.setVisible(False);
 		container.add(self.postContainer, x[0], y + postLabel.getHeight() + 3);
 		
 		tempY = 0;
@@ -831,12 +831,12 @@ class OptionsSection(AbstractSection):
 		
 		blurLabel = DefaultLabel("MOTION BLUR");
 		blurLabel.setFont(fontSizeSmall);
-		blurLabel.setEnabled(0);
+		blurLabel.setEnabled(False);
 		self.postContainer.add(blurLabel, x[4], tempY);
 		
 		blur = DefaultCheckBox();
 		blur.linkCvar("gfx_postMotion");
-		blur.setEnabled(0);
+		blur.setEnabled(False);
 		self.postContainer.add(blur, x[6], tempY);
 		
 		tempY += yInc;
@@ -931,8 +931,8 @@ class Binder(DefaultWindow):
 
 		self.info = DefaultTextBox();
 		self.info.setForegroundColor(glass.Color(238, 238, 238));
-		self.info.setOpaque(0);
-		self.info.setFocusable(0);
+		self.info.setOpaque(False);
+		self.info.setFocusable(False);
 		self.info.setText("To choose a new bind key press a key or click on the current bind key label");
 		self.info.setWidth(screenWidthPct(.25));
 		self.add(self.info, "center", "top");
@@ -959,10 +959,10 @@ class Binder(DefaultWindow):
 
 		self.canvas = glass.GlassCanvas();
 		self.canvas.setBackgroundColor(glass.Color(0, 0, 0, 0));
-		self.canvas.setVisible(0);
-		self.canvas.setOpaque(1);
+		self.canvas.setVisible(False);
+		self.canvas.setOpaque(True);
 		self.canvas.invisTextField = DefaultTextField();
-		self.canvas.invisTextField.setVisible(0);
+		self.canvas.invisTextField.setVisible(False);
 		c.add(self.canvas.invisTextField);
 		c.add(self.canvas);
 		self.canvas.setSizePct(1, 1);
@@ -971,7 +971,7 @@ class Binder(DefaultWindow):
 		self.canvas.invisTextField.addKeyListener(self);
 	
 		# TODO: add button to set to default
-		self.setVisible(0);	
+		self.setVisible(False);	
 		
 	def onAction(self, e):
 		if e.widget is self.ok:
@@ -982,12 +982,12 @@ class Binder(DefaultWindow):
 				if self.key is not None:
 					setBind(self.action, profile, self.key);
 				self.updateKeys(profile);
-			self.setVisible(0);
+			self.setVisible(False);
 		elif e.widget is self.clear:
 			self.updateLabel(None);
 			self.key = None;
 		elif e.widget is self.cancel:
-			self.setVisible(0);
+			self.setVisible(False);
 		
 	# profile = -1 is a general bind and is to be applied to all profiles
 	# profile = 0 is a player bind and is to be applied to 2 as well for spectators
@@ -1007,13 +1007,13 @@ class Binder(DefaultWindow):
 		self.centerWindow();
 		self.keyLabel.setCaption(handle.getCaption());
 		self.keyLabel.setX(50-self.keyLabel.getWidth()//2)
-		self.setVisible(1);
+		self.setVisible(True);
 		mainmenu.blocker.setSizePct(1,1);
-		mainmenu.blocker.setVisible(1);
+		mainmenu.blocker.setVisible(True);
 		mainmenu.blocker.requestMoveToTop();
 		self.requestMoveToTop();
-		self.canvas.setVisible(1);
-		self.canvas.invisTextField.setVisible(1);
+		self.canvas.setVisible(True);
+		self.canvas.invisTextField.setVisible(True);
 		self.canvas.invisTextField.setPosition(-100, -100);
 		self.canvas.invisTextField.requestFocus();
 

@@ -49,7 +49,7 @@ class LobbyWindow(DefaultWindow):
 
 		# Spec button
 		self.specButton = DefaultButton("Spectators");
-		self.add(self.specButton, self.getWidth()/2 - self.specButton.getWidth()/2, 10);
+		self.add(self.specButton, self.getWidth()//2 - self.specButton.getWidth()//2, 10);
 		self.specButton.addActionListener(self);
 
 		# Spec Window:
@@ -57,8 +57,8 @@ class LobbyWindow(DefaultWindow):
 		self.specWindow.setBackgroundColor(glass.Color(70,20,20));
 		self.add(self.specWindow);
 		self.specWindow.setSizePct(0.15, 0.4);
-		self.specWindow.setPosition(self.getWidth()/2 - self.specWindow.getWidth()/2, self.specButton.getY()+ self.specButton.getHeight() + 10)
-		self.specWindow.setVisible(0);
+		self.specWindow.setPosition(self.getWidth()//2 - self.specWindow.getWidth()//2, self.specButton.getY()+ self.specButton.getHeight() + 10)
+		self.specWindow.setVisible(False);
 
 		joinSpec = DefaultButton("Enlist now");
 		joinSpec.setWidth(self.specWindow.getWidth());
@@ -95,11 +95,11 @@ class LobbyWindow(DefaultWindow):
 		chatContainer.add(self.chatBox);		
 		self.chatBox.setSizePct(1, 1);
 		self.chatBox.resize();
-		self.chatBox.alwaysShowInput(1);
-		self.chatBox.inputType.setVisible(0);
-		self.chatBox.buffer.setVisible(0);
-		self.chatBox.historyBuffer.parentScroll.setVisible(1);
-		self.chatBox.historyBuffer.parentScroll.setAutoscroll(1); # TODO: Fix auto scroll
+		self.chatBox.alwaysShowInput(True);
+		self.chatBox.inputType.setVisible(False);
+		self.chatBox.buffer.setVisible(False);
+		self.chatBox.historyBuffer.parentScroll.setVisible(True);
+		self.chatBox.historyBuffer.parentScroll.setAutoscroll(True); # TODO: Fix auto scroll
 
 		# Leave button 
 		leave = DefaultButton("<< Menu");
@@ -128,29 +128,29 @@ class LobbyWindow(DefaultWindow):
 
 		for i, teamList in enumerate(self.teamContainerList):
 			if i == team1:
-				teamList.setVisible(1);
-				teamList.setX(self.getWidth()/2 - teamList.getWidth() - 10);
+				teamList.setVisible(True);
+				teamList.setX(self.getWidth()//2 - teamList.getWidth() - 10);
 				teamList.changeSide("left");
 				dotString += " ^icon ../../gui/game/images/roundhi^ ";
 			elif i == team2:
-				teamList.setVisible(1);
-				teamList.setX(self.getWidth()/2 + 10);
+				teamList.setVisible(True);
+				teamList.setX(self.getWidth()//2 + 10);
 				teamList.changeSide("right");
 				dotString += " ^icon ../../gui/game/images/roundhi^ ";
 			else:
-				teamList.setVisible(0);
+				teamList.setVisible(False);
 				dotString += " ^icon ../../gui/game/images/round^ ";
 
 		self.dots.setCaption(dotString);
 		#self.dots.adjustSize();
 
 	def setVisible(self, value):
-		if value == 1:
+		if value == True or value == 1:
 			self.build();
 		if savage.getLocalTeam().teamId != 0:
-			self.play.setVisible(1);
+			self.play.setVisible(True);
 		else:
-			self.play.setVisible(0);
+			self.play.setVisible(False);
 
 		DefaultWindow.setVisible(self, value);
 
@@ -158,7 +158,7 @@ class LobbyWindow(DefaultWindow):
 		for teamList in self.teamContainerList:
 			teamList.build();
 			if len(self.teamContainerList) < 3:
-				teamList.scrollTeamsArrow.setVisible(0);
+				teamList.scrollTeamsArrow.setVisible(False);
 
 		self.specList.erase();
 		for player in savage.Team(0).getPlayers():
@@ -172,9 +172,9 @@ class LobbyWindow(DefaultWindow):
 	def toggleSpecList(self):
 		# for now, just make it visible:
 		if self.specWindow.isVisible():
-			self.specWindow.setVisible(0);
+			self.specWindow.setVisible(False);
 		else:
-			self.specWindow.setVisible(1);
+			self.specWindow.setVisible(True);
 
 	def onAction(self, e):
 		if e.widget.getCaption() == "Spectators":
@@ -264,9 +264,9 @@ class TeamList(DefaultContainer):
 			return;
 
 		commRow.getColumn(0).setColumnSpan(2);
-		commRow.setFocusable(0);
+		commRow.setFocusable(False);
 		enlistRow.getColumn(0).setColumnSpan(4);	
-		enlistRow.setFocusable(0);
+		enlistRow.setFocusable(False);
 
 		self.kills.setCaption("^icon ../../gui/game/images/kills^^g%d/^r%d/^y%d" % (self.team.getKills(),self.team.getDeaths(), self.team.getAssists()));
 		
@@ -293,7 +293,7 @@ class TeamList(DefaultContainer):
 			self.listContainer.setPosition(int(self.getWidth() * 0.2), self.kills.getHeight());
 			self.scrollTeamsArrow.setImage("gui/game/images/arrow_left.tga");
 			self.scrollTeamsArrow.setSize(self.getWidth() - self.listContainer.getWidth() - 10, int(self.listContainer.getWidth()*0.7));
-			self.scrollTeamsArrow.setPosition(0, self.getHeight()/2 - self.scrollTeamsArrow.getHeight()/2);
+			self.scrollTeamsArrow.setPosition(0, self.getHeight()//2 - self.scrollTeamsArrow.getHeight()//2);
 			self.kills.setPosition(self.listContainer.getX() - self.kills.getWidth(),0);	
 		else:
 			self.description.setPosition(self.getWidth()//2 - self.description.getWidth()//2, 0);		
@@ -301,7 +301,7 @@ class TeamList(DefaultContainer):
 			self.kills.setPosition(self.listContainer.getWidth(), 0);
 			self.scrollTeamsArrow.setImage("gui/game/images/arrow_right.tga");
 			self.scrollTeamsArrow.setSize(self.getWidth() - self.listContainer.getWidth() - 10, int(self.listContainer.getWidth()*0.7));
-			self.scrollTeamsArrow.setPosition(self.getWidth()-self.scrollTeamsArrow.getWidth(), self.getHeight()/2 - self.scrollTeamsArrow.getHeight()/2);
+			self.scrollTeamsArrow.setPosition(self.getWidth()-self.scrollTeamsArrow.getWidth(), self.getHeight()//2 - self.scrollTeamsArrow.getHeight()//2);
 		
 			
 	def update(self):

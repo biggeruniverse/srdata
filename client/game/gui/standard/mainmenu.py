@@ -17,12 +17,12 @@ def onShow():
 	IRC_Connect("irc.freenode.net");
 
 	if isConnected():
-		mainmenu.ret.setVisible(1);
-                mainmenu.play.setVisible(0);
+		mainmenu.ret.setVisible(True);
+                mainmenu.play.setVisible(False);
 		mainmenu.topstatus.connected();
 	else:
-		mainmenu.ret.setVisible(0);
-                mainmenu.play.setVisible(1);
+		mainmenu.ret.setVisible(False);
+                mainmenu.play.setVisible(True);
 		mainmenu.topstatus.disconnected();
 	mainmenu.topstatus.show();
 
@@ -40,7 +40,7 @@ backdrop.setBackgroundColor(glass.Color(233, 233, 187, 64));
 backdrop.setGradientColor(glass.Color(233, 233, 187, 0));
 backdrop.setSize(600, screenHeight);
 backdrop.setPosition(screenWidth / 2 - 300, 0);
-backdrop.setFocusable(0);
+backdrop.setFocusable(False);
 trap.add(backdrop);
 
 testConfirm = DefaultConfirm("You sure bro?", "test1", "test2", "test3");
@@ -72,8 +72,8 @@ def playgame():
 	#	mainmenu.show_login();
 
 def disconnected():
-	mainmenu.ret.setVisible(0);
-	mainmenu.play.setVisible(1);
+	mainmenu.ret.setVisible(False);
+	mainmenu.play.setVisible(True);
 	mainmenu.topstatus.disconnected();
 
 ret = gblButtonFactory.createInstance("Return");
@@ -81,10 +81,10 @@ backdrop.add(ret);
 ret.setWidth(80);
 ret.setPositionPct(.41, .6);
 ret.setClickAction("GUI_ShowScreen('lobby')");
-ret.setVisible(0);
+ret.setVisible(False);
 
 options = gblButtonFactory.createInstance("Options");
-options.setClickAction("mainmenu.optionwin.setVisible(1);");
+options.setClickAction("mainmenu.optionwin.setVisible(True);");
 backdrop.add(options);
 options.setPositionPct(.1, .6);
 options.setWidth(80);
@@ -103,13 +103,13 @@ optionwin = OptionsWindow();
 glass.GUI_ScreenAddWidget("mainmenu", optionwin);
 optionwin.setSizePct(.55, .45);
 optionwin.centerWindow();
-optionwin.setVisible(0);
+optionwin.setVisible(False);
 
 stats = StatsWindow(cvar_get('username'));
 glass.GUI_ScreenAddWidget("mainmenu", stats);
 stats.setSizePct(.45, .55);
 stats.centerWindow();
-stats.setVisible(0);
+stats.setVisible(False);
 
 #create and hide the game error dialog
 gameerror = glass.GlassWindow("Game Error")
@@ -118,15 +118,15 @@ gameerrormsg = glass.GlassLabel("text here")
 gameerrormsg.setId("msg")
 gameerrormsg.setSize(500, 40)
 gameerror.add(gameerrormsg, 10, 10)
-gameerror.setVisible(0)
+gameerror.setVisible(False)
 ok = gblButtonFactory.createInstance("OK")
-ok.setClickAction("w=glass.GUI_GetWidget('mainmenu:Game Error');w.setVisible(0);")
+ok.setClickAction("w=glass.GUI_GetWidget('mainmenu:Game Error');w.setVisible(False);")
 gameerror.add(ok, 50, 45);
 glass.GUI_ScreenAddWidget("mainmenu", gameerror)
 gameerror.centerWindow()
 
 def show_login():
-	mainmenu.authwin.setVisible(1);
+	mainmenu.authwin.setVisible(True);
 	mainmenu.authwin.requestModalFocus();
 
 def show_confirmquit():
@@ -143,7 +143,7 @@ def show_confirmquit():
 	win = glass.GUI_GetWindow("mainmenu:Confirm")
 	if win != None:
 		glass.GUI_GetWidgetTyped('mainmenu:Confirm:message', glass.GlassLabel).setCaption(quit_msg[msg])	
-		win.setVisible(1)
+		win.setVisible(True)
 		win.requestModalFocus()
 		win.setSize(lbl.getWidth()+30, 100)
 		return
@@ -161,7 +161,7 @@ def show_confirmquit():
 	ok.setPositionPct(.5, .5);
 
 	cancel = gblButtonFactory.createInstance("Cancel")
-	cancel.setClickAction("w=glass.GUI_GetWindow('mainmenu:Confirm');w.setVisible(0);w.releaseModalFocus()")
+	cancel.setClickAction("w=glass.GUI_GetWindow('mainmenu:Confirm');w.setVisible(False);w.releaseModalFocus()")
 	win.add(cancel)
 	cancel.setPositionPct(.7, .5);
 
@@ -174,7 +174,7 @@ def show_gameerror(msg):
 	#TODO make me wrap
 	#TODO raise the window?
 	w = glass.GUI_GetWidget('mainmenu:Game Error');
-	w.setVisible(1);
+	w.setVisible(True);
 	con_println(msg);
 
 execwindow.newExecWindow("mainmenu");

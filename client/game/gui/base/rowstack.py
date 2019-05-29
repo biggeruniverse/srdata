@@ -9,7 +9,7 @@ class DefaultRowStack:
 		self.rows = [];
 		self.currentRow = None;
 		self.columnDividers = False;
-		self.alternateColumns = 0;
+		self.alternateColumns = False;
 		self.padding = 5;
 		self.autoAdjust = False;
 		
@@ -22,7 +22,7 @@ class DefaultRowStack:
 	def addRow( self, *inputs):
 		row = glass.GlassRow();
 		for widget in inputs:
-			if isinstance(widget,(str,unicode)):
+			if isinstance(widget,str):
 				widget = glass.GlassLabel(str(widget));
 			row.add( widget );
 		self._add(row);
@@ -31,9 +31,9 @@ class DefaultRowStack:
 			self.adjustSize();
 
 		if self.columnDividers:
-			for i in xrange(self.getColumnCount()):
+			for i in range(self.getColumnCount()):
 				cell = row.getColumn(i);
-				cell.useFrame(0,1,0,0);
+				cell.useFrame(False,True,False,False);
 
 		row.setAlternate(self.alternateColumns);
 		return row;
@@ -60,21 +60,21 @@ class DefaultRowStack:
 	def useColumnDividers(self):
 		self.columnDividers = True;
 	
-		for i in xrange(self.getColumnCount()-1):
+		for i in range(self.getColumnCount()-1):
 			for cell in self.itercol(i):
-				cell.useFrame(0,1,0,0);
+				cell.useFrame(False,True,False,False);
 
 	def setAlternateColor(self):
-		self.alternateColumns = 1;
+		self.alternateColumns = True;
 		for row in self.rows:
-			row.setAlternate(1);
+			row.setAlternate(True);
 
 	# Adding a widget to the current row
 	def add(self, widget):
 		if self.currentRow is None:
 			self.nextRow();
 			
-		if isinstance(widget,(str,unicode)):
+		if isinstance(widget,str):
 			widget = glass.GlassLabel(str(widget));
 		return self.currentRow.add(widget);
 
@@ -101,7 +101,7 @@ class DefaultRowStack:
 	def iterrow(self, rowIndex):
 		#iterates over the cells in a row
 		row = self.rows[rowIndex];
-		for j in xrange(row.getColumnCount()):
+		for j in range(row.getColumnCount()):
 			yield row.getColumn(j);
 	
 	def itercol(self, colIndex):
@@ -136,7 +136,7 @@ class DefaultRowStack:
 			height = 5;
 			for cnum,cell in enumerate(self.iterrow(rownum)):
 				height = max(height, cell.getHeight());
-				widths[cnum] = max(widths[cnum], cell.getWidth()/cell.getColumnSpan());
+				widths[cnum] = max(widths[cnum], cell.getWidth()//cell.getColumnSpan());
 
 			for cell in self.iterrow(rownum):
 				cell.setHeight(height);

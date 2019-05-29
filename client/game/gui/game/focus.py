@@ -11,7 +11,7 @@ class FocusIndicator(DefaultContainer):
 		self.images = [];
 		self.csize=16;
 
-		for i in xrange(4):
+		for i in range(4):
 			img = DefaultImage()
 			img.setImage("/game/images/reticle"+str(i)+".png", "gui")
 			img.setSize(self.csize, self.csize)
@@ -29,7 +29,7 @@ class FocusIndicator(DefaultContainer):
 		f = 1.0-f
 
 		if fp < 1.0:
-			self.setVisible(1)
+			self.setVisible(True)
 			d = self.csize*2+16
 			self.setSize(int(self.maxSize*f)+d, int(self.maxSize*f)+d)
 
@@ -38,5 +38,5 @@ class FocusIndicator(DefaultContainer):
 			self.images[2].setPosition(self.getWidth()-self.csize, self.getHeight()-self.csize)
 			self.images[3].setPosition(0, self.getHeight()-self.csize)
 		else:
-			self.setVisible(0)
+			self.setVisible(False)
 

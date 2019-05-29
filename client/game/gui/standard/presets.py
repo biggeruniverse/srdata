@@ -82,8 +82,8 @@ class PresetWindow( glass.GlassWindow ):
 	def show( self, typenm):
 		if typenm == "new":
 			self.setCaption("New Preset");
-			self.dropdown.setVisible(0);
-			self.input.setVisible(1);
+			self.dropdown.setVisible(False);
+			self.input.setVisible(True);
 			self.input.setText("New Preset");
 			self.action.setCaption("Create");
 			
@@ -93,8 +93,8 @@ if gblPresetManager.window.input.getText() != '':
 	gblPresetManager.window.close(); """);
 		elif typenm == "rename":
 			self.setCaption("Rename Preset");
-			self.dropdown.setVisible(1);
-			self.input.setVisible(1);
+			self.dropdown.setVisible(True);
+			self.input.setVisible(True);
 			self.input.setText("New Name");
 			self.action.setCaption("Rename");
 			
@@ -110,8 +110,8 @@ if gblPresetManager.window.input.getText() != '':
 			
 		elif typenm == "delete":
 			self.setCaption("Delete Preset");
-			self.dropdown.setVisible(1);
-			self.input.setVisible(0);
+			self.dropdown.setVisible(True);
+			self.input.setVisible(False);
 			self.action.setCaption("Delete");
 			
 			self.action.setClickAction("""
@@ -122,7 +122,7 @@ gblPresetManager.window.close();
 			for presetName in gblPresetManager.dict.keys():
 				self.dropdown.addOption(presetName,presetName);
 			
-		self.setVisible(1);
+		self.setVisible(True);
 		self.requestModalFocus();
 		self.centerWindow();
 
@@ -134,7 +134,7 @@ gblPresetManager.window.close();
 
 	def close(self):
 		self.releaseModalFocus();
-		self.setVisible(0);
+		self.setVisible(False);
 
 
 
@@ -161,7 +161,7 @@ class PresetManager( glass.GlassContainer ):
 		
 		self.window = PresetWindow();
 		self.window.centerWindow();
-		self.window.setVisible(0);
+		self.window.setVisible(False);
 		
 		self.dict = OrderedDict();
 		self.currentPreset = self.EMPTY_PRESET;

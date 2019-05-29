@@ -26,7 +26,7 @@ def frame():
 
 def onShow():
 	commcontexts.buildContextsIfNeeded();
-	commhud.contextmenu.setVisible(0);
+	commhud.contextmenu.setVisible(False);
 	commhud.contextmenu.close();
 	
 	commhud.resourcesPanel.resetDiffCounters();

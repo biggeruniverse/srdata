@@ -21,7 +21,7 @@ def frame():
 		 #I hope it does
 		if player.getTeam() != 0:
 			for widget in spechud.nonSpecWidgets:
-				widget.setVisible(1);
+				widget.setVisible(True);
 			spechud.teamStatus.update();
 			spechud.updateGold();
 			spechud.updateHealth();
@@ -29,17 +29,17 @@ def frame():
 			spechud.updateInventory();
 			spechud.stateContainer.update();
 			spechud.updateCrosshairLimits();
-			spechud.researchinfowindow1.setVisible(0);
-			spechud.researchinfowindow2.setVisible(0);
-			spechud.unitinfowindow1.setVisible(0);
-			spechud.unitinfowindow2.setVisible(0);
-			spechud.teamStats.setVisible(0);
+			spechud.researchinfowindow1.setVisible(False);
+			spechud.researchinfowindow2.setVisible(False);
+			spechud.unitinfowindow1.setVisible(False);
+			spechud.unitinfowindow2.setVisible(False);
+			spechud.teamStats.setVisible(False);
 			
 		else:
 			for widget in spechud.nonSpecWidgets:
-				widget.setVisible(0);
-			spechud.teamStatus.setVisible(0);
-			spechud.compass.setVisible(0);
+				widget.setVisible(False);
+			spechud.teamStatus.setVisible(False);
+			spechud.compass.setVisible(False);
 			if spechud.researchinfowindow1.isVisible():
 				spechud.researchinfowindow1.updateResearch();
 			if spechud.researchinfowindow2.isVisible():
@@ -77,11 +77,11 @@ def onShow():
 
 def setMode(m):
 	if m == "lobby":
-		spechud.hud.setVisible(0);
-		spechud.lobby.setVisible(1);		
+		spechud.hud.setVisible(False);
+		spechud.lobby.setVisible(True);		
 	elif m == "hud":
-		spechud.lobby.setVisible(0);
-		spechud.hud.setVisible(1);
+		spechud.lobby.setVisible(False);
+		spechud.hud.setVisible(True);
 
 glass.GUI_CreateScreen('spechud');
 
@@ -90,7 +90,7 @@ glass.GUI_ScreenAddWidget("spechud", lobby);
 
 # Main container that contains all widgets that are show when NOT in lobby
 hud = DefaultContainer();
-hud.setOpaque(0);
+hud.setOpaque(False);
 glass.GUI_ScreenAddWidget("spechud", hud);
 hud.setSizePct(1,1);
 
@@ -123,7 +123,7 @@ timer.setPosition(10, minimap.getHeight() + 20);
 ## TEAM STATUS ##
 
 teamStatus = ResourcePanel();
-teamStatus.setVisible(0);
+teamStatus.setVisible(False);
 hud.add(teamStatus);
 
 ## TEAM STATS ##
@@ -139,14 +139,14 @@ teamStats.add(team1healthBackground);
 team1healthBackground.setPositionPct(0.025,0.05);
 team1healthBackground.setSizePct(0.2,0.9);
 team1healthBackground.setBackgroundColor(tangoRedDark);
-team1healthBackground.setOpaque(1);
+team1healthBackground.setOpaque(True);
 		
 team1healthForeground = glass.GlassLabel(" ")
 teamStats.add(team1healthForeground);
 team1healthForeground.setPositionPct(0.025,0.05);
 team1healthForeground.setSizePct(0.2,0.9);
 team1healthForeground.setBackgroundColor(tangoBlue);
-team1healthForeground.setOpaque(1);
+team1healthForeground.setOpaque(True);
 	
 team1cc = glass.GlassLabel("");
 teamStats.add(team1cc);
@@ -159,14 +159,14 @@ teamStats.add(team2healthBackground);
 team2healthBackground.setPositionPct(0.775,0.05);
 team2healthBackground.setSizePct(0.2,0.9);
 team2healthBackground.setBackgroundColor(tangoRedDark);
-team2healthBackground.setOpaque(1);
+team2healthBackground.setOpaque(True);
 		
 team2healthForeground = glass.GlassLabel(" ")
 teamStats.add(team2healthForeground);
 team2healthForeground.setPositionPct(0.775,0.05);
 team2healthForeground.setSizePct(0.2,0.9);
 team2healthForeground.setBackgroundColor(tangoBlue);
-team2healthForeground.setOpaque(1);
+team2healthForeground.setOpaque(True);
 	
 team2cc = glass.GlassLabel("");
 teamStats.add(team2cc);
@@ -218,13 +218,13 @@ chatBox.resize();
 
 healthBackground = glass.GlassLabel();
 healthBackground.setBackgroundColor( glass.Color(133,11,10) );
-healthBackground.setOpaque(1);
+healthBackground.setOpaque(True);
 healthBackground.setPosition( 10, screenHeight - 10 - healthBackground.getHeight());
 hud.add(healthBackground);
 healthBackground.setSizePct(0.012,0.13);
 
 healthForeground = glass.GlassLabel();
-healthForeground.setOpaque(1);
+healthForeground.setOpaque(True);
 healthForeground.setBackgroundColor( glass.Color(255,21,22) );
 healthForeground.setSizePct(0.012,0.13);
 healthForeground.setPosition( healthBackground.getX(), healthBackground.getY());
@@ -251,19 +251,19 @@ voiceChat.setSizePct(0.25,0.35);
 voiceChat.table.adjustSizeToPct(1,1);
 hud.add(voiceChat);
 voiceChat.centerWindow();
-voiceChat.setY(screenHeight/2+40);
+voiceChat.setY(screenHeight//2+40);
 
 ## STAMINA DISPLAY ##
 
 staminaBackground = glass.GlassLabel();
 staminaBackground.setBackgroundColor( glass.Color(10,115,110) );
-staminaBackground.setOpaque(1);
+staminaBackground.setOpaque(True);
 staminaBackground.setPosition( screenWidth - staminaBackground.getWidth() - 10, healthBackground.getY() );
 hud.add(staminaBackground);
 staminaBackground.setSizePct(0.012,0.13);
 
 staminaForeground = glass.GlassLabel();
-staminaForeground.setOpaque(1);
+staminaForeground.setOpaque(True);
 staminaForeground.setBackgroundColor( glass.Color(20,255,248) );
 staminaForeground.setPosition( staminaBackground.getX(), staminaBackground.getY());
 hud.add(staminaForeground);
@@ -274,7 +274,7 @@ staminaForeground.setSizePct(0.012,0.13);
 inventory = glass.GlassContainer();
 inventory.setSize(int( 0.26*screenHeight ), int( 0.052*screenHeight ) );
 inventory.setPosition( staminaBackground.getX() - 10 - inventory.getWidth() , screenHeight - 10 - inventory.getHeight());
-inventory.setOpaque(0);
+inventory.setOpaque(False);
 hud.add(inventory);
 
 inventorySlots = [];
@@ -283,7 +283,7 @@ for i in range(5):
 	slot = glass.GlassLabel();
 	slot.setSize( int( 0.052*screenHeight ) , int( 0.052*screenHeight ) );
 	slot.setPosition( i*slot.getWidth(), 0);
-	slot.setOpaque(1);
+	slot.setOpaque(True);
 	slot.setBackgroundColor( black );
 	inventorySlots.append(slot);
 	inventory.add(slot);
@@ -309,7 +309,7 @@ ammoGraphic = glass.GlassLabel();
 ammoGraphic.setImage("/gui/standard/icons/comm_crown.s2g");
 ammoGraphic.setSize( int( 0.60*slot.getHeight() ) , int( 0.60*slot.getHeight() ));
 ammoGraphic.setPosition( inventory.getX() - 10 - ammoGraphic.getWidth() , screenHeight - ammoGraphic.getHeight()- 10);
-ammoGraphic.setOpaque(1);
+ammoGraphic.setOpaque(True);
 hud.add(ammoGraphic);
 
 ammoValue = glass.GlassLabel("999");
@@ -320,7 +320,7 @@ hud.add(ammoValue);
 
 ## NOTIFICATIONS ##
 scroll = glass.GlassScrollArea();
-scroll.setAutoscroll(1);
+scroll.setAutoscroll(True);
 scroll.setScrollPolicy(1,1); #SHOW_NEVER
 hud.add(scroll);
 scroll.setSizePct(0.32,0.16);
@@ -330,16 +330,16 @@ scroll.setPosition(screenWidth-360, 10);
 notifyBuffer = MessageBuffer(["notify", "notifyhide"]); #notify_generalhide too?
 scroll.setContent(notifyBuffer);
 notifyBuffer.setSize(scroll.getWidth(), scroll.getHeight());
-notifyBuffer.setFadeTop(1);
-notifyBuffer.setFadeBottom(0);
-notifyBuffer.showTime(0);
+notifyBuffer.setFadeTop(True);
+notifyBuffer.setFadeBottom(False);
+notifyBuffer.showTime(False);
 for i in range(10):
 	notifyBuffer.addRow(" ");
 
 ## COMPASS ##
 
 compass = HUDCompass();
-compass.setPosition( (screenWidth - compass.getWidth() )/2, 0);
+compass.setPosition( (screenWidth - compass.getWidth() )//2, 0);
 hud.add( compass);
 
 ## ORDER/WAYPOINT ##
@@ -361,7 +361,7 @@ voteSelection.setPosition(screenWidth // 2 - voteSelection.getWidth() // 2, scre
 gamestatus = glass.GlassLabel()
 gamestatus.setBackgroundColor(glass.Color(0,0,0,50))
 gamestatus.setForegroundColor(glass.Color(255,255,255))
-gamestatus.setOpaque(1)
+gamestatus.setOpaque(True)
 hud.add(gamestatus);
 gamestatus.setPositionPct(.5,.35)
 
@@ -419,7 +419,7 @@ unitinfowindow2.setPosition(researchinfowindow2.getX(), unitinfowindow1.getY());
 
 topBar = GameTopBar();
 hud.add(topBar);
-topBar.setVisible(0);
+topBar.setVisible(False);
 
 def updateGold():
 	player = savage.getLocalPlayer();
@@ -489,23 +489,23 @@ def updateInventory():
 			pass;
 			#spechud.ammoGraphic.setImage( glorious ammunition icon );
 		spechud.ammoGraphic.setSize( w, h);
-		spechud.ammoValue.setVisible(1);
-		spechud.ammoGraphic.setVisible(1);
+		spechud.ammoValue.setVisible(True);
+		spechud.ammoGraphic.setVisible(True);
 	else:
-		spechud.ammoValue.setVisible(0);
-		spechud.ammoGraphic.setVisible(0);
+		spechud.ammoValue.setVisible(False);
+		spechud.ammoGraphic.setVisible(False);
 
 
 def updateGameStatus():
 	status = cvar_get("game_serverStatus")
 	if len(status)>0:
 		spechud.gamestatus.setCaption(" "+status+" ")
-		spechud.gamestatus.setVisible(1);
+		spechud.gamestatus.setVisible(True);
 	else:
 		spechud.gamestatus.setCaption("");
-		spechud.gamestatus.setVisible(0);
+		spechud.gamestatus.setVisible(False);
 	spechud.gamestatus.adjustSize()
-	spechud.gamestatus.setPosition(screenWidth/2-spechud.gamestatus.getWidth()/2, spechud.gamestatus.getY())
+	spechud.gamestatus.setPosition(screenWidth//2-spechud.gamestatus.getWidth()//2, spechud.gamestatus.getY())
 
 def updateCrosshairLimits():
 	player = savage.getLocalPlayer();

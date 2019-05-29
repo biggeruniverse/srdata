@@ -3,10 +3,10 @@
 import savage;
 
 class NoticesEventHandler(EventListener):
-        def __init__(self):
-                pass;
+	def __init__(self):
+		pass;
 
-        def onEvent(self, e):
+	def onEvent(self, e):
 		if isinstance(e, NotifyEvent):
 			con_println("notice! "+str(e)+"\n");
 

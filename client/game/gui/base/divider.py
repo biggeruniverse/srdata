@@ -5,5 +5,5 @@ import glass
 class DefaultDivider(DefaultImage):
 	def __init__(self):
 		DefaultImage.__init__(self);
-		self.setFocusable(0);
+		self.setFocusable(False);
 		self.setImage("divider.png");

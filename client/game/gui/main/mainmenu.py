@@ -28,13 +28,13 @@ def add(obj, x=None, y=None):
 def addModule(name, obj):
 	# Every "module" should have the same position
 	mainmenu.modules[name] = obj	
-	obj.setVisible(0);	
+	obj.setVisible(False);	
 	mainmenu.content.add(obj);	
 	obj.setX(screenWidth // 2 - obj.getWidth() // 2);
 
 def showModule(name):
 	for modName in mainmenu.modules:
-		visible = 1 if modName == name else 0;
+		visible = True if modName == name else False;
 		try:
 			mainmenu.modules[modName].setVisible(visible);
 		except KeyError:
@@ -50,7 +50,7 @@ def show_gameerror(msg):
 	mainmenu.alert(msg);
 
 def show_mismatch(msg):
-	mainmenu.mismatchWindow.setVisible(1);
+	mainmenu.mismatchWindow.setVisible(True);
 	
 
 def alert(msg, okLabel="Ok"):
@@ -61,10 +61,10 @@ def alert(msg, okLabel="Ok"):
 	mainmenu.alertWindow.msg.setText(msg);
 	mainmenu.alertWindow.ok.setCaption(okLabel);
 
-	mainmenu.alertWindow.setVisible(1);
+	mainmenu.alertWindow.setVisible(True);
 
 def showLoading():
-	mainmenu.loading.setVisible(1);
+	mainmenu.loading.setVisible(True);
 	mainmenu.loading.setAlpha(255);
 
 def hideLoading():
@@ -74,7 +74,7 @@ modules = {}
 currentModule = None
 alertWindow = None;
 mismatchWindow = DefaultWindow();
-mismatchWindow.setVisible(0);
+mismatchWindow.setVisible(False);
 
 # Logo:
 logo = DefaultImage();
@@ -99,7 +99,7 @@ add(topBar);
 loading = DefaultWindow();
 loading.setSize(screenWidth, screenHeight);
 loading.setBackgroundColor(black);
-#loading.setOpaque(0);
+#loading.setOpaque(False);
 loadbg = DefaultImage();
 loadbg.setImage("loadbg.png");
 loading.add(loadbg);
@@ -114,7 +114,7 @@ add(loading, 0, 0);
 blocker = DefaultContainer();
 blocker.setBackgroundColor(glass.Color(0,0,0,80));
 blocker.setSizePct(1,1);
-blocker.setVisible(0);
+blocker.setVisible(False);
 add(blocker);
 
 #if int(cvar_get("con_developer")) == 1:

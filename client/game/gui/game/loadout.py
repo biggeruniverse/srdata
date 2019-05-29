@@ -11,16 +11,16 @@ def frame():
 	
 	if team.getRace() == "human":
 		loadout.activeWindow = loadout.humanLoadout;
-		loadout.beastLoadout.setVisible(0);
+		loadout.beastLoadout.setVisible(False);
 	else:
 		loadout.activeWindow = loadout.beastLoadout;
-		loadout.humanLoadout.setVisible(0);
+		loadout.humanLoadout.setVisible(False);
 	
 	gblPresetManager.setY( loadout.activeWindow.presetsY+loadout.activeWindow.getY());
 	gblPresetManager.setX( loadout.activeWindow.getX()+10);
 	#gblPresetManager.requestMoveToTop();
 		
-	loadout.activeWindow.setVisible(1);
+	loadout.activeWindow.setVisible(True);
 	loadout.activeWindow.update();
 	loadout.expWindow.update();
 
@@ -33,7 +33,7 @@ def onShow():
 	loadout.frame();
 
 	loadout.mapWindow.setAlpha(0);
-	loadout.mapWindow.setVisible(0);
+	loadout.mapWindow.setVisible(False);
 	
 ## CLASS DEFINITIONS ##
 class SpawnSelectHandler:
@@ -58,7 +58,7 @@ class LoadoutTechButton(DefaultContainer):
 		self.request = DefaultImageButton();
 		self.request.setImage("request.s2g");
 		self.request.setSize(int(screenHeight*0.0625), int(screenHeight*0.0625));
-		self.request.setVisible(0);
+		self.request.setVisible(False);
 		self.add(self.request);
 
 		self.maxDeployment = DefaultLabel();
@@ -89,16 +89,16 @@ class LoadoutTechButton(DefaultContainer):
 		
 		self.setAlpha(255);
 		self.image.setAlpha(255);
-		self.request.setVisible(0);
+		self.request.setVisible(False);
 		
 		if not self.objtype.isResearched():
-			self.setVisible(0);
+			self.setVisible(False);
 		else:
-			self.setVisible(1);
+			self.setVisible(True);
 			
 		#self.image.setProgress(1.0);
 		if self.objtype in team.getResearch():
-			self.setVisible(1);
+			self.setVisible(True);
 			for r in team.getResearch():
 				if r == self.objtype:
 					con_println("progressing \n")
@@ -106,11 +106,11 @@ class LoadoutTechButton(DefaultContainer):
 					break;
 			
 		if player.getGold() < self.objtype.getValue("playerCost"):
-			self.request.setVisible(1);
+			self.request.setVisible(True);
 			if self.objtype.isWeaponType():
 				obj1 = player.getInventorySlot(1);
 				if obj1 is not None and player.getGold() + obj1.getValue("playerCost") >= self.objtype.getValue("playerCost"):
-					self.request.setVisible(0);
+					self.request.setVisible(False);
 
 		self.maxDeployment.setCaption("");
 		if self.objtype.getValue("maxDeployment") > 0:
@@ -163,7 +163,7 @@ class LoadoutInventoryButton(DefaultContainer):
 		objType = player.getInventorySlot(self.slot);
 		
 		if objType is not None:
-			self.image.setVisible(1);
+			self.image.setVisible(True);
 			self.image.setImage( "../../../"+ objType.getValue("icon")+".s2g" );
 			self.image.setSizePct(1, 1);
 			
@@ -177,7 +177,7 @@ class LoadoutInventoryButton(DefaultContainer):
 			self.ammo.setCaption( str( ammoCount ) );
 			self.ammo.setPosition(self.getWidth() - self.ammo.getWidth(), self.getHeight() - self.ammo.getHeight());
 		else:
-			self.image.setVisible(0);
+			self.image.setVisible(False);
 			self.ammo.setCaption("");
 			
 	def onAction(self, e):
@@ -193,7 +193,7 @@ class LoadoutUnitButton(DefaultContainer):
 		
 		self.viewer = glass.GlassViewer();
 		self.viewer.setModel(self.objtype.getValue("model"));
-		self.viewer.setOpaque(0);
+		self.viewer.setOpaque(False);
 		self.viewer.setSize(self.getWidth(), self.getWidth());
 		self.add( self.viewer, 0, 0 );
 		self.viewer.rotateModel(160);
@@ -205,7 +205,7 @@ class LoadoutUnitButton(DefaultContainer):
 		self.request = DefaultImageButton();
 		self.request.setImage("request.s2g");
 		self.request.setSize(self.getWidth(), self.getWidth());
-		self.request.setVisible(0);
+		self.request.setVisible(False);
 		self.add(self.request);
 		
 		button = glass.ImageButton("textures/econs/transparent.s2g");
@@ -234,15 +234,15 @@ class LoadoutUnitButton(DefaultContainer):
 		player = savage.getLocalPlayer();
 		refund = player.getType().getValue("playerCost");
 		
-		self.request.setVisible(0);
+		self.request.setVisible(False);
 		
 		if player.getGold()+refund < self.objtype.getValue("playerCost"):
-			self.request.setVisible(1);
+			self.request.setVisible(True);
 		
 		if not self.objtype.isResearched():
-			self.setVisible(0);
+			self.setVisible(False);
 		else:
-			self.setVisible(1);
+			self.setVisible(True);
 		#this is because the model loading might be delayed
 		self.viewer.fitCameraToModel(30);
 	
@@ -275,7 +275,7 @@ class LoadoutWindow(DefaultWindow):
 		self.setBackgroundColor(glass.Color(0,0,0,128));
 		
 		self.unitViewer = glass.GlassViewer();
-		self.unitViewer.setOpaque(0);
+		self.unitViewer.setOpaque(False);
 		self.unitViewer.setCameraFOV(22.5);
 		self.unitViewer.setCameraPosition(-3,-1,12);
 		self.unitViewer.setCameraTarget(-3,0,12);
@@ -288,7 +288,7 @@ class LoadoutWindow(DefaultWindow):
 		unitselbg = DefaultLabel();
 		unitselbg.setImage("/gui/game/images/unit_selection_bg.tga");
 		unitselbg.setSize(screenWidthPct(0.2475), screenHeightPct(0.08333));
-		unitselbg.setOpaque(0);
+		unitselbg.setOpaque(False);
 		unitselbg.setForegroundColor(white);
 		self.add(unitselbg, self.getWidth()-screenWidthPct(0.375), self.unitViewer.getHeight()-unitselbg.getHeight()-screenHeightPct(0.0833));
 		
@@ -395,7 +395,7 @@ class LoadoutWindow(DefaultWindow):
 		self.add(back);
 		back.setPositionPct(.1,.92);
 		
-		#self.setOpaque(0);
+		#self.setOpaque(False);
 		self.setPosition(screenWidthPct(1)//2 - self.getWidth()//2, screenHeightPct(.2));
 
 	def onAction(self, e):
@@ -430,10 +430,10 @@ class MapWindow(DefaultWindow):
 	def __init__(self):
 		DefaultWindow.__init__(self);
 		
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		self.setSizePct(1,1);
 		self.setBackgroundColor(glass.Color(0,0,0,128));
-		self.setVisible(0);
+		self.setVisible(False);
 		
 		self.minimap = glass.GlassMiniMap();
 		self.minimap.setSize(screenHeightPct(0.667),screenHeightPct(0.667));
@@ -493,7 +493,7 @@ class LoadoutStatsWindow(DefaultWindow):
 	def __init__(self):
 		DefaultWindow.__init__(self);
 		
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		self.setBackgroundColor(transparency);
 		self.setSize(int(screenWidth*0.75), int(screenHeight*0.041667));
 		

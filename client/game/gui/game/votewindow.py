@@ -9,22 +9,22 @@ class VoteSelectionWindow( DefaultWindow ):
 		
 		self.setSize(470, 275);
 		self.setPositionPct(0.2, 0.25);
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		self.setTitleBarHeight(0);
 		self.setBackgroundColor(glass.Color(0, 0, 0, 180));
-		self.setVisible(0); 
+		self.setVisible(False); 
 		
 		self.create();		
 		
 	def show(self, player = ""):
 		self.nameInput.setText(player);
-		self.setVisible(1);
+		self.setVisible(True);
 		self.mousemode = getMouseMode();
 		setMouseMode(MOUSE_FREE);		
 	
 	def close(self):		
 		setMouseMode(self.mousemode);
-		self.setVisible(0);
+		self.setVisible(False);
 		
 	def create(self):
 		

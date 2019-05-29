@@ -83,7 +83,7 @@ class Menu(DefaultWindow):
 		self.quit = glass.GlassButton("QUIT");
 		self.quit.setStyle("main");
 		self.quit.setSize(264, 42);
-		self.quit.setClickAction("mainmenu.modules['menu'].quitConfirm.setVisible(1)");
+		self.quit.setClickAction("mainmenu.modules['menu'].quitConfirm.setVisible(True)");
 		self.quit.setFont(fontSizeLarge);
 		self.add(self.quit, 0, 156);
 
@@ -97,8 +97,8 @@ class Menu(DefaultWindow):
 				gblEventHandler.addHttpListener(self);
 
 				self.setSize(265, 200);
-				self.setVisible(0);
-				self.setTitleVisible(0);
+				self.setVisible(False);
+				self.setTitleVisible(False);
 				self.setBackgroundColor(windowBackground);
 
 				top = DefaultContainer();
@@ -131,7 +131,7 @@ class Menu(DefaultWindow):
 				self.text.setBackgroundColor(transparency);
 				self.text.setForegroundColor(glass.Color(211, 201, 168));
 				self.text.setFont(fontSizeSmall);
-				self.text.setEditable(0);
+				self.text.setEditable(False);
 				self.add(self.text, 10, 50);
 
 				"""
@@ -155,12 +155,12 @@ class Menu(DefaultWindow):
 					self.httpHandle = -1;
 					msg = e.responseMessage; #.replace("\n", " ");
 					if len(msg) == 0:
-						self.setVisible(0);
+						self.setVisible(False);
 					else:
-						self.setVisible(1);
+						self.setVisible(True);
 						self.text.setText(msg);
 				#else:
-				#	self.setVisible(0);
+				#	self.setVisible(False);
 
 
 		div = DefaultDivider();
@@ -189,7 +189,7 @@ class Menu(DefaultWindow):
 		self.sectionStack[name] = obj;
 		self.add(obj, self.quit.getWidth() + 15, 0);
 		obj.setSize(690, self.getHeight() - 65);
-		obj.setVisible(0);
+		obj.setVisible(False);
 
 	def showSection(self, name):
 		
@@ -199,17 +199,17 @@ class Menu(DefaultWindow):
 		
 		logger.debug("Showing section: %s", (str(name)));
 		
-		if self.sectionStack.has_key(name):
+		if name in self.sectionStack:
 			
 			if self.currentSection is not None:
 				if self.sectionStack[self.currentSection].onHide() is not None:
 					return;
 				
 				self.previousSection = self.currentSection;
-				self.sectionStack[self.currentSection].setVisible(0);
+				self.sectionStack[self.currentSection].setVisible(False);
 			
 			self.currentSection = name;
-			self.sectionStack[name].setVisible(1);
+			self.sectionStack[name].setVisible(True);
 			self.sectionStack[name].onShow();
 
 		else:

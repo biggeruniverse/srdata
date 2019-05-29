@@ -47,10 +47,10 @@ def onShow():
 	hud.crosshair.reset();
 	hud.voteWindow.reset();
 	hud.timer.setCaption("");
-	hud.killtarget.setVisible(0);
+	hud.killtarget.setVisible(False);
 	hud.inventory.buildInventory();
 	if hud.topBar.isVisible():
-		hud.topBar.setVisible(0);
+		hud.topBar.setVisible(False);
 	
 	hud.frame(); #remove any other placeholders
 
@@ -58,14 +58,14 @@ glass.GUI_CreateScreen('hud');
 
 ## ORDER/WAYPOINT ##
 waypoint = Waypoint();
-waypoint.setVisible(0);
+waypoint.setVisible(False);
 glass.GUI_ScreenAddWidget("hud", waypoint);
 gblEventHandler.addGameListener(waypoint);
 
 ## HIT INDICATOR ##
 hitIndicator = DirectionalIndicator();
 glass.GUI_ScreenAddWidget("hud", hitIndicator);
-hitIndicator.setPosition(screenWidth/2-hitIndicator.getWidth()/2, screenHeight/2-hitIndicator.getWidth()/2);
+hitIndicator.setPosition(screenWidth//2-hitIndicator.getWidth()//2, screenHeight//2-hitIndicator.getWidth()//2);
 
 ## FOCUS RETICLE ##
 focusReticle = FocusIndicator();
@@ -73,7 +73,7 @@ glass.GUI_ScreenAddWidget("hud", focusReticle);
 
 ## KILLER TARGET ##
 killtarget = Waypoint();
-killtarget.setVisible(0);
+killtarget.setVisible(False);
 killtarget.setImage("/gui/standard/icons/1_nl_way_killer.tga");
 killtarget.showDistance(False);
 glass.GUI_ScreenAddWidget("hud", killtarget);
@@ -85,16 +85,16 @@ class KillHandler:
 	def onEvent(self, e):
 		if e.eventType == "obituary":
 			if e.targetId == savage.getLocalPlayer().objectId and e.sourceId != savage.getLocalPlayer().objectId:
-				hud.killtarget.setVisible(1);
+				hud.killtarget.setVisible(True);
 				hud.killtarget.setObject(savage.getGameObject(e.sourceId));
 		elif e.eventType == "resurrection":
 			if e.targetId == savage.getLocalPlayer().objectId:
-				hud.killtarget.setVisible(0);
+				hud.killtarget.setVisible(False);
 
 		elif e.eventType == "player_wounded":
 			hud.hitIndicator.setTarget(savage.getGameObject(e.sourceId));
 		elif e.eventType == "spectate":
-			hud.killtarget.setVisible(0)
+			hud.killtarget.setVisible(False)
 
 gblEventHandler.addGameListener(KillHandler());
 
@@ -102,7 +102,7 @@ class StaminaDisplay(DefaultContainer):
 	def __init__(self):
 		DefaultContainer.__init__(self);
 		
-		self.setOpaque(0);
+		self.setOpaque(False);
 		self.setSizePct(0.17, 0.03);
 		if self.getHeight() % 2 != 0:
 			self.setHeight(self.getHeight() + 1);
@@ -135,7 +135,7 @@ class HealthDisplay(DefaultContainer):
 	def __init__(self):
 		DefaultContainer.__init__(self);
 
-		self.setOpaque(0);
+		self.setOpaque(False);
 		self.setSizePct(0.17, 0.03);
 		if self.getHeight() % 2 != 0:
 			self.setHeight(self.getHeight() + 1);
@@ -145,7 +145,7 @@ class HealthDisplay(DefaultContainer):
 		self.bar.setForegroundColor(glass.Color(255,21,22, 128));
 		self.bar.setSize(int(self.getWidth()),int(self.getHeight()));
 		self.bar.setBackgroundImage("gui/base/images/progress_bg.tga");
-		self.bar.setReversed(1);
+		self.bar.setReversed(True);
 		self.add(self.bar, 0, 0, "center", "center");
 		
 		self.label = DefaultLabel();
@@ -164,7 +164,7 @@ class LevelDisplay(DefaultContainer):
 	def __init__(self):
 		DefaultContainer.__init__(self);
 
-		#self.setOpaque(1);
+		#self.setOpaque(True);
 		self.setBackgroundColor(transparency);
 		self.setSize(screenHeightPct(0.06), screenHeightPct(0.06));
 
@@ -232,7 +232,7 @@ glass.GUI_ScreenAddWidget("hud", timer);
 ## TEAM STATUS ##
 
 teamStatus = ResourcePanel();
-teamStatus.setVisible(0);
+teamStatus.setVisible(False);
 glass.GUI_ScreenAddWidget("hud", teamStatus);
 
 ## CHAT ##
@@ -285,7 +285,7 @@ levelDisplay.setPosition(screenWidthPct(.5) - levelDisplay.getWidth() // 2, cond
 ## STATE EFFECT DISPLAY ##
 
 stateContainer = StateDisplay();
-#stateContainer.setOpaque(1)
+#stateContainer.setOpaque(True)
 #stateContainer.setBackgroundColor(black);
 #stateContainer.setX( healthValue.getX() + healthValue.getWidth() + 15 );
 stateContainer.setX( levelDisplay.getWidth() + levelDisplay.getX() + 5);
@@ -300,7 +300,7 @@ voiceChat.setSizePct(0.3,0.35);
 voiceChat.table.adjustSizeToPct(1,1);
 glass.GUI_ScreenAddWidget("hud",voiceChat);
 voiceChat.centerWindow();
-voiceChat.setY(screenHeight/2+40);
+voiceChat.setY(screenHeight//2+40);
 
 ## INVENTORY ##
 
@@ -310,7 +310,7 @@ glass.GUI_ScreenAddWidget("hud", inventory);
 
 ## NOTIFICATIONS ##
 scroll = glass.GlassScrollArea();
-scroll.setAutoscroll(1);
+scroll.setAutoscroll(True);
 scroll.setSizePct(0.32,0.16);
 scroll.setPosition(screenWidth-scroll.getWidth() - 10,10);
 scroll.setScrollPolicy(1,1); #SHOW_NEVER
@@ -319,9 +319,9 @@ glass.GUI_ScreenAddWidget("hud", scroll);
 notifyBuffer = MessageBuffer(["notify"]); #TODO notify_generalhide too?
 scroll.setContent(notifyBuffer);
 notifyBuffer.setSize(scroll.getWidth(), scroll.getHeight());
-notifyBuffer.setFadeTop(1);
-notifyBuffer.setFadeBottom(0);
-notifyBuffer.showTime(0);
+notifyBuffer.setFadeTop(True);
+notifyBuffer.setFadeBottom(False);
+notifyBuffer.showTime(False);
 for i in range(10):
 	notifyBuffer.addRow(" ");
 
@@ -386,7 +386,7 @@ voteSelection.setPosition(screenWidth // 2 - voteSelection.getWidth() // 2, scre
 
 topBar = GameTopBar();
 glass.GUI_ScreenAddWidget("hud",topBar);
-topBar.setVisible(0);
+topBar.setVisible(False);
 
 def updateGold():
 	player = savage.getLocalPlayer();
@@ -407,13 +407,13 @@ def updateGameStatus():
 	status = cvar_get("game_serverStatus")
 	if len(status)>0:
 		hud.gamestatus.setCaption(" %s " % (status))
-		hud.gamestatusWindow.setVisible(1);
+		hud.gamestatusWindow.setVisible(True);
 	else:
 		hud.gamestatus.setCaption("");
-		hud.gamestatusWindow.setVisible(0);
+		hud.gamestatusWindow.setVisible(False);
 	hud.gamestatus.adjustSize()
 	hud.gamestatusWindow.setSize(hud.gamestatus.getWidth(), hud.gamestatus.getHeight());
-	hud.gamestatusWindow.setPosition(screenWidthPct(0.5)-hud.gamestatusWindow.getWidth()/2, hud.gamestatusWindow.getY())
+	hud.gamestatusWindow.setPosition(screenWidthPct(0.5)-hud.gamestatusWindow.getWidth()//2, hud.gamestatusWindow.getY())
 
 def updateCrosshairLimits():
 	player = savage.getLocalPlayer();

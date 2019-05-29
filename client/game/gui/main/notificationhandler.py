@@ -32,7 +32,7 @@ class NotificationHandler(DefaultContainer):
 
 	def closeNotification(self, notificationId):
 		note = self.notifications.pop(notificationId);
-		note.setVisible(0); # Just in case...
+		note.setVisible(False); # Just in case...
 		self.remove(note);
 		self.update();
 
@@ -46,7 +46,7 @@ class NotificationHandler(DefaultContainer):
 
 		for notificationId, note in self.notifications.items():			
 
-			note.setVisible(1);
+			note.setVisible(True);
 			note.setY(y);
 			y += note.getHeight() + 10;
 

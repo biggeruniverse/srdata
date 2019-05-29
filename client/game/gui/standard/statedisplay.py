@@ -66,7 +66,7 @@ class StateDisplay( glass.GlassContainer):
 			h = timer.getHeight();
 			timer.setImage(state.getIcon());
 			timer.setSize( w , h);
-			timer.setVisible(1);
+			timer.setVisible(True);
 			#timer.update(); #or whatever will update the GlassTimer
 			timer.setX( xOffset + i*(timer.getWidth() + 5));
 			inflictor = state.getInflictor();
@@ -76,11 +76,11 @@ class StateDisplay( glass.GlassContainer):
 			else:
 				progress.setForegroundColor( tangoRed );
 
-			counter.setVisible(1);
+			counter.setVisible(True);
 			counter.setCaption( state.getTimeRemaining() );
 			counter.setX( timer.getX() + timer.getWidth() - counter.getWidth() );
 
-			progress.setVisible(1);
+			progress.setVisible(True);
 			progress.setProgress(state.getTimeRemaining(False)/state.getDuration());
 			
 			progress.setX( xOffset + i*(timer.getWidth() + 5));
@@ -89,8 +89,8 @@ class StateDisplay( glass.GlassContainer):
 			timer = self.timers[i];
 			counter = self.counters[i];
 			progress = self.progresses[i];
-			timer.setVisible(0);
-			counter.setVisible(0);
-			progress.setVisible(0);
+			timer.setVisible(False);
+			counter.setVisible(False);
+			progress.setVisible(False);
 
 

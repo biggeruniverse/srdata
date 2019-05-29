@@ -23,7 +23,7 @@ def onShow():
 	CL_RequestScores();
 	
 	endgame.updatePersonal();
-	endgame.accuracy_window.setVisible(0);
+	endgame.accuracy_window.setVisible(False);
 	endgame.accuracy_window.update();
 	endgame.accuracy_window.centerWindow();
 	
@@ -69,7 +69,7 @@ score.setWidth( name.getWidth() );
 glass.GUI_ScreenAddWidget("endgame",score);
 
 accuracy = glass.GlassButton("Accuracy");
-accuracy.setClickAction("endgame.accuracy_window.setVisible(1); ActionSequence(FadeInAction(endgame.accuracy_window))");
+accuracy.setClickAction("endgame.accuracy_window.setVisible(True); ActionSequence(FadeInAction(endgame.accuracy_window))");
 accuracy.setY( score.getY() + score.getHeight() + PADDING);
 glass.GUI_ScreenAddWidget("endgame",accuracy);
 
@@ -168,10 +168,10 @@ def updateGameInfo():
 	if File_Exists(overhead):
 		w, h = endgame.map.getWidth(), endgame.map.getHeight(); 
 		endgame.map.setImage(overhead);
-		endgame.map.setVisible(1);
+		endgame.map.setVisible(True);
 		endgame.map.setSize(w,h);
 	else:
-		endgame.map.setVisible(0);
+		endgame.map.setVisible(False);
 
 def updateDist(q):
 	"""If this match was:             Then q should be:

@@ -71,9 +71,9 @@ class HUDCrossHair (GlassTablePlus):
 	def update(self):
 		#0. don't show if we're free
 		if getMouseMode() == MOUSE_FREE:
-			self.setVisible(0);
+			self.setVisible(False);
 		else:
-			self.setVisible(1);
+			self.setVisible(True);
 
 		player = savage.getLocalPlayer();
 		#1. get the object behind the crosshair
@@ -129,17 +129,17 @@ class HUDCrossHair (GlassTablePlus):
 	
 	def updateHealth( self, showHealth, obj):
 		if showHealth:
-			self.health.setVisible(1);
+			self.health.setVisible(True);
 			self.health.setProgress( obj.getHealthPct() );
 		else:
-			self.health.setVisible(0);
+			self.health.setVisible(False);
 	
 	def updateBuild( self, showBuild, obj):
 		if showBuild:
-			self.build.setVisible(1);
+			self.build.setVisible(True);
 			self.build.setProgress( obj.getBuildProgress());
 		else:
-			self.build.setVisible(0);
+			self.build.setVisible(False);
 			
 	def adjustAlpha( self):
 		if self.status == self.STATUS_ACTIVE and self.getAlpha() < 255:

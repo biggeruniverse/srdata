@@ -7,17 +7,17 @@ class ExecWindow(glass.GlassWindow):
 		glass.GlassWindow.__init__(self);
 		self.setCaption("Python Executor");
 		self.setSize(400, 250);
-		self.setVisible(0);
+		self.setVisible(False);
 		self.setPosition(50, 50);
 		self.setBackgroundColor(glass.Color(0, 0, 0));
 		self.inputfield = glass.GlassTextBox('con_println("\\n");');
-		self.inputfield.setLineWrap(0);
+		self.inputfield.setLineWrap(False);
 		self.inputfield.setId('msg');
 		self.inputfield.setSize(480, 180);
-		self.inputfield.setOpaque(0);
+		self.inputfield.setOpaque(False);
 		self.inputfield.setForegroundColor(white);
-		self.inputfield.setFadeBottom(0);
-		self.inputfield.setFadeTop(0);
+		self.inputfield.setFadeBottom(False);
+		self.inputfield.setFadeTop(False);
 		scroll = glass.GlassScrollArea(self.inputfield);
 		scroll.setSize(480,180);
 		scroll.setBackgroundColor(glass.Color(200,200,200));
@@ -50,10 +50,10 @@ def newExecWindow( screen ):
 	#glass.GUI_ScreenAddWidget( screen, execwindow.show );
 
 def hideAllWindows():
-	execwindow.window.setVisible(0);
+	execwindow.window.setVisible(False);
 
 def showAllWindows():
-	execwindow.window.setVisible(1);
+	execwindow.window.setVisible(True);
 	execwindow.window.inputfield.requestFocus();
 
 """

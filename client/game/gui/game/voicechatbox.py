@@ -9,10 +9,10 @@ class VoiceChatBox( DefaultWindow ):
 	def __init__( self ) :
 		DefaultWindow.__init__( self );
 		self.setBackgroundColor(glass.Color(0,0,0,128));
-		self.setVisible(0);
+		self.setVisible(False);
 		self.addKeyListener(self);
 		self.setTitleBarHeight(0);
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		
 		self.table = DefaultTable();
 		self.table.makeBlank();
@@ -53,7 +53,7 @@ class VoiceChatBox( DefaultWindow ):
 				voiceType = "player_male";
 			self.currentVoiceDict = getattr( voicechatdata,team.getRace() + "_" + voiceType );
 		
-		self.setVisible(1);
+		self.setVisible(True);
 		self.updateTable( self.currentVoiceDict.keys() );
 		self.status = self.CATEGORY_LIST;
 		self.requestModalFocus(); #to catch keys
@@ -85,7 +85,7 @@ class VoiceChatBox( DefaultWindow ):
 	
 	def done( self ):
 		self.releaseModalFocus();
-		self.setVisible(0);
+		self.setVisible(False);
 		self.status = self.INACTIVE;
 		self.categoryNumber = -1;
 	

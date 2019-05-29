@@ -7,7 +7,7 @@ class DevTools(DefaultWindow):
 		DefaultWindow.__init__(self);
 		
 		self.setBackgroundColor(glass.Color(24, 14, 14));
-		self.setOpaque(1);
+		self.setOpaque(True);
 		self.setSize(265, 250);
 		
 		restart = DefaultButton("RESTART");

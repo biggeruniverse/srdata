@@ -10,8 +10,8 @@ class CenterResourceContainer(DefaultContainer):
 
 	def __init__(self):
 		DefaultContainer.__init__(self);
-		self.setOpaque(0);
-		self.setVisible(1);
+		self.setOpaque(False);
+		self.setVisible(True);
 		self.setBackgroundColor(transparency);	
 
 		self.team = None;
@@ -72,10 +72,9 @@ class CenterResourceContainer(DefaultContainer):
 	def onAction(self, e):
 		if e.widget.getId() == "idle":
 			workers = self.team.getIdleWorkers();
-			print workers
 			
 			for worker in workers:
-				print worker.objectId, self.lastWorkers
+				#print(worker.objectId, self.lastWorkers)
 				if len(workers) == 1 or worker.objectId  not in self.lastWorkers:
 					self.lastWorkers.append(worker.objectId);
 					pos = worker.getPosition();
@@ -95,7 +94,7 @@ class BuffPoolContainer(DefaultContainer):
 
 		self.widgetList = [];
 
-		for i in xrange(3):
+		for i in range(3):
 
 			cont = DefaultContainer();
 			cont.setSize(self.getHeight(), self.getHeight());
@@ -139,7 +138,7 @@ class BuffPoolContainer(DefaultContainer):
 
 		else: 
 			# Should never happen, but who knows...
-			self.setVisible(0);
+			self.setVisible(False);
 			return;
 
 		for i, widgets in enumerate(self.widgetList):
@@ -252,14 +251,14 @@ class ResourcePanel(glass.GlassContainer):
 		self.healthBackground.setPositionPct(0.4,0.05);
 		self.healthBackground.setSizePct(0.2,0.9);
 		self.healthBackground.setBackgroundColor(tangoRedDark);
-		self.healthBackground.setOpaque(1);
+		self.healthBackground.setOpaque(True);
 		
 		self.healthForeground = glass.GlassLabel(" ")
 		self.add(self.healthForeground);
 		self.healthForeground.setPositionPct(0.4,0.05);
 		self.healthForeground.setSizePct(0.2,0.9);
 		self.healthForeground.setBackgroundColor(tangoBlue);
-		self.healthForeground.setOpaque(1);
+		self.healthForeground.setOpaque(True);
 		
 		self.cc = glass.GlassLabel("");
 		self.add(self.cc);
@@ -273,9 +272,9 @@ class ResourcePanel(glass.GlassContainer):
 		# Update the resources
 		player = savage.getLocalPlayer();
 		if player.isCommander() or cvar_getvalue("gui_showTeamStatus") == 1:
-			self.setVisible(1);
+			self.setVisible(True);
 		else:
-			self.setVisible(0);
+			self.setVisible(False);
 			return;
 
 		myteam = savage.getLocalPlayer().getTeam();

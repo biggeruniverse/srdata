@@ -5,10 +5,10 @@ class CommRosterWindow(DefaultWindow):
 	def __init__(self):
 		DefaultWindow.__init__(self);
 		self.setFrameStyle("TrimmedEight");
-		self.setMovable(1);
+		self.setMovable(True);
 
 		self.setSize(500, 300);
-		self.setVisible(0);
+		self.setVisible(False);
 		
 		self.players = [];
 
@@ -27,7 +27,7 @@ class CommRosterWindow(DefaultWindow):
 		top.add(title, "center", "center");
 		
 		self.list = DefaultTable();
-		self.list.setFrame(0);
+		self.list.setFrame(False);
 		self.clearList();	
 		# self.add(self.list,0,0)
 		
@@ -68,9 +68,9 @@ class CommRosterWindow(DefaultWindow):
 		self.headingRow = self.list.nextRow("", "", level, "^icon ../../gui/game/images/kills^/^icon skull_red^/^icon skull_green^ ",
                                             req, "", gold, "");
 
-		self.headingRow.setFocusable(0);		
+		self.headingRow.setFocusable(False);
 
-		#for i in xrange(2,6):
+		#for i in range(2,6):
 		#	self.list.setColumnWidth(i, 80);
 
 		#row = self.list.nextRow(DefaultDivider());
@@ -150,7 +150,7 @@ class CommRosterWindow(DefaultWindow):
 		#self.scroll.setSize(self.getWidth(), self.getHeight());
 
 		self.list.useColumnDividers();
-		self.headingRow.setAlternate(0);
+		self.headingRow.setAlternate(False);
 		self.list.adjustWidthTo(self.scroll.getWidth()-10);
 
 	def updateCount(self):
@@ -183,10 +183,10 @@ class CommRosterWindow(DefaultWindow):
 			
 	def toggle(self):
 		if self.isVisible():
-			self.setVisible(0);
+			self.setVisible(False);
 		else:
 			self.build();
-			self.setVisible(1);		
+			self.setVisible(True);
 			
 	def onEvent(self, e):
 		if e.eventType == "player_join" or e.eventType == "player_leave":

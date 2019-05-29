@@ -9,7 +9,7 @@ class HostServerWindow(glass.GlassWindow):
 		self.setSizePct(0.45, 0.4);
 		self.setBackgroundColor(glass.Color(0,0,0,128));
 		self.setTitleVisible(0);
-		self.setVisible(0);			
+		self.setVisible(False);			
 		
 		self.gametypeLabel = glass.GlassLabel("Gametype");
 		self.add(self.gametypeLabel);
@@ -57,10 +57,10 @@ class HostServerWindow(glass.GlassWindow):
 		
 	def showHostServerWindow(self):
 		if self.isVisible():
-			self.setVisible(0);
+			self.setVisible(False);
 		else: 
 			self.requestMoveToTop();
-			self.setVisible(1);	
+			self.setVisible(True);	
 			self.select_map.clear();
 			paths = File_ListFiles("/world","*.s2z",0);
 			for path in paths:
@@ -69,7 +69,7 @@ class HostServerWindow(glass.GlassWindow):
 			self.select_map.setSelected(0);
 	
 	def hostServer(self):
-		self.setVisible(0);
+		self.setVisible(False);
 		World_Load(self.select_map.getItem(self.select_map.getSelected()));
 	
 	def onValueChanged(self, e):
@@ -83,6 +83,6 @@ class HostServerWindow(glass.GlassWindow):
 		if e.widget.getCaption() == "Start Server >>":
 			self.hostServer();
 		elif e.widget.getCaption() == "Close":			
-			self.setVisible(0);
+			self.setVisible(False);
 		elif e.widget.getCaption() == "Settings": #TODO
 			pass;

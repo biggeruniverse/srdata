@@ -6,19 +6,19 @@ import glass;
 class MessageBuffer(glass.GlassTextBox, EventListener):
 	def __init__(self, scopes = ["msg_public", "msg_team", "msg_private", "msg_squad", "msg_server", "notify", "notifyhide"] ):
 		glass.GlassTextBox.__init__(self);
-		self.setOpaque(0);
+		self.setOpaque(False);
 		
 		self.scopesToAccept = scopes; #this way you can set scopes when you instantiate
-		self.bShowTime = 1;
+		self.bShowTime = True;
 		global gblEventHandler;
 		gblEventHandler.addNotifyListener(self);
 		
 		self.parentScroll = None;
 		
-		self.setLineWrap(1);
+		self.setLineWrap(True);
 		self.setForegroundColor(white);
-		self.setEditable(0);
-		self.setFocusable(0);
+		self.setEditable(False);
+		self.setFocusable(False);
 		self.listeners = [];
 	
 	def addListener(self, l):
@@ -71,7 +71,7 @@ class MessageBuffer(glass.GlassTextBox, EventListener):
 
 	def timeStr(self):
 		policy = cvar_getvalue("gui_chatTimestamp");
-		if self.bShowTime == 0 or policy == 0:
+		if self.bShowTime == False or policy == 0:
 			return "";
 		elif policy == 1: #game time
 			gametime = getGameTimeString(cvar_getvalue("game_timeLimitSeconds"));

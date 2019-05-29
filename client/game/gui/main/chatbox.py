@@ -7,18 +7,18 @@ class ChatBox( glass.GlassContainer ):
 	def __init__(self, scopeList):
 		self.scopeList = scopeList;
 		glass.GlassContainer.__init__(self);
-		self.setOpaque(0);
+		self.setOpaque(False);
 	
 		self.buffer = MessageBuffer( self.scopeList );
 		for i in range(10):
 			self.buffer.addRow(" ");
-		self.buffer.setEditable(0);
-		self.buffer.showTime(1);
+		self.buffer.setEditable(False);
+		self.buffer.showTime(True);
 		self.buffer.addListener(self)
 
 		self.scroll = glass.GlassScrollArea(self.buffer);
 		self.scroll.setScrollPolicy( glass.GlassScrollArea.SHOW_NEVER , glass.GlassScrollArea.SHOW_ALWAYS  );
-		self.scroll.setAutoscroll(1);
+		self.scroll.setAutoscroll(True);
 		self.add(self.scroll);
 		self.buffer.parentScroll = self.scroll;
 		
@@ -28,7 +28,7 @@ class ChatBox( glass.GlassContainer ):
 		self.add( self.input);
 		self.input.addKeyListener( self);
 		
-		self.bShowInput = 0;
+		self.bShowInput = False;
 		
 	
 	def onKeyPress(self, e):
@@ -45,7 +45,9 @@ class ChatBox( glass.GlassContainer ):
 	
 	def alwaysShowInput( self, x ):
 		if x == 1:
-			self.input.setVisible(1);
+			x=True
+		if x == True:
+			self.input.setVisible(True);
 		self.bShowInput = x;
 		
 	def resize( self ):
@@ -56,30 +58,30 @@ class ChatBox( glass.GlassContainer ):
 		
 	def deactivate( self ):
 		self.input.setText("");
-		if self.bShowInput == 0:
-			self.input.setVisible(0); #this also REMOVES the focus
+		if not self.bShowInput:
+			self.input.setVisible(False); #this also REMOVES the focus
 	
 	def activate( self ):
 		self.input.setText("");
-		self.input.setVisible(1);
+		self.input.setVisible(True);
 		self.input.requestFocus();
 
 class MenuChatBox(ChatBox):
 	def __init__(self, name, scopeList, isConference=False):		
 		glass.GlassContainer.__init__(self);
 
-		self.setOpaque(0);
+		self.setOpaque(False);
 		self.jid = name;
 		self.isConference = isConference;
 		self.scopeList = scopeList;
 	
 		self.buffer = MessageBuffer( self.scopeList );
-		self.buffer.setEditable(0);
-		self.buffer.showTime(1);
+		self.buffer.setEditable(False);
+		self.buffer.showTime(True);
 
 		self.scroll = glass.GlassScrollArea(self.buffer);
 		self.scroll.setScrollPolicy( glass.GlassScrollArea.SHOW_NEVER , glass.GlassScrollArea.SHOW_ALWAYS  );
-		self.scroll.setAutoscroll(0);
+		self.scroll.setAutoscroll(False);
 		self.add(self.scroll);
 		self.buffer.parentScroll = self.scroll;
 
@@ -99,7 +101,7 @@ class MenuChatBox(ChatBox):
 		self.inputContainer.add( self.input);
 		self.input.addKeyListener( self);
 		
-		self.bShowInput = 0;
+		self.bShowInput = False;
 
 		gblXMPPHandler.addListener(self);	
 
@@ -162,7 +164,7 @@ class ConversationTab(DefaultContainer):
 		# A conversation tab consists of:
 		
 		# 1. profile pic:
-		self.setVisible(1);
+		self.setVisible(True);
 		self.picContainer = DefaultContainer();
 		self.picContainer.setBackgroundColor(tangoOrangeDark);
 		self.add(self.picContainer);
@@ -203,15 +205,15 @@ class ConversationTab(DefaultContainer):
 		    "chat_history_update", "chat_establish", "chat_quit", "chat_disconnect"];
 
 		self.chatBox = MenuChatBox(self.jid, scopes, isConference);
-		self.chatBox.alwaysShowInput(1);
+		self.chatBox.alwaysShowInput(True);
 		self.chatboxContainer.add(self.chatBox);
 
 		#self.oldBufferEvent = self.chatBox.buffer.onEvent;
 		#self.chatBox.buffer.onEvent = self.bufferEvent;
 
 		if self.jid == "System":
-			self.chatBox.alwaysShowInput(0);
-			self.chatBox.input.setVisible(0);
+			self.chatBox.alwaysShowInput(False);
+			self.chatBox.input.setVisible(False);
 			self.pic.setImage("/icons/options.png");
 			self.contactStatus.setCaption("");
 

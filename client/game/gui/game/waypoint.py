@@ -24,9 +24,9 @@ class Waypoint(DefaultContainer):
 
 	def showDistance(self, s):
 		if s == True:
-			self.dist.setVisible(1);
+			self.dist.setVisible(True);
 		else:
-			self.dist.setVisible(0);
+			self.dist.setVisible(False);
 
 	def update(self):
 		x,y = 0,0;
@@ -52,11 +52,11 @@ class Waypoint(DefaultContainer):
 	def onEvent(self, e):
 		if isinstance(e, WaypointEvent):
 			if e.eventType == 'waypoint_complete' or e.eventType == 'waypoint_cancel' or e.eventType == 'waypoint_destroy':
-				self.setVisible(0);
+				self.setVisible(False);
 			else:
 				self.label.setImage(CL_GetWaypointImage(0));
 				self.label.setSize(48,48);
-				self.setVisible(1);
+				self.setVisible(True);
 				if e.targetId != -1:
 					self.waypointObject = savage.getGameObject(e.targetId);
 				else:

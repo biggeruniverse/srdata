@@ -9,10 +9,10 @@ def frame():
 	loading.mapback.setSizePct(.5,.6667);
 
 	if len(cvar_get("cl_currentContentDownload")) > 0:
-		loading.loadingProgress.setVisible(1);
+		loading.loadingProgress.setVisible(True);
 		loading.loadingProgress.setProgress(cvar_getvalue("cl_currentContentDownloadProgress"));
 	else:
-		loading.loadingProgress.setVisible(0);
+		loading.loadingProgress.setVisible(False);
 
 def onShow():
 	loading.mapback.setImage(cvar_get("world_overhead"));

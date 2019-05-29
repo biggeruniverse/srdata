@@ -9,7 +9,7 @@ class VoiceChatBox( glass.GlassWindow ):
 	def __init__( self ) :
 		glass.GlassWindow.__init__( self );
 		self.setBackgroundColor(glass.Color(0,0,0,128));
-		self.setVisible(0);
+		self.setVisible(False);
 		self.addKeyListener(self);
 		self.setTitleBarHeight(0);
 		self.setTitleVisible(0);
@@ -52,7 +52,7 @@ class VoiceChatBox( glass.GlassWindow ):
 				voiceType = "player_male";
 			self.currentVoiceDict = getattr( voicechatdata, cvar_get("player_racename") + "_" + voiceType );
 		
-		self.setVisible(1);
+		self.setVisible(True);
 		self.updateTable( self.currentVoiceDict.keys() );
 		self.status = self.CATEGORY_LIST;
 		self.requestModalFocus(); #to catch keys
@@ -84,7 +84,7 @@ class VoiceChatBox( glass.GlassWindow ):
 	
 	def done( self ):
 		self.releaseModalFocus();
-		self.setVisible(0);
+		self.setVisible(False);
 		self.status = self.INACTIVE;
 		self.categoryNumber = -1;
 	

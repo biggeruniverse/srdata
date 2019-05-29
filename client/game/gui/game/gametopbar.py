@@ -79,8 +79,8 @@ class GameTopBar(MainTopBar):
 	def openChat(self):
 
 		if self.buddyRoster.isVisible() != self.chatBox.isVisible():
-			self.buddyRoster.setVisible(1);
-			self.chatBox.setVisible(1);
+			self.buddyRoster.setVisible(True);
+			self.chatBox.setVisible(True);
 			return;
 		self.buddyRoster.setVisible(not self.buddyRoster.isVisible());
 		self.chatBox.setVisible(not self.chatBox.isVisible());

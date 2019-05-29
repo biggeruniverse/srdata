@@ -20,7 +20,7 @@ def frame():
 	 #I hope it does
 	if player.getTeam() != 0:
 		for widget in spechud.nonSpecWidgets:
-			widget.setVisible(1);
+			widget.setVisible(True);
 		spechud.teamStatus.update();
 		spechud.updateGold();
 		spechud.updateHealth();
@@ -28,17 +28,17 @@ def frame():
 		spechud.updateInventory();
 		spechud.stateContainer.update();
 		spechud.updateCrosshairLimits();
-		spechud.researchinfowindow1.setVisible(0);
-		spechud.researchinfowindow2.setVisible(0);
-		spechud.unitinfowindow1.setVisible(0);
-		spechud.unitinfowindow2.setVisible(0);
-		spechud.teamStats.setVisible(0);
+		spechud.researchinfowindow1.setVisible(False);
+		spechud.researchinfowindow2.setVisible(False);
+		spechud.unitinfowindow1.setVisible(False);
+		spechud.unitinfowindow2.setVisible(False);
+		spechud.teamStats.setVisible(False);
 		
 	else:
 		for widget in spechud.nonSpecWidgets:
-			widget.setVisible(0);
-		spechud.teamStatus.setVisible(0);
-		spechud.compass.setVisible(0);
+			widget.setVisible(False);
+		spechud.teamStatus.setVisible(False);
+		spechud.compass.setVisible(False);
 		if spechud.researchinfowindow1.isVisible():
 			spechud.researchinfowindow1.updateResearch();
 		if spechud.researchinfowindow2.isVisible():
@@ -100,7 +100,7 @@ glass.GUI_ScreenAddWidget("spechud", timer);
 ## TEAM STATUS ##
 
 teamStatus = ResourcePanel();
-teamStatus.setVisible(0);
+teamStatus.setVisible(False);
 glass.GUI_ScreenAddWidget("spechud", teamStatus);
 
 ## TEAM STATS ##
@@ -456,21 +456,21 @@ def updateInventory():
 			pass;
 			#spechud.ammoGraphic.setImage( glorious ammunition icon );
 		spechud.ammoGraphic.setSize( w, h);
-		spechud.ammoValue.setVisible(1);
-		spechud.ammoGraphic.setVisible(1);
+		spechud.ammoValue.setVisible(True);
+		spechud.ammoGraphic.setVisible(True);
 	else:
-		spechud.ammoValue.setVisible(0);
-		spechud.ammoGraphic.setVisible(0);
+		spechud.ammoValue.setVisible(False);
+		spechud.ammoGraphic.setVisible(False);
 
 
 def updateGameStatus():
 	status = cvar_get("game_serverStatus")
 	if len(status)>0:
 		spechud.gamestatus.setCaption(" "+status+" ")
-		spechud.gamestatus.setVisible(1);
+		spechud.gamestatus.setVisible(True);
 	else:
 		spechud.gamestatus.setCaption("");
-		spechud.gamestatus.setVisible(0);
+		spechud.gamestatus.setVisible(False);
 	spechud.gamestatus.adjustSize()
 	spechud.gamestatus.setPosition(screenWidth/2-spechud.gamestatus.getWidth()/2, spechud.gamestatus.getY())
 

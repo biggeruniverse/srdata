@@ -6,7 +6,7 @@ import savage;
 class StateDisplay( glass.GlassContainer):
 	def __init__(self):
 		glass.GlassContainer.__init__(self);
-		self.setOpaque(0);
+		self.setOpaque(False);
 		
 		self.setSizePct(0.4, 0.06);
 		
@@ -28,8 +28,8 @@ class StateDisplay( glass.GlassContainer):
 		timer.setX( len(self.timers) * (timer.getWidth()+5));
 		timer.setY( self.getHeight() - timer.getHeight() );
 
-		progress.setX((timer.getX()+timer.getWidth()/2)-progress.getWidth()/2);
-		progress.setY((timer.getY()+timer.getHeight()/2)-progress.getHeight()/2);
+		progress.setX((timer.getX()+timer.getWidth()//2)-progress.getWidth()//2);
+		progress.setY((timer.getY()+timer.getHeight()//2)-progress.getHeight()//2);
 		
 		#timer.setFrameSize(1);
 		#timer.setForegroundColor( glass.Color(20,20,20) );
@@ -71,7 +71,7 @@ class StateDisplay( glass.GlassContainer):
 			progress.setImage(state.getIcon());
 			timer.setSize( w , h);
 			progress.setSize( w , h);
-			timer.setVisible(1);
+			timer.setVisible(True);
 			#timer.update(); #or whatever will update the GlassTimer
 			timer.setX( xOffset + i*(timer.getWidth() + 5));
 			inflictor = state.getInflictor();
@@ -81,11 +81,11 @@ class StateDisplay( glass.GlassContainer):
 			else:
 				progress.setForegroundColor( tangoRed );
 
-			counter.setVisible(1);
+			counter.setVisible(True);
 			counter.setCaption( state.getTimeRemaining() );
 			counter.setX( timer.getX() + timer.getWidth() - counter.getWidth() );
 
-			progress.setVisible(1);
+			progress.setVisible(True);
 			try:
 				progress.setProgress(1.0-state.getTimeRemaining(False)/state.getDuration());
 			except ZeroDivisionError:
@@ -97,8 +97,8 @@ class StateDisplay( glass.GlassContainer):
 			timer = self.timers[i];
 			counter = self.counters[i];
 			progress = self.progresses[i];
-			timer.setVisible(0);
-			counter.setVisible(0);
-			progress.setVisible(0);
+			timer.setVisible(False);
+			counter.setVisible(False);
+			progress.setVisible(False);
 
 

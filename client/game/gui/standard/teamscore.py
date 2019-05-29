@@ -14,7 +14,7 @@ class TeamScore(glass.GlassWindow):
 		self.setTitleVisible(0);
 		self.setTitleBarHeight(0);
 		self.setBackgroundColor(glass.Color(0,0,0,100));
-		self.setVisible(0);
+		self.setVisible(False);
 		
 
 	#called when we want to update the window
@@ -51,13 +51,13 @@ class TeamScore(glass.GlassWindow):
 				rank, name, xp, kills, deaths, assists, ping = [
 				  table.getWidget(rowCount, k, type=glass.GlassLabel) for k in xrange(7)
 				];
-				rank.setVisible(1);
+				rank.setVisible(True);
 				if p.isCommander():
 					rank.setImage("gui/standard/icons/comm_crown.s2g")
 				elif p.isOfficer():
 					rank.setImage("models/human/items/icons/officer1.s2g")
 				else:
-					rank.setVisible(0);
+					rank.setVisible(False);
 				rank.setSize(16,16);
 						
 				name.setCaption( p.getFormattedName() );
@@ -72,7 +72,7 @@ class TeamScore(glass.GlassWindow):
 			while i < self.MAX_PLAYERS_PER_TEAM:
 				cellList = [table.getWidget(rowCount, k, type=glass.GlassLabel) for k in xrange(7)];
 				rank = cellList[0];
-				rank.setVisible(0);
+				rank.setVisible(False);
 				
 				for w in cellList[1:]:
 					w.setCaption("");
@@ -142,11 +142,11 @@ class TeamScore(glass.GlassWindow):
 			table.setPositionPct( tableX, tableY);
 			table.adjustSizeToPct ( tableW, 0.9);
 			table.setHeight( int(tableH*self.getHeight()));
-			table.setVisible(1);
+			table.setVisible(True);
 			
 		for i in range(numTeams, 9): #hide the rest of the tables
 			table = self.tables[i];
-			table.setVisible(0);
+			table.setVisible(False);
 	
 	MAX_PLAYERS_PER_TEAM = 32;
 

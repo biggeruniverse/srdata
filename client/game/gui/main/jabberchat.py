@@ -170,17 +170,17 @@ class BuddyRoster(DefaultWindow):
 
 	def updateControlBar(self):
 		if self.activeList == "Friends":
-			self.deleteOverlay.setVisible(0);
-			#self.statsOverlay.setVisible(0);
+			self.deleteOverlay.setVisible(False);
+			#self.statsOverlay.setVisible(False);
 		else:
-			self.deleteOverlay.setVisible(1);
-			#self.statsOverlay.setVisible(1);
+			self.deleteOverlay.setVisible(True);
+			#self.statsOverlay.setVisible(True);
 
 		name = self.getSelection();
 		if self.contacts[self.activeList][name] != "Offline" or Client_GetStateString("svr_name") == "Awaiting State Strings..." or cvar_get("server_address") == "":
-			self.matchOverlay.setVisible(0);
+			self.matchOverlay.setVisible(False);
 		else:
-			self.matchOverlay.setVisible(1);
+			self.matchOverlay.setVisible(True);
 
 	def getSelection(self, i=1):
 		jidList = self.widgets[self.activeList];
@@ -264,17 +264,17 @@ class BuddyRoster(DefaultWindow):
 
 	def onChatEvent(self, e):
 		if e.scope == "chat_establish":
-			self.connectingOverlay.setVisible(1);
+			self.connectingOverlay.setVisible(True);
 			self.loginOverlayLabel.setCaption("^icon loading/loading0000^Logging in...");
 			self.connectingOverlay.setSize(self.getWidth(), self.getHeight());
 			self.loginOverlayLabel.setX(self.getWidth() // 2 - self.loginOverlayLabel.getWidth() // 2);
 
 		elif e.scope == "chat_connect":
-			self.connectingOverlay.setVisible(0);
+			self.connectingOverlay.setVisible(False);
 			self.connectingOverlay.setSize(0,0); # Don't want it to block mouse stuff!
 
 		elif e.scope == "chat_quit":
-			self.connectingOverlay.setVisible(1);
+			self.connectingOverlay.setVisible(True);
 			self.loginOverlayLabel.setCaption("Disconnected \nfrom chat service.");
 			self.connectingOverlay.setSize(self.getWidth(), self.getHeight());
 			self.loginOverlayLabel.setPosition(self.getWidth() // 2 - self.loginOverlayLabel.getWidth() // 2, self.getHeight() // 2 - self.loginOverlayLabel.getHeight() // 2);
@@ -362,7 +362,7 @@ class JabberChatBox(DefaultContainer):
 
 		# Alright, TabbedArea is being a dick when it comes to sizes, have to pass them to __init__:
 		self.chatBox = TabbedChatBox(self.window.getWidth(), self.window.getHeight() - top.getHeight());
-		self.chatBox.setVisible(1);
+		self.chatBox.setVisible(True);
 		self.window.add(self.chatBox, 0, top.getHeight() );
 		self.chatBox.resize();
 		self.chatBox.addSelectionListener(self);		
@@ -413,9 +413,9 @@ class JabberChatBox(DefaultContainer):
 		if box == self.chatBox:
 			tab = box.getSelectedTab()
 			if box.chatTabs[tab].chatBox.isConference:
-				self.left.setVisible(1);
+				self.left.setVisible(True);
 			else:
-				self.left.setVisible(0);
+				self.left.setVisible(False);
 
 	def onChatEvent(self, e):
 		if e.scope == "chat_create" or e.scope == "chat_msg" or e.scope == "chat_history_update":

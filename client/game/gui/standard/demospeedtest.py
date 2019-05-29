@@ -47,7 +47,7 @@ class DemoTracker:
 		
 		#TODO do the same for game errors?
 		mainmenu.demo_window.centerWindow();
-		mainmenu.demo_window.setVisible(1);
+		mainmenu.demo_window.setVisible(True);
 		
 		
 	def parseResult(self, e):

@@ -45,7 +45,7 @@ def onShow():
 	loadout.mainViewer.setY( loadout.main.getY() + loadout.inventoryContainer.getY() - 10 - loadout.mainViewer.getHeight() );
 	
 	loadout.map_window.setAlpha(0);
-	loadout.map_window.setVisible(0);
+	loadout.map_window.setVisible(False);
 
 techColumns = [];
 lastTeamNum = -1;
@@ -409,7 +409,7 @@ map_window.setTitleBarHeight(0);
 map_window.setTitleVisible(0);
 map_window.setSizePct(1,1);
 map_window.setBackgroundColor(glass.Color(0,0,0,128));
-map_window.setVisible(0);
+map_window.setVisible(False);
 glass.GUI_ScreenAddWidget("loadout",map_window);
 
 ca = map_window.getChildrenArea();

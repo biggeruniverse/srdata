@@ -17,7 +17,7 @@ class DefaultRowStack:
 	def addRow( self, *inputs):
 		row = glass.GlassRow();
 		for widget in inputs:
-			if isinstance(widget,(str,unicode)):
+			if isinstance(widget,str):
 				widget = glass.GlassLabel(str(widget));
 			row.add( widget );
 		self._add(row);

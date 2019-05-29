@@ -116,7 +116,7 @@ class ConnectionAlert(CommAlert):
 		self.text.setFont(fontSizeSmall);
 		self.text.setX(5);
 
-		self.pic.setVisible(0);
+		self.pic.setVisible(False);
 
 class AttackAlert(CommAlert):
 	PRIORITY = 10; # Always on top!
@@ -157,7 +157,7 @@ class HealthAlert(CommAlert):
 	def __init__(self):
 		CommAlert.__init__(self, self.PRIORITY, self.RATE, "");
 
-		self.setVisible(0);
+		self.setVisible(False);
 
 		team = savage.getLocalTeam();	
 
@@ -192,10 +192,10 @@ class HealthAlert(CommAlert):
 		self.pic.setImage(self.obj.getType().getValue("icon")+".s2g");
 		self.pic.setSize(self.content.getHeight() , self.content.getHeight());
 
-		self.setVisible(1);
+		self.setVisible(True);
 
 	def flash(self):
-		self.setVisible(1);
+		self.setVisible(True);
 
 
 	def bleed(self):
@@ -205,7 +205,7 @@ class HealthAlert(CommAlert):
 		k = self.obj.getHealthPct();
 
 		if k == 1.0:
-			self.setVisible(0);
+			self.setVisible(False);
 			return True;
 
 		hue = (k-0.1)/2.7 if k > 0.1 else 0;
@@ -213,7 +213,7 @@ class HealthAlert(CommAlert):
 		self.bar.setForegroundColor(tools.HSLColor(hue,0.8,0.66));
 		self.label.setCaption(str(int(self.obj.getHealth())));
 		self.bar.setProgress(self.obj.getHealthPct());
-		#self.setVisible(1);
+		#self.setVisible(True);
 		return True;
 
 class RequestAlert(CommAlert):
@@ -301,7 +301,7 @@ class CommAlertHandler(DefaultContainer):
 		#gblQueue.addListener(self);
 
 		self.stop = threading.Event();
-		self.bleed_thread = threading.Thread("bleeder", self._runner);
+		self.bleed_thread = threading.Thread(name="bleeder", target=self._runner);
 		self.stop.clear();
 		self.bleed_thread.start();
 

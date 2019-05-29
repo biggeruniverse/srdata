@@ -80,7 +80,7 @@ class BindHandler:
 class RestartChangeHandler:
 	def onValueChanged(self, e):
 		w = glass.GUI_GetWidget("mainmenu:Restart");
-		w.setVisible(1);
+		w.setVisible(True);
 		w.requestMoveToTop();
 
 reshandler = RestartChangeHandler();
@@ -121,14 +121,14 @@ class OptionsWindow(glass.GlassWindow):
 		w.setBackgroundColor(glass.Color(0,0,0,128));
 		w.setMovable(0);
 		w.setTitleVisible(0);
-		w.setVisible(0);
+		w.setVisible(False);
 		l = glass.GlassLabel("This change will not take effect until you restart.\nWould you like to restart now?");
 		w.add(l, 10, 10);
 		b = glass.GlassButton("Restart");
 		b.setClickAction("shutdown(1);");
 		w.add(b, 50, 60);
 		b = glass.GlassButton("Cancel");
-		b.setClickAction("w=glass.GUI_GetWindow('mainmenu:Restart');w.setVisible(0);w.releaseModalFocus()");
+		b.setClickAction("w=glass.GUI_GetWindow('mainmenu:Restart');w.setVisible(False);w.releaseModalFocus()");
 		w.add(b, 150, 60);
 		self.setBackgroundColor(glass.Color(0,0,0,128))
 		self.setTitleVisible(0)
@@ -547,6 +547,6 @@ class OptionsWindow(glass.GlassWindow):
 		cvar_setvalue("maxPacketSize",psize);
 	
 	def onAction(self, e):
-		self.setVisible(0);
+		self.setVisible(False);
 		cvar_set("name", self.nickname.getText());
 		saveconfig();

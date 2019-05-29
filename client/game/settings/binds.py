@@ -233,9 +233,9 @@ def Player_Ready_Up():
 ## GUI
 
 def Player_ShowScoreboard_Down():
-	hud.scoreboard.setVisible(1); #TODO handle other scoreboards
+	hud.scoreboard.setVisible(True); #TODO handle other scoreboards
 def Player_ShowScoreboard_Up():
-	hud.scoreboard.setVisible(0); #TODO handle other scoreboards
+	hud.scoreboard.setVisible(False); #TODO handle other scoreboards
 
 def Player_ShowAccuracy_Down():
 	pass; #TODO
@@ -249,11 +249,11 @@ def Player_ShowResearch_Up():
 
 def Player_ShowGraphics_Down():
 	if hud.topBar.graphicspanel.isVisible():
-		hud.topBar.setVisible(0);
+		hud.topBar.setVisible(False);
 		hud.topBar.graphicspanel.hide();		
 	else:
 		hud.topBar.graphicspanel.show();
-		hud.topBar.setVisible(1);
+		hud.topBar.setVisible(True);
 def Player_ShowGraphics_Up():
 	pass; #TODO
 
@@ -438,9 +438,9 @@ def Comm_GotoOfficer3_Up():
 ## GUI
 
 def Comm_ShowScoreboard_Down():
-	commhud.scoreboard.setVisible(1); 
+	commhud.scoreboard.setVisible(True); 
 def Comm_ShowScoreboard_Up():
-	commhud.scoreboard.setVisible(0); 
+	commhud.scoreboard.setVisible(False); 
 def Comm_ShowUnitList_Down():
 	commhud.rosterWindow.toggle();
 def Comm_ShowUnitList_Up():
@@ -471,11 +471,11 @@ def Comm_Screenshot_Up():
 
 def Comm_ShowGraphics_Down():
 	if commhud.topBar.graphicspanel.isVisible():
-		commhud.topBar.setVisible(0);
+		commhud.topBar.setVisible(False);
 		commhud.topBar.graphicspanel.hide();		
 	else:
 		commhud.topBar.graphicspanel.show();
-		commhud.topBar.setVisible(1);
+		commhud.topBar.setVisible(True);
 def Comm_ShowGraphics_Up():
 	pass; #TODO
 
@@ -563,16 +563,16 @@ def Spec_VoiceChat_Up():
 	pass;
 
 def Spec_ShowChatHistory_Down():
-	spechud.chatBox.showHistory(1);
+	spechud.chatBox.showHistory(True);
 def Spec_ShowChatHistory_Up():
-	spechud.chatBox.showHistory(0);
+	spechud.chatBox.showHistory(False);
 
 ## GUI
 
 def Spec_ShowScoreboard_Down():
-	spechud.scoreboard.setVisible(1); 
+	spechud.scoreboard.setVisible(True); 
 def Spec_ShowScoreboard_Up():
-	spechud.scoreboard.setVisible(0); 
+	spechud.scoreboard.setVisible(False); 
 
 def Spec_ShowResearch_Down():
 	spechud.researchinfowindow1.open();
@@ -583,16 +583,16 @@ def Spec_ShowResearch_Up():
 
 def Spec_ShowGraphics_Down():
 	if spechud.topBar.graphicspanel.isVisible():
-		spechud.topBar.setVisible(0);
+		spechud.topBar.setVisible(False);
 		spechud.topBar.graphicspanel.hide();		
 	else:
 		spechud.topBar.graphicspanel.show();
-		spechud.topBar.setVisible(1);
+		spechud.topBar.setVisible(True);
 def Spec_ShowGraphics_Up():
 	pass; #TODO
 
 def Spec_ToggleMinimap_Down():
-	spechud.minimap.setVisible(1-int(spechud.minimap.isVisible()));
+	spechud.minimap.setVisible(not spechud.minimap.isVisible());
 def Spec_ToggleMinimap_Up():
 	pass;
 

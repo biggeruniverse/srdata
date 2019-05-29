@@ -131,7 +131,7 @@ class BuddyListGUI(glass.GlassContainer):
 		self.window = glass.GlassWindow();
 		self.window.setCaption("Buddies");
 		self.window.setAlpha(0);
-		self.window.setVisible(0);
+		self.window.setVisible(False);
 		self.window.setMovable(0);
 		self.window.setSize(self.getWidth(), self.getHeight() - self.toggle.getHeight());
 		self.window.setPosition(0,0);

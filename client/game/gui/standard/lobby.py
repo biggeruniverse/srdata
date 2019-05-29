@@ -47,7 +47,7 @@ interfaceSpectatorButton.setPositionPct(0.5,0);
 
 interfaceChatBox = HUDChatBox();
 interfaceChatBox.alwaysShowInput(1);
-interfaceChatBox.inputType.setVisible(0);
+interfaceChatBox.inputType.setVisible(False);
 interface.add( interfaceChatBox );
 interfaceChatBox.setSizePct(1,0.8);
 interfaceChatBox.setPositionPct(0,0.2);
@@ -75,7 +75,7 @@ for i in range(0, 5):
     #b. add them to the screen, and make them invisible
 			
 	scroll = glass.GlassScrollArea();	
-	scroll.setVisible(0);
+	scroll.setVisible(False);
 	scroll.setOpaque(1);
 	scroll.setBackgroundColor(transparency);
 	scroll.setSizePct(boxWidth,boxHeight);			
@@ -86,14 +86,14 @@ for i in range(0, 5):
 	#Add the backgrounds before the scrolls. 
 	background = glass.GlassLabel(" ");		
 	background.setPosition( scroll.getX(), scroll.getY());
-	background.setVisible(0);
+	background.setVisible(False);
 	backgrounds.append(background);
 	glass.GUI_ScreenAddWidget("lobby", background);	
 	glass.GUI_ScreenAddWidget("lobby", scroll);
 	
 	button = glass.GlassButton("Join Team "+str(i));                        
 	button.setClickAction("CL_RequestTeam("+str(i)+"); CL_RequestLoadout();");
-	button.setVisible(0);
+	button.setVisible(False);
 	button.setSizePct( boxWidth , buttonHeight );
 	buttons.append(button);
 	glass.GUI_ScreenAddWidget("lobby", button);        
@@ -122,9 +122,9 @@ def arrange():
 		scroll = lobby.scrolls[i];
 		background = lobby.backgrounds[i];
 		
-		button.setVisible(1);
-		scroll.setVisible(1);
-		background.setVisible(1);		
+		button.setVisible(True);
+		scroll.setVisible(True);
+		background.setVisible(True);		
 		
 		team = savage.Team(i);		
 		race = team.getRace();
@@ -140,9 +140,9 @@ def arrange():
         
 	#3. set the UI for other teams invisible
 	for i in range( sv_numteams, 5):
-			lobby.buttons[i].setVisible(0);
-			lobby.scrolls[i].setVisible(0);
-			lobby.backgrounds[i].setVisible(0);
+			lobby.buttons[i].setVisible(False);
+			lobby.scrolls[i].setVisible(False);
+			lobby.backgrounds[i].setVisible(False);
         
 def update():
 	teamsList = [[],[],[],[],[],[],[],[],[]];

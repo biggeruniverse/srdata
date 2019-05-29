@@ -10,7 +10,7 @@ def frame():
 	players = [];
 	
 	loading.serverName.setCaption(Client_GetStateString("svr_name"))
-	loading.serverName.setPosition(450/2-loading.serverName.getWidth()/2, 22)
+	loading.serverName.setPosition(450//2-loading.serverName.getWidth()//2, 22)
 	loading.time.setCaption("GAME TIME: ^w" + Client_GetStateString("svr_time"))
 	loading.players.setCaption("PLAYERS: ^w" + str(len(players)) + "/" + Client_GetStateString("svr_maxclients"))
 	loading.type.setCaption("GAME TYPE: ^w" + str("RTSS"))
@@ -35,7 +35,7 @@ def add(obj, x=None, y=None):
 
 def setWorld(world_name):
 	Host_VerifyOverhead("world/"+world_name+"_overhead.jpg");
-	loading.minimap.setImage("world/"+world_name+"_overhead.jpg", "none", 1);
+	loading.minimap.setImage("world/"+world_name+"_overhead.jpg", "none", True);
 	loading.minimap.setSize(145, 145);
 	loading.mininame.setCaption(world_name);
 	loading.mininame.setX(loading.info.getWidth() // 2 - loading.mininame.getWidth() // 2);
@@ -95,7 +95,7 @@ serverName.setFont(fontSizeSmall);
 info.add(serverName, "center", 22);
 
 left = DefaultWindow();
-left.setOpaque(0);
+left.setOpaque(False);
 left.setBackgroundColor(glass.Color(0, 0, 0, 0));
 left.setSize(135, 143);
 info.add(left, 10, 50);
@@ -123,7 +123,7 @@ official.setFont(fontSizeSmall);
 left.add(official, 5, 47, "right");
 
 minimap = DefaultImage();
-minimap.setImage(cvar_get("world_overhead"), "none", 1);
+minimap.setImage(cvar_get("world_overhead"), "none", True);
 minimap.setSize(145, 145);
 info.add(minimap, "center", 50);
 
@@ -156,7 +156,7 @@ tip = DefaultTextBox();
 tip.setFont(fontSizeSmall);
 tip.setBackgroundColor(transparency);
 tip.setForegroundColor(bluey);
-tip.setOpaque(0);
+tip.setOpaque(False);
 tips.add(tip, 0, tipstitle.getHeight()+5);
 tip.setSize(tips.getWidth()-10,tips.getHeight()-25);
 

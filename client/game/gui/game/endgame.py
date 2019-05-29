@@ -30,7 +30,7 @@ def onShow():
 	CL_RequestScores();
 	
 	endgame.updatePersonal();
-	endgame.accuracy_window.setVisible(0);
+	endgame.accuracy_window.setVisible(False);
 	endgame.accuracy_window.update();
 	endgame.accuracy_window.centerWindow();
 	
@@ -58,7 +58,7 @@ hbreak2 = 0.75; hbreak2px = int(hbreak2 * screenWidth);
 #1. Personal Information
 fave_unit = glass.GlassViewer();
 fave_unit.setBackgroundColor(transparency);
-fave_unit.setEnabled(0);
+fave_unit.setEnabled(False);
 fave_unit.setPosition(PADDING, PADDING);
 fave_unit.setSizePct(0.075,0);
 fave_unit.setHeight( vbreakpx - fave_unit.getY() - PADDING);
@@ -76,7 +76,7 @@ score.setWidth( name.getWidth() );
 glass.GUI_ScreenAddWidget("endgame",score);
 
 accuracy = glass.GlassButton("Accuracy");
-accuracy.setClickAction("endgame.accuracy_window.setVisible(1); ActionSequence(FadeInAction(endgame.accuracy_window))");
+accuracy.setClickAction("endgame.accuracy_window.setVisible(True); ActionSequence(FadeInAction(endgame.accuracy_window))");
 accuracy.setY( score.getY() + score.getHeight() + PADDING);
 glass.GUI_ScreenAddWidget("endgame",accuracy);
 
@@ -149,8 +149,8 @@ glass.GUI_ScreenAddWidget("endgame",windata);
 
 width = int((screenWidth-hbreak2px-2*PADDING)*0.4) - PADDING;
 for w in (time, dist, windata):
-	w.setWidth(width);
-	w.setX( hbreak2px + PADDING );
+	w.setWidth(int(width))
+	w.setX( hbreak2px + PADDING )
 
 mapname = glass.GlassLabel("map_name");
 mapname.setAlignment(glass.Graphics.CENTER);
@@ -175,10 +175,10 @@ def updateGameInfo():
 	if File_Exists(overhead):
 		w, h = endgame.map.getWidth(), endgame.map.getHeight(); 
 		endgame.map.setImage(overhead);
-		endgame.map.setVisible(1);
+		endgame.map.setVisible(True);
 		endgame.map.setSize(w,h);
 	else:
-		endgame.map.setVisible(0);
+		endgame.map.setVisible(False);
 
 def updateDist(q):
 	"""If this match was:             Then q should be:
@@ -208,7 +208,7 @@ def updateWinData(team_wins):
 #4. Outcome Label
 
 outcome = glass.GlassLabel();
-outcome.setOpaque(0);
+outcome.setOpaque(False);
 outcome.setPosition(hbreak1px + PADDING, PADDING);
 outcome.setWidth(hbreak2px - hbreak1px - 2*PADDING);
 outcome.setHeight(outcome.getWidth()//5);
@@ -338,7 +338,7 @@ def rebuildAwards(data):
 		awardee = recipients[0] if len(recipients) > 0 else "";
 		award_owner = glass.GlassLabel(awardee);
 		bg = glass.GlassLabel("");
-		bg.setOpaque(1);
+		bg.setOpaque(True);
 		bg.setBackgroundColor(colors[(i//COLS)%len(colors)]);
 		
 		#1. position the background

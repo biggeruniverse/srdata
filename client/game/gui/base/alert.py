@@ -19,12 +19,12 @@ class DefaultAlert(DefaultWindow):
         self.centerWindow();
         self.setY(self.getY() - 190);
         self.setBackgroundColor(glass.Color(0, 0, 0, 191));
-        self.setVisible(0);
+        self.setVisible(False);
     
         self.msg = DefaultTextBox();
         self.msg.setForegroundColor(glass.Color(238, 238, 238));
-        self.msg.setOpaque(0);
-        self.msg.setFocusable(0);
+        self.msg.setOpaque(False);
+        self.msg.setFocusable(False);
         self.msg.setSize(width, self.msg.getHeight());
         self.msg.setText(alertMessage);
         #self.msg.setAlignment(glass.Graphics.CENTER);
@@ -40,7 +40,7 @@ class DefaultAlert(DefaultWindow):
         self.hr = DefaultLabel("");
         self.hr.setBackgroundColor(glass.Color(255, 255, 255, 100));
         self.hr.setSize(width, 1);
-        self.hr.setOpaque(1);
+        self.hr.setOpaque(True);
         self.add(self.hr, 0, self.msg.getHeight() + 5);
         
         self.setHeight(self.msg.getHeight() + self.ok.getHeight() + 15 + self.padding * 2 + self.border * 2);
@@ -59,25 +59,25 @@ class DefaultAlert(DefaultWindow):
         
         top = DefaultLabel();
         top.setSize(self.getWidth(), self.border);
-        top.setOpaque(1);
+        top.setOpaque(True);
         top.setBackgroundColor(color);
         self.add(top, 0, 0, "left", "top", True);
         
         right = DefaultLabel();
         right.setSize(self.border, self.getHeight() - self.border * 2);
-        right.setOpaque(1);
+        right.setOpaque(True);
         right.setBackgroundColor(color);
         self.add(right, 0, self.border, "right", "top", True);
         
         bottom = DefaultLabel();
         bottom.setSize(self.getWidth(), self.border);
-        bottom.setOpaque(1);
+        bottom.setOpaque(True);
         bottom.setBackgroundColor(color);
         self.add(bottom, 0, 0, "left", "bottom", True);
         
         left = DefaultLabel();
         left.setSize(self.border, self.getHeight() - self.border * 2);
-        left.setOpaque(1);
+        left.setOpaque(True);
         left.setBackgroundColor(color);
         self.add(left, 0, self.border, "left", "top", True);
         
@@ -100,17 +100,18 @@ class DefaultAlert(DefaultWindow):
     def onAction(self, e):
         if e.widget.getCaption() == self.ok.getCaption():
             import mainmenu;
-            self.setVisible(0);
+            self.setVisible(False);
             
     def setVisible(self, visible):        
-        if self.getParent() is not None and visible == 1:
+        visible = True if visible == 1 else False
+        if self.getParent() is not None and visible == True:
             self.getParent().moveToTop(self);
             self.resize();
         DefaultWindow.setVisible(self, visible);
         #import mainmenu;
         #mainmenu.fade(visible);
         
-        if visible == 1:
+        if visible == True:
             self.requestModalFocus();
         else:
             self.releaseModalFocus();

@@ -42,13 +42,13 @@ class InventoryWindow(DefaultContainer):
 		
 		self.inventorySlots = [];
 		self.inventoryAmmos = [];
-		for i in xrange(5):
+		for i in range(5):
 			slot = DefaultLabel();
 
 			slot.setSize( slotSize , slotSize);
 			self.inventorySlots.append(slot);
 			equipmentWindow.add(slot,2 + i * (slot.getWidth() + 3), "center");
-			slot.setVisible(1);
+			slot.setVisible(True);
 
 			if i > 0 and i < 4:
 				div = DefaultContainer();
@@ -84,20 +84,20 @@ class InventoryWindow(DefaultContainer):
 		player = savage.getLocalPlayer();
 		self.primaryRanged = None;
 		
-		for i in xrange(5):
+		for i in range(5):
 			slot_objType = player.getInventorySlot( i );
 			slot = self.inventorySlots[i];
 			w, h = slot.getWidth() , slot.getHeight();
 			
 			if slot_objType != None:
-				slot.setVisible(1);
+				slot.setVisible(True);
 				slot.setImage(slot_objType.getValue("icon")+".s2g");
 
 				if self.primaryRanged == None and slot_objType.isWeaponType() :
 					self.primaryRanged = i;
 			
 			else: #empty slot
-				slot.setVisible(0);
+				slot.setVisible(False);
 			slot.setSize( w, h);
 		
 		if self.primaryRanged != None:
@@ -108,13 +108,13 @@ class InventoryWindow(DefaultContainer):
 			else: #it must use ammo
 				self.ammoGraphic.setImage( "/models/human/weapons/ranged/icons/generic_ammo.s2g" );
 			self.ammoGraphic.setSize( w, h);
-			#self.ammoValue.setVisible(1);
-			#self.ammoGraphic.setVisible(1);
-			self.ammoWindow.setVisible(1);
+			#self.ammoValue.setVisible(True);
+			#self.ammoGraphic.setVisible(True);
+			self.ammoWindow.setVisible(True);
 		else:
-			#self.ammoValue.setVisible(0);
-			#self.ammoGraphic.setVisible(0);
-			self.ammoWindow.setVisible(0);
+			#self.ammoValue.setVisible(False);
+			#self.ammoGraphic.setVisible(False);
+			self.ammoWindow.setVisible(False);
 
 		self.updateAmmo();
 		
@@ -129,7 +129,7 @@ class InventoryWindow(DefaultContainer):
 	def updateAmmo(self):
 		
 		player = savage.getLocalPlayer();
-		for i in xrange(5):
+		for i in range(5):
 			ammo = self.inventoryAmmos[i] 
 
 			if player.getInventorySlot(i) == None:
@@ -141,7 +141,7 @@ class InventoryWindow(DefaultContainer):
 				ammoCount = '';
 			elif ammoCount == 0 and player.getInventorySlot(i).isItemType():
 				slot = self.inventorySlots[i];
-				slot.setVisible(0);
+				slot.setVisible(False);
 			ammo.setCaption(str(ammoCount));
 			if self.primaryRanged == i:
 				self.ammoValue.setCaption(str(ammoCount));

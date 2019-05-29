@@ -9,7 +9,7 @@ def construct(build, width=200, height=300):
     builder = formbuilder.Builder();
     
     table = DefaultTable();
-    table.setFrame(0);
+    table.setFrame(False);
     table.horizontalJustification = glass.Graphics.LEFT;
     table.setSize(width, height);
     table.setCellPadding(5);
@@ -58,19 +58,19 @@ class Builder():
         
     def createDropDown(self, data):
         
-        if data.has_key("caption"):
-            data["_caption"] = data["caption"];
-            data.remove_key("caption");
+        if "caption" in data:
+            data["_caption"] = data["caption"]
+            del data["caption"]
         
         obj = self.createWidget(data);
         
-        if data.has_key("_caption"):
-            obj.setCaption(data["_caption"]);
+        if "_caption" in data:
+            obj.setCaption(data["_caption"])
         
         for name, value in data['options'].items():
             obj.addOption(name, value);
             
-        if data.has_key("selectionListener"):
+        if "selectionListener" in data:
             obj.addSelectionListener(data["selectionListener"]);
             
         return obj;
@@ -78,10 +78,10 @@ class Builder():
     def createSlider(self, data):
         obj = self.createWidget(data);
         
-        if data.has_key("scaleEnd"):
+        if "scaleEnd" in data:
             obj.setScaleEnd(data["scaleEnd"]);
         
-        if data.has_key("scaleStart"):
+        if "scaleStart" in data:
             obj.setScaleStart(data["scaleStart"]);
         
         return obj;    
@@ -89,7 +89,7 @@ class Builder():
     def createSpinner(self, data):
         obj = self.createWidget(data);
         
-        if data.has_key("step"):
+        if "step" in data:
             obj.setStep(data["step"]);
             
         return obj;
@@ -99,15 +99,15 @@ class Builder():
         import __main__;
         widget = getattr(__main__, "Default" + data["widget"]);
         
-        if data.has_key("caption"):
+        if "caption" in data:
             obj = widget(data["caption"]);
         else:
             obj = widget();
         
-        if data.has_key("cvar"):
+        if "cvar" in data:
             obj.linkCvar(data["cvar"]);
             
-        if data.has_key("clickAction"):
+        if "clickAction" in data:
             obj.setClickAction(data["clickAction"]);
             
-        return obj;
+        return obj

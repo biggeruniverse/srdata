@@ -42,16 +42,16 @@ class HUDCrossHair (DefaultTable):
 		
 		self.build = glass.GlassProgressBar();
 		self.build.setSize(barWidth, barHeight);
-		self.build.setOpaque(1);
+		self.build.setOpaque(True);
 		self.build.setBackgroundColor( glass.Color(10,115,110) );
 		self.build.setForegroundColor( glass.Color(20,255,248) );
-		self.build.setVisible(0);
+		self.build.setVisible(False);
 		
 		self.addRow(self.build);
 		
 		self.crosshair = glass.GlassLabel();
 		self.crosshair.setImage("/gui/standard/crosshair.png");
-		self.crosshair.setOpaque(0);
+		self.crosshair.setOpaque(False);
 		
 		self.crosshair_row = self.addRow(self.crosshair);
 		
@@ -66,15 +66,15 @@ class HUDCrossHair (DefaultTable):
 		
 		mouseX, mouseY = Input_GetMouseXY();
 		
-		self.setX( mouseX - self.getWidth()/2);
-		self.setY( mouseY - self.getHeight() + self.crosshair_row.getHeight() - self.crosshair.getHeight()/2);
+		self.setX( mouseX - self.getWidth()//2);
+		self.setY( mouseY - self.getHeight() + self.crosshair_row.getHeight() - self.crosshair.getHeight()//2);
 	
 	def update(self):
 		#0. don't show if we're free
 		if getMouseMode() == MOUSE_FREE:
-			self.setVisible(0);
+			self.setVisible(False);
 		else:
-			self.setVisible(1);
+			self.setVisible(True);
 
 		player = savage.getLocalPlayer();
 		#1. get the object behind the crosshair
@@ -130,17 +130,17 @@ class HUDCrossHair (DefaultTable):
 	
 	def updateHealth( self, showHealth, obj):
 		if showHealth:
-			self.health.setVisible(1);
+			self.health.setVisible(True);
 			self.health.setProgress( obj.getHealthPct() );
 		else:
-			self.health.setVisible(0);
+			self.health.setVisible(False);
 	
 	def updateBuild( self, showBuild, obj):
 		if showBuild:
-			self.build.setVisible(1);
+			self.build.setVisible(True);
 			self.build.setProgress( obj.getBuildProgress());
 		else:
-			self.build.setVisible(0);
+			self.build.setVisible(False);
 			
 	def adjustAlpha( self):
 		if self.status == self.STATUS_ACTIVE and self.getAlpha() < 255:

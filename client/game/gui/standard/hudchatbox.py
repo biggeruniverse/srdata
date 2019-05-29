@@ -46,7 +46,7 @@ class ChatBox( glass.GlassContainer ):
 	
 	def alwaysShowInput( self, x ):
 		if x == 1:
-			self.input.setVisible(1);
+			self.input.setVisible(True);
 		self.bShowInput = x;
 		
 	def resize( self ):
@@ -58,11 +58,11 @@ class ChatBox( glass.GlassContainer ):
 	def deactivate( self ):
 		self.input.setText("");
 		if self.bShowInput == 0:
-			self.input.setVisible(0); #this also REMOVES the focus
+			self.input.setVisible(False); #this also REMOVES the focus
 	
 	def activate( self ):
 		self.input.setText("");
-		self.input.setVisible(1);
+		self.input.setVisible(True);
 		self.input.requestFocus();
 
 class HUDChatBox( ChatBox, EventListener ):
@@ -75,7 +75,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		
 		self.scroll.setVerticalScrollPolicy( glass.GlassScrollArea.SHOW_NEVER );
 		
-		self.input.setVisible(0);
+		self.input.setVisible(False);
 		
 		self.inputType = glass.GlassLabel("(squad)");
 		self.inputType.setAlignment( glass.Graphics.RIGHT );
@@ -193,7 +193,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.chatType = chatType; #"all" "team" "comm" "squad" "private" "clan"
 		#don't use "private" here, use /w, /msg, /r and /re for that
 		self.input.setText("");
-		self.input.setVisible(1);
+		self.input.setVisible(True);
 		self.input.requestFocus();
 		
 		self.inputType.setCaption( "^777(" + chatType +")" );
@@ -206,7 +206,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.historyIndex = 0;
 		self.input.setText("");
 		if self.bShowInput == 0:
-			self.input.setVisible(0); #this also REMOVES the focus
+			self.input.setVisible(False); #this also REMOVES the focus
 
 	def showHistory( self, status):
 		if self._historyShown != status:

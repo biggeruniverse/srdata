@@ -11,12 +11,12 @@ class GraphicsPanel(DefaultWindow):
 		self.setBackgroundColor(glass.Color(0,0,0,128));
 		#self.setTitleVisible(0);
 		self.setSizePct(0.55,0.8);
-		self.setVisible(0);
+		self.setVisible(False);
 		
 		# config
 		
 		self.table = DefaultTable();
-		self.table.setFrame(0);
+		self.table.setFrame(False);
 		self.table.setCellPadding(2);
 		self.table.horizontalJustification = glass.Graphics.LEFT;
 		
@@ -199,7 +199,7 @@ class GraphicsPanel(DefaultWindow):
 		self.setWidth(self.table.getWidth() + 15)
 	
 	def show(self):
-		self.setVisible(1);
+		self.setVisible(True);
 		#self.mousemode = getMouseMode();
 		#if self.mousemode != MOUSE_FREE:
 			#self.mousemode = MOUSE_RECENTER; #stop the gui from getting the main game stuck
@@ -207,4 +207,4 @@ class GraphicsPanel(DefaultWindow):
 		
 	def hide(self):
 		#setMouseMode(self.mousemode); 
-		self.setVisible(0);
+		self.setVisible(False);

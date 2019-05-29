@@ -36,8 +36,8 @@ class MainTopBar(DefaultContainer):
 		self.loginOverlay = DefaultContainer();
 		self.loginOverlay.setBackgroundColor(glass.Color(0, 0, 0, 153));
 		self.loginOverlay.setSize(screenWidth, 31);
-		self.loginOverlay.setOpaque(1);
-		self.loginOverlay.setVisible(0);
+		self.loginOverlay.setOpaque(True);
+		self.loginOverlay.setVisible(False);
 		
 		self.loginOverlayLabel = DefaultLabel("Logging in...");
 		self.loginOverlay.add(self.loginOverlayLabel, "center", "center");
@@ -46,11 +46,11 @@ class MainTopBar(DefaultContainer):
 
 		# chat roster stuff, will get added later to the screen, even if it is a bit hacky...
 		self.buddyRoster = BuddyRoster();
-		self.buddyRoster.setVisible(0);
-		self.buddyRoster.setOpaque(1);
+		self.buddyRoster.setVisible(False);
+		self.buddyRoster.setOpaque(True);
 		self.chatBox = JabberChatBox();
 		self.chatBox.setId("chat")
-		self.chatBox.setVisible(0);
+		self.chatBox.setVisible(False);
 
 		self.addChat();
 
@@ -87,7 +87,7 @@ class MainTopBar(DefaultContainer):
 		
 		authed = DefaultContainer();
 		authed.setSize(self.sectionWidth * 3, self.sectionHeight);
-		authed.setVisible(0);
+		authed.setVisible(False);
 		self.add(authed, self.sectionWidth);
 		
 		middle = DefaultContainer();
@@ -96,7 +96,7 @@ class MainTopBar(DefaultContainer):
 		
 		username = DefaultContainer();
 		username.setBackgroundColor(glass.Color(0, 0, 0, 70));
-		username.setOpaque(1);
+		username.setOpaque(True);
 		username.setSize(150, 19);
 		middle.add(username, "center", "center");
 
@@ -140,7 +140,7 @@ class MainTopBar(DefaultContainer):
 		
 		notAuthed = DefaultContainer();
 		notAuthed.setSize(self.sectionWidth * 3, self.sectionHeight);
-		#notAuthed.setVisible(0);
+		#notAuthed.setVisible(False);
 		self.add(notAuthed, self.sectionWidth);
 
 		notAuthed.right = DefaultContainer();
@@ -172,7 +172,7 @@ class MainTopBar(DefaultContainer):
 		self.password.setForegroundColor(fgColor);
 		self.password.setSize(110, 20);
 		self.password.addKeyListener(self);
-		self.password.setHidden(1);
+		self.password.setHidden(True);
 		notAuthed.right.add(self.password, 51 + plus, "center", "right");
 		
 		submit = MainIcon("go");
@@ -221,9 +221,9 @@ class MainTopBar(DefaultContainer):
 		
 				self.password.setText("");
 		
-			self.notAuthed.setVisible(0);
+			self.notAuthed.setVisible(False);
 			self.loginOverlayLabel.setCaption("^icon loading/loading0000^Logging in...");
-			self.loginOverlay.setVisible(1);
+			self.loginOverlay.setVisible(True);
 			
 			cvar_set("auth_requesturl", ApiUrl);
 			self.httpHandle = CL_Auth_Authenticate();
@@ -241,14 +241,14 @@ class MainTopBar(DefaultContainer):
 		cvar_set("username", "");
 		cvar_set("password", "");
 		
-		self.authed.setVisible(0);
+		self.authed.setVisible(False);
 		self.loginOverlayLabel.setCaption("^icon loading/loading0000^Logging out...");
-		self.loginOverlay.setVisible(1);
+		self.loginOverlay.setVisible(True);
 
 	def openChat(self):
 		if self.buddyRoster.isVisible() != self.chatBox.isVisible():
-			self.buddyRoster.setVisible(1);
-			self.chatBox.setVisible(1);
+			self.buddyRoster.setVisible(True);
+			self.chatBox.setVisible(True);
 			return;
 
 		self.buddyRoster.setVisible(not self.buddyRoster.isVisible());
@@ -260,17 +260,17 @@ class MainTopBar(DefaultContainer):
 		if e.widget.getCaption() == "login":
 			self.startLogin();
 		elif e.widget.getCaption() == "logoutConfirm":
-			self.confirmLogout.setVisible(1);
+			self.confirmLogout.setVisible(True);
 		elif e.widget.getCaption() == "Logout":
-			self.confirmLogout.setVisible(0);
+			self.confirmLogout.setVisible(False);
 			self.startLogout();
 		
 	def onEvent(self, e):
 		if e.handle == self.httpHandle and (self.status == 1 or self.status == 2):
-			self.loginOverlay.setVisible(0);
+			self.loginOverlay.setVisible(False);
 			
 			if self.status == 2:
-				self.notAuthed.setVisible(1);
+				self.notAuthed.setVisible(True);
 				self.status = 0;
 				self.httpHandle = -1;
 				return;
@@ -287,7 +287,7 @@ class MainTopBar(DefaultContainer):
 					cvar_set("username", self.username.getText());
 					if cvar_get("name") == "UnnamedNewbie":
 						cvar_set("name", self.username.getText());
-					self.authed.setVisible(1);
+					self.authed.setVisible(True);
 				
 					username = DefaultLabel(str(sessionNode.getAttribute("name")));
 					self.authed.middle.add(username, "center", "center");
@@ -315,10 +315,10 @@ class MainTopBar(DefaultContainer):
 						message = errorNode.getElementsByTagName("message")[0];
 						mainmenu.alert(str(message.childNodes[0].nodeValue));
 				
-					self.notAuthed.setVisible(1);
+					self.notAuthed.setVisible(True);
 			except:
 				logger.error("Unexpected error parsing login data!\n");
-				self.notAuthed.setVisible(1);
+				self.notAuthed.setVisible(True);
 			
 			self.status = 0;
 			self.httpHandle = -1;

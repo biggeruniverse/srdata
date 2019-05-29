@@ -12,10 +12,10 @@ class ResearchInfoWindow(glass.GlassWindow):
 	
 	def __init__(self):
 		glass.GlassWindow.__init__(self, "Research");
-		self.setVisible(0);
-		self.setMovable(0);
-		self.setFocusable(0);
-		self.setTitleVisible(0);
+		self.setVisible(False);
+		self.setMovable(False);
+		self.setFocusable(False);
+		self.setTitleVisible(False);
 		self.setTitleBarHeight(0);
 		self.setBackgroundColor(glass.Color(255,255,255,127));
 		
@@ -149,18 +149,18 @@ class ResearchInfoWindow(glass.GlassWindow):
 					widget[1].setForegroundColor(tangoGrey5);				
 		
 	def open(self):
-		self.setVisible(1);
+		self.setVisible(True);
 	
 	def close(self):
-		self.setVisible(0);
+		self.setVisible(False);
 		
 class UnitInfoWindow(glass.GlassWindow):	
 	PADDING = 4;
 	def __init__(self):	
 		glass.GlassWindow.__init__(self, "Units");
-		self.setMovable(0);
-		self.setFocusable(0);
-		self.setTitleVisible(0);
+		self.setMovable(False);
+		self.setFocusable(False);
+		self.setTitleVisible(False);
 		self.setTitleBarHeight(0);
 		self.setBackgroundColor(transparency);
 		self.widgets = [];
@@ -184,21 +184,21 @@ class UnitInfoWindow(glass.GlassWindow):
 				label.setAlignment(glass.Graphics.RIGHT);
 				label.setImage(unit.getValue("icon")+".s2g");
 				label.setSize(32, 32);
-				label.setVisible(0);				
+				label.setVisible(False);				
 				self.widgets.append([unit.getName(),label]);				
 		
 	def updateUnitInfo(self):	
 		self.table.clear();
 		row = [];
 		activeUnits = self.team.getUnitsInUse();
-		self.setVisible(0);
+		self.setVisible(False);
 		for widget in self.widgets:				
 			count = activeUnits[widget[0]];			
 			if count > 0:		
 				row.append(widget[1]);
 				widget[1].setCaption("\n" + str(count));
-				widget[1].setVisible(1);					
-				self.setVisible(1);
+				widget[1].setVisible(True);					
+				self.setVisible(True);
 		self.table.addRow(*row);
 		self.table.adjustSize();
 		self.table.adjustJustification();

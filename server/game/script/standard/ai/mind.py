@@ -18,7 +18,7 @@ class Mind(GameObject):
 		self.lastGoal = None
 		self.fsm = savage.FiniteStateMachine(self)
 		self.death = threading.Event()
-		self.thread = threading.Thread("Mind of %d" % oid, self.update)
+		self.thread = threading.Thread(name="Mind of %d" % oid, target=self.update)
 		self.homePos = savage.Vec3(0.0, 0.0, 0.0)
 		self.givingWay = False
 		self.lastCollisions = []

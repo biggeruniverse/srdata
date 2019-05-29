@@ -15,7 +15,7 @@ class ResearchManager(glass.GlassWindow):
 		
 		self.setSizePct(0.45, 0.2);
 		self.centerWindow();
-		self.setVisible(0);
+		self.setVisible(False);
 		self.setAlpha(128);
 		self.setTitleVisible(0);
 

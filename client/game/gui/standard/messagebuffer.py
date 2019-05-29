@@ -18,7 +18,7 @@ class MessageBuffer(glass.GlassTextBox, EventListener):
 		self.setLineWrap(1);
 		self.setForegroundColor(white);
 		self.setEditable(0);
-		self.setFocusable(0);
+		self.setFocusable(False);
 		
 	
 	def onEvent(self, e):

@@ -34,9 +34,9 @@ class GlassTablePlus( GlassRowStack, glass.GlassTable ):
 	
 	def makeBlank( self):
 		self.setBackgroundColor(transparency);
-		self.setOpaque(0);
-		self.setFrame(0);
-		self.setAlternate(0);
+		self.setOpaque(False);
+		self.setFrame(False);
+		self.setAlternate(False);
 
 	#override to clean up held references to widgets that are gone
 	def erase(self):

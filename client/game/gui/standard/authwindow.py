@@ -49,7 +49,7 @@ class AuthWindow(glass.GlassWindow):
 		self.add(cancel, 180, 105);
 		cancel.addActionListener(self);
 		
-		self.setVisible(0);
+		self.setVisible(False);
 		gblEventHandler.addHttpListener(self);
 	
 	def startLogin(self):
@@ -71,7 +71,7 @@ class AuthWindow(glass.GlassWindow):
 			self.startLogin();
 		elif e.widget.getCaption() == "Cancel":
 			self.releaseModalFocus();
-			self.setVisible(0);
+			self.setVisible(False);
 	
 	def onEvent(self,e):
 		if e.handle == self.httpHandle:
@@ -85,7 +85,7 @@ class AuthWindow(glass.GlassWindow):
 				
 				if len(cvar_get("auth_sessionid")) >0:
 					self.releaseModalFocus();
-					self.setVisible(0);
+					self.setVisible(False);
 					cvar_set("name", self.username.getText());
 					gblEventHandler.notifyEvent("auth", "", "login");
 			else:

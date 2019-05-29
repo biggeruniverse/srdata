@@ -105,13 +105,13 @@ class GlassTopStatusBar(DefaultContainer):
 		self.seq=ActionSequence(SlideAction(self, 0, 0));
 
 		if len(cvar_get("auth_sessionid")) > 1:
-			self.logout.setVisible(1);
-			self.login.setVisible(0);
-			self.statsbutton.setVisible(1);
+			self.logout.setVisible(True);
+			self.login.setVisible(False);
+			self.statsbutton.setVisible(True);
 		else:
-			self.login.setVisible(1);
-			self.logout.setVisible(0);
-			self.statsbutton.setVisible(0);
+			self.login.setVisible(True);
+			self.logout.setVisible(False);
+			self.statsbutton.setVisible(False);
 
 	def hide(self):
 		if self.seq is not None:
@@ -128,26 +128,26 @@ class GlassTopStatusBar(DefaultContainer):
 		self.server.setX((screenWidth-self.server.getWidth())//2);
 
 		self.disconnect.setX(self.server.getX() + self.server.getWidth()+4);
-		self.disconnect.setVisible(1);
+		self.disconnect.setVisible(True);
 
 	def disconnected(self):
 		self.server.setCaption("Not connected to a server");
 		self.server.setCaption("");
 		self.server.adjustSize();
 		self.server.setX((screenWidth-self.server.getWidth())//2);
-		self.disconnect.setVisible(0);
+		self.disconnect.setVisible(False);
 
 	def onEvent(self, e):
 		if e.scope != "auth":
 			return;
 		if e.string == "login":
 			self.authstatus.setCaption("Logged in as "+cvar_get('name')); #add website icon
-			self.login.setVisible(0);
-			self.logout.setVisible(1);
-			self.statsbutton.setVisible(1);
+			self.login.setVisible(False);
+			self.logout.setVisible(True);
+			self.statsbutton.setVisible(True);
 		elif e.string == "logout":
 			self.authstatus.setCaption("Not logged in");
-			self.login.setVisible(1);
-			self.logout.setVisible(0);
-			self.statsbutton.setVisible(0);
+			self.login.setVisible(True);
+			self.logout.setVisible(False);
+			self.statsbutton.setVisible(False);
 

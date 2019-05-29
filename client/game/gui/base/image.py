@@ -6,13 +6,13 @@ class DefaultImage(DefaultWidget, glass.GlassLabel):
     def __init__(self):
         glass.GlassLabel.__init__(self);
         DefaultWidget.__init__(self);
-        self.setFocusable(0);
+        self.setFocusable(False);
         
     # type: 
     #    None = imagePath + src
     #    'default' = defaultImagePath + src
     #    else = src
-    def setImage(self, src, type=None, lazy=0):
+    def setImage(self, src, type=None, lazy=False):
 
         if type is None: 
             src = self.imagePath + src;

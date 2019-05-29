@@ -214,11 +214,11 @@ class StatsWindow(DefaultWindow):
 		self.statsTable = DefaultTable();
 		self.statsTable.horizontalJustification = glass.Graphics.LEFT;
 		#self.statsTable.verticalJustification = DefaultTable.TOP;
-		self.statsTable.setFrame(0);
-		self.statsTable.setOpaque(1);
+		self.statsTable.setFrame(False);
+		self.statsTable.setOpaque(True);
 		self.statsTable.padding = 1;
 		self.statsTable.autoAdjust = False;
-		self.statsTable.setAlternate(1);
+		self.statsTable.setAlternate(True);
 		self.statsTable.setBackgroundColor(glass.Color(42,16,12));
 
 		# average column
@@ -299,16 +299,16 @@ class StatsWindow(DefaultWindow):
 		#self.statsTable.adjustSizeTo(400);
 
 
-		# Usage stats coming sonewhen...
+		# Usage stats coming somewhen...
 
 		"""
 
 		usageStats = DefaultTable();
-		usageStats.setFrame(0);
-		usageStats.setOpaque(1);
+		usageStats.setFrame(False);
+		usageStats.setOpaque(True);
 		usageStats.padding = 1;
 		usageStats.autoAdjust = False;
-		usageStats.setAlternate(0);
+		usageStats.setAlternate(False);
 		usageStats.setBackgroundColor(glass.Color(42,16,12));
 
 		usage = DefaultLabel("Usage Stats");
@@ -348,11 +348,11 @@ class StatsWindow(DefaultWindow):
 		recentMatches = DefaultTable();
 		recentMatches.horizontalJustification = glass.Graphics.LEFT;
 		#recentMatches.verticalJustification = DefaultTable.TOP;
-		recentMatches.setFrame(0);
-		recentMatches.setOpaque(1);
+		recentMatches.setFrame(False);
+		recentMatches.setOpaque(True);
 		recentMatches.padding = 1;
 		recentMatches.autoAdjust = False;
-		recentMatches.setAlternate(0);
+		recentMatches.setAlternate(False);
 		recentMatches.setBackgroundColor(glass.Color(42,16,12));
 
 
@@ -365,7 +365,7 @@ class StatsWindow(DefaultWindow):
 
 		recentMatches.nextRow("", "", "");
 
-		recentMatches.setAlternate(1);
+		recentMatches.setAlternate(True);
 		
 		self.matchesList = [];
 		
@@ -574,12 +574,12 @@ class StatsWindow(glass.GlassWindow):
 
 		#create the tabs
 		self.tabs = glass.GlassTabbedContainer();
-		self.tabs.setOpaque(0)
+		self.tabs.setOpaque(False)
     
 		self.add(self.tabs)
 		self.tabs.setSizePct(1,.9)
 
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		
 		button = glass.GlassButton("Close");
 		self.add(button);
@@ -591,30 +591,30 @@ class StatsWindow(glass.GlassWindow):
 		if player is not None:
 			self.player = player;
 		self.httpHandle = HTTP_Get(cvar_get("auth_requesturl")+"/user/"+self.player);
-		self.spinner.setVisible(1);
-		self.tabs.setVisible(0);
+		self.spinner.setVisible(True);
+		self.tabs.setVisible(False);
 		self.spinner.setPosition(self.getWidth()/2-16, self.getHeight()/2-16);
 		self.title.setCaption("^y"+self.player+" ^wStats & Rankings");
 		self.title.setPosition(self.getWidth()/2-self.title.getWidth()/2, 1);
-		self.setVisible(1);
+		self.setVisible(True);
 
 	def buildStats(self, xml):
 		con_println(xml+"\n");
 
 	def onAction(self, e):
 		self.releaseModalFocus();
-		self.setVisible(0);
+		self.setVisible(False);
 
 	def onEvent(self, e):
 		if e.handle == self.httpHandle:
 			if e.responseCode != 200:
 				return;
-			self.spinner.setVisible(0);
+			self.spinner.setVisible(False);
 			self.httpHandle = -1;
 
 			self.buildStats(e.responseMessage);
-			self.spinner.setVisible(0);
-			self.tabs.setVisible(1);
+			self.spinner.setVisible(False);
+			self.tabs.setVisible(True);
 
 statsWindow = StatsWindow("DieOrFail");
 statsWindow.setPositionPct(0.1,0.1);
@@ -624,7 +624,7 @@ glass.GUI_ScreenAddWidget("stats", statsWindow);
 totalsIndex = {"Username":None, "Nickname":None};
 def buildTable(dict):
 	table = GlassTablePlus()
-	table.setFrame(0)
+	table.setFrame(False)
 	for name in dict.keys():
 		data = glass.GlassLabel("Loading")
 		table.addLabelledRow(name,  data)

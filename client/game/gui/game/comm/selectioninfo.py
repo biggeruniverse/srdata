@@ -15,7 +15,7 @@ class SelectionInfo(DefaultContainer):
 
 		self.setBackgroundColor( windowCommhud );
 		self.setSize(145, 200);
-		self.setVisible(0);
+		self.setVisible(False);
 
 		self.name = DefaultLabel("biggeruniverse");
 		self.add(self.name, "center" , 5); # center later on
@@ -96,7 +96,7 @@ class SelectionInfo(DefaultContainer):
 
 		self.invSlots = [];
 
-		for i in xrange(5):
+		for i in range(5):
 			slot = DefaultImage();
 			slot.imagePath = "";
 			slot.setImage("gui/game/images/transparent.s2g");
@@ -114,7 +114,7 @@ class SelectionInfo(DefaultContainer):
 		if self.object == None:
 			self.hide();
 
-		self.setVisible(1);
+		self.setVisible(True);
 		ot = self.object.getType();
 		self.icon.setImage(ot.getValue("icon")+".s2g");
 		self.icon.setSize(48, 48);
@@ -124,22 +124,22 @@ class SelectionInfo(DefaultContainer):
 		self.bar.setProgress(self.object.getHealthPct());
 
 		self.name.setCaption(ot.getValue("description"));
-		self.armor.setVisible(1);
-		self.damage.setVisible(1);
+		self.armor.setVisible(True);
+		self.damage.setVisible(True);
 
 		if self.object.isPlayer():
-			self.inventoryWindow.setVisible(1);
+			self.inventoryWindow.setVisible(True);
 			self.name.setCaption(self.object.getFormattedName());
 			self.updateInventory();
 
 		elif ot.isUnitType():
-			self.inventoryWindow.setVisible(0);
+			self.inventoryWindow.setVisible(False);
 		elif ot.isBuildingType():
-			self.inventoryWindow.setVisible(0);
+			self.inventoryWindow.setVisible(False);
 		elif ot.isMine():
-			self.inventoryWindow.setVisible(0);
-			self.armor.setVisible(0);
-			self.damage.setVisible(0);
+			self.inventoryWindow.setVisible(False);
+			self.armor.setVisible(False);
+			self.damage.setVisible(False);
 
 		self.name.setX(self.getWidth() // 2 - self.name.getWidth() // 2);
 
@@ -148,13 +148,13 @@ class SelectionInfo(DefaultContainer):
 
 	def updateInventory(self):
 
-		for i in xrange(5):
+		for i in range(5):
 			ot = self.object.getInventorySlot( i );
 			slot = self.invSlots[i];
 			w, h = slot.getWidth() , slot.getHeight();
 			
 			if ot != None:
-				#slot.setVisible(1);
+				#slot.setVisible(True);
 				slot.setImage(ot.getValue("icon")+".s2g");
 			
 			else: #empty slot
@@ -162,7 +162,7 @@ class SelectionInfo(DefaultContainer):
 			slot.setSize( w, h);
 
 	def hide(self):
-		self.setVisible(0);
+		self.setVisible(False);
 		self.object = None;
 
 	def handleSelection(self):
@@ -192,9 +192,9 @@ class SelectionInfo(DefaultContainer):
 		#self.widgets.append(self.addInfo);
 
 		self.items = [];
-		for i in xrange(4):
+		for i in range(4):
 			img = glass.GlassLabel("");
-			img.setVisible(0);			
+			img.setVisible(False);			
 			img.setSize(24,24);
 			self.items.append(img);
 			self.addInfo.add(img, i*24+5,3);
@@ -228,7 +228,7 @@ class SelectionInfo(DefaultContainer):
 						if obj == item.getBuilder():
 							self.items[i].setImage(item.getType().getValue("icon")+".s2g");
 							self.items[i].setSize(24,24);
-							self.items[i].setVisible(1);
+							self.items[i].setVisible(True);
 
 				self.setHealth(hp, value);
 
@@ -239,13 +239,13 @@ class SelectionInfo(DefaultContainer):
 				self.name.setCaption(obj.getFormattedName());
 				self.setHealth(obj.getHealthPct(), str(obj.getHealth()));
 
-				for i in xrange(4):
+				for i in range(4):
 					item = obj.getInventorySlot(i+1);
 					if item is not None:
 						self.items[i].setImage(item.getValue("icon")+".s2g");
 						self.items[i].setSize(24,24);
-						self.items[i].setVisible(1);
+						self.items[i].setVisible(True);
 					else:
-						self.items[i].setVisible(0);
+						self.items[i].setVisible(False);
 	"""
 

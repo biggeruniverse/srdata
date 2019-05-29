@@ -114,7 +114,7 @@ class XMPPHandler:
 		self.eventQueue = channel();
 
 		self.stop = threading.Event();
-		self.queue_thread = threading.Thread("XMPP queue runner", self._run_queue);
+		self.queue_thread = threading.Thread(name="XMPP queue runner", target=self._run_queue);
 		self.stop.clear();
 		self.queue_thread.start();
 

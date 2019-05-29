@@ -11,11 +11,11 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		global gblEventHandler;
 		gblEventHandler.addVoteListener(self);
 		
-		self.setOpaque(0);
+		self.setOpaque(False);
 		self.setSizePct( 0.4, 0.16 );
 		self.setBackgroundColor( glass.Color(0,0,0,100) );
 		self.setFrameSize(0);
-		self.setTitleVisible(0);
+		self.setTitleVisible(False);
 		self.setTitleBarHeight(0);
 		
 		self.description = glass.GlassLabel("");
@@ -36,21 +36,21 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		self.barBG.setImage("/gui/standard/vote_barGrey.png");
 		self.barBG.setSizePct( 0.5, 0.2);
 		self.barBG.setPositionPct( 0.05, 0.6);
-		self.barBG.setOpaque(1);
+		self.barBG.setOpaque(True);
 		
 		self.barYes = glass.GlassLabel("");
 		self.add(self.barYes);
 		self.barYes.setImage("/gui/standard/vote_barGreen.png");
 		self.barYes.setSizePct( 0, 0.2);
 		self.barYes.setPositionPct( 0.05, 0.6);
-		self.barYes.setOpaque(1);
+		self.barYes.setOpaque(True);
 		
 		self.barNo = glass.GlassLabel("");
 		self.add(self.barNo);
 		self.barNo.setImage("/gui/standard/vote_barRed.png");
 		self.barNo.setSizePct( 0, 0.2);
 		self.barNo.setPositionPct( 0.05, 0.6);
-		self.barNo.setOpaque(1);
+		self.barNo.setOpaque(True);
 		
 		self.barDivider = glass.GlassLabel("");
 		self.add(self.barDivider);
@@ -58,7 +58,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		self.barDivider.setWidth(1);
 		self.barDivider.setPositionPct( 0, 0.6);
 		self.barDivider.setBackgroundColor( white );
-		self.barDivider.setOpaque(1);
+		self.barDivider.setOpaque(True);
 		
 		self.labelYes = glass.GlassLabel("F1 for YES");
 		self.add(self.labelYes);
@@ -99,7 +99,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		self.add(self.miniMapImage);
 		self.miniMapImage.setSize(64,64);
 		self.miniMapImage.setPositionPct(0.6,0.1);
-		self.miniMapImage.setVisible(0);
+		self.miniMapImage.setVisible(False);
 		
 		self.status = self.INACTIVE;
 		self.activeseq = None;
@@ -139,29 +139,29 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 			
 			if vote_team == 0 or vote_team == player_team: #we can vote
 				#'own' votes show F1 F2 count
-				self.labelYes.setVisible(1);
-				self.labelNo.setVisible(1);
-				self.results.setVisible(1);
-				self.anotherTeam.setVisible(0);
+				self.labelYes.setVisible(True);
+				self.labelNo.setVisible(True);
+				self.results.setVisible(True);
+				self.anotherTeam.setVisible(False);
 
 				
 			else: #we can't vote
 				#'other' votes show the "other team" label
-				self.labelYes.setVisible(0);
-				self.labelNo.setVisible(0);
-				self.results.setVisible(0);
-				self.anotherTeam.setVisible(1);
+				self.labelYes.setVisible(False);
+				self.labelNo.setVisible(False);
+				self.results.setVisible(False);
+				self.anotherTeam.setVisible(True);
 			if vote_commander == 1:
 				self.commStats.setCaption( cvar_get( "vote_commander_stats" ));
-				self.commStats.setVisible(1);
+				self.commStats.setVisible(True);
 			else:
-				self.commStats.setVisible(0);
+				self.commStats.setVisible(False);
 			data = cvar_get("vote_description").split(" ");
 			if data[0] == "Load":
 				data2 =  data[2].split("\n");
 				self.miniMapImage.setImage("world/"+data2[0]+"_overhead.jpg");
 				self.miniMapImage.setSize(64,64);
-				self.miniMapImage.setVisible(1);
+				self.miniMapImage.setVisible(True);
 
 				
 		else: #assuming a voteEvent is sent when the vote passes or fails or is cancelled

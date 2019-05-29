@@ -4,7 +4,7 @@ class CommHudStats(glass.GlassContainer):
 	def __init__(self, oid):
 		glass.GlassContainer.__init__(self);
 		self.objectId = oid;
-		self.setOpaque(0);
+		self.setOpaque(False);
 		self.health = glass.GlassProgressBar();
 		self.health.setFrameSize(1);
 		self.health.setBaseColor( black );
@@ -34,7 +34,7 @@ class CommHudInfo(glass.GlassContainer):
 		glass.GlassContainer.__init__(self);
 		self.setSize(screenWidth, screenHeight);
 		self.bars = {};
-		self.setOpaque(0);
+		self.setOpaque(False);
 
 	def update(self):
 		self.setSizePct(1, 1);

@@ -99,7 +99,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		self.add(self.miniMapImage);
 		self.miniMapImage.setSize(64,64);
 		self.miniMapImage.setPositionPct(0.6,0.1);
-		self.miniMapImage.setVisible(0);
+		self.miniMapImage.setVisible(False);
 		
 		self.status = self.INACTIVE;
 		self.activeseq = None;
@@ -137,29 +137,29 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 			
 			if vote_team == 0 or vote_team == player_team: #we can vote
 				#'own' votes show F1 F2 count
-				self.labelYes.setVisible(1);
-				self.labelNo.setVisible(1);
-				self.results.setVisible(1);
-				self.anotherTeam.setVisible(0);
+				self.labelYes.setVisible(True);
+				self.labelNo.setVisible(True);
+				self.results.setVisible(True);
+				self.anotherTeam.setVisible(False);
 
 				
 			else: #we can't vote
 				#'other' votes show the "other team" label
-				self.labelYes.setVisible(0);
-				self.labelNo.setVisible(0);
-				self.results.setVisible(0);
-				self.anotherTeam.setVisible(1);
+				self.labelYes.setVisible(False);
+				self.labelNo.setVisible(False);
+				self.results.setVisible(False);
+				self.anotherTeam.setVisible(True);
 			if vote_commander == 1:
 				self.commStats.setCaption( cvar_get( "vote_commander_stats" ));
-				self.commStats.setVisible(1);
+				self.commStats.setVisible(True);
 			else:
-				self.commStats.setVisible(0);
+				self.commStats.setVisible(False);
 			data = cvar_get("vote_description").split(" ");
 			if data[0] == "Load":
 				data2 =  data[2].split("\n");
 				self.miniMapImage.setImage("world/"+data2[0]+"_overhead.jpg");
 				self.miniMapImage.setSize(64,64);
-				self.miniMapImage.setVisible(1);
+				self.miniMapImage.setVisible(True);
 
 				
 		else: #assuming a voteEvent is sent when the vote passes or fails or is cancelled

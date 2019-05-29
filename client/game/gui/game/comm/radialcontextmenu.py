@@ -76,11 +76,11 @@ class RadialContextMenu(ContextMenu):
 
 	def resizeToAlpha(self):
 		if self.getAlpha() == 0:
-			self.setVisible(0);
-			return;
+			self.setVisible(False)
+			return
 		else:
-			self.setVisible(1);
- 		a = self.getAlpha() / 255.0;
+			self.setVisible(True)
+		a = self.getAlpha() / 255.0
 		self.bg.setSize( int(a*self.getWidth()), int(a*self.getHeight()) );
 		self.bg.setPosition(int((1-a)*self.getWidth()/2),int((1-a)*self.getHeight()/2));
 		angle = math.pi-((1-a)*math.pi/4);
