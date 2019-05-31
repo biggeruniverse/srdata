@@ -26,10 +26,10 @@ class ServerlistSection(AbstractSection):
 		self.list.setSelectionIndicator();
 		self.stop = threading.Event();
 		self.stop.clear();
-		self.refreshThread = threading.Thread(name="server refresh", target=self._refreshWhenVisible);
-		self.refreshThread.start();
-		self.pingThread = threading.Thread(name="ping refresh", target=self._refreshPingWhenVisible);
-		self.pingThread.start();
+		#self.refreshThread = threading.Thread(name="server refresh", target=self._refreshWhenVisible);
+		#self.refreshThread.start();
+		#self.pingThread = threading.Thread(name="ping refresh", target=self._refreshPingWhenVisible);
+		#self.pingThread.start();
 
 	def _refreshWhenVisible(self):
 		while not self.stop.is_set():

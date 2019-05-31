@@ -7,11 +7,11 @@
 #
 # Poor event handler. (Fatty)
 #
-
 from silverback import *
 import logging
-from stackless import channel
+from stackless import tasklet,channel,stackless
 import threading
+#import thread
 
 class Event:
 	def __init__(self):
@@ -154,8 +154,8 @@ class EventHandler:
 		self.eventQueue.send(e)
 
 	def send_event(self, e):
-		task = stackless.tasklet(self._send_event)
-		task.setup(e)
+		#task = stackless.tasklet(self._send_event)(e)
+		task = threading.Thread(name="send even", target=self._send_event, args=(e))
 
 	#runQueue is called by the engine every frame before gui logic
 	#NOTE: this is deprecated in favor of the above _run_queue stackless thread method

@@ -81,8 +81,9 @@ class StateDisplay( glass.GlassContainer):
 			else:
 				progress.setForegroundColor( tangoRed );
 
-			counter.setVisible(True);
-			counter.setCaption( state.getTimeRemaining() );
+			#Big: counters disabled
+			#counter.setVisible(True);
+			#counter.setCaption( state.getTimeRemaining() );
 			counter.setX( timer.getX() + timer.getWidth() - counter.getWidth() );
 
 			progress.setVisible(True);
@@ -90,8 +91,8 @@ class StateDisplay( glass.GlassContainer):
 				progress.setProgress(1.0-state.getTimeRemaining(False)/state.getDuration());
 			except ZeroDivisionError:
 				progress.setProgress(1.0)
-			progress.setX((timer.getX()+timer.getWidth()/2)-progress.getWidth()/2);
-			progress.setY((timer.getY()+timer.getHeight()/2)-progress.getHeight()/2);
+			progress.setX((timer.getX()+timer.getWidth()//2)-progress.getWidth()//2);
+			progress.setY((timer.getY()+timer.getHeight()//2)-progress.getHeight()//2);
 			
 		for i in range( stateCount , timerCount):
 			timer = self.timers[i];

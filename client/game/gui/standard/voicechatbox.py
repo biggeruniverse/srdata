@@ -29,9 +29,7 @@ class VoiceChatBox( glass.GlassWindow ):
 		self.currentVoiceDict = "";
 	
 	def updateTable( self, nameList ):
-		nameCount = len( nameList );
-		for i in range( nameCount ):
-			name = nameList[ i ];
+		for i, name in enumerate(nameList):
 			w = self.table.getWidget(i, 0, glass.GlassLabel);
 			caption = str( ( i + 1) % 10) + ". " +name;
 			w.setCaption( caption );

@@ -296,14 +296,14 @@ class MainTopBar(DefaultContainer):
 					gblEventHandler.notifyEvent("auth", "", "login");
 
 					#make sure chat gets connected now
-					#Big: I put it in it's own tasklet, or else it blocks the eventhandler the whole time it is connecting
+					#Big: I put it in it's own thread, or else it blocks the eventhandler the whole time it is connecting
 					#DoF: If we were already connected and logged out, just reconnect.
 					#if gblXMPPHandler.xmpp == None:
 					connection = gblXMPPHandler.connect
 					#else:
 					#connection = gblXMPPHandler.reconnect
-					task = stackless.tasklet(connection);
-					task.setup();
+					#task = stackless.tasklet(connection)()
+					task = thread.Thread(connection, (), {})
 
 				else:
 					cvar_set("auth_sessionid", "");

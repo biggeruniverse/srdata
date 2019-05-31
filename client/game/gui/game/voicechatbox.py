@@ -29,9 +29,7 @@ class VoiceChatBox( DefaultWindow ):
 		self.currentVoiceDict = "";
 	
 	def updateTable( self, nameList ):
-		nameCount = len( nameList );
-		for i in range( nameCount ):
-			name = nameList[ i ];
+		for i,name in enumerate( nameList ):
 			w = self.table.getWidget(i, 0, glass.GlassLabel);
 			caption = str( ( i + 1) % 10) + ". " +name;
 			w.setCaption( caption );
@@ -61,22 +59,25 @@ class VoiceChatBox( DefaultWindow ):
 	
 	def voiceCategoryExists( self, categoryNumber ):
 		try: 
-			self.currentVoiceDict.values()[ (categoryNumber -1 )% 10];
+			vals = list(self.currentVoiceDict.values())
+			vals[ (categoryNumber -1 )% 10];
 		except IndexError:
 			return False;
 		return True;
 	
 	def voiceChatExists( self, messageNumber ):
 		try: 
-			category = self.currentVoiceDict.values()[ (self.categoryNumber -1 )% 10]
-			message = category.values()[ (messageNumber -1 )% 10];
+			vals = list(self.currentVoiceDict.values())
+			category = vals[ (self.categoryNumber -1 )% 10]
+			message = list(category.values())[ (messageNumber -1 )% 10];
 		except IndexError:
 			return False;
 		return True;
 	
 	def showVoiceCategory( self, categoryNumber ):
 		self.categoryNumber = categoryNumber;
-		category = self.currentVoiceDict.values()[ (self.categoryNumber -1 )% 10]; #zero-based index
+		vals = list(self.currentVoiceDict.values())
+		category = vals[ (self.categoryNumber -1 )% 10]; #zero-based index
 		messageNameList = category.keys();
 		
 		self.updateTable( messageNameList );

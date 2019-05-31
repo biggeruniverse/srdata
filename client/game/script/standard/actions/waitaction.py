@@ -11,9 +11,10 @@ class WaitAction(Action):
 
 	def run(self):
 		con_println("run!\n")
-		stacklesslib.main._sleep(0.005)
+		#stacklesslib.main._sleep(0.005)
+		pass
 
-	def isDone(self):
+	def is_done(self):
 		con_println("checking if done...\n")
 		if self.until >= Host_Milliseconds():
 			return False

@@ -17,6 +17,8 @@ import stacklesslib
 import time
 import datetime
 
+from collections import deque;
+
 # Chat related events:
 
 class ChatEvent(NotifyEvent):

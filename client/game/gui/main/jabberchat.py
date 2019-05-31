@@ -225,8 +225,8 @@ class BuddyRoster(DefaultWindow):
 		elif e.widget.getCaption() == "delete":
 			name = self.getSelection();
 
-			task = stackless.tasklet(gblXMPPHandler.handleSubscripton);
-			task.setup(name, "unsubscribe");	
+			#task = stackless.tasklet(gblXMPPHandler.handleSubscripton)(name, 'unsubscribe')
+			task = thread.Thread(gblXMPPHandler.handleSubscripton,(name, 'unsubscribe'), {})
 
 		elif e.widget.getCaption() == "stats":
 			#TODO: we need an ingame stats window!

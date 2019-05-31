@@ -20,6 +20,6 @@ class SlideAction(GuiAction):
 		self.widget.setX(int(x));
 		self.widget.setY(int(y));
 
-	def isDone(self):
+	def is_done(self):
 		return self.lerp >= 1;
 

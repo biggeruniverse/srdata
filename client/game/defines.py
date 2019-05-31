@@ -1,7 +1,7 @@
 #(c) savagerebirth.com 2011
 #imports
 import stacklesslib.monkeypatch
-stacklesslib.monkeypatch.patch_all()
+#stacklesslib.monkeypatch.patch_all()
 
 import logging;
 from silverback import *;
@@ -14,6 +14,11 @@ import glass;
 import tools;
 import vectors;
 from collections import OrderedDict;
+
+#helper function that will pre-empt infinite loops or excessively long-running tasklets
+def stackless_frame():
+	#gblSequenceHandler.pump();
+	stacklesslib.main.mainloop.pump()
 
 #this will print any uncollectable objects to stdout (good for finding cyclical deps)
 #import gc;

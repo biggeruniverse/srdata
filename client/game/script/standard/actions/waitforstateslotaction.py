@@ -12,7 +12,7 @@ class WaitForStateSlotAction(Action):
 		#con_dprintln("BOING! BOING! The time remaining is: "+str(self.until-Host_Milliseconds())+"\n");
 		pass;
 
-	def isDone(self):
+	def is_done(self):
 		if self.obj.getState(self.slot) is not None:
 			return False;
 		return True;
