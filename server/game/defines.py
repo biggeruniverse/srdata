@@ -10,6 +10,12 @@ import tools;
 import vectors;
 from vectors import Vec3; # ya I know, but this fixes namespace problems for servers
 
+#helper function that will pre-empt infinite loops or excessively long-running tasklets
+def stackless_frame():
+	#gblSequenceHandler.pump();
+	stacklesslib.main.mainloop.pump()
+
+
 #globals and constants go here
 
 #server stati
