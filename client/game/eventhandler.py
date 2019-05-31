@@ -155,7 +155,8 @@ class EventHandler:
 
 	def send_event(self, e):
 		#task = stackless.tasklet(self._send_event)(e)
-		task = threading.Thread(name="send even", target=self._send_event, args=(e))
+		task = threading.Thread(name="send event", target=self._send_event, args=(e,))
+		task.start()
 
 	#runQueue is called by the engine every frame before gui logic
 	#NOTE: this is deprecated in favor of the above _run_queue stackless thread method

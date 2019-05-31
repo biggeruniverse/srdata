@@ -569,12 +569,12 @@ class OptionsSection(AbstractSection):
 		return container;
 		
 	def togglePostOptions(self):
-		if int(cvar_get("gfx_postProcessing")) and self.postContainer.isVisible() == 0:
-			self.postContainer.setVisible(1);
+		if int(cvar_get("gfx_postProcessing")) and not self.postContainer.isVisible():
+			self.postContainer.setVisible(True);
 			self.gfxForm.setHeight(self.gfxForm.getHeight() + self.postContainer.getHeight());
 			cvar_setvalue("vid_multisample", 0);
 		elif int(cvar_get("gfx_postProcessing")) == 0 and self.postContainer.isVisible():
-			self.postContainer.setVisible(0);
+			self.postContainer.setVisible(False);
 			self.gfxForm.setHeight(self.gfxForm.getHeight() - self.postContainer.getHeight());
 		if cvar_getvalue("cl_dual_sensitivity") == 0:
 			self.melee.linkCvar("cl_sensitivity_range");
@@ -592,8 +592,8 @@ class OptionsSection(AbstractSection):
 			self.togglePostOptions();
 			
 	def showRestartWarning(self):
-		if self.restartWarning.isVisible() == False:
-			self.restartWarning.setVisible(1);
+		if not self.restartWarning.isVisible():
+			self.restartWarning.setVisible(True);
 
 			self.gfxContainer.setY(self.restartWarning.getHeight() + 15);		
 			self.gfxContainer.setHeight(self.gfxContainer.getHeight() - self.restartWarning.getHeight() - 15);

@@ -15,13 +15,13 @@ class HostGameSection(AbstractSection):
 	def onShow(self):
 
 		self.getLocalMaps();
-		self.mapList.setSelected(0);
+		self.mapList.setSelected(False);
 
 		if isConnected():
-			self.reconnectBar.setVisible(1);
+			self.reconnectBar.setVisible(True);
 			self.content.setY(85);
 		else:
-			self.reconnectBar.setVisible(0);
+			self.reconnectBar.setVisible(False);
 			self.content.setY(35);
 		
 	def create(self):
@@ -32,14 +32,14 @@ class HostGameSection(AbstractSection):
 		top = DefaultContainer();
 		top.setSize(self.getWidth(), 35);
 		top.setBackgroundColor(glass.Color(85, 21, 11));
-		top.setOpaque(1);
-		self.add(top);		
+		top.setOpaque(True);
+		self.add(top);
 		
 		title = DefaultImage();
 		title.setImage("txt_hostgame.png");
 		top.add(title, "center", "center");
 		
-		go = DefaultImageButton();		
+		go = DefaultImageButton();
 		go.setImage("btn_host.png");
 		go.setCaption("Host");
 		go.addActionListener(self)
@@ -49,9 +49,9 @@ class HostGameSection(AbstractSection):
 
 		self.reconnectBar = DefaultContainer();
 		self.reconnectBar.setSize(self.getWidth(), 50);
-		self.reconnectBar.setVisible(0);
+		self.reconnectBar.setVisible(False);
 		self.reconnectBar.setBackgroundColor(glass.Color(85, 21, 11));
-		self.reconnectBar.setOpaque(1);
+		self.reconnectBar.setOpaque(True);
 		self.add(self.reconnectBar, 0, 35);
 		
 		gameProgress = DefaultLabel("GAME IN PROGRESS");
@@ -202,7 +202,7 @@ class HostGameSection(AbstractSection):
 		value = e.widget.getItem(e.widget.getSelected());
 		overheadPath = "/world/" + value + "_overhead.jpg";
 		Host_VerifyOverhead(overheadPath);
-		self.overhead.setImage(overheadPath, 1);
+		self.overhead.setImage(overheadPath, True);
 		self.overhead.setSize(self.mapContainer.getWidth(), self.mapContainer.getWidth());
 
 		

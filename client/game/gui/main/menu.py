@@ -22,12 +22,13 @@ class Menu(DefaultWindow):
 		msgs = [
 			"Confirm making a huge mistake in your life?",
 			"You want to quit? Then thou hast lost an eighth!",
-			"Yeah, get to your WoW-addicts anonymous meeting. Addict.",
+			"Yeah, get to your Fortnite-addicts anonymous meeting. Addict.",
 			"Don't quit! Savage makes a great chat client!",
 			"Press Cancel to quit. Psych!",
 			"You've almost reached that achievement, just play a bit longer...",
-			"Very well then, be that way! We won't even bother with the traditional royal farewell!"
-		];
+			"Very well then, be that way! We won't even bother with the traditional royal farewell!",
+			"No one likes a quitter."
+		]
 
 		msg = M_Randnum() % len(msgs);
 

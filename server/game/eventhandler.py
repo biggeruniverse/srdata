@@ -86,7 +86,7 @@ class EventHandler:
 		self.voteListeners = []
 
 		self.stop = threading.Event()
-		self.queue_thread = threading.Thread(None, self._run_queue, "Event queue runner")
+		self.queue_thread = threading.Thread(target=self._run_queue, name="Event queue runner")
 		self.stop.clear()
 		self.queue_thread.start()
 
@@ -121,8 +121,9 @@ class EventHandler:
 		self.eventQueue.send(e)
 
 	def send_event(self, e):
-		task = stackless.tasklet(self._send_event)
-		task.setup(e)
+		#task = stackless.tasklet(self._send_event)(e)
+		task = threading.Thread(name="send event", target=self._send_event, args=(e,))
+		task.start()
 
 	#runQueue is called by the engine every frame before gui logic
 	#NOTE: this is deprecated in favor of the above _run_queue stackless thread method
