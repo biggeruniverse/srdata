@@ -7,9 +7,9 @@ attribute float numBones;
 
 varying vec3 normal;
 
+uniform mat2x4 boneMatrices[100];
 uniform int  useBones;
 uniform vec4 eyeWorld;
-uniform mat4 boneMatrices[50];
 
 void main()
 {
