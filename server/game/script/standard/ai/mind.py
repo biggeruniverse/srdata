@@ -95,6 +95,7 @@ class Mind(GameObject):
 		self.handleGoal();
 
 	def update(self):
+		import time
 		while not self.death.is_set():
 			self.reassessPriorities();
 
