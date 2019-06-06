@@ -9,9 +9,9 @@ class ResearchQueue(ActionSequence):
 		ActionSequence.__init__(self);
 		self.listeners = [];
 	
-	def isDone(self):
+	def is_done(self):
 		return False;
-		#gimp the isDone so the sequence never disappears on us
+		#gimp the is_done so the sequence never disappears on us
 
 	#pause inherited from ActionSequence
 	

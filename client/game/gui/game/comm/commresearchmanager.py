@@ -119,7 +119,7 @@ class ResearchManagerItem(glass.GlassContainer):
 		
 		glass.GlassContainer.__init__(self);
 		self.setSize(int(self.ICON_SIZE*1.5 + 2 * self.PADDING), int(self.ICON_SIZE*1.5 + 2 * self.PADDING));
-		self.setOpaque(0);
+		self.setOpaque(False);
 		
 		self.name = glass.GlassLabel(item.getType().getValue("description"));
 		self.name.setPosition(self.PADDING,self.PADDING);
@@ -168,7 +168,7 @@ class ResearchManagerItem(glass.GlassContainer):
 		w,h = self.status_icon.getWidth(), self.status_icon.getHeight();
 		
 		self.status_icon.setImage("/gui/standard/icons/timer.s2g");
-		if self.action is None or self.action.isDone(): #researching
+		if self.action is None or self.action.is_done(): #researching
 			research=savage.Team(savage.getLocalPlayer().getTeam()).getResearch();
 			matchitems = [i for i in research if i == self.item];
 			del research[:];

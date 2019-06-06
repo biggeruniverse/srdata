@@ -1,7 +1,6 @@
 import logging;
 import glass;
 from sleekxmpp import JID
-import stackless
 
 logger = logging.getLogger("gui")
 
@@ -252,6 +251,7 @@ class BuddyRoster(DefaultWindow):
 			
 			#task = stackless.tasklet(gblXMPPHandler.sendInvite);
 			#task.setup(name + '@savagerebirth.com/savage', svrName);
+			thread.Thread(gblXMPPHandler.sendInvite,(name + '@savagerebirth.com/savage', svrName), {})
 
 	def onValueChanged(self, e):		
 		for group, jidList in self.widgets.items():

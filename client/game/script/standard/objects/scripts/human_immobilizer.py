@@ -1,3 +1,5 @@
+from savage import WaitAction, CallAction
+
 class human_immobilizer( GameItem):
 	def onUse(self, user, target):
 		ActionSequence(WaitAction(3000), CallAction(GameItem.givestate, (user, "immobilize", 3333)));

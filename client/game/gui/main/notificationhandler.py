@@ -169,20 +169,30 @@ class Notification(DefaultContainer):
 
 		elif e.widget.getCaption() == "Yes":	
 
-			task = stackless.tasklet(self.command);
+			a = (True,)
 			if self.arg != None:
-				task.setup(self.arg, True);
-			else:
-				task.setup(True);
+				a=(self.arg, True)
+			t = threading.Thread(target=self.command, args=a)
+			t.start()
+			#task = stackless.tasklet(self.command);
+			#if self.arg != None:
+			#	task.setup(self.arg, True);
+			#else:
+			#	task.setup(True);
 			self.close();		
 
 		elif e.widget.getCaption() == "No":
 
-			task = stackless.tasklet(self.command);
-			if arg != None:
-				task.setup(self.arg, False);
-			else:
-				task.setup(False);
+			a = (True,)
+			if self.arg != None:
+				a=(self.arg, True)
+			t = threading.Thread(target=self.command, args=a)
+			t.start()
+			#task = stackless.tasklet(self.command);
+			#if arg != None:
+			#	task.setup(self.arg, False);
+			#else:
+			#	task.setup(False);
 			self.close();
 
 	def close(self):

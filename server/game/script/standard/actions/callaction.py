@@ -1,5 +1,7 @@
 # (c) 2011 savagerebirth.com
 
+#is_done by default returns True, which is what we want here
+
 class CallAction(Action):
 	def __init__(self, funcobj, args):
 		Action.__init__(self);
@@ -7,4 +9,4 @@ class CallAction(Action):
 		self.args = args;
 
 	def run(self):
-		self.func(args);
+		self.func(*self.args);

@@ -33,18 +33,18 @@ class ContextMenu(DefaultContainer):
 		self.clear();
 		self.rebuildMenu();
 		i = 0;
-		for action, status in self.context.getContextActions().iteritems():
+		for action, status in self.context.getContextActions().items():
 			button = self.context.getButtonAction(action);
 			if status == Hidden:
-				button.setVisible(0);
-				button.setEnabled(0);
+				button.setVisible(False);
+				button.setEnabled(False);
 			elif status == Disabled:
-				button.setVisible(1);
-				button.setEnabled(0);
+				button.setVisible(True);
+				button.setEnabled(False);
 				button.setForegroundColor(tangoGrey5);
 			elif status == Enabled:
-				button.setVisible(1);
-				button.setEnabled(1);
+				button.setVisible(True);
+				button.setEnabled(True);
 				button.setForegroundColor(white);
 
 			button.setSize(48, 48);
@@ -70,7 +70,7 @@ class ContextMenu(DefaultContainer):
 			self.menu = menu;
 			self.ctx = ctx;
 		
-		def isDone(self):
+		def is_done(self):
 			return True;
 		
 		def run(self):

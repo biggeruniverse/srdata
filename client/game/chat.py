@@ -9,10 +9,9 @@ from sleekxmpp.exceptions import IqError, IqTimeout, XMPPError
 from sleekxmpp.xmlstream import register_stanza_plugin
 from sleekxmpp.xmlstream.handler import Callback
 from sleekxmpp.xmlstream.matcher import StanzaPath, MatchXPath, MatchXMLMask
+from collections import deque
 import logging
 import threading
-import stackless
-import stacklesslib
 # Fuck timezones:
 import time
 import datetime
@@ -113,7 +112,7 @@ class XMPPHandler:
 		self.joiningFlags = {}; # {room: bool}
 
 		self.chatListeners = [];
-		self.eventQueue = channel();
+		self.eventQueue = deque();
 
 		self.stop = threading.Event();
 		self.queue_thread = threading.Thread(name="XMPP queue runner", target=self._run_queue);
@@ -584,8 +583,11 @@ class XMPPHandler:
 
 	def _run_queue(self):
 		#callback to all the listeners in the list
-		while not self.stop.is_set():
-			e = self.eventQueue.receive();
+		while self.eventQueue:
+			e = self.eventQueue.popleft();
+			self.addToHistory(e);
+
+			self.onChatEvent(e);
 			for l in self.chatListeners:
 				try:
 					l.onChatEvent(e)
@@ -597,11 +599,8 @@ class XMPPHandler:
 						self.logger.error("XMPPHandler caught exception: "+str(ex)+"\n");           
 
 	def _process_chat_event(self, e):
-		self.eventQueue.send(e);
+		self.eventQueue.append(e);
 
-		self.addToHistory(e);
-
-		self.onChatEvent(e);
 
 	def chatEvent(self, scope, fromstr, string, room=False, stamp=""):			
 		if stamp != "":
@@ -616,8 +615,9 @@ class XMPPHandler:
 			e = ChatEvent(scope, timeStamp, fromstr, string);             
 		# move any recieves down the stack away from the main tasklet (the core engine thread) 
 		# so that we don't incur any Runtime or StopIteration exceptions
-		task = stackless.tasklet(self._process_chat_event);
-		task.setup(e);
+		#task = stackless.tasklet(self._process_chat_event);
+		#task.setup(e);
+		self._process_chat_event(e)
 
 	def chatNotification(self, scope, title, msg, command=None, arg=None):
 		timeStamp = cvar_get('host_time');
@@ -625,8 +625,9 @@ class XMPPHandler:
 		e = ChatNotificationEvent(self.notificationId, scope, timeStamp, title, msg, command, arg);
 		self.notificationId += 1;
 
-		task = stackless.tasklet(self._process_chat_event)
-		task.setup(e)
+		#task = stackless.tasklet(self._process_chat_event)
+		#task.setup(e)
+		self._process_chat_event(e)
 
 	def onChatEvent(self, e):
 		if e.scope == "chat_logout":

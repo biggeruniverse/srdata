@@ -14,5 +14,5 @@ class TripAction(Action):
 			if obj.getTeam() != self.obj.getTeam() and obj.getType().isUnitType():
 				self.done = True;
 
-	def isDone(self):
+	def is_done(self):
 		return self.done;

@@ -4,7 +4,6 @@ from silverback import *;
 import logging;
 import glass;
 from sleekxmpp import JID;
-import stackless;
 
 logger = logging.getLogger("gui");
 
@@ -234,6 +233,7 @@ class MainTopBar(DefaultContainer):
 		# Tell Sleek it should log out too:
 		#task = stackless.tasklet(gblXMPPHandler.xmpp.disconnect());
 		#task.setup();
+		threading.Thread(gblXMPPHandler.xmpp.disconnect)
 		gblXMPPHandler.chatEvent("chat_logout", "", "User logged out.");
 		self.status = 2;
 		self.httpHandle = CL_Auth_Logout();

@@ -1,20 +1,13 @@
 #(c) savagerebirth.com 2011
 #imports
-import stacklesslib.monkeypatch
-stacklesslib.monkeypatch.patch_all()
-
 import logging;
-from silverback import *;
 from silverback import *;
 import tools;
 import vectors;
 from vectors import Vec3; # ya I know, but this fixes namespace problems for servers
 
-#helper function that will pre-empt infinite loops or excessively long-running tasklets
-def stackless_frame():
-	#gblSequenceHandler.pump();
-	stacklesslib.main.mainloop.pump()
-
+def event_frame():
+	gblEventHandler.runQueue()
 
 #globals and constants go here
 

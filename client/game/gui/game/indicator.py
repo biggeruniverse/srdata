@@ -33,7 +33,7 @@ class DirectionalIndicator(DefaultContainer):
 			self.fader = None
 		self.setAlpha(255)
 		self.setVisible(True)
-		self.fader = ActionSequence(WaitAction(2000), FadeOutAction(self))
+		self.fader = ActionSequence(savage.WaitAction(2000), FadeOutAction(self))
 	
 	def makeInvisible(self):
 		self.setAlpha(0)

@@ -5,7 +5,7 @@ class RequestManager(CommAbstractWidget):
 	def create(self):
 		self.setSizePct(0.125, 0.333);
 		self.setPosition(screenWidth-(self.getWidth()+10), int(screenHeight*0.025+5));
-		self.setOpaque(0);
+		self.setOpaque(False);
 		
 		self.requestQueue = [];
 		

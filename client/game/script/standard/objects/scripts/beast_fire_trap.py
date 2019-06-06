@@ -1,4 +1,4 @@
-#import vectors;
+from savage import WaitAction, TripAction, ActivateAction, DieAction
 
 class beast_fire_trap(GameItem):
 	def onUse( self, user, target):

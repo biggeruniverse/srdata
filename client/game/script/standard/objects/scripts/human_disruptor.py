@@ -3,7 +3,7 @@ class human_disruptor(GameItem):
 		objs = savage.getRadiusObjects(self.objectId, 100);
 		for obj in objs:
 			if obj.getTeam() != self.getTeam():
-				obj.addState("pulsed", 12000);
+				obj.addState(self, "pulsed", 12000);
 
 		self.die();
 

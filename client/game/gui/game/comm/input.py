@@ -95,7 +95,7 @@ class CommInputHandler:
 		elif e.button == MOUSE_LEFTBUTTON:
 			self.pressX = e.x;
 			self.pressY = e.y;
-			commhud.selectionRect.setVisible(1);
+			commhud.selectionRect.setVisible(True);
 			if Input_IsKeyDown(KEY_SHIFT) == False:
 				self.selection.clear(False);
 		"""
@@ -105,11 +105,11 @@ class CommInputHandler:
 				commhud.selection.selectObject(obj, True);
 				teamNum = savage.getLocalTeam().teamId;
 				commhud.selection.send(teamNum)
-			self.seq = ActionSequence(WaitAction(150), OpenContextAction(savage.getObjectUnder(e.x,e.y), e.x, e.y));
+			self.seq = ActionSequence(savage.WaitAction(150), OpenContextAction(savage.getObjectUnder(e.x,e.y), e.x, e.y));
 		"""
 		
 	def onMouseReleased(self, e):
-		commhud.selectionRect.setVisible(0);
+		commhud.selectionRect.setVisible(False);
 		if self.selection.containsUnits():
 			self.selection.filterUnitsOnly()
 		commhud.selection.updateSelection(self.selection)
@@ -138,7 +138,7 @@ class CommInputHandler:
 			else:
 				eY = e.y;
 
-			commhud.selectionRect.setVisible(1);
+			commhud.selectionRect.setVisible(True);
 			commhud.selectionRect.setPosition(sX, sY);
 			commhud.selectionRect.setSize(eX-sX, eY-sY);
 
