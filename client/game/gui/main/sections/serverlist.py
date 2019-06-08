@@ -6,7 +6,6 @@ import glass;
 import xml.dom.minidom;
 import tools;
 import threading;
-import time;
 import socket;
 import struct;
 
@@ -35,13 +34,13 @@ class ServerlistSection(AbstractSection):
 		while not self.stop.is_set():
 			if self.isVisible() == True:
 				self.refresh();
-			time.sleep(60)
+			stacklesslib.main.sleep(60.0)
 
 	def _refreshPingWhenVisible(self):
 		while not self.stop.is_set():
 			if self.isVisible() == True:
 				self.refreshPings();
-			time.sleep(15);
+			stacklesslib.main.sleep(15.0);
 		
 
 	def onShow(self):
