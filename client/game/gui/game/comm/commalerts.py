@@ -44,8 +44,8 @@
 
 from silverback import *
 import savage
+from savage import WaitAction, CallAction
 import logging
-from stackless import channel
 import threading
 import time;
 import tools;
@@ -300,10 +300,10 @@ class CommAlertHandler(DefaultContainer):
 		#gblEventHandler.addNotifyListener(self);
 		#gblQueue.addListener(self);
 
-		self.stop = threading.Event();
-		self.bleed_thread = threading.Thread(name="bleeder", target=self._runner);
-		self.stop.clear();
-		self.bleed_thread.start();
+		self.bleed_thread = ActionSequence(savage.WaitAction(62), savage.CallAction(self.processBleeding, tuple([])))
+		self.bleed_thread.set_loop(True)
+		#self.bleed_thread = threading.Thread(name="bleeder", target=self._runner);
+		#self.bleed_thread.start();
 
 		self.ccAlert = HealthAlert();
 		self.insertAlert(self.ccAlert, 0);
@@ -313,8 +313,8 @@ class CommAlertHandler(DefaultContainer):
 
 	def _runner(self):
 		while not self.stop.is_set():
-			self.processBleeding();
-			time.sleep(1/16);
+			self.processBleeding()
+			time.sleep(1/16)
 
 	def processBleeding(self):
 		y = 0;
@@ -333,8 +333,6 @@ class CommAlertHandler(DefaultContainer):
 				self.alertQueue.remove(alert);
 				self.remove(alert);
 				
-		self.fit(); # Let's see if fit works
-
 	def insertAlert(self, alert, i=1):
 		self.add(alert);
 		self.alertQueue.insert(i, alert); # ccAlert is always at 0!

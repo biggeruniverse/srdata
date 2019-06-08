@@ -11,8 +11,8 @@
 from silverback import *
 import savage
 import logging
-from stackless import channel
 import threading
+from collections import deque
 
 class Event:
 	def __init__(self):
@@ -76,8 +76,7 @@ class EventHandler:
 	logger = logging.getLogger("silverback.eventhandler")
 	def __init__(self):
 		#events
-		self.eventQueue = channel()
-		self.eventQueue.preference = 1
+		self.eventQueue = deque()
 
 		#listeners
 		self.notifyListeners = []
@@ -86,7 +85,7 @@ class EventHandler:
 		self.voteListeners = []
 
 		self.stop = threading.Event()
-		self.queue_thread = threading.Thread(None, self._run_queue, "Event queue runner")
+		self.queue_thread = threading.Thread(target=self._run_queue, name="Event queue runner")
 		self.stop.clear()
 		self.queue_thread.start()
 
@@ -121,19 +120,12 @@ class EventHandler:
 		self.eventQueue.send(e)
 
 	def send_event(self, e):
-		task = stackless.tasklet(self._send_event)
-		task.setup(e)
+		self.eventQueue.append(e)
 
-	#runQueue is called by the engine every frame before gui logic
-	#NOTE: this is deprecated in favor of the above _run_queue stackless thread method
+	#runQueue is called by the engine every frame in python interface logic
 	def runQueue(self):
-		pass;
-		"""
-		for e in self.eventQueue:
-			self._process_event(e)
-		#clear it
-		self.eventQueue = []
-		"""
+		while self.eventQueue:
+			self._process_event(self.eventQueue.popleft())
 
 	def addNotifyListener(self, l):
 		self.notifyListeners.append(l)

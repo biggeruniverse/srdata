@@ -203,7 +203,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 	
 	def hide( self):
 		if self.activeseq != None:
-			self.activeseq.kill();
+			self.activeseq.stop();
 			self.activeseq = None;
 		self.activeseq = ActionSequence(SlideAction(self, self.getX(), -self.getHeight()));
 		self.status = self.INACTIVE;

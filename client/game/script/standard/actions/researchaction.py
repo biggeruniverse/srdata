@@ -21,6 +21,6 @@ class ResearchAction(Action):
 			return False;
 		return self.item == b.item;
 		
-	def isDone(self):
+	def is_done(self):
 		return self.requested;
 

@@ -20,6 +20,6 @@ class ScaleAction(GuiAction):
 		h = self.inith + (self.desth - self.inith)*self.lerp;
 		self.widget.setSize(int(w), int(h));
 	
-	def isDone(self):
+	def is_done(self):
 		return self.lerp >= 1;
 

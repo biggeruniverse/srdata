@@ -1,9 +1,10 @@
 #(c) 2011 savagerebirth.com
-# this is a basic action outline, actions extend from this
+# this is a basic action outline, gui actions extend from this
+import silverback
 
-class GuiAction(Action):
+class GuiAction(silverback.Action):
 	def __init__(self, widget):
-		Action.__init__(self);
+		silverback.Action.__init__(self);
 		self.lasttime = Host_Milliseconds();
 		self.widget = widget;
 

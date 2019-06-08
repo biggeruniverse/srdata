@@ -21,7 +21,7 @@ class DemosLoadAction(Action):
 		self.window.list.setWidth(self.window.getWidth()//3);
 		self.done = True;
 
-	def isDone(self):
+	def is_done(self):
 		return self.done;
 
 class DemoListItem(DefaultContainer):

@@ -3,15 +3,14 @@
 from silverback import *
 from vectors import Vec3
 import logging
-import stacklesslib
-import threading  #monkey-patched stacklesslib threading
-
+import threading
+import time
 
 class Mind(GameObject):
 	import logging;
 	logger = logging.getLogger("savage.ai.mind")
 	def __init__(self, oid):
-		import threading  #monkey-patched stacklesslib threading
+		import threading
 		savage.GameObject.__init__(self, oid)
 		self.goalStack = []
 		self.goal = None
@@ -96,6 +95,7 @@ class Mind(GameObject):
 		self.handleGoal();
 
 	def update(self):
+		import time
 		while not self.death.is_set():
 			self.reassessPriorities();
 
@@ -107,7 +107,7 @@ class Mind(GameObject):
 			self.fsm.evaluate();
 
 			self.lastCollisions = []
-			stacklesslib.main.sleep(.1) #we don't need them to be thinking all the time
+			time.sleep(.1) #we don't need them to be thinking all the time
 
 	def handleGoal(self):                
 		if self.goal == self.lastGoal:

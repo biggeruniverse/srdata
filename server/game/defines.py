@@ -1,14 +1,13 @@
 #(c) savagerebirth.com 2011
 #imports
-import stacklesslib.monkeypatch
-stacklesslib.monkeypatch.patch_all()
-
 import logging;
-from silverback import *;
 from silverback import *;
 import tools;
 import vectors;
 from vectors import Vec3; # ya I know, but this fixes namespace problems for servers
+
+def event_frame():
+	gblEventHandler.runQueue()
 
 #globals and constants go here
 

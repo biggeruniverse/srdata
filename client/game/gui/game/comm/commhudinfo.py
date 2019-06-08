@@ -24,10 +24,10 @@ class CommHudStats(glass.GlassContainer):
 		obj = savage.getGameObject(self.objectId);
 		self.health.setProgress(obj.getHealthPct());
 		if obj.isBeingBuilt():
-			self.build.setVisible(1);
+			self.build.setVisible(True);
 			self.build.setProgress(obj.getBuildProgress());
 		else:
-			self.build.setVisible(0);
+			self.build.setVisible(False);
 
 class CommHudInfo(glass.GlassContainer):
 	def __init__(self):
@@ -41,7 +41,7 @@ class CommHudInfo(glass.GlassContainer):
 		visobjs = savage.getObjectsWithin(0,0,self.getWidth(), self.getHeight());
 		team = savage.getLocalPlayer().getTeam();
 		for bar in self.bars.values():
-			bar.setVisible(0);
+			bar.setVisible(False);
 
 		for obj in visobjs:
 			if obj.getTeam() == team:
@@ -52,7 +52,7 @@ class CommHudInfo(glass.GlassContainer):
 					self.bars[obj.objectId] = stats;
 
 				stats = self.bars[obj.objectId];
-				stats.setVisible(1);
+				stats.setVisible(True);
 				stats.setSizePct(0.0488, 3*0.006510);
 				stats.setPosition(int(v[0])-25, int(v[1]));
 				stats.update();

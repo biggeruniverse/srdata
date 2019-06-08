@@ -52,18 +52,18 @@ class RadialContextMenu(ContextMenu):
 		self.context = context;
 		self.clear();
 		self.rebuildMenu();
-		for action, status in self.context.getContextActions().iteritems():
+		for action, status in self.context.getContextActions().items():
 			button = self.context.getButtonAction(action);
 			if status == Hidden:
-				button.setVisible(0);
-				button.setEnabled(0);
+				button.setVisible(False);
+				button.setEnabled(False);
 			elif status == Disabled:
-				button.setVisible(1);
-				button.setEnabled(0);
+				button.setVisible(True);
+				button.setEnabled(False);
 				button.setForegroundColor(tangoGrey5);
 			elif status == Enabled:
-				button.setVisible(1);
-				button.setEnabled(1);
+				button.setVisible(True);
+				button.setEnabled(True);
 				button.setForegroundColor(white);
 			self.add(button);
 			self.currentButtons.append(button);
@@ -109,14 +109,14 @@ class RadialContextMenu(ContextMenu):
 			active = False;
 			for item in research:
 				if item.builder == self.object.objectId:
-					#self.info.icon.setVisible(1);
+					#self.info.icon.setVisible(True);
 					self.info.progress.setProgress(item.percentComplete);
 					self.info.icon.build(item);
 					#if not self.action:
 					active = True;
 			if not active:
 				self.info.progress.setProgress(0);
-				self.info.icon.setVisible(0);
+				self.info.icon.setVisible(False);
 
 	def recenter(self):		
 		x, y = self.object.getScreenTopPosition();
@@ -194,10 +194,10 @@ class RadialContextMenu(ContextMenu):
 				if actionName == button.name:
 					self.action = ActionSequence(self.MoveAction(self, button));
 					self.info.icon.build(item);
-					self.info.icon.setVisible(0);
+					self.info.icon.setVisible(False);
 
 					#self.info.icon.icon.setImage(item.getType().getValue("icon") + ".s2g");
-					#self.info.icon.setVisible(1);		
+					#self.info.icon.setVisible(True);		
 
 			#self.MoveAction
 			#self.info.icon.build(item);
@@ -236,7 +236,7 @@ class RadialContextMenu(ContextMenu):
 			self.icon = self.ResearchIcon();
 			self.add(self.icon);
 			self.icon.setSize(32, 32);
-			#self.icon.setVisible(0);
+			#self.icon.setVisible(False);
 
 			self.hp = glass.GlassProgressBar();
 			self.hp.setBackgroundColor(white);
@@ -267,7 +267,7 @@ class RadialContextMenu(ContextMenu):
 
 			def __init__(self):
 				DefaultContainer.__init__(self);
-				self.setOpaque(1);
+				self.setOpaque(True);
 				#self.setBackgroundColor(tangoGreen);
 
 				self.item = None;
@@ -291,7 +291,7 @@ class RadialContextMenu(ContextMenu):
 			def build(self, item):
 				self.item = item;
 				self.icon.setImage(item.getType().getValue("icon")+".s2g");
-				self.icon.setOpaque(1);
+				self.icon.setOpaque(True);
 
 				self.icon.setSizePct(1, 1);				
 
@@ -314,7 +314,7 @@ class RadialContextMenu(ContextMenu):
 			self.menu = menu;
 			self.flag = flag;
 	
-		def isDone(self):
+		def is_done(self):
 			if self.menu.getAlpha() >= 255:
 				self.menu.action = None;
 				if self.flag != "switch":
@@ -333,7 +333,7 @@ class RadialContextMenu(ContextMenu):
 			self.menu = menu;
 			self.flag = flag;
 			
-		def isDone(self):
+		def is_done(self):
 			if self.menu.getAlpha() <= 0:
 				self.menu.action = None;
 				if self.flag != "switch":
@@ -353,7 +353,7 @@ class RadialContextMenu(ContextMenu):
 			self.menu = menu;
 			self.ctx = ctx;
 		
-		def isDone(self):
+		def is_done(self):
 			return True;
 		
 		def run(self):
@@ -377,14 +377,14 @@ class RadialContextMenu(ContextMenu):
 			self.dx = (x/l);
 			self.dy = (y/l);
 			
-		def isDone(self):
+		def is_done(self):
 			x = abs(self.tx - self.posx);
 			y = abs(self.ty - self.posy);
 			if x < 5 and  y < 5:
 				self.button.setPosition(self.tx, self.ty);
 				self.menu.action = None;
 				self.menu.handleSelection();
-				self.menu.info.icon.setVisible(1);
+				self.menu.info.icon.setVisible(True);
 				return True;
 			else:
 				return False;		

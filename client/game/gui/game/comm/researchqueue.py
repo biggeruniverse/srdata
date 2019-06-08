@@ -9,12 +9,12 @@ class ResearchQueue(ActionSequence):
 		ActionSequence.__init__(self);
 		self.listeners = [];
 	
-	def isDone(self):
+	def is_done(self):
 		if len(self.actions) > 0:
 			item = self.actions[0]
 			if not item.areReqsMet():
 				self.swap(0, len(self.actions)-1)
-		#gimp the isDone so the sequence never disappears on us
+		#gimp the is_done so the sequence never disappears on us
 		return False;
 
 	#pause inherited from ActionSequence
@@ -64,8 +64,8 @@ class ResearchQueue(ActionSequence):
 		if item.objtype.isWorkerType() or item.objtype.isBuildingType() or not item.objtype.isResearched():
 			con_dprintln("adding research for "+item.objtype.getName()+"\n");
 			action = ResearchAction( item );
-			action.setParent(self);
-			self.actions.append(action);
+			action.set_sequence(self);
+			self.add_action(action)
 			for l in self.listeners:
 				l.onResearchQueued(action);
 

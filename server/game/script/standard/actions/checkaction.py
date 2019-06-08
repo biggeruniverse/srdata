@@ -12,6 +12,6 @@ class CheckAction(Action):
 		if self.obj is not self.value:
 			self.parent.stop()
 
-	def isDone(self):
+	def is_done(self):
 		return True
 

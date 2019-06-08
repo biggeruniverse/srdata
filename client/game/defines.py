@@ -1,7 +1,5 @@
 #(c) savagerebirth.com 2011
 #imports
-import stacklesslib.monkeypatch
-stacklesslib.monkeypatch.patch_all()
 
 import logging;
 from silverback import *;
@@ -14,6 +12,9 @@ import glass;
 import tools;
 import vectors;
 from collections import OrderedDict;
+
+def event_frame():
+	gblEventHandler.runQueue()
 
 #this will print any uncollectable objects to stdout (good for finding cyclical deps)
 #import gc;

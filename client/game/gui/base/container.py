@@ -44,5 +44,5 @@ class DefaultContainer(glass.GlassContainer):
             width = max(width, w.getX() + w.getWidth())
             height = max(height, w.getY() + w.getHeight())
 
-
         self.setSize(width, height)
+

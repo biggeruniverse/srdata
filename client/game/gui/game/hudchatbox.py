@@ -40,7 +40,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.oldHeight = 0;
 		self.typing = False;
 		
-		self.fade = ActionSequence(WaitAction(5000), CheckAction(self.typing, False), FadeOutAction(self))
+		self.fade = ActionSequence(savage.WaitAction(5000), savage.CheckAction(self.typing, False), FadeOutAction(self))
 		self.showHistory(False);
 
 
@@ -58,7 +58,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.setAlpha(255)
 		self.setVisible(True)
 		if not forever and not self.typing:
-			self.fade = ActionSequence(WaitAction(5000), FadeOutAction(self))
+			self.fade = ActionSequence(savage.WaitAction(5000), FadeOutAction(self))
 		
 	def onEvent (self, e):
 		self.makeVisible()

@@ -20,7 +20,7 @@ class SequenceHandler:
 		for seq in self.sequences:
 			if seq.isDone() == True:
 				self.sequences.remove(seq);
-				seq.kill();
+				#seq.kill();
 
 	#never call this directly, let ActionSequence call it
 	def addSequence(self, seq):
@@ -61,7 +61,7 @@ class ActionSequence(stackless.tasklet):
 		self.channel = None
 
 		for action in args:
-			action.setParent(self);
+			action.set_sequence(self);
 			self.actions.append(action);
 		self.attach()
 

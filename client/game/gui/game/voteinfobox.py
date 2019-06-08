@@ -1,5 +1,4 @@
 # (c) 2010 savagerebirth.com
-# a subclass that holds all the voice chat gui pieces
 
 from silverback import *;
 import glass;
@@ -127,7 +126,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 				Sound_PlaySound("/sound/general/vote.ogg");
 				#self.timer.setEnd(vote_duration);
 				if self.activeseq != None:
-					self.activeseq.kill();
+					self.activeseq.stop();
 					self.activeseq = None;
 				self.activeseq = ActionSequence(SlideAction(self, self.getX(), 40));
 			
@@ -205,7 +204,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 	
 	def hide( self):
 		if self.activeseq != None:
-			self.activeseq.kill();
+			self.activeseq.stop();
 			self.activeseq = None;
 		self.activeseq = ActionSequence(SlideAction(self, self.getX(), -self.getHeight()));
 		self.status = self.INACTIVE;

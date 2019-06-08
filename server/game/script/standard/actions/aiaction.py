@@ -10,6 +10,6 @@ class AIAction(Action):
 	def run(self):
 		self.mind.update();
 
-	def isDone(self):
+	def is_done(self):
 		return False;
 

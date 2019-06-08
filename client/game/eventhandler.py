@@ -7,11 +7,11 @@
 #
 # Poor event handler. (Fatty)
 #
-
 from silverback import *
 import logging
-from stackless import channel
 import threading
+from collections import deque
+#import thread
 
 class Event:
 	def __init__(self):
@@ -100,8 +100,9 @@ class EventHandler:
 	logger = logging.getLogger("silverback.eventhandler")
 	def __init__(self):
 		#events
-		self.eventQueue = channel()
-		self.eventQueue.preference = 1
+		#self.eventQueue = channel()
+		#self.eventQueue.preference = 1
+		self.eventQueue = deque()
 
 		#listeners
 		self.notifyListeners = []
@@ -112,10 +113,10 @@ class EventHandler:
 		self.demoListeners = []
 		self.historyListeners = []
 
-		self.stop = threading.Event()
-		self.queue_thread = threading.Thread(name="Event queue runner", target=self._run_queue)
-		self.stop.clear()
-		self.queue_thread.start()
+		#self.stop = threading.Event()
+		#self.queue_thread = threading.Thread(name="Event queue runner", target=self._run_queue)
+		#self.stop.clear()
+		#self.queue_thread.start()
 
 	def _process_event(self, e):
 		#check the type of e, get the correct list of listeners
@@ -154,19 +155,16 @@ class EventHandler:
 		self.eventQueue.send(e)
 
 	def send_event(self, e):
-		task = stackless.tasklet(self._send_event)
-		task.setup(e)
+		#task = stackless.tasklet(self._send_event)(e)
+		#task = threading.Thread(name="send event", target=self._send_event, args=(e,))
+		#task.start()
+		self.eventQueue.append(e)
 
-	#runQueue is called by the engine every frame before gui logic
-	#NOTE: this is deprecated in favor of the above _run_queue stackless thread method
+	#runQueue is called by the engine every frame in python interface logic
 	def runQueue(self):
-		pass;
-		"""
-		for e in self.eventQueue:
+		while self.eventQueue:
+			e = self.eventQueue.popleft()
 			self._process_event(e)
-		#clear it
-		self.eventQueue = []
-		"""
 
 	def addNotifyListener(self, l):
 		self.notifyListeners.append(l)

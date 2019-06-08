@@ -1,11 +1,11 @@
 # (c) 2011 savagerebirth.com
 
-class TripAction(Action):
+class TripAction(silverback.Action):
 	def __init__(self, obj, dist):
 		self.obj = obj;
 		self.dist = dist;
 		self.done = False;
-		return Action.__init__(self);
+		return silverback.Action.__init__(self);
 
 	def run(self):
 		objs = savage.getRadiusObjects(self.obj.objectId, self.dist);
@@ -14,5 +14,5 @@ class TripAction(Action):
 			if obj.getTeam() != self.obj.getTeam() and obj.getType().isUnitType():
 				self.done = True;
 
-	def isDone(self):
+	def is_done(self):
 		return self.done;
