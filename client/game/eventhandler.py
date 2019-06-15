@@ -9,9 +9,7 @@
 #
 from silverback import *
 import logging
-import threading
 from collections import deque
-#import thread
 
 class Event:
 	def __init__(self):
@@ -155,9 +153,6 @@ class EventHandler:
 		self.eventQueue.send(e)
 
 	def send_event(self, e):
-		#task = stackless.tasklet(self._send_event)(e)
-		#task = threading.Thread(name="send event", target=self._send_event, args=(e,))
-		#task.start()
 		self.eventQueue.append(e)
 
 	#runQueue is called by the engine every frame in python interface logic

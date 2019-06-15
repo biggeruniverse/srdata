@@ -11,7 +11,6 @@ from sleekxmpp.xmlstream.handler import Callback
 from sleekxmpp.xmlstream.matcher import StanzaPath, MatchXPath, MatchXMLMask
 from collections import deque
 import logging
-import threading
 # Fuck timezones:
 import time
 import datetime
@@ -114,10 +113,10 @@ class XMPPHandler:
 		self.chatListeners = [];
 		self.eventQueue = deque();
 
-		self.stop = threading.Event();
-		self.queue_thread = threading.Thread(name="XMPP queue runner", target=self._run_queue);
-		self.stop.clear();
-		self.queue_thread.start();
+		#self.stop = threading.Event();
+		#self.queue_thread = threading.Thread(name="XMPP queue runner", target=self._run_queue);
+		#self.stop.clear();
+		#self.queue_thread.start();
 
 		# Notification vars:
 

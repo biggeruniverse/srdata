@@ -13,6 +13,7 @@ class SlideAction(GuiAction):
 
 	def run(self):
 		self.lerp += self.rate*self.rateMult()
+		con_println(str(self.lerp)+"\n")
 		if self.lerp > 1:
 			self.lerp=1
 		x = self.lerp*self.destx + (1-self.lerp)*self.initx

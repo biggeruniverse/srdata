@@ -177,34 +177,34 @@ class ServerlistSection(AbstractSection):
 		finally:
 			File_Close(f)
 
-	def _checkPing(self, server):
-		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);
-		sock.settimeout(0.1)
-		try:
-			thetime = Host_Milliseconds();
-			host,port = str(server.getId()).split(':');
-			#con_println("trying "+host+"...\n");
-			#sock.connect((host, int(port)+1));
-			data = struct.pack('!LBBL', 0, 5, 0xC6, socket.htonl(thetime));
-			sock.sendto(data, (host, int(port)+1));
-			msg = ""
-			while len(msg) < 10:
-				msg += sock.recv(10)
-			#msg, addr = sock.recvfrom(10);
-			meh, bsize, cmd, senttime = struct.unpack('<LBBL', msg);
-			#con_println("ping for "+host+" is "+str(Host_Milliseconds()-senttime)+"\n");
-			server.getColumn(6).getContent(glass.GlassLabel).setCaption(str(Host_Milliseconds()-senttime));
-		except socket.timeout:
-			server.getColumn(6).getContent(glass.GlassLabel).setCaption("999");
-			#con_println("ping is >2500ms\n");
-		except Exception as e:
-			con_println("failed to connect: "+str(e)+"\n");
-		#sock.shutdown(socket.SHUT_RDWR);
-		sock.close();
+	def _checkPing(self, serverlist):
+		for server in serverlist:
+			sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);
+			sock.settimeout(0.1)
+			try:
+				thetime = Host_Milliseconds();
+				host,port = str(server.getId()).split(':');
+				#con_println("trying "+host+"...\n");
+				#sock.connect((host, int(port)+1));
+				data = struct.pack('!LBBL', 0, 5, 0xC6, socket.htonl(thetime));
+				sock.sendto(data, (host, int(port)+1));
+				msg = ""
+				while len(msg) < 10:
+					msg += sock.recv(10)
+				#msg, addr = sock.recvfrom(10);
+				meh, bsize, cmd, senttime = struct.unpack('<LBBL', msg);
+				#con_println("ping for "+host+" is "+str(Host_Milliseconds()-senttime)+"\n");
+				server.getColumn(6).getContent(glass.GlassLabel).setCaption(str(Host_Milliseconds()-senttime));
+			except socket.timeout:
+				server.getColumn(6).getContent(glass.GlassLabel).setCaption("999");
+				#con_println("ping is >2500ms\n");
+			except Exception as e:
+				con_println("failed to connect: "+str(e)+"\n");
+			#sock.shutdown(socket.SHUT_RDWR);
+			sock.close();
 
 	def refreshPings(self):
-		for server in self.list:
-			threading.Thread(name="pinging thread", target=self._checkPing, args=(server,)).start()
+		threading.Thread(name="pinging thread", target=self._checkPing, args=(self.list,)).start()
 			
 		
 	def onAction(self, e):

@@ -62,10 +62,10 @@ class NotificationHandler(DefaultContainer):
 
 		"""
 		if e.scope == "notify_muc_invite":
-			self.insertNotification("Chatroom Invite", e.fromstr + " invited you to the room " + e.room + "!", e.string, e.room);
+			self.insertNotification("Chatroom Invite", e.fromstr + " invited you to the room " + e.room + "!", e.string, None, e.room);
 
 		elif e.scope == "notify_friend_request":
-			self.insertNotification("Friend Request", e.fromstr + " wants to be your new friend!", e.string, e.fromstr);
+			self.insertNotification("Friend Request", e.fromstr + " wants to be your new friend!", e.string, None, e.fromstr);
 
 		elif e.scope == "notify_friend_accept":
 			self.insertNotification("Friend Accepted", "You and " + e.fromstr + " are now friends!");
@@ -172,13 +172,8 @@ class Notification(DefaultContainer):
 			a = (True,)
 			if self.arg != None:
 				a=(self.arg, True)
-			t = threading.Thread(target=self.command, args=a)
-			t.start()
-			#task = stackless.tasklet(self.command);
-			#if self.arg != None:
-			#	task.setup(self.arg, True);
-			#else:
-			#	task.setup(True);
+			#t = threading.Thread(target=self.command, args=a)
+			#t.start()
 			self.close();		
 
 		elif e.widget.getCaption() == "No":
@@ -186,13 +181,8 @@ class Notification(DefaultContainer):
 			a = (True,)
 			if self.arg != None:
 				a=(self.arg, True)
-			t = threading.Thread(target=self.command, args=a)
-			t.start()
-			#task = stackless.tasklet(self.command);
-			#if arg != None:
-			#	task.setup(self.arg, False);
-			#else:
-			#	task.setup(False);
+			#t = threading.Thread(target=self.command, args=a)
+			#t.start()
 			self.close();
 
 	def close(self):

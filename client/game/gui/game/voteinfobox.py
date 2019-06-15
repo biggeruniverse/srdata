@@ -206,7 +206,7 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		if self.activeseq != None:
 			self.activeseq.stop();
 			self.activeseq = None;
-		self.activeseq = ActionSequence(SlideAction(self, self.getX(), -self.getHeight()));
+		self.activeseq = ActionSequence(SlideAction(self, self.getX(), -(self.getHeight()-20)));
 		self.status = self.INACTIVE;
 		self.labelYes.setCaption("F1 for YES");
 		self.labelNo.setCaption("F2 for NO");

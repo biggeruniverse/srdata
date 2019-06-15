@@ -24,8 +24,8 @@ void main()
 
 	alpha = clamp(baseColor.a*gl_Color.a*alpha,0.0,1.0);
 
-	if(alpha < 0.05)
-		discard;
+	//if(alpha < 0.05)
+	//	discard;
 
         diffuseMod = shadowCoef(gl_FragCoord.xyz);
 	
@@ -33,7 +33,7 @@ void main()
 
 	color.rgb = mix(gl_Fog.color.rgb, color.rgb, fog);
 	
-	gl_FragColor 	= color;
-	//gl_FragColor    = vec4(1.0);
+	//gl_FragColor 	= color;
+	gl_FragColor    = vec4(1.0);
 	//gl_FragColor 	= vec4(alpha,alpha,alpha,1.0);
 }

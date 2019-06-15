@@ -46,7 +46,6 @@ from silverback import *
 import savage
 from savage import WaitAction, CallAction
 import logging
-import threading
 import time;
 import tools;
 

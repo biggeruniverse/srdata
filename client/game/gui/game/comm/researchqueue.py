@@ -3,6 +3,7 @@
 
 #The Queue is an ActionSequence
 #Each researchable item in the queue is an action (ResearchAction)
+import savage
 
 class ResearchQueue(ActionSequence):
 	def __init__(self):
@@ -63,7 +64,7 @@ class ResearchQueue(ActionSequence):
 		#check that we actually CAN research another one
 		if item.objtype.isWorkerType() or item.objtype.isBuildingType() or not item.objtype.isResearched():
 			con_dprintln("adding research for "+item.objtype.getName()+"\n");
-			action = ResearchAction( item );
+			action = savage.ResearchAction( item );
 			action.set_sequence(self);
 			self.add_action(action)
 			for l in self.listeners:

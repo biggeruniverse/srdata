@@ -3,7 +3,6 @@
 from silverback import *
 from vectors import Vec3
 import logging
-import threading
 import time
 
 class Mind(GameObject):
@@ -16,14 +15,15 @@ class Mind(GameObject):
 		self.goal = None
 		self.lastGoal = None
 		self.fsm = savage.FiniteStateMachine(self)
-		self.death = threading.Event()
-		self.thread = threading.Thread(name="Mind of %d" % oid, target=self.update)
+		#self.death = threading.Event()
+		#self.thread = threading.Thread(name="Mind of %d" % oid, target=self.update)
+		self.thread = ActionSequence(WaitAction(100), CallAction(self.updateOnce))
 		self.homePos = savage.Vec3(0.0, 0.0, 0.0)
 		self.givingWay = False
 		self.lastCollisions = []
 
-		self.death.clear()
-		self.thread.start()
+		#self.death.clear()
+		#self.thread.start()
 
 	def setIdle(self, val):
 		return savage.ai_setidle(self.objectId, val)
@@ -108,6 +108,11 @@ class Mind(GameObject):
 
 			self.lastCollisions = []
 			time.sleep(.1) #we don't need them to be thinking all the time
+	def updateOnce(self):
+		self.reassessPriorities()
+		#NOTE: "thinking" is done here
+		self.fsm.evaluate()
+		self.lastCollisions = []
 
 	def handleGoal(self):                
 		if self.goal == self.lastGoal:
@@ -199,10 +204,11 @@ class Mind(GameObject):
 
 	def onDeath(self, killer):
 		self.setPrimaryAnimState(AnimStates.AS_DEATH_GENERIC);
-		self.death.set();
+		#self.death.set();
+		self.thread.stop()
 
 	def onDestroy(self):
-		self.death.set();
+		#self.death.set();
 		self.thread = None;
 		self.fsm.clear();
 

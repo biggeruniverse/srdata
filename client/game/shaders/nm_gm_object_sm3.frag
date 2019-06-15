@@ -95,7 +95,7 @@ void main()
 		// apply real bright
 		color.rgb *= ps_pb_cs_hs.z;
 
-		color.rgb += rimColor*rimFactor*0.4;
+		//color.rgb += rimColor*rimFactor*0.4;
 
 		//mix in fog		
 		color.rgb = mix(gl_Fog.color.rgb, color.rgb, fog);

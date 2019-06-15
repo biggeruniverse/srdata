@@ -263,7 +263,7 @@ def Player_ToggleResources_Up():
 	pass;
 
 def Player_ToggleMinimap_Down():
-	hud.minimap.setVisible(1-int(hud.minimap.isVisible()));
+	hud.minimap.setVisible(not hud.minimap.isVisible());
 def Player_ToggleMinimap_Up():
 	pass;
 
