@@ -203,10 +203,10 @@ class VoteInfoBox( glass.GlassWindow, EventListener ):
 		#the number of yes and no votes are handled as floats, thankfully
 	
 	def hide( self):
-		if self.activeseq != None:
-			self.activeseq.stop();
-			self.activeseq = None;
-		self.activeseq = ActionSequence(SlideAction(self, self.getX(), -(self.getHeight()-20)));
+		if self.status != self.INACTIVE:
+			if self.activeseq != None:
+				self.activeseq.stop();
+			self.activeseq = ActionSequence(SlideAction(self, self.getX(), -(self.getHeight()+5)));
 		self.status = self.INACTIVE;
 		self.labelYes.setCaption("F1 for YES");
 		self.labelNo.setCaption("F2 for NO");

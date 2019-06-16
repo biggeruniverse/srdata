@@ -12,8 +12,8 @@ class SlideAction(GuiAction):
 		return GuiAction.__init__(self, widget)
 
 	def run(self):
-		self.lerp += self.rate*self.rateMult()
-		con_println(str(self.lerp)+"\n")
+		r = self.rateMult()
+		self.lerp += self.rate*r
 		if self.lerp > 1:
 			self.lerp=1
 		x = self.lerp*self.destx + (1-self.lerp)*self.initx
