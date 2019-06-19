@@ -65,7 +65,7 @@ void main()
 	color.rgb += texture2D(glossMap, newTexcoord).rgb * specular.rgb * gl_FrontMaterial.specular.rgb;
 	color.rgb *= ps_pb_cs_hs.z;
 
-	color.rgb += ambient.rgb*rimColor*rimFactor*0.4;
+	//color.rgb += ambient.rgb*rimColor*rimFactor*0.4;
 
 	color.rgb = mix(gl_Fog.color.rgb, color.rgb, fog);
 

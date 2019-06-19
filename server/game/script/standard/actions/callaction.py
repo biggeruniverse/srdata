@@ -3,7 +3,7 @@
 #is_done by default returns True, which is what we want here
 
 class CallAction(Action):
-	def __init__(self, funcobj, args=(,)):
+	def __init__(self, funcobj, args=tuple([])):
 		Action.__init__(self);
 		self.func = funcobj;
 		self.args = args;

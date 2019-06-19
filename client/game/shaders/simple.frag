@@ -15,7 +15,7 @@ void main()
 
 	gl_FragColor	  = gl_Color * baseColor;
 	gl_FragColor.rgb *= (diffuse+ambient.rgb+lightAccumColor);
-	gl_FragColor.rgb += ambient.rgb*rimColor*rimFactor*.4;
+	//gl_FragColor.rgb += ambient.rgb*rimColor*rimFactor*.4;
 
 	gl_FragColor.rgb = mix(gl_Fog.color.rgb, gl_FragColor.rgb, fog);
 }
