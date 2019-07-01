@@ -144,7 +144,7 @@ objSet aggressionRange 0.000000 0.000000
 objSet aggressionInterval 500.000000 1000.000000
 objSet packRange 0.000000
 objSet packSize 0 0
-objSet fullHealth 250
+objSet fullHealth 60
 objSet forceInventory0 "human_nomad_melee"
 objSet forceInventory1 ""
 objSet forceInventory2 ""

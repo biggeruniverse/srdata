@@ -145,7 +145,7 @@ objSet aggressionRange 70.000000 70.000000
 objSet aggressionInterval 500.000000 1000.000000
 objSet packRange 0.000000
 objSet packSize 0 0
-objSet fullHealth 230
+objSet fullHealth 50
 objSet forceInventory0 "human_bow"
 objSet forceInventory1 ""
 objSet forceInventory2 ""
