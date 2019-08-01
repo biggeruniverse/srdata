@@ -28,7 +28,7 @@ objSet weapPointValue 0
 objSet rightMeleeModel ""
 objSet leftMeleeModel ""
 objSet useDefaultMeleeModel 1
-objSet damage 3
+objSet damage 30
 objSet useAltMelee 0
 objSet blockStunTime 816
 objSet cost NULL 0
