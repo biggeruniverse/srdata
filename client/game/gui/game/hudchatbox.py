@@ -101,7 +101,7 @@ class HUDChatBox( ChatBox, EventListener ):
 			"""
 	
 	def onKeyReleased(self, e):
-		if e.key == glass.Key.ENTER:
+		if e.key == glass.Key.ENTER or e.key == gcn.Key.RETURN: #e.key==10 #Big: hacky fix because I forgot where the defines are...
 			content = self.input.getText().rstrip();
 			if content == "":
 				self.deactivate();
