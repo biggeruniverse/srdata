@@ -73,5 +73,5 @@ class ResearchQueue(ActionSequence):
 	def addListener(self, l):
 		self.listeners.append(l);
 
-gblQueue = ResearchQueue();
+gblQueue = ResearchQueue()
 
