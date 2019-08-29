@@ -31,7 +31,7 @@ void main()
 	//// SKINNING ////
 	if(useBones == 1) {
 		for(int i = 0; i< int(numBones); i++) {
-			mat4 m44 = boneMatrices[int(curindex.x)];
+			mat4 m44 = mat4(boneMatrices[int(curindex.x)]);
 	
 			mat3 m33 = mat3(m44[0].xyz,
 					m44[1].xyz,
