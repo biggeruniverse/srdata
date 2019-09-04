@@ -224,8 +224,7 @@ class BuddyRoster(DefaultWindow):
 		elif e.widget.getCaption() == "delete":
 			name = self.getSelection();
 
-			#task = stackless.tasklet(gblXMPPHandler.handleSubscripton)(name, 'unsubscribe')
-			task = thread.Thread(gblXMPPHandler.handleSubscripton,(name, 'unsubscribe'), {})
+			#task = thread.Thread(gblXMPPHandler.handleSubscripton,(name, 'unsubscribe'), {})
 
 		elif e.widget.getCaption() == "stats":
 			#TODO: we need an ingame stats window!
@@ -249,9 +248,7 @@ class BuddyRoster(DefaultWindow):
 				gblXMPPHandler.chatEvent("chat_send_msg", name, "Hello " + name + ", come and play a nice Savage: Rebirth match with me!");
 			
 			
-			#task = stackless.tasklet(gblXMPPHandler.sendInvite);
-			#task.setup(name + '@savagerebirth.com/savage', svrName);
-			thread.Thread(gblXMPPHandler.sendInvite,(name + '@savagerebirth.com/savage', svrName), {})
+			#thread.Thread(gblXMPPHandler.sendInvite,(name + '@savagerebirth.com/savage', svrName), {})
 
 	def onValueChanged(self, e):		
 		for group, jidList in self.widgets.items():

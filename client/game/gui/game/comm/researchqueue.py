@@ -7,24 +7,23 @@ import savage
 
 class ResearchQueue(ActionSequence):
 	def __init__(self):
-		ActionSequence.__init__(self);
-		self.listeners = [];
-	
-	def is_done(self):
+		ActionSequence.__init__(self)
+		self.listeners = []
+		self.set_loop(True)
+
+	def run(self):
 		if len(self.actions) > 0:
 			item = self.actions[0]
 			if not item.areReqsMet():
 				self.swap(0, len(self.actions)-1)
-		#gimp the is_done so the sequence never disappears on us
-		return False;
 
 	#pause inherited from ActionSequence
 	
 	def swap(self, a, b):
 		if a == b or len(self.actions) == 1:
-			return;
-		self.actions.rotate(-a);
-		itemA = self.actions.popleft();
+			return
+		self.actions.rotate(-a)
+		itemA = self.actions.popleft()
 		self.actions.rotate(a-b+1);
 		itemB = self.actions.popleft();
 		self.actions.appendleft(itemA);

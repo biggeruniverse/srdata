@@ -303,7 +303,8 @@ class MainTopBar(DefaultContainer):
 					#else:
 					#connection = gblXMPPHandler.reconnect
 					#task = stackless.tasklet(connection)()
-					task = thread.Thread(connection, (), {})
+					#task = thread.Thread(connection, (), {})
+					con_println("TODO: jabber connect")
 
 				else:
 					cvar_set("auth_sessionid", "");

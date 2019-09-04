@@ -28,7 +28,7 @@ vfSet redfade 0.000000 0.000000
 vfSet greenfade 0.000000 0.000000
 vfSet bluefade 0.000000 0.000000
 vfSet delay 0 0
-vfSet lifetime 1000 1000
+vfSet lifetime 1000 3000
 vfSet tilelength 0.000000
 vfSet style "point"
 vfSet model ""

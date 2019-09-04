@@ -85,7 +85,7 @@ class ResearchItem:
 		teamRes = team.getResources(); #a dictionary of integers
 		
 		#yarr be entering stubby code now laddie! only for the brave! acch! Get me some haggis!
-		for key, value in teamRes.iteritems():
+		for key, value in teamRes.items():
 			cost = self.objtype.getCost(key);
 			if cost > value and value != -1:
 				#for a human team, entropy is -1

@@ -5,7 +5,6 @@ from silverback import *;
 import glass;
 import xml.dom.minidom;
 import tools;
-import threading;
 import socket;
 import struct;
 
@@ -23,8 +22,8 @@ class ServerlistSection(AbstractSection):
 		gblEventHandler.addSystemListener(self);
 		self.list.addMouseListener(self);
 		self.list.setSelectionIndicator();
-		self.stop = threading.Event();
-		self.stop.clear();
+		#self.stop = threading.Event();
+		#self.stop.clear();
 		#self.refreshThread = threading.Thread(name="server refresh", target=self._refreshWhenVisible);
 		#self.refreshThread.start();
 		#self.pingThread = threading.Thread(name="ping refresh", target=self._refreshPingWhenVisible);
@@ -34,13 +33,13 @@ class ServerlistSection(AbstractSection):
 		while not self.stop.is_set():
 			if self.isVisible() == True:
 				self.refresh();
-			stacklesslib.main.sleep(60.0)
+			#stacklesslib.main.sleep(60.0)
 
 	def _refreshPingWhenVisible(self):
 		while not self.stop.is_set():
 			if self.isVisible() == True:
 				self.refreshPings();
-			stacklesslib.main.sleep(15.0);
+			#stacklesslib.main.sleep(15.0);
 		
 
 	def onShow(self):
@@ -204,7 +203,8 @@ class ServerlistSection(AbstractSection):
 			sock.close();
 
 	def refreshPings(self):
-		threading.Thread(name="pinging thread", target=self._checkPing, args=(self.list,)).start()
+		#threading.Thread(name="pinging thread", target=self._checkPing, args=(self.list,)).start()
+		con_println("TODO: refresh pings")
 			
 		
 	def onAction(self, e):

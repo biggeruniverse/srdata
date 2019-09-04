@@ -9,7 +9,7 @@ class Mind(GameObject):
 	import logging;
 	logger = logging.getLogger("savage.ai.mind")
 	def __init__(self, oid):
-		import threading
+		#import threading
 		savage.GameObject.__init__(self, oid)
 		self.goalStack = []
 		self.goal = None
@@ -18,6 +18,8 @@ class Mind(GameObject):
 		#self.death = threading.Event()
 		#self.thread = threading.Thread(name="Mind of %d" % oid, target=self.update)
 		self.thread = ActionSequence(WaitAction(100), savage.CallAction(self.updateOnce))
+		self.thread.set_loop(True)
+
 		self.homePos = savage.Vec3(0.0, 0.0, 0.0)
 		self.givingWay = False
 		self.lastCollisions = []
