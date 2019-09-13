@@ -33,7 +33,7 @@ class FocusIndicator(DefaultContainer):
 			d = self.csize*2+16
 			self.setSize(int(self.maxSize*f)+d, int(self.maxSize*f)+d)
 
-			self.setPosition(screenWidthPct(.5)-self.getWidth()/2, screenHeightPct(.5)-self.getHeight()/2+2)
+			self.setPosition(screenWidthPct(.5)-self.getWidth()//2, screenHeightPct(.5)-self.getHeight()//2+2)
 			self.images[1].setPosition(self.getWidth()-self.csize, 0)
 			self.images[2].setPosition(self.getWidth()-self.csize, self.getHeight()-self.csize)
 			self.images[3].setPosition(0, self.getHeight()-self.csize)

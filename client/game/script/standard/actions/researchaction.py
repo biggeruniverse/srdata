@@ -9,9 +9,12 @@ class ResearchAction(Action):
 		self.requested = False;
 
 	def run(self):
-		if self.areReqsMet():
+		if self.areReqsMet() and not self.requested:
 			CL_RequestPurchase(self.item.getType().getName(), self.item.builder);
 			self.requested = True;
+
+	def is_done(self):
+		return self.requested
 	
 	def areReqsMet(self):
 		return self.item.areRequirementsMet();
