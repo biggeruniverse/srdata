@@ -666,14 +666,6 @@ class OptionsSection(AbstractSection):
 		ratio.setWidth(colWidth * 2);
 		container.add(ratio, x[2], y);
 		
-		vertLabel = DefaultLabel("ENABLE VERTICAL SYNC");
-		vertLabel.setFont(fontSizeSmall);
-		container.add(vertLabel, x[7] - vertLabel.getWidth() - 10, y);
-		
-		vert = DefaultCheckBox();
-		vert.linkCvar("gfx_vsync");
-		container.add(vert, x[7], y);
-		
 		y += yInc;
 		
 		antiLabel = DefaultLabel("HW ANTI-ALIASING");
@@ -702,6 +694,21 @@ class OptionsSection(AbstractSection):
 		fps.addOption("Average", "2");
 		fps.addOption("Both", "3");
 		container.add(fps, x[2], y);
+		
+		y += yInc;
+		
+		vertLabel = DefaultLabel("VERTICAL SYNC");
+		vertLabel.setFont(fontSizeSmall);
+		container.add(vertLabel, x[0], y);
+		
+		vert = DefaultDropDown();
+		vert.requiresRestart = True;
+		vert.addSelectionListener(self);
+		vert.linkCvar("gfx_vsync");
+		vert.addOption("Off", "0");
+		vert.addOption("On", "1");
+		vert.addOption("Adaptive", "-1");
+		container.add(vert, x[2], y);
 		
 		y += yInc;
 		

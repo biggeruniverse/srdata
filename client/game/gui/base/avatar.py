@@ -31,8 +31,11 @@ class Avatar(DefaultImage):
 	def onEvent(self, e):
 		if e.handle == self.httpHandle:
 			if self.userId == -1:
-				dom = xml.dom.minidom.parseString(e.responseMessage);
-				#TODO
+				try:
+					dom = xml.dom.minidom.parseString(e.responseMessage);
+					#TODO
+				except Exception as e:
+					con_println(str(e)+"\n")
 			else:
 				self.setImage("../../../cache/avatars/"+str(self.userId)+".jpg")
 			self.httpHandle = -1

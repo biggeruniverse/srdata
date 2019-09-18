@@ -7,6 +7,7 @@ import xml.dom.minidom;
 import tools;
 import socket;
 import struct;
+import threading
 
 class ServerlistSection(AbstractSection):
 	
@@ -22,35 +23,39 @@ class ServerlistSection(AbstractSection):
 		gblEventHandler.addSystemListener(self);
 		self.list.addMouseListener(self);
 		self.list.setSelectionIndicator();
-		#self.stop = threading.Event();
-		#self.stop.clear();
+		self.stop = threading.Event();
+		self.stop.clear();
 		#self.refreshThread = threading.Thread(name="server refresh", target=self._refreshWhenVisible);
 		#self.refreshThread.start();
-		#self.pingThread = threading.Thread(name="ping refresh", target=self._refreshPingWhenVisible);
-		#self.pingThread.start();
+		self.pingThread = threading.Thread(name="ping refresh", target=self._refreshPingWhenVisible);
+		self.pingThread.start();
 
 	def _refreshWhenVisible(self):
 		while not self.stop.is_set():
 			if self.isVisible() == True:
 				self.refresh();
+			time.sleep(60)
 			#stacklesslib.main.sleep(60.0)
 
 	def _refreshPingWhenVisible(self):
 		while not self.stop.is_set():
 			if self.isVisible() == True:
-				self.refreshPings();
+				#self.refreshPings();
+				self._checkPing(self.list)
+			time.sleep(15)
 			#stacklesslib.main.sleep(15.0);
 		
 
 	def onShow(self):
-		self.refresh();
+		self.refresh()
 
 		if isConnected():
-			self.reconnectBar.setVisible(True);
-			self.scroll.setY(85);
+			self.reconnectBar.setVisible(True)
+			self.scroll.setY(85)
 		else:
-			self.reconnectBar.setVisible(False);
-			self.scroll.setY(42);
+			self.reconnectBar.setVisible(False)
+			self.scroll.setY(42)
+		HTTP_GetFile("http://masterserver.newerth.com/gamelist_full.dat", "gamelist_full.dat")
 		
 	def create(self):
 		
@@ -142,7 +147,7 @@ class ServerlistSection(AbstractSection):
 		self.httpHandle = HTTP_Get(ApiUrl + "/serverlist/");
 		#now do crappy newerth serverlist...
 		f = File_Open("gamelist_full.dat", "rb")
-		ip = [192,168,2,1]
+		ip = [192,168,1,1]
 		port=11235
 		cursor=5
 		length = File_Size(f)
@@ -159,6 +164,7 @@ class ServerlistSection(AbstractSection):
 				else:
 					break
 				address = "%d.%d.%d.%d:%d" % (ip[0], ip[1], ip[2], ip[3], port)
+				con_println("address: "+address)
 				if address not in self.listCache:
 					row = self.list.nextRow( "", 
 					  official,
@@ -179,26 +185,32 @@ class ServerlistSection(AbstractSection):
 	def _checkPing(self, serverlist):
 		for server in serverlist:
 			sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);
-			sock.settimeout(0.1)
+			sock.settimeout(1.1)
 			try:
 				thetime = Host_Milliseconds();
+				if ':' not in str(server.getId()):
+					continue
+				#con_println("trying "+str(server.getId())+"...\n");
 				host,port = str(server.getId()).split(':');
-				#con_println("trying "+host+"...\n");
 				#sock.connect((host, int(port)+1));
 				data = struct.pack('!LBBL', 0, 5, 0xC6, socket.htonl(thetime));
 				sock.sendto(data, (host, int(port)+1));
 				msg = ""
 				while len(msg) < 10:
-					msg += sock.recv(10)
+					dat = sock.recv(10)
+					if isinstance(dat, str):
+						msg += dat
+					else:
+						msg += dat.decode('iso-8859-1')
 				#msg, addr = sock.recvfrom(10);
-				meh, bsize, cmd, senttime = struct.unpack('<LBBL', msg);
+				meh, bsize, cmd, senttime = struct.unpack('<LBBL', msg.encode('iso-8859-1'));
 				#con_println("ping for "+host+" is "+str(Host_Milliseconds()-senttime)+"\n");
 				server.getColumn(6).getContent(glass.GlassLabel).setCaption(str(Host_Milliseconds()-senttime));
 			except socket.timeout:
 				server.getColumn(6).getContent(glass.GlassLabel).setCaption("999");
 				#con_println("ping is >2500ms\n");
 			except Exception as e:
-				con_println("failed to connect: "+str(e)+"\n");
+				con_dprintln("failed to connect: "+str(e)+"\n");
 			#sock.shutdown(socket.SHUT_RDWR);
 			sock.close();
 
@@ -246,7 +258,10 @@ class ServerlistSection(AbstractSection):
 			#self.clearList();
 			self.httpHandle = -1;
 			if e.responseCode != 404:
-				dom = xml.dom.minidom.parseString(e.responseMessage);
+				try:
+					dom = xml.dom.minidom.parseString(e.responseMessage);
+				except Exception as e:
+					con_println("^rFailed to parse the response from master server!\n")
 
 			if len(dom.getElementsByTagName("servers")) > 0:
 				servers = dom.getElementsByTagName("servers")[0];
@@ -287,7 +302,6 @@ class ServerlistSection(AbstractSection):
 			#self.list.adjustSize();
 			self.list.adjustWidthTo(self.scroll.getWidth()-10);
 			#in case you need it later -serverlist.scr.getScrollbarWidth());
-			HTTP_GetFile("http://masterserver.newerth.com/gamelist_full.dat", "gamelist_full.dat");
 			
 			
 

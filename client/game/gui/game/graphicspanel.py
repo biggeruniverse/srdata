@@ -121,7 +121,7 @@ class GraphicsPanel(DefaultWindow):
 		
 		useShaders = glass.GlassDropMenu();
 		useShaders.linkCvar("gfx_GLSLQuality");
-		useShaders.addOption("^900Off", "0");
+		#useShaders.addOption("^900Off", "0");
 		useShaders.addOption("Playing", "1");
 		useShaders.addOption("Eye-candy", "3");
 		self.table.addRow( "Shaders", useShaders);

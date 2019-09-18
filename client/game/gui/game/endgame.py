@@ -100,7 +100,7 @@ def updatePersonal():
 	player = savage.getLocalPlayer();
 	
 	#If we're a spectator, hide the personal info; otherwise show it
-	show_personal = int(player.getTeam() != 0);
+	show_personal = (player.getTeam() != 0);
 	for w in endgame.personal_widgets:
 		w.setVisible(show_personal);
 	if not show_personal:
