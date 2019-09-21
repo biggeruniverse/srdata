@@ -327,8 +327,8 @@ class CommToolBar(CommAbstractWidget):
 		self.quickTable.addRow(b,c,d,e);
 		
 	def onEvent(self, e):
-		con_println("triggered\n");
-		return;
+		#con_println("triggered\n");
+		#return;
 	
 		if e.eventType == "research_begin":
 			#dayum. work!

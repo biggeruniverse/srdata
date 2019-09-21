@@ -7,7 +7,7 @@ objSet skin "default"
 objSet icon "/models/beast/buildings/icons/goldmine"
 objSet selectionIcon "/models/beast/buildings/icons/goldmine.s2g"
 objSet tooltip "This building mines gold automatically for the team"
-objSet selectionSound "/sound/general/buildings/sawmill_idle.wav"
+objSet selectionSound "/sound/general/buildings/sawmill_idle.ogg"
 objSet proximityMessage ""
 objSet builder1 "beast_worker"
 objSet builder2 ""
@@ -26,7 +26,7 @@ objSet isVulnerable 1
 objSet cost stone 300
 objSet researchTime 20000
 objSet refreshTime 2500
-objSet idleSound "/sound/general/buildings/sawmill_idle.wav"
+objSet idleSound "/sound/general/buildings/sawmill_idle.ogg"
 objSet anchorRange 50.000000
 objSet anchorType "gold_mine"
 objSet needsAnchor 1

@@ -140,7 +140,7 @@ objSet wpIdleSound ""
 objSet wpChargeSound ""
 objSet wpSpinupSound ""
 objSet wpOverheatSound ""
-objSet wpFiringSound "/sound/beast/weapons/surge_loop.wav"
+objSet wpFiringSound "/sound/beast/weapons/surge_loop.ogg"
 objSet itemSleepSound ""
 objSet itemActiveSound ""
 

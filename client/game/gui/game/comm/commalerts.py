@@ -127,7 +127,7 @@ class AttackAlert(CommAlert):
 		self.pos = where;
 		if not set(self.pos) - set((0,0)):
 			# Maybe something went wrong, double check:
-			self.pos = (building.getPosition[0], building.getPosition[1]);
+			self.pos = (building.getPosition()[0], building.getPosition()[1]);
 
 		self.buildingId = what;
 
@@ -337,9 +337,9 @@ class CommAlertHandler(DefaultContainer):
 		self.alertQueue.insert(i, alert); # ccAlert is always at 0!
 
 	def onEvent(self, e):
-		if isinstance(e, GameEvent):
-			con_println(str(e));
-			pass;
+		#if isinstance(e, GameEvent):
+			#con_println(str(e));
+			#pass;
 		# CommanderEvents
 
 		if e.eventType == "under_attack":

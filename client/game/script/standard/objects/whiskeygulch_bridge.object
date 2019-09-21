@@ -6,8 +6,8 @@ objSet drawHealth 0
 objSet model "/models/props/tombstone_props/bridges/whiskeygulch_bridge.model"
 objSet skin "default"
 objSet tooltip "info 177"
-objSet selectionSound "/sound/effects/bridge_creak.wav"
-objSet proximitySound "/sound/effects/bridge_creak.wav"
+objSet selectionSound "/sound/effects/bridge_creak.ogg"
+objSet proximitySound "/sound/effects/bridge_creak.ogg"
 objSet proximity 100.000000
 objSet techType "NULL"
 objSet viewHeight 25.000000

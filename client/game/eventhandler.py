@@ -44,7 +44,7 @@ class GameEvent(Event):
 		return savage.getGameObject(self.targetId)
 
 	def __str__(self):
-		return "Game event '"+self.eventType+"'\nsource objId: "+str(self.sourceId)+"\ntarget objId: "+str(self.targetId)
+		return "Game event '"+str(self.eventType)+"'\nsource objId: "+str(self.sourceId)+"\ntarget objId: "+str(self.targetId)
 
 class ResearchEvent(GameEvent):
 	def __init__(self, etype, src, objtype, qid):
