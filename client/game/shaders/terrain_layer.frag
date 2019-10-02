@@ -1,5 +1,6 @@
 // (c) 2011 savagerebirth.com
 #version 120
+#extension GL_EXT_texture_array : enable
 
 varying vec3 	normal;			// normal
 varying vec4 	ecPosition;

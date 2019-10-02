@@ -1,5 +1,6 @@
 //(c) 2012 savagerebirth.com
 #version 130
+#extension GL_EXT_texture_array : enable
 
 in vec4 		lightPos;	// light position 0 in tangent space
 in vec4 		lightPos1;	// light position 1 in tangent space

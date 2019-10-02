@@ -32,10 +32,10 @@ class AccuracyWindow( glass.GlassWindow ):
 				weapon_siege = 100*siege[w]/weapon_shots;
 			self.addRow("Weapon", str(weapon_shots), str(weapon_hit), str(weapon_siege));
 		
-		weapon_shots = sum(shots.itervalues());
+		weapon_shots = sum(shots.values());
 		if weapon_shots != 0:
-			weapon_hit   = 100*sum(hits.itervalues() )/weapon_shots;
-			weapon_siege = 100*sum(siege.itervalues())/weapon_shots;
+			weapon_hit   = 100*sum(hits.values() )/weapon_shots;
+			weapon_siege = 100*sum(siege.values())/weapon_shots;
 		else:
 			weapon_hit = weapon_siege = 0;
 		

@@ -1,5 +1,6 @@
 // (c) 2012 savagerebirth.com
 #version 130
+#extension GL_EXT_texture_array : enable
 
 in float	fog;
 in vec4		ambient;

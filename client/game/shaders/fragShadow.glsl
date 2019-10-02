@@ -1,4 +1,3 @@
-#extension GL_EXT_texture_array : enable
 
 #ifdef GLSL_SM3
 uniform sampler2DArrayShadow    shadowMap;

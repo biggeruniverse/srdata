@@ -285,6 +285,8 @@ def Player_ReturnToLobby_Down():
 	elif glass.GUI_CurrentScreen() == "loadout":
 		# There's currently no topbar in the loadout screen. Not sure if we should add one tho.
 		CL_RequestLobby();
+	elif glass.GUI_CurrentScreen() == "lobby":
+		CL_RequestLobby(0);
 def Player_ReturnToLobby_Up():
 	pass;
 
@@ -607,7 +609,13 @@ def Spec_Screenshot_Up():
 	pass;
 
 def Spec_ReturnToLobby_Down():
-	CL_RequestLobby();
+	if spechud.hud.isVisible():
+		CL_RequestLobby()
+	else:
+		CL_RequestLobby(0)
+		spechud.setMode('hud')
+		setMouseMode(MOUSE_RECENTER)
+ 
 def Spec_ReturnToLobby_Up():
 	pass;
 

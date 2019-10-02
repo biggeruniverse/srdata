@@ -17,7 +17,7 @@ objSet tooltip ""
 objSet selectionSound ""
 objSet gridmenu "/gridmenus/layout_default.cfg"
 objSet proximityMessage ""
-objSet proximitySound "default"
+objSet proximitySound "/sound/environment/default.ogg"
 objSet proximity 100.000000
 objSet builder1 ""
 objSet builder2 ""
