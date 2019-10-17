@@ -1,3 +1,5 @@
+from savage import WaitForStateSlotAction, ActivateAction
+
 class beast_immolate(GameItem):
 	def onUse(self, user, target):
 		#usually you don't see the go_* funcs, they are wrapped up...
