@@ -121,12 +121,12 @@ def updatePersonal():
 	endgame.fave_unit.fitCameraToModel(0);
 
 #2. Chat Box
-"""
+
 chat = HUDChatBox(); #yes another one folks!
 chat.setSize( hbreak2px - hbreak1px -2*PADDING , vbreakpx - 2*PADDING);
 chat.setPosition( hbreak1px + PADDING, PADDING );
 chat.resize();
-glass.GUI_ScreenAddWidget("endgame",chat);"""
+glass.GUI_ScreenAddWidget("endgame",chat);
 
 #3. Game Information
 
@@ -307,7 +307,7 @@ def rebuildAwards(data):
 	if len(data) == 0:
 		return; #no awards!
 	
-	for i, item in enumerate(data.iteritems()):		
+	for i, item in enumerate(data.items()):
 		award, idString = item;
 
 		recipients = []

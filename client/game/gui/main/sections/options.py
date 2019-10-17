@@ -752,11 +752,10 @@ class OptionsSection(AbstractSection):
 		container.add(shadowLabel, x[0], y);
 		
 		shadow = DefaultDropDown();
-		shadow.linkCvar("gfx_shadowQuality");
+		shadow.linkCvar("gfx_shadow");
 		shadow.addOption("Off", "0");
-		shadow.addOption("Low", "1");
-		shadow.addOption("Medium", "2");
-		shadow.addOption("High", "3");
+		shadow.addOption("Fast", "1");
+		shadow.addOption("Nice", "3");
 		shadow.setWidth(colWidth * 2);
 		container.add(shadow, x[2], y);
 		

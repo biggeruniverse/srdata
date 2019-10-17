@@ -1,18 +1,18 @@
-import silverback;
+from savage import WaitAction, CallAction
 
 class human_immobilizer( GameItem):
 	def onUse(self, user, target):
-		ActionSequence(silverback.WaitAction(3000), silverback.CallAction(GameItem.givestate, (user, "immobilize", 3333)));
+		ActionSequence(savage.WaitAction(3000), savage.CallAction(GameItem.givestate, (user, "immobilize", 3333)));
 
 	def onFuseEnd( self ):
 		objs = savage.getRadiusObjects(self.objectId, 30);
 		for obj in objs:
 			if obj.getTeam() != self.getTeam():
-				obj.addState(self.getOwner(), "immobilize", 3000);
+				obj.addState(self.getOwner(), "immobilize", 3333);
 		self.die();
 
 	def onBackFire(self):
-		pass;
+		self.getOwner().addState(self.getOwner(), "immobilize", 3250);
 
 """
 @fuse

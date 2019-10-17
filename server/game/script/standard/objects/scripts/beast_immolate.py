@@ -1,5 +1,3 @@
-import silverback;
-
 class beast_immolate(GameItem):
 	def onUse(self, user, target):
 		#usually you don't see the go_* funcs, they are wrapped up...
@@ -9,7 +7,7 @@ class beast_immolate(GameItem):
 
 	def onAttach(self, to):
 		self.setState("idle");
-		ActionSequence(silverback.WaitForStateSlotAction(self.getOwner(), 6), silverback.ActivateAction(self));
+		ActionSequence(WaitForStateSlotAction(self.getOwner(), 6), ActivateAction(self));
 
 	def onActivate(self, target):
 		if self.getOwner().getHealth()>0:

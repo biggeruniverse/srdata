@@ -1,5 +1,6 @@
 # (c) 2011 savagerebirth.com
 
+from savage import WaitAction, CallAction
 from silverback import *
 from vectors import Vec3
 import logging
@@ -17,7 +18,7 @@ class Mind(GameObject):
 		self.fsm = savage.FiniteStateMachine(self)
 		#self.death = threading.Event()
 		#self.thread = threading.Thread(name="Mind of %d" % oid, target=self.update)
-		self.thread = ActionSequence(WaitAction(100), savage.CallAction(self.updateOnce))
+		self.thread = ActionSequence(savage.WaitAction(100), savage.CallAction(self.updateOnce))
 		self.thread.set_loop(True)
 
 		self.homePos = savage.Vec3(0.0, 0.0, 0.0)

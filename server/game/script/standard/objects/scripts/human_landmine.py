@@ -1,5 +1,5 @@
 # (c) 2011 savagerebirth.com
-import silverback;
+from savage import WaitAction, TripAction, ActivateAction, DieAction
 
 class human_landmine(GameItem):
 	def onUse( self, user, target):
@@ -9,10 +9,10 @@ class human_landmine(GameItem):
 		self.setState("idle");
 
 	def onIdle(self, target):
-		ActionSequence(silverback.WaitAction(5000), silverback.TripAction(self, 50), silverback.ActivateAction(self));
+		ActionSequence(savage.WaitAction(5000), savage.TripAction(self, 50), savage.ActivateAction(self));
 
 	def onActivate(self, target):
-		ActionSequence(silverback.WaitAction(350), silverback.DieAction(self));
+		ActionSequence(savage.WaitAction(350), savage.DieAction(self));
 	
 	def onDeath(self, killer):
 		objs = savage.getRadiusObjects(self.objectId, 150);

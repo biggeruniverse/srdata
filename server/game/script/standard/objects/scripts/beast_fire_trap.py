@@ -1,5 +1,4 @@
-import silverback;
-from vectors import Vec3;
+from savage import WaitAction, TripAction, ActivateAction, DieAction
 
 class beast_fire_trap(GameItem):
 	def onUse( self, user, target):
@@ -9,10 +8,10 @@ class beast_fire_trap(GameItem):
 		self.setState("idle");
 	
 	def onIdle(self, target):
-		ActionSequence(silverback.WaitAction(5000), silverback.TripAction(self, 50), silverback.ActivateAction(self));
+		ActionSequence(WaitAction(5000), TripAction(self, 50), ActivateAction(self));
 
 	def onActivate(self, target):
-		ActionSequence(silverback.WaitAction(500), silverback.DieAction(self));
+		ActionSequence(WaitAction(500), DieAction(self));
 
 	def onDeath(self, killer):
 		objs = savage.getRadiusObjects(self.objectId, 150);

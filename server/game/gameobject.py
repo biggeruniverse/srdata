@@ -14,7 +14,7 @@ class GameObject:
 		return "Game Object with ID " +str(self.objectId);
 
 	def __eq__(self, b):
-		if isinstance(b, savage.GameObject):
+		if isinstance(b, self.__class__):
 			return b.objectId == self.objectId;
 		return False;
 
@@ -70,7 +70,7 @@ class GameObject:
 		if player.getTeam() == 0 or self.getTeam() == 0:
 			return "^w"; #specs are see evertything as white, and everything sees specs as white
 		elif player.getTeam() == self.getTeam():
-			return allyColorCode; #self is an ally of player
+			return allyColorCode;
 		else:
 			return enemyColorCode;
 		
@@ -89,6 +89,9 @@ class GameObject:
 	def getPosition(self):
 		return savage.go_getposition(self.objectId);
 
+	def getScreenTopPosition(self):
+		return savage.go_getscreentopposition(self.objectId);
+
 	def getForwardVector(self):
 		return savage.go_getforward(self.objectId);
 
@@ -96,7 +99,7 @@ class GameObject:
 		return savage.go_isspawn(self.objectId);
 
 	def isComplete(self):
-		return self.getBuildProgress() == 1.0;
+		return self.getBuildProgress() >= 1.0;
 
 	def getState(self, slot):
 		return savage.go_getstate(self.objectId, slot);
@@ -173,7 +176,7 @@ class GameObject:
 		import math;
 		v0 = Vec3( self.getPosition() );
 		v1 = Vec3( target.getPosition() );
-		x = v0.distanceTo( v1 )-target.getRadius();
+		x = max(0, v0.distanceTo( v1 )-target.getRadius());
 		
 		if x > maxrange: damage = 0;
 		else: damage = maxdamage * math.cos( x*math.pi*0.5/maxrange );
@@ -214,9 +217,8 @@ class GameObject:
 		return savage.go_setanimstate(self.objectId, 2, st);
 
 	def select(self):
-		sound = self.getType().getValue("selectionSound");
-		if sound != "":
-			Sound_PlaySound(sound);
+		if self.isSelected():
+			return True;
 		return CL_SelectObject(self.objectId);
 
 	def unselect(self):
@@ -229,7 +231,7 @@ class GameObject:
 	def onDrop(self):
 		pass;
 
-	def onToss(self, tosser):
+	def onToss(self, tosser): #heh
 		pass;
 
 	def onDamaged(self, target, amt):

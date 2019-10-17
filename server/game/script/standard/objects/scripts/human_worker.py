@@ -1,9 +1,9 @@
 # (c) 2011 savagerebirth.com
 
 from silverback import *;
-from vectors import Vec3;
+from savage import Mind;
 
-class human_worker(savage.Mind):
+class human_worker(Mind):
 	def __init__(self, oid):
 		savage.Mind.__init__(self, oid);
 
@@ -23,7 +23,7 @@ class human_worker(savage.Mind):
 			savage.Mind.handleGoal(self);
 
 	def onDamaged(self, target, amt):
-		g = savage.Goal(savage.Goal.AIGOAL_EVADE, 20000);
+		g = savage.Goal(savage.Goal.AIGOAL_EVADE, 10000);
 		g.targetObject = target;
 		self.addGoal(g);
 
