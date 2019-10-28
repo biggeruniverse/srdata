@@ -58,7 +58,7 @@ class HUDChatBox( ChatBox, EventListener ):
 		self.setAlpha(255)
 		self.setVisible(True)
 		if not forever and not self.typing:
-			self.fade = ActionSequence(savage.WaitAction(5000), FadeOutAction(self))
+			self.fade = ActionSequence(savage.WaitAction(5000), savage.CheckAction(self.typing, False), FadeOutAction(self))
 		
 	def onEvent (self, e):
 		self.makeVisible()
@@ -162,6 +162,7 @@ class HUDChatBox( ChatBox, EventListener ):
 			self.historyBuffer.parentScroll.mouseWheelMovedDown();
 	
 	def activate( self, chatType = "all"):
+		self.typing = True
 		self.makeVisible(True)
 		self.chatType = chatType; #"all" "team" "comm" "squad" "private" "clan"
 		#don't use "private" here, use /w, /msg, /r and /re for that

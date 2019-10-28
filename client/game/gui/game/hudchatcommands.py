@@ -106,6 +106,7 @@ def stat(HCB, args):
 	CL_SendChat(cvar_get("game_serverstatus"), "all")
 
 def listcmds(HCB, args):
+	import sys
 	"""Prints the names of hudchatcommands to the HUD Chat Box
 	
 	/listcmds [min] [number]

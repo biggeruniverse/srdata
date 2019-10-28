@@ -16,8 +16,19 @@ def frame():
 	loading.type.setCaption("GAME TYPE: ^w" + str("RTSS"))
 	loading.official.setCaption("OFFICIAL: ^w" + Client_GetStateString("svr_official"))
 
+
+	p = 0.0
+	if cvar_get("cl_currentContentDownload") == "archives":
+		p=0.5
+	elif cvar_get("cl_currentContentDownload") == "framesaysdone":
+		p=0.75
+	elif cvar_get("cl_currentContentDownload").startswith("map"):
+		p=0.25
+	loading.progress.setProgress(.25*cvar_getvalue("cl_currentContentDownloadProgress")+p)
+
 def onShow():
 	import random;
+	GUI_HideCursor()
 	#no one will notice it here!
 	tools.run_gc();
 	loading.tip.setText(GUI_GetTip());
@@ -27,6 +38,9 @@ def onShow():
 	ratio = loading.background.getWidth()/float(loading.background.getHeight());
 	loading.background.setHeight(screenHeight);
 	loading.background.setWidth(int(screenHeight*ratio));
+
+	loading.progress.setProgress(0)
+	loading.frame()
 
 def add(obj, x=None, y=None):    
 	if x is not None:
@@ -143,6 +157,12 @@ message.setForegroundColor(bluey);
 right.add(message, 5, 3);
 
 add(info, screenWidth // 2 - info.getWidth() // 2, screenHeight // 2 - info.getHeight() // 2);
+
+progress = glass.GlassProgressBar();
+progress.setSizePct(.1, .006);
+progress.setBackgroundColor( glass.Color(110,110,110) );
+progress.setForegroundColor( glass.Color(0,0,0) );
+add(progress, screenWidth // 2 - progress.getWidth() // 2, 80)
 
 tips = DefaultWindow();
 tips.setSize(450, int(screenHeight*0.12));
