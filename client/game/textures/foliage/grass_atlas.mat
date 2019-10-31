@@ -1,4 +1,6 @@
 set mat_doubleSided 1
 set mat_alphaCutoff 0.05
+set mat_normalmap /textures/foliage/grass_atlas_normalmap.tga
 set mat_shader grass
-matAddSampler "coverageTex" 3
+set mat_flags +no_shadowcast
+matAddSampler "coverageTex" 7

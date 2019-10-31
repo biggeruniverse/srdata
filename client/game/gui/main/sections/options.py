@@ -798,7 +798,7 @@ class OptionsSection(AbstractSection):
 		grass = DefaultSlider();
 		grass.linkCvar("gfx_grassRange");
 		grass.setScaleEnd(3500);
-		grass.setScaleStart(0);
+		grass.setScaleStart(100);
 		grass.setWidth(colWidth * 5);
 		grass.setStep(100);
 		container.add(grass, x[2], y);

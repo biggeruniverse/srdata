@@ -1,11 +1,18 @@
-{
-	"name": "runictusk_A",
-	"pass": {
-		"diffuse": "/models/beast/buildings/Tusk_A_RunicA_diffuse.tga",
-		"normal": "/models/beast/buildings/Tusk_A_RunicA_normal.tga",
-		"specular": "/models/beast/buildings/Tusk_A_RunicA_specular.tga",
-		"emission": "/models/beast/buildings/Tusk_A_RunicA_selfillum.tga",
-		"shader": "pr_illum"
-	}
-}
-
+matPass
+set mat_doubleSided 0
+set mat_shininess 5.000000
+set mat_specular 0.600000 0.600000 0.600000
+set mat_terrain_overblend 1
+set mat_normalmap /models/beast/buildings/Tusk_A_RunicA_normal.tga
+set mat_glossmap /models/beast/buildings/Tusk_A_RunicA_specular.tga
+set mat_shader nm_gm_skn
+endMatPass
+matPass
+set mat_doubleSided 0
+set mat_depthWrite 0
+set mat_depthTest LEQUAL
+set mat_texmap /models/beast/buildings/Tusk_A_RunicA_selfillum.tga
+set mat_flags +no_lighting +additive
+set mat_shader fixed_skn
+set mat_fog 0
+endMatPass

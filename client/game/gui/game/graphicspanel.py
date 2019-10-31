@@ -100,13 +100,17 @@ class GraphicsPanel(DefaultWindow):
 		showBlood.linkCvar("cl_bloodSplatter");
 		self.table.addRow( "Show Blood Splatter", showBlood );
 		
-		grassFalloff = glass.GlassDropMenu();
-		grassFalloff.linkCvar("gfx_foliageFalloff")
-		grassFalloff.addOption("Off","0");
-		grassFalloff.addOption("Near","100");
-		grassFalloff.addOption("Far","700");
-		grassFalloff.addOption("Very Far","1500");
-		self.table.addRow( "Grass Falloff", grassFalloff );
+		showGrass = glass.GlassCheckbox();
+		showGrass.linkCvar("gfx_grass");
+		self.table.addRow( "Show Grass", showGrass );
+
+		#grassFalloff = glass.GlassDropMenu();
+		#grassFalloff.linkCvar("gfx_foliageFalloff")
+		#grassFalloff.addOption("Off","0");
+		#grassFalloff.addOption("Near","700");
+		#grassFalloff.addOption("Far","1500");
+		#grassFalloff.addOption("Very Far","3500");
+		#self.table.addRow( "Grass Falloff", grassFalloff );
 		
 		showClouds = glass.GlassCheckbox();
 		showClouds.linkCvar("gfx_clouds");

@@ -33,7 +33,7 @@ def onShow():
 	tools.run_gc();
 	loading.tip.setText(GUI_GetTip());
 
-	bgs = ["/gui/loadingImages/nexus.jpg", "/gui/loadingImages/arcana.jpg"];
+	bgs = ["/gui/loadingImages/nexus.jpg", "/gui/loadingImages/arcana.jpg", "/gui/loadingImages/arsenal.jpg"];
 	loading.background.setImage(random.choice(bgs), False);
 	ratio = loading.background.getWidth()/float(loading.background.getHeight());
 	loading.background.setHeight(screenHeight);

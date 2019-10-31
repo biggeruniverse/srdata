@@ -1,12 +1,7 @@
-{
-	"name": "wisp_yellow",
-	"double-sided": "true",
-	"alpha-cutoff": "0.05",
-	"blending": "add",
-	"depth": "false",
-	"pass": {
-		"diffuse": "/models/beast/buildings/Wisp_Yellow_diffuse.tga",
-		"shader": "effect"
-	}
-}
-
+set mat_flags +no_lighting +repeat +additive
+set mat_vfunc linear_pan
+set mat_vspeed .2
+set mat_doubleSided 1
+set mat_depthWrite 0
+set mat_shader fixedab_skn
+set mat_fog 0
