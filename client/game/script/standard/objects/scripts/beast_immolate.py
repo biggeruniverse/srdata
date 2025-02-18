@@ -7,7 +7,7 @@ class beast_immolate(GameItem):
 
 	def onAttach(self, to):
 		self.setState("idle");
-		ActionSequence(WaitForStateSlotAction(self.getOwner(), 6), ActivateAction(self));
+		ActionSequence(savage.WaitForStateSlotAction(self.getOwner(), 6), savage.ActivateAction(self));
 
 	def onActivate(self, target):
 		objs = savage.getRadiusObjects(self.getOwner().objectId, 100);

@@ -312,20 +312,20 @@ def Comm_ScrollRight_Down():
 def Comm_ScrollRight_Up():
 	move_right(0);
 
-def Comm_ZoomIn_Down():
+def Comm_ZoomIn_Up():
 	val = max(cvar_getvalue("cl_zoomfov")-5, 50);
 	cvar_setvalue("cl_zoomfov", val);
 	val = min(-35, cvar_getvalue("cl_cmdr_camtiltx")+3);
 	cvar_setvalue("cl_cmdr_camtiltx", val);
-def Comm_ZoomIn_Up():
+def Comm_ZoomIn_Down():
 	pass;
 
-def Comm_ZoomOut_Down():
+def Comm_ZoomOut_Up():
 	val = min(cvar_getvalue("cl_zoomfov")+5, 90);
 	cvar_setvalue("cl_zoomfov", val);
 	val = max(-64, cvar_getvalue("cl_cmdr_camtiltx")-3);
 	cvar_setvalue("cl_cmdr_camtiltx", val);
-def Comm_ZoomOut_Up():
+def Comm_ZoomOut_Down():
 	pass;
 
 def Comm_RotateViewCCW_Down():

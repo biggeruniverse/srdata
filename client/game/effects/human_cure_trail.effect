@@ -76,7 +76,7 @@ vfSet spin 0.000000 0.000000
 vfSet bone ""
 
 vfEdit 2
-vfSet visclass "particles"
+vfSet visclass "null"
 vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
 vfSet shader "(null)"
 vfSet size 0.000000 0.000000
@@ -108,7 +108,7 @@ vfSet spin 0.000000 0.000000
 vfSet bone ""
 
 vfEdit 3
-vfSet visclass "particles"
+vfSet visclass "null"
 vfSet flags -parent_pos -parent_vel -param_location -param_scale -param_count 
 vfSet shader "(null)"
 vfSet size 0.000000 0.000000

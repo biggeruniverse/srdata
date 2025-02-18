@@ -8,10 +8,10 @@ class beast_fire_trap(GameItem):
 		self.setState("idle");
 	
 	def onIdle(self, target):
-		ActionSequence(WaitAction(5000), TripAction(self, 50), ActivateAction(self));
+		ActionSequence(savage.WaitAction(5000), savage.TripAction(self, 50), savage.ActivateAction(self));
 
 	def onActivate(self, target):
-		ActionSequence(WaitAction(500), DieAction(self));
+		ActionSequence(savage.WaitAction(500), savage.DieAction(self));
 
 	def onDeath(self, killer):
 		objs = savage.getRadiusObjects(self.objectId, 150);
